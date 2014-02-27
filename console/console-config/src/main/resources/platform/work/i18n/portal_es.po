@@ -1902,7 +1902,7 @@ msgstr "Tareas pendientes"
 #: console/console-war/src/main/java/org/bonitasoft/console/client/user/cases/view/ArchivedCaseQuickDetailsPage.java:89
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/CaseMoreDetailsAdminPage.java:170
 msgid "Done tasks"
-msgstr "Tareas hachas"
+msgstr "Tareas hechas"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/user/cases/view/AbstractCaseQuickDetailsPage.java:120
 msgid "Tasks to do"
