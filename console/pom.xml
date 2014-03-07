@@ -11,7 +11,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>console-config</module>
 		<module>console-server</module>
 	</modules>
 

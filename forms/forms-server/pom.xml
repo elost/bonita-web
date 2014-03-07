@@ -150,26 +150,6 @@
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>unpack-engine-config-tree</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>org.bonitasoft.engine</groupId>
-									<artifactId>bonita-home</artifactId>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>
-								${project.build.directory}/bonita
-							</outputDirectory>
-						</configuration>
-					</execution>
-					<execution>
 						<id>unpack-config-tree</id>
 						<phase>generate-resources</phase>
 						<goals>
@@ -185,17 +165,9 @@
                                     <overWrite>true</overWrite>
                                     <excludes>META*/**</excludes>
                                 </artifactItem>
-								<artifactItem>
-									<groupId>org.bonitasoft.forms</groupId>
-									<artifactId>forms-config</artifactId>
-									<version>${project.version}</version>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-									<excludes>META*/**</excludes>
-								</artifactItem>
 							</artifactItems>
 							<outputDirectory>
-								${project.build.directory}/bonita/home/client/
+								${project.build.directory}/bonita/home/
 							</outputDirectory>
 						</configuration>
 					</execution>

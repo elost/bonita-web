@@ -75,19 +75,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.bonitasoft.engine</groupId>
-			<artifactId>bonita-home</artifactId>
-			<type>zip</type>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bonitasoft.console</groupId>
-			<artifactId>console-config</artifactId>
-			<version>${project.version}</version>
-			<type>jar</type>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bonitasoft.engine</groupId>
 			<artifactId>bonita-server</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -100,26 +87,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
-					<execution>
-						<id>unpack-engine-home</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>org.bonitasoft.engine</groupId>
-									<artifactId>bonita-home</artifactId>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>
-								${project.build.directory}/bonita
-							</outputDirectory>
-						</configuration>
-					</execution>
 					<execution>
 						<id>unpack-config-tree</id>
 						<phase>generate-resources</phase>
@@ -136,17 +103,9 @@
                                     <overWrite>true</overWrite>
                                     <excludes>META*/**</excludes>
                                 </artifactItem>
-								<artifactItem>
-									<groupId>org.bonitasoft.console</groupId>
-									<artifactId>console-config</artifactId>
-									<version>${project.version}</version>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-									<excludes>META*/**</excludes>
-								</artifactItem>
 							</artifactItems>
 							<outputDirectory>
-								${project.build.directory}/bonita/home/client/
+								${project.build.directory}/bonita/home/
 							</outputDirectory>
 						</configuration>
 					</execution>

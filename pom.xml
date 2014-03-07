@@ -9,11 +9,11 @@
 
 	<modules>
 		<module>toolkit</module>
+		<module>bonita-home</module>
 		<module>common</module>
 		<module>rest-api</module>
 		<module>forms</module>
 		<module>console</module>
-		<module>bonita-home</module>
 	</modules>
 
 	<scm>

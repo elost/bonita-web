@@ -12,13 +12,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.bonitasoft.console</groupId>
-			<artifactId>console-config</artifactId>
-			<version>${project.version}</version>
-			<type>jar</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.bonitasoft.web.toolkit</groupId>
 			<artifactId>toolkit-server</artifactId>
 			<version>${project.version}</version>
@@ -164,17 +157,9 @@
                                     <overWrite>true</overWrite>
                                     <excludes>META*/**</excludes>
                                 </artifactItem>
-								<artifactItem>
-									<groupId>org.bonitasoft.console</groupId>
-									<artifactId>console-config</artifactId>
-									<version>${project.version}</version>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-									<excludes>META*/**</excludes>
-								</artifactItem>
 							</artifactItems>
 							<outputDirectory>
-								${project.build.directory}/bonita/home/client/
+								${project.build.directory}/bonita/home/
 							</outputDirectory>
 						</configuration>
 					</execution>
