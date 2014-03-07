@@ -13,13 +13,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.bonitasoft.forms</groupId>
-			<artifactId>forms-config</artifactId>
-			<version>${project.version}</version>
-			<type>jar</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bonitasoft.forms</groupId>
 			<artifactId>forms-rpc</artifactId>
 			<version>${project.version}</version>
 		</dependency>
