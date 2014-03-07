@@ -16,6 +16,13 @@
   	</properties>
 
 	<build>
+	   <resources>
+	       <resource>
+	           <directory>src/main/resources</directory>
+	           <targetPath>${project.build.directory}/bonita-home/bonita/client</targetPath>
+	       </resource>
+	   </resources>
+	   
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -38,27 +45,6 @@
 							</artifactItems>
 							<outputDirectory>
 								${project.build.directory}/bonita-engine-home
-							</outputDirectory>
-						</configuration>
-					</execution>
-					<execution>
-						<id>unpack-security-config</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>org.bonitasoft.console</groupId>
-									<artifactId>common-config</artifactId>
-									<version>${project.version}</version>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>
-								${project.build.directory}/bonita-home/bonita/client
 							</outputDirectory>
 						</configuration>
 					</execution>

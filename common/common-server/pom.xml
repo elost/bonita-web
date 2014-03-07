@@ -148,37 +148,15 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>org.bonitasoft.engine</groupId>
-									<artifactId>bonita-home</artifactId>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/bonita</outputDirectory>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>
-								${project.build.directory}/bonita
-							</outputDirectory>
-						</configuration>
-					</execution>
-					<execution>
-						<id>unpack-config-tree</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
 									<groupId>org.bonitasoft.console</groupId>
-									<artifactId>common-config</artifactId>
+									<artifactId>bonita-home</artifactId>
 									<version>${project.version}</version>
 									<type>zip</type>
 									<overWrite>true</overWrite>
-									<excludes>META*/**</excludes>
 								</artifactItem>
 							</artifactItems>
 							<outputDirectory>
-								${project.build.directory}/bonita/home/client/
+								${project.build.directory}
 							</outputDirectory>
 						</configuration>
 					</execution>
