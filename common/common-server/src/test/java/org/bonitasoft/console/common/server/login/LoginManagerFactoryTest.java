@@ -40,6 +40,6 @@ public class LoginManagerFactoryTest {
     
     @Test
     public void testGetLoginManager() throws LoginManagerNotFoundException{
-        assertNotNull("Cannot get the login manager", LoginManagerFactory.getLoginManager(new Long(0)));
+        assertNotNull("Cannot get the login manager", LoginManagerFactory.getLoginManager(1L));
     }
 }

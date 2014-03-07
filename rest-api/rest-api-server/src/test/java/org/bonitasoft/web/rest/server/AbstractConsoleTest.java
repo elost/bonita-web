@@ -45,9 +45,6 @@ public abstract class AbstractConsoleTest extends AbstractJUnitWebTest {
     public void webTestSetUp() throws Exception {
         FlowNodeConverter.setFlowNodeConverter(new FlowNodeConverter());
         
-        // init default tenant
-        TenantsManagementUtils.addDirectoryForTenant(1);
-
         new BonitaRestAPIServlet();
         consoleTestSetUp();
     }

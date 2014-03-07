@@ -17,6 +17,7 @@
 package org.bonitasoft.console.common.server;
 
 import org.bonitasoft.console.common.server.i18n.I18n;
+import org.bonitasoft.console.common.server.utils.TenantsManagementUtils;
 import org.bonitasoft.test.toolkit.AbstractJUnitTest;
 import org.bonitasoft.test.toolkit.organization.TestToolkitCtx;
 import org.bonitasoft.web.toolkit.client.data.item.Item;
@@ -42,6 +43,9 @@ public abstract class AbstractJUnitWebTest extends AbstractJUnitTest {
     protected void testSetUp() throws Exception {
         // toolkit initialization
         I18n.getInstance();
+        
+        //     init default tenant
+        TenantsManagementUtils.addDirectoryForTenant(1);
 
         webTestSetUp();
     }

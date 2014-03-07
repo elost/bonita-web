@@ -143,28 +143,13 @@
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>unpack-engine-home</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>org.bonitasoft.console</groupId>
-									<artifactId>bonita-home</artifactId>
-									<version>${project.version}</version>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>
-								${bonita.home}
-							</outputDirectory>
-						</configuration>
+						<id>unpack-bonita-home</id>
+						<phase>generate-test-resources</phase>
 					</execution>
 				</executions>
 			</plugin>
+			
+			<!-- Needed by loginManagerPropertiesTest - need to be fixed -->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
@@ -176,7 +161,7 @@
 						</goals>
 						<configuration>
 							<tasks>
-								<copy file="${project.basedir}/src/test/resources/loginManager-config.properties" tofile="${bonita.home}/client/platform/conf/loginManager-config.properties" overwrite="true" />
+								<copy file="${project.basedir}/src/test/resources/loginManager-config.properties" tofile="${bonita.home}/client/tenants/0/conf/loginManager-config.properties" overwrite="true" />
 							</tasks>
 						</configuration>
 					</execution>

@@ -42,7 +42,7 @@ public class LoginManagerPropertiesTest {
     
     @Before
     public void setUp() {
-        loginManagerProperties = new LoginManagerProperties(new Long(-1L));
+        loginManagerProperties = new LoginManagerProperties(0L);
     }
     
     @After
