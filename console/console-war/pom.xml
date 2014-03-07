@@ -374,8 +374,8 @@
 			</dependencies>
 
 			<properties>
-				<bonita.home>../../bonita-home/target/bonita-home-${project.version}/bonita</bonita.home>
-				<bonita.home.ref>../../bonita-home/target/bonita-home-${project.version}/bonita</bonita.home.ref>
+				<bonita.home>${project.build.directory}/bonita/home</bonita.home>
+				<bonita.home.ref>${project.build.directory}/bonita/home</bonita.home.ref>
 				<bonita.css>portal/css/bonita.css</bonita.css>
 				<!-- filtered in web.xml -->
 				<enable.engine.listener.start />
@@ -387,6 +387,11 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
 						<executions>
+						    <execution>
+                                 <id>unpack-bonita-home</id>
+                                <phase>generate-resources</phase>
+                            </execution>
+                            
 							<!-- Portal themes (engine needs them in the classpath) -->
 							<execution>
 								<id>copy-looknfeel</id>
