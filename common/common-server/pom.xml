@@ -10,11 +10,7 @@
 	<artifactId>common-server</artifactId>
 	
 	<name>common server</name>
-    
-    <properties>
-        <bonita.home>${project.build.directory}/bonita/home</bonita.home>
-    </properties>
-    
+
 	<dependencies>
 		<dependency>
 			<groupId>org.bonitasoft.web.toolkit</groupId>
@@ -135,6 +131,7 @@
 				<configuration>
                     <systemPropertyVariables>
                         <bonita.home>${bonita.home}</bonita.home>
+						<java.security.auth.login.config>${project.basedir}/src/test/resources/jaas-standard.cfg</java.security.auth.login.config>
                     </systemPropertyVariables>
                 </configuration>
 			</plugin>
@@ -149,24 +146,6 @@
 				</executions>
 			</plugin>
 			
-			<!-- Needed by loginManagerPropertiesTest - need to be fixed -->
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>overwrite-login-conf</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<tasks>
-								<copy file="${project.basedir}/src/test/resources/loginManager-config.properties" tofile="${bonita.home}/client/tenants/0/conf/loginManager-config.properties" overwrite="true" />
-							</tasks>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 </project>
