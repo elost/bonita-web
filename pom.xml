@@ -497,7 +497,7 @@
                                 </artifactItem>
                             </artifactItems>
                             <outputDirectory>
-                                ${project.build.directory}/bonita/home
+                                ${project.build.directory}/bonita-home
                             </outputDirectory>
                         </configuration>
                     </execution>

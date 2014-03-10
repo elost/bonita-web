@@ -374,8 +374,8 @@
 			</dependencies>
 
 			<properties>
-				<bonita.home>${project.build.directory}/bonita/home</bonita.home>
-				<bonita.home.ref>${project.build.directory}/bonita/home</bonita.home.ref>
+				<bonita.home>${project.build.directory}/bonita-home/bonita</bonita.home>
+				<bonita.home.ref>${project.build.directory}/bonita-home/bonita</bonita.home.ref>
 				<bonita.css>portal/css/bonita.css</bonita.css>
 				<!-- filtered in web.xml -->
 				<enable.engine.listener.start />

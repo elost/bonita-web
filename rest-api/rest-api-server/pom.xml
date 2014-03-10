@@ -87,27 +87,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
-					<execution>
-						<id>unpack-config-tree</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-                                <artifactItem>
-                                    <groupId>org.bonitasoft.console</groupId>
-                                    <artifactId>bonita-home</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <excludes>META*/**</excludes>
-                                </artifactItem>
-							</artifactItems>
-							<outputDirectory>
-								${project.build.directory}/bonita/home/
-							</outputDirectory>
-						</configuration>
+				    <execution>
+                        <id>unpack-bonita-home</id>
+                        <phase>generate-resources</phase>
 					</execution>
 				</executions>
 			</plugin>
