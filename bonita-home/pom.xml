@@ -133,6 +133,29 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<!-- skip source plugin -->
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- skip jar plugin -->
+            <plugin>
+		        <artifactId>maven-jar-plugin</artifactId>
+		        <executions>
+		            <execution>
+		                <id>default-jar</id>
+		                <phase>none</phase>
+		            </execution>
+		        </executions>
+		    </plugin>
 		</plugins>
 	</build>
 </project>
