@@ -68,8 +68,49 @@
 							<outputDirectory>${bonita.home}/home/client/platform/tenant-template/work/theme/portal</outputDirectory>
 						</configuration>
 					</execution>
+					<execution>
+                        <id>unpack-forms-design</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.bonitasoft.forms</groupId>
+                                    <artifactId>forms-design</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/forms-design</outputDirectory>
+                                    <includes>application/application/**/*</includes>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
 				</executions>
 			</plugin>
+			
+			<!-- Copy some form design files in bonita.home -->
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-form-design-theme-files</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <copy todir="${bonita.home}/home/client/platform/tenant-template/work/theme/portal" overwrite="true">
+                                    <fileset dir="${project.build.directory}/forms-design/application/application" />
+                                </copy>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
 			<!--Create bonita home zip -->
 			<plugin>
