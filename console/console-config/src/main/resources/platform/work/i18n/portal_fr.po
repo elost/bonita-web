@@ -1,8 +1,8 @@
 msgid ""
 msgstr "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-23 03:00+0200\n"
-"PO-Revision-Date: 2014-04-22 22:31-0400\n"
+"POT-Creation-Date: 2014-04-24 03:00+0200\n"
+"PO-Revision-Date: 2014-04-23 22:31-0400\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -52,7 +52,7 @@ msgstr "Numéro de cas: "
 #: console/console-war/src/main/java/org/bonitasoft/console/client/user/cases/view/ArchivedCaseQuickDetailsPage.java:84
 #: console/console-war/src/main/java/org/bonitasoft/console/client/user/task/view/ProcessMoreDetailsPage.java:96
 #: console/console-war/src/main/java/org/bonitasoft/console/client/user/task/view/ArchivedHumanTaskQuickDetailsPage.java:75
-#: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/ArchivedCaseQuickDetailsAdminPage.java:83
+#: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/ArchivedCaseQuickDetailsAdminPage.java:85
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/task/view/TaskQuickDetailsAdminPage.java:87
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/profile/view/ProfileQuickDetailsPage.java:61
 #: console/console-war/src/main/java/org/bonitasoft/console/client/common/component/button/MoreButton.java:32
@@ -62,7 +62,7 @@ msgstr "Détails"
 #: console/console-war/src/main/java/org/bonitasoft/console/client/user/cases/view/ArchivedCaseQuickDetailsPage.java:84
 #: console/console-war/src/main/java/org/bonitasoft/console/client/user/cases/view/CaseQuickDetailsPage.java:55
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/CaseQuickDetailsAdminPage.java:54
-#: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/ArchivedCaseQuickDetailsAdminPage.java:83
+#: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/ArchivedCaseQuickDetailsAdminPage.java:85
 msgid "Getting more information about the specified case"
 msgstr "Obtenir plus d'informations sur le cas spécifique"
 
