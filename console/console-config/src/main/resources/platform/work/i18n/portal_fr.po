@@ -2,7 +2,7 @@ msgid ""
 msgstr "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-25 01:16+0200\n"
-"PO-Revision-Date: 2014-04-24 20:33-0400\n"
+"PO-Revision-Date: 2014-04-25 21:05-0400\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -155,7 +155,7 @@ msgstr "Modifier"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/common/formatter/ArchivedFlowNodeExecutedByFormatter.java:43
 msgid "for %firstname% %lastname%"
-msgstr "for %firstname% %lastname%"
+msgstr "pour %firstname% %lastname%"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/common/formatter/ArchivedFlowNodeExecutedByFormatter.java:49
 msgid "Aborted by:"
@@ -1022,7 +1022,7 @@ msgstr "Perform by"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/CaseMoreDetailsAdminPage.java:150
 msgid "For"
-msgstr "For"
+msgstr "Pour"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/CaseMoreDetailsAdminPage.java:170
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/ArchivedTasksSection.java:45
@@ -3188,7 +3188,7 @@ msgstr "La catégorie %categoryName% existe déjà"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/datastore/bpm/process/helper/ProcessItemConverter.java:65
 msgid "Process definition not found for id %processId%"
-msgstr "Process definition not found for id %processId%"
+msgstr "La définition du processus est introuvable pour l'id %processId%"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/datastore/bpm/cases/CaseSarter.java:104
 msgid "Data definition %dataName% doesn't exists for process %processId%"

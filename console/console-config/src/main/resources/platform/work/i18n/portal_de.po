@@ -2,7 +2,7 @@ msgid ""
 msgstr "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-25 01:16+0200\n"
-"PO-Revision-Date: 2014-04-24 20:34-0400\n"
+"PO-Revision-Date: 2014-04-25 21:07-0400\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -497,7 +497,7 @@ msgstr "Teilprozess"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/common/metadata/MetadataTaskBuilder.java:198
 msgid "The sub process responsible for the creation of this task"
-msgstr "The sub process responsible for the creation of this task"
+msgstr "Der Teilprozess ist verantwortlich für die Erstellung dieser Aufgabe"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/common/metadata/MetadataTaskBuilder.java:204
 msgid "Subprocess version"
