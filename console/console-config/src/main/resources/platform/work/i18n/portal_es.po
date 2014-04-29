@@ -2,7 +2,7 @@ msgid ""
 msgstr "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-25 07:05+0200\n"
-"PO-Revision-Date: 2014-04-27 17:58-0400\n"
+"PO-Revision-Date: 2014-04-28 17:43-0400\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -775,7 +775,7 @@ msgstr "Su sesión ha expirado. Por favor, ingrese de nuevo y vuelva a intentarl
 
 #: toolkit/toolkit-view/src/main/java/org/bonitasoft/web/toolkit/client/data/api/callback/HttpCallback.java:108
 msgid "No response has been received yet, but the background operation might still be in progress. Wait a few seconds then reload the page."
-msgstr "No response has been received yet, but the background operation might still be in progress. Wait a few seconds then reload the page."
+msgstr "No se ha recibido respuesta todavía, pero la operación en segundo plano aun esté en curso. Espere unos segundos y luego vuelva a refrescar la página."
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/common/formatter/ArchivedFlowNodeDateFormatter.java:38
 msgid "Aborted on:"
@@ -2166,19 +2166,19 @@ msgstr "Nombre de Clase"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/ProcessResolutionProblemsCallout.java:34
 msgid "The App cannot be enabled"
-msgstr "The App cannot be enabled"
+msgstr "La aplicación no se puede habilitar"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/ProcessResolutionProblemsCallout.java:42
 msgid "Actor Mapping must be resolved before enabling the App."
-msgstr "Actor Mapping must be resolved before enabling the App."
+msgstr "El mapeo de actores debe esta resuelto antes de habilitar la App."
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/ProcessResolutionProblemsCallout.java:45
 msgid "Parameters must be resolved before enabling the App."
-msgstr "Parameters must be resolved before enabling the App."
+msgstr "Los parámetros deben resolverse antes de activar la aplicación."
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/ProcessResolutionProblemsCallout.java:48
 msgid "Connector definitions must be resolved before enabling the App."
-msgstr "Connector definitions must be resolved before enabling the App."
+msgstr "Las definiciones de conector deben resolverse antes de activar la aplicación."
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/statistics/filler/ArchivedCasesFiller.java:54
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/statistics/StatisticsSection.java:71
@@ -3222,23 +3222,23 @@ msgstr "La plataforma ya existe!"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:45
 msgid "Password must contain at least %number% digits"
-msgstr "Password must contain at least %number% digits"
+msgstr "La contraseña debe tener al menos %number% dígitos"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:52
 msgid "Password must contain at least %number% lower case characters"
-msgstr "Password must contain at least %number% lower case characters"
+msgstr "La contraseña debe tener al menos %number% minúsculas"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:59
 msgid "Password must contain at least %number% upper case characters"
-msgstr "Password must contain at least %number% upper case characters"
+msgstr "La contraseña debe tener al menos %number% mayusculas"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:66
 msgid "Password must contain at least %number% special characters"
-msgstr "Password must contain at least %number% special characters"
+msgstr "La contraseña debe tener al menos %number% caracteres especiales"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:72
 msgid "Password must be at least %number% characters long"
-msgstr "Password must be at least %number% characters long"
+msgstr "Contraseña debe tener al menos %number% caracteres"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/datastore/profile/PageLister.java:26
 msgid "visualize & do tasks"
