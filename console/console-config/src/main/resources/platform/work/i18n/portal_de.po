@@ -2,7 +2,7 @@ msgid ""
 msgstr "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-25 07:05+0200\n"
-"PO-Revision-Date: 2014-04-28 17:37-0400\n"
+"PO-Revision-Date: 2014-04-30 00:51-0400\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -775,7 +775,7 @@ msgstr "Ihre Sitzung ist abgelaufen. Bitte loggen Sie sich erneut ein."
 
 #: toolkit/toolkit-view/src/main/java/org/bonitasoft/web/toolkit/client/data/api/callback/HttpCallback.java:108
 msgid "No response has been received yet, but the background operation might still be in progress. Wait a few seconds then reload the page."
-msgstr "No response has been received yet, but the background operation might still be in progress. Wait a few seconds then reload the page."
+msgstr "Noch keine Antwort eingegangen, aber der Hintergrundvorgang ist möglicherweise noch im Gange. Ein paar Sekunden warten und dann die Seite neu laden."
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/common/formatter/ArchivedFlowNodeDateFormatter.java:38
 msgid "Aborted on:"
@@ -1556,7 +1556,7 @@ msgstr "Achtung, bitte beachten Sie, dass Ihre Organisation mit vorhandenen Date
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/OrganizationImportAndExportPage.java:84
 msgid "In case of conflict, priority is given to the imported file"
-msgstr "In case of conflict, priority is given to the imported file"
+msgstr "Im Konfliktfall wird die importierte Datei bevorzugt"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/OrganizationImportAndExportPage.java:92
 msgid "Organisation file"
@@ -1671,7 +1671,7 @@ msgstr "Benutzer aktualisieren"
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:86
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/PopupAddUserPage.java:60
 msgid "Enter the username for this user"
-msgstr "Enter the username for this user"
+msgstr "Geben Sie den Benutzernamen für diesen Benutzer ein"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:87
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/PopupAddUserPage.java:61
@@ -2166,19 +2166,19 @@ msgstr "Klassenname"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/ProcessResolutionProblemsCallout.java:34
 msgid "The App cannot be enabled"
-msgstr "The App cannot be enabled"
+msgstr "Die App kann nicht aktiviert werden"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/ProcessResolutionProblemsCallout.java:42
 msgid "Actor Mapping must be resolved before enabling the App."
-msgstr "Actor Mapping must be resolved before enabling the App."
+msgstr "Akteur Mapping muss gelöst werden, bevor Sie die App aktivieren."
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/ProcessResolutionProblemsCallout.java:45
 msgid "Parameters must be resolved before enabling the App."
-msgstr "Parameters must be resolved before enabling the App."
+msgstr "Parameter müssen gelöst werden, bevor Sie die App aktivieren."
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/ProcessResolutionProblemsCallout.java:48
 msgid "Connector definitions must be resolved before enabling the App."
-msgstr "Connector definitions must be resolved before enabling the App."
+msgstr "Connector-Definitionen müssen gelöst werden, bevor Sie die App aktivieren."
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/statistics/filler/ArchivedCasesFiller.java:54
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/process/view/section/statistics/StatisticsSection.java:71
@@ -3218,7 +3218,7 @@ msgstr "Json can't be mapped to "
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/platform/APIPlatform.java:61
 msgid "The platform already exist !"
-msgstr "The platform already exist !"
+msgstr "Die Plattform existiert bereits!"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:45
 msgid "Password must contain at least %number% digits"
@@ -3226,11 +3226,11 @@ msgstr "Passwort muss mindestens %number% Zahlen enthalten"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:52
 msgid "Password must contain at least %number% lower case characters"
-msgstr "Passwort muss mindestens %number% lower case characters enthalten"
+msgstr "Passwort muss mindestens %number% Kleinbuchstaben enthalten"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:59
 msgid "Password must contain at least %number% upper case characters"
-msgstr "Password must contain at least %number% upper case characters"
+msgstr "Passwort muss mindestens %number% Grossbuchstaben enthalten"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:66
 msgid "Password must contain at least %number% special characters"
@@ -3238,7 +3238,7 @@ msgstr "Passwort muss mindestens %number% Sonderzeichen enthalten"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:72
 msgid "Password must be at least %number% characters long"
-msgstr "Password must be at least %number% characters long"
+msgstr "Passwort muss mindestes %number% lange Zeichen enthalten"
 
 #: rest-api/rest-api-server/src/main/java/org/bonitasoft/web/rest/server/datastore/profile/PageLister.java:26
 msgid "visualize & do tasks"
@@ -3366,7 +3366,7 @@ msgstr "Login fehlgeschlagen. Kein Benutzerrecht wurde für diesen Benutzer eing
 
 #: console/console-war/src/main/webapp/login.jsp:74
 msgid "This service is offline for maintenance. Please try later."
-msgstr "This service is offline for maintenance. Please try later."
+msgstr "Dieser Service ist wegen Wartungsarbeiten offline. Bitte versuchen Sie es später."
 
 #: console/console-war/src/main/webapp/login.jsp:78
 msgid "Unable to log in. Please check your username and password."
