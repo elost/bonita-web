@@ -2,7 +2,7 @@ msgid ""
 msgstr "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-25 07:05+0200\n"
-"PO-Revision-Date: 2014-05-05 02:32-0400\n"
+"PO-Revision-Date: 2014-05-05 22:45-0400\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -131,7 +131,7 @@ msgstr "Triez par"
 
 #: toolkit/toolkit-view/src/main/java/org/bonitasoft/web/toolkit/client/ui/page/itemListingPage/ItemListingPage.java:627
 msgid "Enter the text to search for"
-msgstr "Entre le texte que vous cherchez"
+msgstr "Entrez le texte que vous cherchez"
 
 #: toolkit/toolkit-view/src/main/java/org/bonitasoft/web/toolkit/client/ui/page/itemListingPage/ItemListingPage.java:627
 msgid "Search..."
@@ -540,7 +540,7 @@ msgstr "Cliquez pour choisir votre fichier."
 
 #: toolkit/toolkit-view/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/form/entry/FileUpload.java:161
 msgid "Click here to choose your file. "
-msgstr "Cliquer pour choisir votre fichier."
+msgstr "Cliquez pour choisir votre fichier. "
 
 #: toolkit/toolkit-view/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/form/entry/ImageUploadFilter.java:34
 msgid "Image files"
@@ -1585,7 +1585,7 @@ msgstr "Cela va exporter un fichier contenant les données de l'organisation. "
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/OrganizationImportAndExportPage.java:115
 msgid "Data included are : Users, groups and roles"
-msgstr "Données incluses sont : utilisateurs, groupes et rôles"
+msgstr "Les données incluses sont : utilisateurs, groupes et rôles"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/OrganizationImportAndExportPage.java:121
 msgid "Export"
@@ -1619,7 +1619,7 @@ msgstr "Sélectionner un avatar pour ce rôle"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/role/EditRoleForm.java:33
 msgid "Enter the name of this role"
-msgstr "Entre le nom du rôle"
+msgstr "Entrez le nom du rôle"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/role/EditRoleForm.java:34
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/group/EditGroupForm.java:44
@@ -1629,11 +1629,11 @@ msgstr "Nom affiché"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/role/EditRoleForm.java:34
 msgid "Enter the display name of this role"
-msgstr "Entre le nom d'affichage du rôle"
+msgstr "Entrez le nom d'affichage du rôle"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/role/EditRoleForm.java:35
 msgid "Enter the description of this role"
-msgstr "Entre la description du rôle"
+msgstr "Entrez la description du rôle"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/role/UpdateRolePage.java:59
 msgid "Update a role"
@@ -1730,7 +1730,7 @@ msgstr "Ville"
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:122
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:163
 msgid "Enter the city of this user"
-msgstr "Entrer la ville de cet utilisateur"
+msgstr "Entrez la ville de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:125
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:166
@@ -1742,7 +1742,7 @@ msgstr "Pays"
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:126
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:167
 msgid "Enter the country of this user"
-msgstr "Entrer le pays de cet utilisateur"
+msgstr "Entrez le pays de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:129
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:170
@@ -1754,17 +1754,17 @@ msgstr "Code postal"
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:130
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:171
 msgid "Enter the zip code of this user"
-msgstr "Entre le code postal de cet utilisateur"
+msgstr "Entrez le code postal de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:134
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:175
 msgid "Enter the state of this user"
-msgstr "Entrer la ville de cet utilisateur"
+msgstr "Entrez la ville de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:138
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:179
 msgid "Enter the email of this user"
-msgstr "Entre l'email de cet utilisateur"
+msgstr "Entrez l'email de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:141
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:182
@@ -1776,7 +1776,7 @@ msgstr "Téléphone"
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:142
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:183
 msgid "Enter the phone of this user"
-msgstr "Entrer le téléphone de cet utilisateur"
+msgstr "Entrez le téléphone de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:145
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:186
@@ -1788,7 +1788,7 @@ msgstr "Portable"
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:146
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:187
 msgid "Enter the mobile phone of this user"
-msgstr "Entrer le portable de cet utilisateur"
+msgstr "Entrez le portable de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:155
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UserMoreDetailsAdminPage.java:159
@@ -1802,12 +1802,12 @@ msgstr "Détails"
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:196
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/PopupAddUserPage.java:64
 msgid "Enter the first name of this user"
-msgstr "Entre le prénom de cet utilisateur"
+msgstr "Entrez le prénom de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:197
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/PopupAddUserPage.java:65
 msgid "Enter the last name of this user"
-msgstr "Entre le nom de cet utilisateur"
+msgstr "Entrez le nom de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:198
 msgid "Title"
@@ -1815,11 +1815,11 @@ msgstr "Titre"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:198
 msgid "Enter the title of this user"
-msgstr "Entrer le titre de cet utilisateur"
+msgstr "Entrez le titre de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:199
 msgid "Enter the job title of this user"
-msgstr "Entrer la description du poste de cet utilisateur"
+msgstr "Entrez la description du poste de cet utilisateur"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/users/view/UpdateUserPage.java:204
 msgid "Select the manager of this user"
@@ -2086,11 +2086,11 @@ msgstr "Sélectionner un avatar pour ce groupe"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/group/EditGroupForm.java:43
 msgid "Enter the name of this group"
-msgstr "Entre le nom du groupe"
+msgstr "Entrez le nom du groupe"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/group/EditGroupForm.java:44
 msgid "Enter the display name of this group"
-msgstr "Entre le nom d'affichage du groupe"
+msgstr "Entrez le nom d'affichage du groupe"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/group/EditGroupForm.java:45
 msgid "Parent Group"
@@ -2102,7 +2102,7 @@ msgstr "Sélectionne le groupe parent"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/group/EditGroupForm.java:47
 msgid "Enter the description of this group"
-msgstr "Entrer la description du groupe"
+msgstr "Entrez la description du groupe"
 
 #: console/console-war/src/main/java/org/bonitasoft/console/client/admin/organization/group/UpdateGroupPage.java:54
 msgid "Update a group"
