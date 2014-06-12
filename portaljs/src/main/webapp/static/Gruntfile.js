@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 		// Project settings
 		yeoman: {
 			// configurable paths
-			app: require('./bower.json').appPath || 'app',
+			app: require('./bower.json').appPath || 'portal',
 			dist: 'dist'
 		},
 
@@ -177,7 +177,7 @@ module.exports = function (grunt) {
 				}]
 			}
 		},
-
+		
 		// Automatically inject Bower components into the app
 		bowerInstall: {
 			app: {
@@ -204,14 +204,14 @@ module.exports = function (grunt) {
 		// concat, minify and revision files. Creates configurations in memory so
 		// additional tasks can operate on them
 		useminPrepare: {
-			html: '<%= yeoman.app %>/index.html',
+			html: '<%= yeoman.app %>/dependencies.html',
 			options: {
 				dest: '<%= yeoman.dist %>',
 				flow: {
 					html: {
 						steps: {
-							js: ['concat', 'uglifyjs'],
-							css: ['cssmin']
+							js: ['concat', 'uglifyjs']//,
+							//css: ['cssmin']
 						},
 						post: {}
 					}
@@ -354,19 +354,20 @@ module.exports = function (grunt) {
 		//     }
 		//   }
 		// },
-		uglify: {
-		  dist: {
-		    files: {
-		      '<%= yeoman.dist %>/scripts/bonita-portal-2.0.js': [
-		        '<%= yeoman.dist %>/scripts/*.js'
-		      ]
-		    }
-		  },
-		  options: {
-		  	sourceMap: true,
-        sourceMapName: '<%= yeoman.dist %>/scripts/bonita-portal-2.0.map'
-		  }
-		},
+		// uglify: {
+		//   dist: {
+		//     files: {
+		//       '<%= yeoman.dist %>/scripts/bonita-portal-2.0.js': [
+		//         '<%= yeoman.app %>/scripts/*.js',
+		//         '!<%= yeoman.app %>/scripts/bonita-portal-2.0.js'
+		//       ]
+		//     }
+		//   },
+		//   options: {
+		//   	sourceMap: true,
+  //       sourceMapName: '<%= yeoman.dist %>/scripts/bonita-portal-2.0.map'
+		//   }
+		// },
 		// concat: {
 		//   dist: {}
 		// },

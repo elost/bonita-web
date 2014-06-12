@@ -6,7 +6,7 @@ src/main/webapp/static/dist
 src/main/webapp/static/.tmp
 **/.sass-cache
 src/main/webapp/static/.sass-cache
-**/app/bower_components
-src/main/webapp/static/app/bower_components
+**/portal/bower_components
+src/main/webapp/static/portal/bower_components
 target
 target-grunt

@@ -9,7 +9,7 @@
 	<includeBaseDirectory>false</includeBaseDirectory>
 	<fileSets>
 		<fileSet>
-			<outputDirectory>/portal.js</outputDirectory>
+			<outputDirectory>/portal</outputDirectory>
 			<directory>${basedir}/target-grunt/dist/</directory>
 			<includes>
 				<include>**/*</include>
