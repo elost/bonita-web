@@ -1,4 +1,12 @@
 
+<!-- build:css styles/vendor.css -->
+<!-- bower:css -->
+<link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css" />
+<!-- endbower -->
+<!-- endbuild -->
+<!-- build:css({.tmp,portal}) styles/main.css -->
+<link rel="stylesheet" href="styles/main.css">
+<!-- endbuild -->
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -11,6 +19,7 @@
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/ng-grid/build/ng-grid.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -18,4 +27,6 @@
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/cases.js"></script>
+<script src="scripts/controllers/users.js"></script>
+<script src="scripts/services/users.js"></script>
 <!-- endbuild -->

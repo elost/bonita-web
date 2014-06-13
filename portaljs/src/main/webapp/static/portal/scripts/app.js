@@ -5,7 +5,9 @@ angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'ngGrid',
+    'gettext'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -15,6 +17,10 @@ angular
       }).when('/cases', {
         templateUrl: 'views/cases.html',
         controller: 'CasesCtrl'
+      })
+      .when('/users', {
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl'
       })
       .otherwise({
         redirectTo: '/'
