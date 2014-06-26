@@ -2,7 +2,7 @@ msgid ""
 msgstr "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-24 01:02+0200\n"
-"PO-Revision-Date: 2014-06-23 20:35-0400\n"
+"PO-Revision-Date: 2014-06-25 20:33-0400\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -3183,20 +3183,20 @@ msgstr "Json non può essere mappato su "
 #: server/src/main/java/org/bonitasoft/web/rest/server/api/organization/APICustomUserInfoDefinition.java:78
 #: server/src/main/java/org/bonitasoft/web/rest/server/api/organization/APICustomUserInfoUser.java:58
 msgid "Search terms are not supported by this API"
-msgstr "Search terms are not supported by this API"
+msgstr "I termini di ricerca non sono supportati da questa api"
 
 #: server/src/main/java/org/bonitasoft/web/rest/server/api/organization/APICustomUserInfoDefinition.java:79
 msgid "Filters are not supported by this API"
-msgstr "Filters are not supported by this API"
+msgstr "I filtri non sono supportati da questa api"
 
 #: server/src/main/java/org/bonitasoft/web/rest/server/api/organization/APICustomUserInfoDefinition.java:80
 #: server/src/main/java/org/bonitasoft/web/rest/server/api/organization/APICustomUserInfoUser.java:57
 msgid "Sorting is not supported by this API"
-msgstr "Sorting is not supported by this API"
+msgstr "L'ordinamento non è supportato da questa API"
 
 #: server/src/main/java/org/bonitasoft/web/rest/server/api/organization/APICustomUserInfoUser.java:56
 msgid "The only mandatory filter is %name%"
-msgstr "The only mandatory filter is %name%"
+msgstr "Il solo filtro  obbligatorio è %name%"
 
 #: server/src/main/java/org/bonitasoft/web/rest/server/api/organization/password/validator/RobustnessPasswordValidator.java:45
 msgid "Password must contain at least %number% digits"
@@ -3220,7 +3220,7 @@ msgstr "La password deve contenere almeno %number% caratteri"
 
 #: server/src/main/java/org/bonitasoft/web/rest/server/api/organization/APICustomUserInfoValue.java:80
 msgid "Only the value attribute can be updated"
-msgstr "Only the value attribute can be updated"
+msgstr "Solo il valore dell'attributo può essere aggiornato"
 
 #: server/src/main/java/org/bonitasoft/web/rest/server/api/platform/APIPlatform.java:61
 msgid "The platform already exist !"
@@ -3444,11 +3444,11 @@ msgstr "Impossibile ottenere la definizione dei dati di processo, processo %proc
 
 #: server/src/main/java/org/bonitasoft/web/rest/server/engineclient/CustomUserInfoEngineClient.java:52
 msgid "An error occurred while creating a definition"
-msgstr "An error occurred while creating a definition"
+msgstr "Errore durante la creazione di una definizione"
 
 #: server/src/main/java/org/bonitasoft/web/rest/server/engineclient/CustomUserInfoEngineClient.java:60
 msgid "An error occurred while deleting an item with the id %id%"
-msgstr "An error occurred while deleting an item with the id %id%"
+msgstr "Errore durante l'eliminazione di un elemento con id %id%"
 
 #: server/src/main/java/org/bonitasoft/web/rest/server/engineclient/CaseEngineClient.java:77
 msgid "Can't start process, process %processId% not found"
