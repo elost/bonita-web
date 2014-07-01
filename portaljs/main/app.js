@@ -18,6 +18,10 @@ angular
                 templateUrl: 'features/poc/views/users.tpl.html',
                 controller: 'UsersCtrl'
             })
+            .when('/pocProtractor', {
+              templateUrl: 'features/poc/pocprotractor.html',
+              controller: 'PocprotractorCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

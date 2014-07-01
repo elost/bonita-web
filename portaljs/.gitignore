@@ -9,3 +9,4 @@ dist
 main/assets
 target
 target-grunt
+test/reports.xml

@@ -153,13 +153,14 @@ module.exports = function (grunt) {
                 reporter: require('jshint-stylish')
             },
             all: [
-                '<%= portaljs.app %>/**/*.js'
+                '<%= portaljs.app %>/features/**/*.js',
+                '<%= portaljs.app %>/common/**/*.js'
             ],
             test: {
                 options: {
-                    jshintrc: 'test/.jshintrc'
+                    jshintrc: '.jshintrc'
                 },
-                src: ['test/spec/**/*.js']
+                src: ['test/**/*.js']
             }
         },
 
