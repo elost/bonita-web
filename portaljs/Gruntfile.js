@@ -308,7 +308,7 @@ module.exports = function (grunt) {
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
             },
-            "concat-tmp": {
+            'concat-tmp': {
                 expand: true,
                 cwd: '.tmp/concat/scripts',
                 dest: 'dist/scripts/',
@@ -329,18 +329,25 @@ module.exports = function (grunt) {
             ]
         },
 
-        
 
-		// Test settings
-		karma: {
-			unit: {
-				configFile: 'karma.conf.js',
-				singleRun: true
-			}
-		},
-    ngdocs: {
-      all: ['<%= portaljs.app %>/features/**/*.js', '<%= portaljs.app %>/commons/**/*.js', '<%= portaljs.app %>/app.js']
-    }
+
+    		// Test settings
+    		karma: {
+    			unit: {
+    				configFile: 'karma.conf.js',
+    				singleRun: true
+    			}
+    		},
+        ngdocs: {
+            options: {
+                dest: '<%= portaljs.app %>/docs',
+                html5Mode: true,
+                startPage: '/api',
+                title: 'Bonita Portal JS SP Documentation',
+                bestMatch: true
+            },
+            all: ['<%= portaljs.app %>/features/**/*.js', '<%= portaljs.app %>/common/**/*.js']
+        }
 	});
 
     grunt.registerTask('serve', function (target) {
@@ -391,7 +398,8 @@ module.exports = function (grunt) {
         'uglify',
         'rev',
         'usemin',
-        'htmlmin'
+        'htmlmin',
+        'ngdocs'
     ]);
 
     grunt.registerTask('default', [
