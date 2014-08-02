@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-17 03:03+0200\n"
-"PO-Revision-Date: 2014-07-16 22:47-0400\n"
+"POT-Creation-Date: 2014-08-02 03:02+0200\n"
+"PO-Revision-Date: 2014-08-01 21:08-0400\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -2614,7 +2614,7 @@ msgstr "En échec"
 
 #: portal/src/main/java/org/bonitasoft/console/client/admin/bpm/task/view/TaskListingAdminPage.java:163
 msgid "Failed on"
-msgstr "Failed on"
+msgstr "En échec depuis le"
 
 #: portal/src/main/java/org/bonitasoft/console/client/admin/bpm/task/view/TaskListingAdminPage.java:181
 msgid "Human Task"
@@ -2631,7 +2631,7 @@ msgstr "Fait le %task_last_update% par %executed_by%"
 
 #: portal/src/main/java/org/bonitasoft/console/client/admin/bpm/task/view/TaskTechnicalInformationSnippet.java:57
 msgid "Failed on %task_last_update%"
-msgstr "Failed on %task_last_update%"
+msgstr "En échec depuis le %task_last_update%"
 
 #: portal/src/main/java/org/bonitasoft/console/client/admin/bpm/task/view/TaskTechnicalInformationSnippet.java:61
 #: portal/src/main/java/org/bonitasoft/console/client/admin/bpm/task/view/ArchivedTaskTechnicalInformationSnippet.java:53
@@ -2744,7 +2744,7 @@ msgstr "Exécuté par :"
 
 #: portal/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/AbstractCaseQuickDetailsAdminPage.java:181
 msgid "Failed on:"
-msgstr "Failed on:"
+msgstr "En échec depuis:"
 
 #: portal/src/main/java/org/bonitasoft/console/client/admin/bpm/cases/view/CaseListingAdminPage.java:62
 msgid "Opened"
@@ -2775,11 +2775,11 @@ msgid "Please wait for your files to be uploaded."
 msgstr "En attente du transfert du fichier."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/action/popup/DeleteMultipleItemsPopupAction.java:56
-msgid "These %item_name_plural% will be definitely deleted."
+msgid "These %item_name_plural% will be definitively deleted."
 msgstr "Les éléments %item_name_plural% seront définitivement supprimés."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/action/popup/DeleteMultipleItemsPopupAction.java:58
-msgid "This %item_name% will be definitely deleted."
+msgid "This %item_name% will be definitively deleted."
 msgstr "L'élément %item_name% sera définitivement supprimé."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/form/AbstractForm.java:675
@@ -2849,7 +2849,7 @@ msgstr "faux"
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/form/ItemFormFiller.java:59
 msgid "The item you try to edit can't be retrieved due to a connection problem. Please contact your administrator."
-msgstr "Due a un problème de connexion l'élément ne peut pas être affiché."
+msgstr "Dû a un problème de connexion, l'élément ne peut pas être édité."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/form/view/BlankPage.java:39
 msgid "Not implemented"
@@ -2885,7 +2885,7 @@ msgstr "L'élément n'existe pas."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/form/FormFiller.java:80
 msgid "The element you try to edit can't be retrieved due to a server problem."
-msgstr "Due a un serveur problème, l'élément ne peut pas être édité."
+msgstr "Dû à un problème du serveur, l'élément ne peut pas être édité."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/form/FormFiller.java:81
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/form/FormFiller.java:90
@@ -2896,7 +2896,7 @@ msgstr "Merci de contacter votre administrateur."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/form/FormFiller.java:89
 msgid "The element you try to edit can't be retrieved due to a connection problem."
-msgstr "Due a un problème de connexion l'élément ne peut être édité."
+msgstr "Dû a un problème de connexion, l'élément ne peut pas être édité."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/table/ItemTableFiller.java:89
 msgid "The page you try to display is out of range."
@@ -2904,11 +2904,11 @@ msgstr "La page que vous voulez accéder n'est pas disponible."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/table/ItemTableFiller.java:96
 msgid "The elements you try to display can't be retrieved due to a server problem."
-msgstr "Due à un problème serveur, l'élément ne peut pas être affiché."
+msgstr "Dû à un problème du serveur, les éléments ne peuvent pas être affichés."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/table/ItemTableFiller.java:104
 msgid "The elements you try to display can't be retrieved due to a connection problem."
-msgstr "Due a un problème de connexion, l'élément ne peut pas être affiché."
+msgstr "Dû a un problème de connexion, les éléments ne peuvent pas être affichés."
 
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/component/table/Table.java:438
 #: portal/src/main/java/org/bonitasoft/web/toolkit/client/ui/page/itemListingPage/ItemListingPage.java:636
