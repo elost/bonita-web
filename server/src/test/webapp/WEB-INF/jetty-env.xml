@@ -5,12 +5,12 @@
 	<New id="bonitaDS" class="org.mortbay.jetty.plus.naming.Resource">
 		<Arg>java:comp/env/bonitaDS</Arg>
 		<Arg>
-			<New class="bitronix.tm.resource.jdbc.PoolingDataSource">
-				<Set name="className">org.h2.jdbcx.JdbcDataSource</Set>
-				<Set name="uniqueName">bonitaDS</Set>
+			<New class="com.atomikos.jdbc.AtomikosDataSourceBean">
+				<Set name="xaDataSourceClassName">org.h2.jdbcx.JdbcDataSource</Set>
+				<Set name="uniqueResourceName">bonitaDS</Set>
 				<Set name="minPoolSize">0</Set>
 				<Set name="maxPoolSize">5</Set>
-				<Get name="driverProperties">
+				<Get name="xaProperties">
 					<Put name="URL">jdbc:h2:<SystemProperty name="bonita.home"/>/server/platform/work/databases/bonita_journal.db;IGNORECASE=TRUE;MVCC=TRUE;DB_CLOSE_ON_EXIT=TRUE;AUTO_SERVER_PORT=9090;AUTO_SERVER=TRUE;</Put>
 					<Put name="user">sa</Put>
 				</Get>

@@ -13,12 +13,12 @@ http://www.springframework.org/schema/context	http://www.springframework.org/sch
 	<!-- We need 2 datasources that target the same DB : -->
 	<!-- First datasource (bonitaDataSource) for the whole Bonita platform -->
 	<!-- Second datasource (bonitaSequenceManagerDataSource) for the SequenceManager implementation in order not to be stuck when we need some new ids -->
-    <bean id="bonitaDataSource" class="bitronix.tm.resource.jdbc.PoolingDataSource" init-method="init" destroy-method="close" depends-on="dataSourceDependency">  
-        <property name="className" value="${jdbc.xaDataSourceClass}" />
-        <property name="uniqueName" value="java:comp/env/bonitaDS" /> <!--  Is it really useful and/or used ?  --> 
+    <bean id="bonitaDataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close" depends-on="dataSourceDependency">  
+        <property name="xaDataSourceClassName" value="${jdbc.xaDataSourceClass}" />
+        <property name="uniqueResourceName" value="java:comp/env/bonitaDS" /> <!--  Is it really useful and/or used ?  --> 
+        <property name="minPoolSize" value="1" />
         <property name="maxPoolSize" value="10" />
-        <property name="allowLocalTransactions" value="true" /> <!--  For hibernate : see if we can set it to false --> 
-        <property name="driverProperties">
+        <property name="xaProperties">
             <props>
                 <prop key="user">${jdbc.user}</prop>
                 <prop key="password">${jdbc.password}</prop>

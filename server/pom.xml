@@ -17,6 +17,7 @@
         <enable.engine.listener.end>--&gt;</enable.engine.listener.end>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <bonita.home>${bonita.home.test}/bonita</bonita.home>
+        <atomikos.version>3.9.3</atomikos.version>
     </properties>
 
     <dependencies>
@@ -24,6 +25,26 @@
             <groupId>org.bonitasoft.console</groupId>
             <artifactId>console-common</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.0.11</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.0.11</version>
+            <scope>runtime</scope>
         </dependency>
 
         <!--forms-->
@@ -273,6 +294,10 @@
                                     <name>bonita.home</name>
                                     <value>${bonita.home}</value>
                                 </systemProperty>
+                                <systemProperty>
+                                   <name>logback.configurationFile</name>
+                                   <value>./src/test/resources/logback-test.xml</value>
+                                </systemProperty>
                             </systemProperties>
                             <webAppConfig>
                                 <contextPath>/bonita</contextPath>
@@ -294,11 +319,11 @@
                                 <scope>runtime</scope>
                             </dependency>
                              <dependency>
-					            <groupId>org.slf4j</groupId>
+                                <groupId>org.slf4j</groupId>
                                 <artifactId>slf4j-api</artifactId>
                                 <version>${slf4j.version}</version>
                                 <scope>runtime</scope>
-					        </dependency>
+                            </dependency>
 
                             <!-- DATASOURCE JNDI -->
                             <dependency>
@@ -322,27 +347,47 @@
 
                             <!-- DATASOURCE JTA -->
                             <dependency>
-                                <groupId>org.codehaus.btm</groupId>
-                                <artifactId>btm</artifactId>
-                                <version>2.1.3</version>
-                                <scope>runtime</scope>
-                            </dependency>
-                            <dependency>
                                 <groupId>javax.transaction</groupId>
                                 <artifactId>jta</artifactId>
                                 <version>1.1</version>
                                 <scope>runtime</scope>
                             </dependency>
                             <dependency>
-                                <groupId>org.codehaus.btm</groupId>
-                                <artifactId>btm-jetty6-lifecycle</artifactId>
-                                <version>2.0.1</version>
-                                <scope>runtime</scope>
-                            </dependency>
-                            <dependency>
                                 <groupId>com.h2database</groupId>
                                 <artifactId>h2</artifactId>
                                 <version>1.3.170</version>
+                                <scope>runtime</scope>
+                            </dependency>
+
+                            <!-- Atomikos -->
+                            <dependency>
+                                <groupId>com.atomikos</groupId>
+                                <artifactId>transactions</artifactId>
+                                <version>${atomikos.version}</version>
+                                <scope>runtime</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>com.atomikos</groupId>
+                                <artifactId>transactions-api</artifactId>
+                                <version>${atomikos.version}</version>
+                                <scope>runtime</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>com.atomikos</groupId>
+                                <artifactId>atomikos-util</artifactId>
+                                <version>${atomikos.version}</version>
+                                <scope>runtime</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>com.atomikos</groupId>
+                                <artifactId>transactions-jdbc</artifactId>
+                                <version>${atomikos.version}</version>
+                                <scope>runtime</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>com.atomikos</groupId>
+                                <artifactId>transactions-jta</artifactId>
+                                <version>${atomikos.version}</version>
                                 <scope>runtime</scope>
                             </dependency>
                         </dependencies>
