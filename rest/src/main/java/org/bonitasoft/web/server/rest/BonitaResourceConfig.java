@@ -16,15 +16,19 @@
  */
 package org.bonitasoft.web.server.rest;
 
+import javax.json.stream.JsonGenerator;
+
 import org.bonitasoft.web.server.rest.inject.EngineAPIsBinder;
-import org.glassfish.jersey.jackson.JacksonFeature;
+import org.glassfish.jersey.jsonp.JsonProcessingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
 public class BonitaResourceConfig extends ResourceConfig {
 
     public BonitaResourceConfig() {
         packages("org.bonitasoft.web.server.rest.resources", "org.bonitasoft.web.server.rest.exception");
-        register(JacksonFeature.class);
+//        register(JacksonFeature.class);
+        register(JsonProcessingFeature.class);
+        property(JsonGenerator.PRETTY_PRINTING, true);
         register(new EngineAPIsBinder());
     }
 }

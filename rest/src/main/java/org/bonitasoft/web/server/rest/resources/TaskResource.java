@@ -19,6 +19,7 @@ package org.bonitasoft.web.server.rest.resources;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -26,6 +27,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.bonitasoft.engine.api.ProcessAPI;
 import org.bonitasoft.engine.bpm.contract.ContractDefinition;
@@ -58,4 +60,18 @@ public class TaskResource {
             FlowNodeExecutionException, ContractViolationException {
         processAPI.executeUserTask(taskId, inputs);
     }
+    
+    @POST
+    @Path("poc")
+    public Response poc() {
+        return Response.ok().entity("Hello POC").build();
+    }
+    
+    @POST
+    @Path("poc/json")
+    public Response json(JsonObject o) {
+        System.out.println(o.toString());
+        return Response.ok().entity(o).build();
+    }
+    
 }
