@@ -66,7 +66,6 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -78,7 +77,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Pages view controller (handles the page flow for processes or tasks)
- * 
+ *
  * @author Anthony Birembaut
  */
 public class FormPagesViewController {
@@ -237,7 +236,7 @@ public class FormPagesViewController {
 
     /**
      * Display the page at the given index
-     * 
+     *
      * @param newIndex
      *            index of the page in the page list
      */
@@ -349,7 +348,7 @@ public class FormPagesViewController {
 
     /**
      * Build the page (template + form fields)
-     * 
+     *
      * @param formPage
      *            the page definition
      * @param hasAlreadyBeenDisplayed
@@ -399,7 +398,7 @@ public class FormPagesViewController {
 
     /**
      * Insert the widgets in the page for the view mode
-     * 
+     *
      * @param pageHTMLPanel
      *            the HTMLPanel
      * @param formPage
@@ -486,7 +485,7 @@ public class FormPagesViewController {
 
     /**
      * Insert the widgets in the page for the edit mode
-     * 
+     *
      * @param pageHTMLPanel
      *            the HTMLPanel
      * @param formPage
@@ -575,7 +574,7 @@ public class FormPagesViewController {
 
     /**
      * Check if the value of the field should be retrieved from the history or recalculated
-     * 
+     *
      * @param hasAlreadyBeenDisplayed
      *            indicates whether the page has already been displayed or not
      * @param isNextPage
@@ -594,7 +593,7 @@ public class FormPagesViewController {
 
     /**
      * Insert the widget in the page
-     * 
+     *
      * @param pageHTMLPanel
      *            the HTMLPanel
      * @param formWidgetData
@@ -624,7 +623,7 @@ public class FormPagesViewController {
 
     /**
      * Check in the URL if the initial value of the field is specified and override it
-     * 
+     *
      * @param formWidgetData
      *            the widget data
      * @param widgetId
@@ -678,7 +677,7 @@ public class FormPagesViewController {
 
     /**
      * Set a button's label and title
-     * 
+     *
      * @param formWidgetData
      */
     protected void setButtonLabel(final ReducedFormWidget formWidgetData) {
@@ -703,7 +702,7 @@ public class FormPagesViewController {
 
     /**
      * Associate a button with the correct click handler
-     * 
+     *
      * @param formButtonWidget
      * @param isEditMode
      */
@@ -830,7 +829,7 @@ public class FormPagesViewController {
 
     /**
      * Disable a button
-     * 
+     *
      * @param button
      *            the button to disable
      */
@@ -844,7 +843,7 @@ public class FormPagesViewController {
 
     /**
      * disable the buttons
-     * 
+     *
      * @param pressedButton
      *            the button that was pressed
      */
@@ -864,7 +863,7 @@ public class FormPagesViewController {
 
     /**
      * Enable a button
-     * 
+     *
      * @param button
      *            to enable
      */
@@ -880,7 +879,7 @@ public class FormPagesViewController {
 
     /**
      * Enable the buttons
-     * 
+     *
      * @param hideLoader
      *            boolean to specify if we had need to hide the loader
      */
@@ -898,7 +897,7 @@ public class FormPagesViewController {
 
     /**
      * Records a page's fields
-     * 
+     *
      * @param formWidgets
      *            the list of form widgets
      */
@@ -915,7 +914,7 @@ public class FormPagesViewController {
 
     /**
      * Records a page's fields and validate it
-     * 
+     *
      * @param actionAfterValidation
      *            type of action to execute after the validation step
      */
@@ -934,7 +933,7 @@ public class FormPagesViewController {
 
         final List<ReducedFormValidator> pageValidators = formPage.getPageValidators();
 
-        final String submitButtonId = pressedButton.getElement().getParentElement().getParentElement().getId();
+        final String submitButtonId = getSubmitButtonID();
 
         // fields validation
         if (!formWidgetsToValidate.isEmpty()) {
@@ -963,7 +962,7 @@ public class FormPagesViewController {
 
     /**
      * Validate the compliance of a list of widgets with their mandatory attributes
-     * 
+     *
      * @param formWidgets
      */
     protected void validateMandatoryFieldWidgets(final List<ReducedFormWidget> formWidgets) {
@@ -977,7 +976,7 @@ public class FormPagesViewController {
 
     /**
      * Validate the compliance of a widget with its mandatory attribute
-     * 
+     *
      * @param mandatoryFieldWidget
      */
     protected void validateMandatoryField(final FormFieldWidget mandatoryFieldWidget) {
@@ -1032,7 +1031,7 @@ public class FormPagesViewController {
 
     /**
      * Get the form field widgets to validate
-     * 
+     *
      * @param formWidgets
      * @return the {@link List} of {@link FormWidget} to validate
      */
@@ -1053,7 +1052,7 @@ public class FormPagesViewController {
 
     /**
      * Remove the validation messages of the given validators from the page
-     * 
+     *
      * @param validators
      */
     protected void cleanValidatorsMessages(final List<ReducedFormValidator> validators) {
@@ -1068,7 +1067,7 @@ public class FormPagesViewController {
 
     protected void submitForm(final ACTION_TYPE actionAfterValidation) {
         if (actionAfterValidation.equals(ACTION_TYPE.SUBMIT)) {
-            final String submitButtonId = pressedButton.getElement().getParentElement().getParentElement().getId();
+            final String submitButtonId = getSubmitButtonID();
             formsServiceAsync.executeActions(formID, urlContext, widgetValues, followedPagesIds, submitButtonId, new FormSubmissionHandler());
         } else {
             int newIndex = currentPageIndex;
@@ -1091,6 +1090,10 @@ public class FormPagesViewController {
                 }
             }
         }
+    }
+
+    protected String getSubmitButtonID() {
+        return pressedButton.getElement().getParentElement().getParentElement().getId();
     }
 
     /**
@@ -1250,6 +1253,9 @@ public class FormPagesViewController {
          */
         @Override
         public void onSuccess(final Map<String, Object> newContext) {
+            if (domUtils.isPageInFrame()) {
+                domUtils.notifyParentFrame(getSubmitButtonID());
+            }
             urlContext.clear();
             urlContext.putAll(newContext);
             redirectToConfirmationPage();

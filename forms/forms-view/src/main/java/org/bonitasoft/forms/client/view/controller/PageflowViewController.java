@@ -5,12 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -58,7 +58,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Controller dealing with Task form controls before display
- * 
+ *
  * @author Ruiheng Fan
  */
 public class PageflowViewController {
@@ -132,7 +132,7 @@ public class PageflowViewController {
 
     /**
      * Constructor
-     * 
+     *
      * @param formID
      * @param urlContext
      * @param user
@@ -205,16 +205,16 @@ public class PageflowViewController {
                 if (processUUIDStr != null) {
                     final String autoInstantiate = (String) urlContext.get(URLUtils.AUTO_INSTANTIATE);
                     // retrieve the already started cookie value
-                    String processIdArrayAsString = Cookies.getCookie(ALREADY_STARTED_ARRAY_COOKIE_KEY);
-                    ArrayList<String> processIdArray = new ArrayList<String>();
+                    final String processIdArrayAsString = Cookies.getCookie(ALREADY_STARTED_ARRAY_COOKIE_KEY);
+                    final ArrayList<String> processIdArray = new ArrayList<String>();
                     boolean processIdIsInCookie = false;
                     // build the new array to set in the cookie after consuming
                     if (processIdArrayAsString != null) {
-                        JSONValue jsonValue = JSONParser.parseStrict(processIdArrayAsString);
-                        JSONArray jsonArray = jsonValue.isArray();
+                        final JSONValue jsonValue = JSONParser.parseStrict(processIdArrayAsString);
+                        final JSONArray jsonArray = jsonValue.isArray();
                         if (jsonArray != null) {
                             for (int i = 0; i < jsonArray.size(); i++) {
-                                String cookieValue = jsonArray.get(i).isString().stringValue();
+                                final String cookieValue = jsonArray.get(i).isString().stringValue();
                                 if (!processUUIDStr.equals(cookieValue)) {
                                     processIdArray.add(cookieValue);
                                 } else {
@@ -330,6 +330,9 @@ public class PageflowViewController {
          */
         @Override
         public void onSuccess(final Map<String, Object> newContext) {
+            if (domUtils.isPageInFrame()) {
+                domUtils.notifyParentFrame(null);
+            }
             urlContext.putAll(newContext);
             redirectToConfirmationPage(getConfirmationPageHandler());
         }
