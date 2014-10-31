@@ -96,7 +96,7 @@ public class Table extends AbstractTable implements Refreshable {
                 return "tree";
             }
         }
-    };
+    }
 
     protected VIEW_TYPE defaultView = VIEW_TYPE.VIEW_TABLE;
 
@@ -130,7 +130,7 @@ public class Table extends AbstractTable implements Refreshable {
 
     public static enum COLUMN_POSITION {
         LAST, FIRST
-    };
+    }
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // CONSTRUCTORS
@@ -175,9 +175,9 @@ public class Table extends AbstractTable implements Refreshable {
         return addColumn(new TableColumn(this, jsid, label, sortName, sorted, sortAscending));
     }
 
-    public Table addColumn(TableColumn column) {
+    public Table addColumn(final TableColumn column) {
         columns.append(column);
-        String sortName = column.getSortName();
+        final String sortName = column.getSortName();
         if (sortName != null) {
             order = sortName + (column.isSortAscending() ? " ASC" : " DESC");
         }
@@ -230,7 +230,7 @@ public class Table extends AbstractTable implements Refreshable {
 
         private Action defaultAction;
 
-        public CheckLineAction(String checkboxId) {
+        public CheckLineAction(final String checkboxId) {
             this.checkboxId = checkboxId;
         }
 
@@ -243,13 +243,13 @@ public class Table extends AbstractTable implements Refreshable {
             }
         }
 
-        public void setDefaultAction(Action defaultAction) {
+        public void setDefaultAction(final Action defaultAction) {
             this.defaultAction = defaultAction;
         }
 
     }
 
-    public Table addLine(String checkboxId, final String className, final Action defaultAction, Boolean allowGroupedAction) {
+    public Table addLine(String checkboxId, final String className, final Action defaultAction, final Boolean allowGroupedAction) {
         if (checkboxId == null) {
             checkboxId = String.valueOf(lines.size() - 1);
         }
@@ -263,7 +263,7 @@ public class Table extends AbstractTable implements Refreshable {
         }
 
         if (selectLineOnClick) {
-            CheckLineAction action = new CheckLineAction(checkboxId);
+            final CheckLineAction action = new CheckLineAction(checkboxId);
             action.setDefaultAction(defaultAction);
             line.setDefaultAction(action);
         } else {
@@ -289,7 +289,7 @@ public class Table extends AbstractTable implements Refreshable {
 
     }
 
-    public Table addLine(String checkboxId, final String className, final Action defaultAction) {
+    public Table addLine(final String checkboxId, final String className, final Action defaultAction) {
         return addLine(checkboxId, className, defaultAction, true);
     }
 
@@ -315,9 +315,8 @@ public class Table extends AbstractTable implements Refreshable {
     public TableColumn getLastColumn() {
         if (lines.size() > 0) {
             return columns.get(getLastLine().size());
-        } else {
-            return columns.getLast();
         }
+        return columns.getLast();
     }
 
     public TableCell getLastCell() {
@@ -507,7 +506,7 @@ public class Table extends AbstractTable implements Refreshable {
         this.linesElement = linesElement;
     }
 
-    private void addChangeEventHandler(GQuery checkboxes) {
+    private void addChangeEventHandler(final GQuery checkboxes) {
         checkboxes.each(new Function() {
 
             @Override
@@ -516,7 +515,7 @@ public class Table extends AbstractTable implements Refreshable {
                 checkbox.change(new Function() {
 
                     @Override
-                    public boolean f(Event e) {
+                    public boolean f(final Event e) {
                         processEvent($(e));
                         return true;
                     }
@@ -539,14 +538,14 @@ public class Table extends AbstractTable implements Refreshable {
 
     private void addCheckAllCheckbox() {
         final String checkAllId = HTML.getUniqueId();
-        CheckBox checkBox = new CheckBox();
+        final CheckBox checkBox = new CheckBox();
         $(".th_checkboxes", tableElement).empty().append(
 
                 $(HTML.checkbox("checkall", "0", new XMLAttributes("id", checkAllId))).click(new Function() {
 
                     @Override
                     public void f(final Element e) {
-                        Object checkedValue = $(e).prop("checked");
+                        final Object checkedValue = $(e).prop("checked");
                         setCheckboxesValue(getAllCheckboxes(), (Boolean) checkedValue, false);
                     }
 
@@ -557,7 +556,7 @@ public class Table extends AbstractTable implements Refreshable {
 
     private void processEvent(final GQuery cb) {
         final GQuery labels = cb.closest("div").children("label");
-        String itemId = cb.val();
+        final String itemId = cb.val();
         if (cb.is(":checked")) {
             onCheckItem(labels, itemId);
         } else {
@@ -583,7 +582,7 @@ public class Table extends AbstractTable implements Refreshable {
         }
     }
 
-    private void onUncheckItem(final GQuery labels, String itemId) {
+    private void onUncheckItem(final GQuery labels, final String itemId) {
         if (labels.length() > 0) {
             labels.removeClass("checked");
         }
@@ -591,7 +590,7 @@ public class Table extends AbstractTable implements Refreshable {
         fireEvent(new ItemUncheckedEvent(Table.this.selectedIds, itemId));
     }
 
-    private void onCheckItem(final GQuery labels, String itemId) {
+    private void onCheckItem(final GQuery labels, final String itemId) {
         if (labels.length() > 0) {
             labels.addClass("checked");
         }
@@ -601,16 +600,16 @@ public class Table extends AbstractTable implements Refreshable {
         }
     }
 
-    public HandlerRegistration addItemCheckedHandler(ItemCheckedHandler handler) {
+    public HandlerRegistration addItemCheckedHandler(final ItemCheckedHandler handler) {
         return addHandler(handler, ItemCheckedEvent.TYPE);
     }
 
-    public HandlerRegistration addItemUncheckedHandler(ItemUncheckedHandler handler) {
+    public HandlerRegistration addItemUncheckedHandler(final ItemUncheckedHandler handler) {
         return addHandler(handler, ItemUncheckedEvent.TYPE);
     }
 
     private void disableActionLinks() {
-        for (Link link : groupedActions.getComponents()) {
+        for (final Link link : groupedActions.getComponents()) {
             if (!link.hasClass(ALWAYS_ENABLE_CLASS)) {
                 link.setEnabled(false);
             }
@@ -618,7 +617,7 @@ public class Table extends AbstractTable implements Refreshable {
     }
 
     private void enableActionsLinks() {
-        for (Link link : groupedActions.getComponents()) {
+        for (final Link link : groupedActions.getComponents()) {
             if (!link.hasClass(ALWAYS_ENABLE_CLASS)) {
                 link.setEnabled(true);
             }
@@ -654,15 +653,15 @@ public class Table extends AbstractTable implements Refreshable {
 
     /**
      * Add action to the table and enable checkboxes
-     * 
+     *
      * @param link
-     *            link to add
+     *        link to add
      * @param force
-     *            force button visibility
+     *        force button visibility
      * @return
      *         current table instance
      */
-    public Table addGroupedAction(Link link, final boolean force) {
+    public Table addGroupedAction(final Link link, final boolean force) {
         ensureCheckboxesVisibility();
         link.setAction(wrapActionToPassIds(link.getAction(), force));
         if (force) {
@@ -696,14 +695,12 @@ public class Table extends AbstractTable implements Refreshable {
     }
 
     /**
-     * 
      * @param label
      * @param tooltip
      * @param action
-     *            The action to call on click
+     *        The action to call on click
      * @param force
-     *            Force the visibility of the button (can't be disabled)
-     * 
+     *        Force the visibility of the button (can't be disabled)
      * @deprecated
      *             Create your own link and use {@link #addGroupedAction(Link, boolean)} instead
      */
@@ -716,7 +713,7 @@ public class Table extends AbstractTable implements Refreshable {
     /**
      * Add an action to the table - action not link to checkbox, always visible
      */
-    public Table addAction(Link link) {
+    public Table addAction(final Link link) {
         link.addClass(ALWAYS_ENABLE_CLASS);
         groupedActions.append(link);
         return this;
@@ -916,7 +913,7 @@ public class Table extends AbstractTable implements Refreshable {
         defaultSearch = query;
 
         if (isGenerated()) {
-            $(".tablefilters input[name=search]:not(.empty)", getElement()).val(this.defaultSearch);
+            $(".tablefilters input[name=search]:not(.empty)", getElement()).val(defaultSearch);
         }
 
         return this;
@@ -925,13 +922,13 @@ public class Table extends AbstractTable implements Refreshable {
     private native void setSearch(Element e, String defaultSearch)
     /*-{
      $wnd.$(".tablefilters input[name=search]", e).not(".empty").val(defaultSearch);
-    
+
      }-*/;
 
     private native String _getSearch(Element e)
     /*-{
       return $wnd.$(".tablefilters .tablefiltertext input", e).val();
-    
+
      }-*/;
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -977,7 +974,7 @@ public class Table extends AbstractTable implements Refreshable {
         }
     }
 
-    public final void setSelectLineOnClick(boolean value) {
+    public final void setSelectLineOnClick(final boolean value) {
         selectLineOnClick = value;
     }
 
@@ -1002,12 +999,12 @@ public class Table extends AbstractTable implements Refreshable {
 
     public void updateView() {
         this.updateView(getElement());
-    };
+    }
 
     private native void updateView(Element e)
     /*-{
         //$wnd.$(e).updateUI();
-        
+
     }-*/;
 
     /**
@@ -1025,11 +1022,11 @@ public class Table extends AbstractTable implements Refreshable {
         return lines.size();
     }
 
-    private GQuery getCheckbox(String checkboxId) {
+    private GQuery getCheckbox(final String checkboxId) {
         return $(".td_checkboxes input[value=\"" + checkboxId + "\"]", tableElement);
     }
 
-    private void setCheckboxesValue(GQuery checkboxes, boolean value, boolean silent) {
+    private void setCheckboxesValue(final GQuery checkboxes, final boolean value, final boolean silent) {
         if (isCheckable(checkboxes)) {
             if (value) {
                 checkboxes.prop("checked", true);
@@ -1042,12 +1039,12 @@ public class Table extends AbstractTable implements Refreshable {
         }
     }
 
-    private void setCheckAllCheckboxesValue(GQuery checkbox, boolean value) {
+    private void setCheckAllCheckboxesValue(final GQuery checkbox, final boolean value) {
         setCheckboxesValue(checkbox, value, true);
         fireCssLabelEvent(tableElement);
     }
 
-    private boolean isCheckable(GQuery checkboxes) {
+    private boolean isCheckable(final GQuery checkboxes) {
         return checkboxes != null && checkboxes.length() > 0 && checkboxes.is("input[type='checkbox']");
     }
 
@@ -1056,7 +1053,7 @@ public class Table extends AbstractTable implements Refreshable {
         $wnd.$(e).trigger("cssChange");
     }-*/;
 
-    public void setItemIdOnRow(boolean itemIdOnRow) {
+    public void setItemIdOnRow(final boolean itemIdOnRow) {
         this.itemIdOnRow = itemIdOnRow;
 
     }

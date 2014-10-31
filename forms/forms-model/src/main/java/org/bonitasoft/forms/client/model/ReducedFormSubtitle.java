@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model;
 
@@ -20,7 +18,6 @@ import java.io.Serializable;
 
 /**
  * @author qixiang.zhang
- * 
  */
 public class ReducedFormSubtitle implements Serializable {
 
@@ -29,7 +26,7 @@ public class ReducedFormSubtitle implements Serializable {
      */
     public static enum SubTitlePosition {
         TOP, BOTTOM
-    };
+    }
 
     /**
      * UID
@@ -55,8 +52,8 @@ public class ReducedFormSubtitle implements Serializable {
     }
 
     /**
-     * 
      * constructor.
+     * 
      * @param position
      */
     public ReducedFormSubtitle(final SubTitlePosition position) {
@@ -73,7 +70,7 @@ public class ReducedFormSubtitle implements Serializable {
     /**
      * @param label the label to set
      */
-    public void setLabel(String label) {
+    public void setLabel(final String label) {
         this.label = label;
     }
 
@@ -87,7 +84,7 @@ public class ReducedFormSubtitle implements Serializable {
     /**
      * @param position the position to set
      */
-    public void setPosition(SubTitlePosition position) {
+    public void setPosition(final SubTitlePosition position) {
         this.position = position;
     }
 

@@ -1,12 +1,10 @@
 package org.bonitasoft.forms.client;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.RunAsyncCallback;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.RootPanel;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.bonitasoft.forms.client.i18n.FormsResourceBundle;
 import org.bonitasoft.forms.client.view.FormsAsyncCallback;
 import org.bonitasoft.forms.client.view.common.BonitaUrlContext;
@@ -18,10 +16,13 @@ import org.bonitasoft.forms.client.view.controller.FormApplicationViewController
 import org.bonitasoft.forms.client.view.controller.FormViewControllerFactory;
 import org.bonitasoft.web.rest.model.user.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.RunAsyncCallback;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class FormsApplicationLoader {
 
@@ -29,12 +30,10 @@ public class FormsApplicationLoader {
     private final String CONSOLE_HEADER = "console_header";
     public static final String FORM_URL_PARAMETER_IS_MANDATORY = FormsResourceBundle.getErrors().formUrlParameterIsMandatoryError();
 
-
-
-    private URLUtils urlUtils;
+    private final URLUtils urlUtils;
     private BonitaUrlContext bonitaUrlContext;
 
-    public FormsApplicationLoader(URLUtils urlUtils, BonitaUrlContext bonitaUrlContext) {
+    public FormsApplicationLoader(final URLUtils urlUtils, final BonitaUrlContext bonitaUrlContext) {
         this.urlUtils = urlUtils;
         this.bonitaUrlContext = bonitaUrlContext;
     }
@@ -80,7 +79,7 @@ public class FormsApplicationLoader {
 
                 @Override
                 public void onValueChange(final ValueChangeEvent<String> event) {
-                    FormsApplicationLoader.this.bonitaUrlContext = BonitaUrlContext.get();
+                    bonitaUrlContext = BonitaUrlContext.get();
                     FormsApplicationLoader.this.createApplicationView(aUser);
                 }
             });
@@ -99,7 +98,7 @@ public class FormsApplicationLoader {
     protected void createApplicationView(final User aUser) {
         if (bonitaUrlContext.getFormId() != null) {
             DOMUtils.getInstance().cleanBody(CONSOLE_STATIC_CONTENT_ELEMENT_ID);
-            FormApplicationViewController formApplicationViewController = getFormApplicationViewController(aUser);
+            final FormApplicationViewController formApplicationViewController = getFormApplicationViewController(aUser);
             if (bonitaUrlContext.isFormFullPageApplicationMode()) {
                 formApplicationViewController.createInitialView(DOMUtils.DEFAULT_FORM_ELEMENT_ID);
             } else {
@@ -111,14 +110,13 @@ public class FormsApplicationLoader {
     }
 
     private void showFormIdMandatoryErrorPage() {
-        getApplicationErrorTemplate(
-                new ErrorPageHandler(null,
-                        null,
-                        FORM_URL_PARAMETER_IS_MANDATORY,
-                        getFormElementId()));
+        getApplicationErrorTemplate(new ErrorPageHandler(null,
+                null,
+                FORM_URL_PARAMETER_IS_MANDATORY,
+                getFormElementId()));
     }
 
-    private void getApplicationErrorTemplate(ErrorPageHandler callback) {
+    private void getApplicationErrorTemplate(final ErrorPageHandler callback) {
         // formId is not used in getApplicationErrorTemplate method
         RpcFormsServices.getFormsService().getApplicationErrorTemplate(null,
                 bonitaUrlContext.getHashParameters(),
@@ -128,12 +126,11 @@ public class FormsApplicationLoader {
     private String getFormElementId() {
         if (bonitaUrlContext.isFormFullPageApplicationMode()) {
             return DOMUtils.DEFAULT_FORM_ELEMENT_ID;
-        } else {
-            return null;
         }
+        return null;
     }
 
-    private FormApplicationViewController getFormApplicationViewController(User aUser) {
+    private FormApplicationViewController getFormApplicationViewController(final User aUser) {
         return FormViewControllerFactory.getFormApplicationViewController(
                 bonitaUrlContext.getFormId(),
                 bonitaUrlContext.getHashParameters(),
@@ -172,6 +169,7 @@ public class FormsApplicationLoader {
             urlString = urlString + hash;
             urlUtils.windowRedirect(urlString);
         }
+
         @Override
         public void onUnhandledFailure(final Throwable caught) {
             GWT.log("Unable to get any todolist form URL", caught);
@@ -185,5 +183,3 @@ public class FormsApplicationLoader {
 
     }
 }
-
-

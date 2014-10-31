@@ -66,7 +66,7 @@ public class TestFormBuilderImpl {
     private FormBuilderImpl formBuilder = spy(formBuilder = new FormBuilderImpl());
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
     }
 

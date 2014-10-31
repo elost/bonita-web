@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -33,7 +31,6 @@ import org.w3c.dom.Node;
 
 /**
  * @author Haojie Yuan, Anthony Birembaut
- * 
  */
 public class XMLApplicationConfigDefAccessorImpl extends XPathUtil implements IApplicationConfigDefAccessor {
 
@@ -64,7 +61,7 @@ public class XMLApplicationConfigDefAccessorImpl extends XPathUtil implements IA
 
     /**
      * Constructor
-     * 
+     *
      * @param tenantID
      * @param document
      */
@@ -118,9 +115,8 @@ public class XMLApplicationConfigDefAccessorImpl extends XPathUtil implements IA
                 LOGGER.log(Level.SEVERE, "Failed to retrieve application label element. query : " + xpath);
             }
             throw new InvalidFormDefinitionException("The application label was not found in the forms definition file");
-        } else {
-            applicationLabelExpression = xmlExpressionsUtil.parseExpression(processLabelNode);
         }
+        applicationLabelExpression = xmlExpressionsUtil.parseExpression(processLabelNode);
         return applicationLabelExpression;
     }
 
@@ -209,9 +205,8 @@ public class XMLApplicationConfigDefAccessorImpl extends XPathUtil implements IA
                 LOGGER.log(Level.SEVERE, "Failed to retrieve application element. query : " + xpath);
             }
             throw new InvalidFormDefinitionException("The application was not found in the forms definition file");
-        } else {
-            applicationName = getStringByXpath(applicationNode, "@" + XMLForms.NAME);
         }
+        applicationName = getStringByXpath(applicationNode, "@" + XMLForms.NAME);
         return applicationName;
     }
 
@@ -230,9 +225,8 @@ public class XMLApplicationConfigDefAccessorImpl extends XPathUtil implements IA
                 LOGGER.log(Level.SEVERE, "Failed to retrieve application element. query : " + xpath);
             }
             throw new InvalidFormDefinitionException("The application was not found in the forms definition file");
-        } else {
-            applicationVersion = getStringByXpath(applicationNode, "@" + XMLForms.VERSION);
         }
+        applicationVersion = getStringByXpath(applicationNode, "@" + XMLForms.VERSION);
         return applicationVersion;
     }
 

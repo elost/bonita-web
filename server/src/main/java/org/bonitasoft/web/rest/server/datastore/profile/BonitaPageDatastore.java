@@ -19,7 +19,6 @@ import org.bonitasoft.web.toolkit.client.data.item.IItem;
 
 /**
  * @author Fabio Lombardi
- * 
  */
 public class BonitaPageDatastore {
 
@@ -27,16 +26,17 @@ public class BonitaPageDatastore {
     }
 
     public List<IItem> fromBonitaPageItemToIItem() {
-        List<IItem> pageListDest = new ArrayList<IItem>();
-        List<BonitaPageItem> pageListSource = new ArrayList<BonitaPageItem>(new PageLister().getPages());
-        for (BonitaPageItem page : pageListSource) {
-            pageListDest.add((IItem) page);
+        final List<IItem> pageListDest = new ArrayList<IItem>();
+        final List<BonitaPageItem> pageListSource = new ArrayList<BonitaPageItem>(new PageLister().getPages());
+        for (final BonitaPageItem page : pageListSource) {
+            pageListDest.add(page);
         }
         return pageListDest;
     }
 
-    public ItemSearchResult<BonitaPageItem> search(int page, int resultsByPage, String search, Map<String, String> filters, String orders) {
-        List<BonitaPageItem> pages = new PageLister().getPages();
+    public ItemSearchResult<BonitaPageItem> search(final int page, final int resultsByPage, final String search, final Map<String, String> filters,
+            final String orders) {
+        final List<BonitaPageItem> pages = new PageLister().getPages();
         return new ItemSearchResult<BonitaPageItem>(page, resultsByPage, pages.size(), new ArrayList<BonitaPageItem>(pages));
     }
 
@@ -44,7 +44,7 @@ public class BonitaPageDatastore {
      * @param id
      * @return
      */
-    public BonitaPageItem get(APIID id) {
+    public BonitaPageItem get(final APIID id) {
         return new PageLister().getPage(id.toString());
     }
 

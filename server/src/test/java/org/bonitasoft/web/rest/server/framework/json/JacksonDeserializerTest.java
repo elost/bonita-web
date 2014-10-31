@@ -1,17 +1,14 @@
 /**
  * Copyright (C) 2012 BonitaSoft S.A.
- *
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -44,57 +41,57 @@ public class JacksonDeserializerTest extends APITestWithMock {
     }
 
     @Test(expected = APIException.class)
-    public void deserialize_throw_exception_if_json_is_non_well_formed() throws Exception {
-        String nonWellFormedJson = "someJsonNonWellFormedJson";
+    public void deserialize_throw_exception_if_json_is_non_well_formed() {
+        final String nonWellFormedJson = "someJsonNonWellFormedJson";
 
         jacksonDeserializer.deserialize(nonWellFormedJson, String.class);
     }
 
     @Test(expected = APIException.class)
-    public void deserialize_throw_exception_if_mapping_bettween_class_and_json_is_incorrect() throws Exception {
-        String notUserJson = "{\"unknownUserAttribute\": \"unknownAttributeValue\"}";
+    public void deserialize_throw_exception_if_mapping_bettween_class_and_json_is_incorrect() {
+        final String notUserJson = "{\"unknownUserAttribute\": \"unknownAttributeValue\"}";
 
         jacksonDeserializer.deserialize(notUserJson, User.class);
     }
 
     @Test
-    public void deserialize_can_deserialize_primitives_types() throws Exception {
+    public void deserialize_can_deserialize_primitives_types() {
 
-        Long deserializedLong = jacksonDeserializer.deserialize("1", Long.class);
+        final Long deserializedLong = jacksonDeserializer.deserialize("1", Long.class);
 
         assertThat(deserializedLong, is(1L));
     }
 
     @Test
-    public void deserialize_can_deserialize_complex_types() throws Exception {
-        User expectedUser = new User(1, "Colin", "Puy", new Date(428558400000L), new Address("310 La Gouterie", "Charnecles"));
-        String json = "{\"address\":{\"street\":\"310 La Gouterie\",\"city\":\"Charnecles\"},\"id\":1,\"firstName\":\"Colin\",\"lastName\":\"Puy\",\"birthday\":428558400000}";
+    public void deserialize_can_deserialize_complex_types() {
+        final User expectedUser = new User(1, "Colin", "Puy", new Date(428558400000L), new Address("310 La Gouterie", "Charnecles"));
+        final String json = "{\"address\":{\"street\":\"310 La Gouterie\",\"city\":\"Charnecles\"},\"id\":1,\"firstName\":\"Colin\",\"lastName\":\"Puy\",\"birthday\":428558400000}";
 
-        User deserializedUser = jacksonDeserializer.deserialize(json, User.class);
+        final User deserializedUser = jacksonDeserializer.deserialize(json, User.class);
 
         assertThat(deserializedUser, equalTo(expectedUser));
     }
 
     @Test(expected = APIException.class)
-    public void deserializeList_throw_exception_if_json_is_not_a_list() throws Exception {
-        String json = "{\"address\":{\"street\":\"310 La Gouterie\",\"city\":\"Charnecles\"},\"id\":1,\"firstName\":\"Colin\",\"lastName\":\"Puy\",\"birthday\":428558400000}";
+    public void deserializeList_throw_exception_if_json_is_not_a_list() {
+        final String json = "{\"address\":{\"street\":\"310 La Gouterie\",\"city\":\"Charnecles\"},\"id\":1,\"firstName\":\"Colin\",\"lastName\":\"Puy\",\"birthday\":428558400000}";
 
         jacksonDeserializer.deserializeList(json, User.class);
     }
 
     @Test
-    public void deserializeList_can_deserialize_primitives_types() throws Exception {
+    public void deserializeList_can_deserialize_primitives_types() {
 
-        List<Long> longs = jacksonDeserializer.deserializeList("[1, 2, 3]", Long.class);
+        final List<Long> longs = jacksonDeserializer.deserializeList("[1, 2, 3]", Long.class);
 
         assertThat(longs, hasItems(1L, 2L, 3L));
     }
 
     @Test
-    public void deserializeList_can_deserialize_list_of_complex_type() throws Exception {
-        User expectedUser1 = new User(1, "Colin", "Puy", new Date(428558400000L), new Address("310 La Gouterie", "Charnecles"));
-        User expectedUser2 = new User(2, "Clara", "Morgan", new Date(349246800000L), new Address("somewhere i don't know", "Paris"));
-        String json = "["
+    public void deserializeList_can_deserialize_list_of_complex_type() {
+        final User expectedUser1 = new User(1, "Colin", "Puy", new Date(428558400000L), new Address("310 La Gouterie", "Charnecles"));
+        final User expectedUser2 = new User(2, "Clara", "Morgan", new Date(349246800000L), new Address("somewhere i don't know", "Paris"));
+        final String json = "["
                 +
                 "{\"address\":{\"city\":\"Charnecles\",\"street\":\"310 La Gouterie\"},\"id\":1,\"firstName\":\"Colin\",\"lastName\":\"Puy\",\"birthday\":428558400000},"
                 +
@@ -102,7 +99,7 @@ public class JacksonDeserializerTest extends APITestWithMock {
                 +
                 "]";
 
-        List<User> users = jacksonDeserializer.deserializeList(json, User.class);
+        final List<User> users = jacksonDeserializer.deserializeList(json, User.class);
 
         assertThat(users, hasItem(expectedUser1));
         assertThat(users, hasItem(expectedUser2));

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -64,12 +62,12 @@ public class AlreadyLoggedInRuleTest {
 
     @Mock
     HttpServletRequest httpServletRequest;
-    
+
     @Spy
     AlreadyLoggedInRule rule;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
         doReturn(true).when(rule).useCredentialsTransmission(any(APISession.class));
         doReturn(httpSession).when(request).getHttpSession();
@@ -77,27 +75,27 @@ public class AlreadyLoggedInRuleTest {
     }
 
     @Test
-    public void testIfRuleAuthorizeAlreadyLoggedUser() throws Exception {
+    public void testIfRuleAuthorizeAlreadyLoggedUser() {
         doReturn(apiSession).when(request).getApiSession();
         // ensure we won't recreate user session
         doReturn("").when(httpSession).getAttribute(LoginManager.USER_SESSION_PARAM_KEY);
 
-        boolean authorization = rule.doAuthorize(request, tenantAccessor);
+        final boolean authorization = rule.doAuthorize(request, tenantAccessor);
 
         assertThat(authorization, is(true));
     }
 
     @Test
-    public void testIfRuleDoesntAuthorizeNullSession() throws Exception {
+    public void testIfRuleDoesntAuthorizeNullSession() {
         doReturn(null).when(request).getApiSession();
 
-        boolean authorization = rule.doAuthorize(request, tenantAccessor);
+        final boolean authorization = rule.doAuthorize(request, tenantAccessor);
 
         assertFalse(authorization);
     }
 
     @Test
-    public void testIfUserSessionIsRecreatedWhenMissing() throws Exception {
+    public void testIfUserSessionIsRecreatedWhenMissing() {
         doReturn(apiSession).when(request).getApiSession();
         doReturn(null).when(httpSession).getAttribute(LoginManager.USER_SESSION_PARAM_KEY);
         // configure user that will be created
@@ -111,19 +109,19 @@ public class AlreadyLoggedInRuleTest {
                 argThat(new UserMatcher("myUser", "en")));
     }
 
-    class UserMatcher extends  ArgumentMatcher<User> {
+    class UserMatcher extends ArgumentMatcher<User> {
 
-        private String username;
-        private String local;
+        private final String username;
+        private final String local;
 
-        UserMatcher(String username, String local) {
+        UserMatcher(final String username, final String local) {
             this.username = username;
             this.local = local;
         }
 
         @Override
-        public boolean matches(Object arg) {
-            User user = (User) arg;
+        public boolean matches(final Object arg) {
+            final User user = (User) arg;
             return username.equals(user.getUsername())
                     && local.equals(user.getLocale().toString());
         }

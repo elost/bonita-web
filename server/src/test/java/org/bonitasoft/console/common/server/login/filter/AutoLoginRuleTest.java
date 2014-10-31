@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -25,6 +23,8 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
+
+import javax.servlet.ServletException;
 
 import org.bonitasoft.console.common.server.login.HttpServletRequestAccessor;
 import org.bonitasoft.console.common.server.login.LoginManager;
@@ -52,26 +52,26 @@ public class AutoLoginRuleTest {
     private TenantIdAccessor tenantAccessor;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
     }
 
     @Test
-    public void testWeAreNotAutoLoggedWhenNotRequested() throws Exception {
+    public void testWeAreNotAutoLoggedWhenNotRequested() throws ServletException {
         doReturn(false).when(request).isAutoLoginRequested();
 
-        boolean authorized = rule.doAuthorize(request, tenantAccessor);
+        final boolean authorized = rule.doAuthorize(request, tenantAccessor);
 
         assertFalse(authorized);
     }
 
     @Test
-    public void testWeAreNotAutoLoggedWhenRequestedButNotConfigured() throws Exception {
+    public void testWeAreNotAutoLoggedWhenRequestedButNotConfigured() throws ServletException {
         doReturn(false).when(request).isAutoLoginRequested();
         doReturn("process3--2.9").when(request).getAutoLoginScope();
         doReturn(1L).when(tenantAccessor).getRequestedTenantId();
 
-        boolean authorized = rule.doAuthorize(request, tenantAccessor);
+        final boolean authorized = rule.doAuthorize(request, tenantAccessor);
 
         assertFalse(authorized);
     }
@@ -83,16 +83,16 @@ public class AutoLoginRuleTest {
         doReturn(1L).when(tenantAccessor).ensureTenantId();
         // avoid having an exception result into an authorized false
         doReturn(mock(LoginManager.class)).when(rule).getLoginManager(anyLong());
-        SecurityProperties secu = autoLoginAllowedSecurityConfig();
+        final SecurityProperties secu = autoLoginAllowedSecurityConfig();
         doReturn(secu).when(rule).getSecurityProperties(any(HttpServletRequestAccessor.class), anyLong());
-        
-        boolean authorized = rule.doAuthorize(request, tenantAccessor);
+
+        final boolean authorized = rule.doAuthorize(request, tenantAccessor);
 
         assertTrue(authorized);
     }
 
     private SecurityProperties autoLoginAllowedSecurityConfig() {
-        SecurityProperties secu = mock(SecurityProperties.class);
+        final SecurityProperties secu = mock(SecurityProperties.class);
         when(secu.allowAutoLogin()).thenReturn(true);
         when(secu.getAutoLoginPassword()).thenReturn("aPasswordForTenant");
         when(secu.getAutoLoginUserName()).thenReturn("aUserNameForTenant");

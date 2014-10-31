@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -33,23 +31,22 @@ import javax.servlet.http.HttpSession;
 
 /**
  * @author Nicolas Chabanoles
- * 
  */
 public class MockHttpServletRequest implements HttpServletRequest {
 
     HttpSession session = null;
 
     Map<String, Object> parametersMap = null;
-    
+
     Map<String, Object> attributesMap = null;
 
     HttpServletRequest req = null;
-    
+
     String pathInfo = null;
 
     public MockHttpServletRequest(final HttpServletRequest req) {
         this.req = req;
-        this.parametersMap = req.getParameterMap();
+        parametersMap = req.getParameterMap();
     }
 
     public MockHttpServletRequest() {
@@ -63,8 +60,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getAuthType() {
-        if (this.req != null) {
-            return this.req.getAuthType();
+        if (req != null) {
+            return req.getAuthType();
         }
         return null;
     }
@@ -75,8 +72,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getContextPath() {
-        if (this.req != null) {
-            return this.req.getContextPath();
+        if (req != null) {
+            return req.getContextPath();
         }
         return null;
     }
@@ -87,8 +84,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public Cookie[] getCookies() {
-        if (this.req != null) {
-            return this.req.getCookies();
+        if (req != null) {
+            return req.getCookies();
         }
         return null;
     }
@@ -99,8 +96,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public long getDateHeader(final String anName) {
-        if (this.req != null) {
-            return this.req.getDateHeader(anName);
+        if (req != null) {
+            return req.getDateHeader(anName);
         }
         return 0;
     }
@@ -111,8 +108,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getHeader(final String anName) {
-        if (this.req != null) {
-            return this.req.getHeader(anName);
+        if (req != null) {
+            return req.getHeader(anName);
         }
         return null;
     }
@@ -122,10 +119,9 @@ public class MockHttpServletRequest implements HttpServletRequest {
      * @see javax.servlet.http.HttpServletRequest#getHeaderNames()
      */
     @Override
-    @SuppressWarnings("unchecked")
-    public Enumeration getHeaderNames() {
-        if (this.req != null) {
-            return this.req.getHeaderNames();
+    public Enumeration<?> getHeaderNames() {
+        if (req != null) {
+            return req.getHeaderNames();
         }
         return null;
     }
@@ -135,10 +131,9 @@ public class MockHttpServletRequest implements HttpServletRequest {
      * @see javax.servlet.http.HttpServletRequest#getHeaders(java.lang.String)
      */
     @Override
-    @SuppressWarnings("unchecked")
-    public Enumeration getHeaders(final String anName) {
-        if (this.req != null) {
-            return this.req.getHeaders(anName);
+    public Enumeration<?> getHeaders(final String anName) {
+        if (req != null) {
+            return req.getHeaders(anName);
         }
         return null;
     }
@@ -149,8 +144,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public int getIntHeader(final String anName) {
-        if (this.req != null) {
-            return this.req.getIntHeader(anName);
+        if (req != null) {
+            return req.getIntHeader(anName);
         }
         return 0;
     }
@@ -161,8 +156,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getMethod() {
-        if (this.req != null) {
-            return this.req.getMethod();
+        if (req != null) {
+            return req.getMethod();
         }
         return null;
     }
@@ -173,10 +168,10 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getPathInfo() {
-        if(pathInfo != null){
-            return this.pathInfo;
-        }else if (this.req != null) {
-            return this.req.getPathInfo();
+        if (pathInfo != null) {
+            return pathInfo;
+        } else if (req != null) {
+            return req.getPathInfo();
         }
         return null;
     }
@@ -187,8 +182,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getPathTranslated() {
-        if (this.req != null) {
-            return this.req.getPathTranslated();
+        if (req != null) {
+            return req.getPathTranslated();
         }
         return null;
     }
@@ -199,8 +194,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getQueryString() {
-        if (this.req != null) {
-            return this.req.getQueryString();
+        if (req != null) {
+            return req.getQueryString();
         }
         return null;
     }
@@ -211,8 +206,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getRemoteUser() {
-        if (this.req != null) {
-            return this.req.getRemoteUser();
+        if (req != null) {
+            return req.getRemoteUser();
         }
         return null;
     }
@@ -223,8 +218,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getRequestURI() {
-        if (this.req != null) {
-            return this.req.getRequestURI();
+        if (req != null) {
+            return req.getRequestURI();
         }
         return null;
     }
@@ -235,8 +230,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public StringBuffer getRequestURL() {
-        if (this.req != null) {
-            return this.req.getRequestURL();
+        if (req != null) {
+            return req.getRequestURL();
         }
         return null;
     }
@@ -247,8 +242,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getRequestedSessionId() {
-        if (this.req != null) {
-            return this.req.getRequestedSessionId();
+        if (req != null) {
+            return req.getRequestedSessionId();
         }
         return null;
     }
@@ -259,8 +254,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getServletPath() {
-        if (this.req != null) {
-            return this.req.getRequestedSessionId();
+        if (req != null) {
+            return req.getRequestedSessionId();
         }
         return null;
     }
@@ -271,13 +266,13 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public HttpSession getSession() {
-        if (this.req != null) {
-            this.session = this.req.getSession();
+        if (req != null) {
+            session = req.getSession();
         }
-        if (this.session == null) {
-            this.session = new MockHttpSession();
+        if (session == null) {
+            session = new MockHttpSession();
         }
-        return this.session;
+        return session;
     }
 
     /*
@@ -288,13 +283,13 @@ public class MockHttpServletRequest implements HttpServletRequest {
     public HttpSession getSession(final boolean anCreate) {
 
         if (anCreate) {
-            if (this.req != null) {
-                this.session = this.req.getSession(anCreate);
+            if (req != null) {
+                session = req.getSession(anCreate);
             } else {
-                this.session = new MockHttpSession();
+                session = new MockHttpSession();
             }
         }
-        return this.session;
+        return session;
     }
 
     /*
@@ -303,8 +298,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public Principal getUserPrincipal() {
-        if (this.req != null) {
-            return this.req.getUserPrincipal();
+        if (req != null) {
+            return req.getUserPrincipal();
         }
         return null;
     }
@@ -315,8 +310,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public boolean isRequestedSessionIdFromCookie() {
-        if (this.req != null) {
-            return this.req.isRequestedSessionIdFromCookie();
+        if (req != null) {
+            return req.isRequestedSessionIdFromCookie();
         }
         return false;
     }
@@ -327,8 +322,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public boolean isRequestedSessionIdFromURL() {
-        if (this.req != null) {
-            return this.req.isRequestedSessionIdFromURL();
+        if (req != null) {
+            return req.isRequestedSessionIdFromURL();
         }
         return false;
     }
@@ -340,8 +335,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
     @Override
     @Deprecated
     public boolean isRequestedSessionIdFromUrl() {
-        if (this.req != null) {
-            return this.req.isRequestedSessionIdFromUrl();
+        if (req != null) {
+            return req.isRequestedSessionIdFromUrl();
         }
         return false;
     }
@@ -352,8 +347,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public boolean isRequestedSessionIdValid() {
-        if (this.req != null) {
-            return this.req.isRequestedSessionIdValid();
+        if (req != null) {
+            return req.isRequestedSessionIdValid();
         }
         return false;
     }
@@ -364,8 +359,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public boolean isUserInRole(final String anRole) {
-        if (this.req != null) {
-            return this.req.isUserInRole(anRole);
+        if (req != null) {
+            return req.isUserInRole(anRole);
         }
         return false;
     }
@@ -376,11 +371,10 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public Object getAttribute(final String aName) {
-        if (this.req != null) {
-            return this.req.getAttribute(aName);
-        } else {
-            return attributesMap.get(aName);
+        if (req != null) {
+            return req.getAttribute(aName);
         }
+        return attributesMap.get(aName);
     }
 
     /*
@@ -388,10 +382,9 @@ public class MockHttpServletRequest implements HttpServletRequest {
      * @see javax.servlet.ServletRequest#getAttributeNames()
      */
     @Override
-    @SuppressWarnings("unchecked")
-    public Enumeration getAttributeNames() {
-        if (this.req != null) {
-            return this.req.getAttributeNames();
+    public Enumeration<?> getAttributeNames() {
+        if (req != null) {
+            return req.getAttributeNames();
         }
         return null;
     }
@@ -402,8 +395,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getCharacterEncoding() {
-        if (this.req != null) {
-            return this.req.getCharacterEncoding();
+        if (req != null) {
+            return req.getCharacterEncoding();
         }
         return null;
     }
@@ -414,8 +407,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public int getContentLength() {
-        if (this.req != null) {
-            return this.req.getContentLength();
+        if (req != null) {
+            return req.getContentLength();
         }
         return 0;
     }
@@ -426,8 +419,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getContentType() {
-        if (this.req != null) {
-            return this.req.getContentType();
+        if (req != null) {
+            return req.getContentType();
         }
         return null;
     }
@@ -438,8 +431,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public ServletInputStream getInputStream() throws IOException {
-        if (this.req != null) {
-            return this.req.getInputStream();
+        if (req != null) {
+            return req.getInputStream();
         }
         return null;
     }
@@ -450,8 +443,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getLocalAddr() {
-        if (this.req != null) {
-            return this.req.getLocalAddr();
+        if (req != null) {
+            return req.getLocalAddr();
         }
         return null;
     }
@@ -462,8 +455,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getLocalName() {
-        if (this.req != null) {
-            return this.req.getLocalName();
+        if (req != null) {
+            return req.getLocalName();
         }
         return null;
     }
@@ -474,8 +467,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public int getLocalPort() {
-        if (this.req != null) {
-            return this.req.getLocalPort();
+        if (req != null) {
+            return req.getLocalPort();
         }
         return 0;
     }
@@ -486,8 +479,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public Locale getLocale() {
-        if (this.req != null) {
-            return this.req.getLocale();
+        if (req != null) {
+            return req.getLocale();
         }
         return null;
     }
@@ -497,10 +490,9 @@ public class MockHttpServletRequest implements HttpServletRequest {
      * @see javax.servlet.ServletRequest#getLocales()
      */
     @Override
-    @SuppressWarnings("unchecked")
-    public Enumeration getLocales() {
-        if (this.req != null) {
-            return this.req.getLocales();
+    public Enumeration<?> getLocales() {
+        if (req != null) {
+            return req.getLocales();
         }
         return null;
     }
@@ -511,11 +503,11 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getParameter(final String anName) {
-        return (String) this.parametersMap.get(anName);
+        return (String) parametersMap.get(anName);
     }
 
     public void setParameter(final String anName, final Object value) {
-        this.parametersMap.put(anName, value);
+        parametersMap.put(anName, value);
     }
 
     /*
@@ -525,11 +517,10 @@ public class MockHttpServletRequest implements HttpServletRequest {
     @Override
     @SuppressWarnings("unchecked")
     public Map<String, Object> getParameterMap() {
-        if (req == null){
-            return this.parametersMap;
-        } else {
-            return this.req.getParameterMap();
+        if (req == null) {
+            return parametersMap;
         }
+        return req.getParameterMap();
     }
 
     /*
@@ -537,10 +528,9 @@ public class MockHttpServletRequest implements HttpServletRequest {
      * @see javax.servlet.ServletRequest#getParameterNames()
      */
     @Override
-    @SuppressWarnings("unchecked")
-    public Enumeration getParameterNames() {
-        if (this.req != null) {
-            return this.req.getParameterNames();
+    public Enumeration<?> getParameterNames() {
+        if (req != null) {
+            return req.getParameterNames();
         }
         return null;
     }
@@ -551,8 +541,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String[] getParameterValues(final String anName) {
-        if (this.req != null) {
-            return this.req.getParameterValues(anName);
+        if (req != null) {
+            return req.getParameterValues(anName);
         }
         return null;
     }
@@ -563,8 +553,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getProtocol() {
-        if (this.req != null) {
-            return this.req.getProtocol();
+        if (req != null) {
+            return req.getProtocol();
         }
         return null;
     }
@@ -575,8 +565,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public BufferedReader getReader() throws IOException {
-        if (this.req != null) {
-            return this.req.getReader();
+        if (req != null) {
+            return req.getReader();
         }
         return null;
     }
@@ -588,8 +578,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
     @Override
     @Deprecated
     public String getRealPath(final String anPath) {
-        if (this.req != null) {
-            return this.req.getRealPath(anPath);
+        if (req != null) {
+            return req.getRealPath(anPath);
         }
         return null;
     }
@@ -600,8 +590,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getRemoteAddr() {
-        if (this.req != null) {
-            return this.req.getRemoteAddr();
+        if (req != null) {
+            return req.getRemoteAddr();
         }
         return null;
     }
@@ -612,8 +602,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getRemoteHost() {
-        if (this.req != null) {
-            return this.req.getRemoteHost();
+        if (req != null) {
+            return req.getRemoteHost();
         }
         return null;
     }
@@ -624,8 +614,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public int getRemotePort() {
-        if (this.req != null) {
-            return this.req.getRemotePort();
+        if (req != null) {
+            return req.getRemotePort();
         }
         return 0;
     }
@@ -636,8 +626,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public RequestDispatcher getRequestDispatcher(final String anPath) {
-        if (this.req != null) {
-            return this.req.getRequestDispatcher(anPath);
+        if (req != null) {
+            return req.getRequestDispatcher(anPath);
         }
         return null;
     }
@@ -648,8 +638,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getScheme() {
-        if (this.req != null) {
-            return this.req.getScheme();
+        if (req != null) {
+            return req.getScheme();
         }
         return "http";
     }
@@ -660,8 +650,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getServerName() {
-        if (this.req != null) {
-            return this.req.getServerName();
+        if (req != null) {
+            return req.getServerName();
         }
         return "localhost";
     }
@@ -672,8 +662,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public int getServerPort() {
-        if (this.req != null) {
-            return this.req.getServerPort();
+        if (req != null) {
+            return req.getServerPort();
         }
         return 8080;
     }
@@ -684,8 +674,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public boolean isSecure() {
-        if (this.req != null) {
-            return this.req.isSecure();
+        if (req != null) {
+            return req.isSecure();
         }
         return false;
     }
@@ -696,8 +686,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public void removeAttribute(final String anName) {
-        if (this.req != null) {
-            this.req.removeAttribute(anName);
+        if (req != null) {
+            req.removeAttribute(anName);
         }
     }
 
@@ -707,10 +697,10 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public void setAttribute(final String aName, final Object aValue) {
-        if (this.req != null) {
-            this.req.setAttribute(aName, aValue);
+        if (req != null) {
+            req.setAttribute(aName, aValue);
         } else {
-            this.attributesMap.put(aName, aValue);
+            attributesMap.put(aName, aValue);
         }
     }
 
@@ -720,17 +710,17 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public void setCharacterEncoding(final String anEnv) throws UnsupportedEncodingException {
-        if (this.req != null) {
-            this.req.setCharacterEncoding(anEnv);
+        if (req != null) {
+            req.setCharacterEncoding(anEnv);
         }
     }
-    
+
     /*
      * (non-Javadoc)
      * @see javax.servlet.ServletRequest#setCharacterEncoding(java.lang.String)
      */
     public void setPathInfo(final String pathInfo) {
-            this.pathInfo = pathInfo;
+        this.pathInfo = pathInfo;
     }
 
 }

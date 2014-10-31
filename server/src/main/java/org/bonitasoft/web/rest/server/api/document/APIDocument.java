@@ -145,9 +145,8 @@ public class APIDocument extends ConsoleAPI<DocumentItem> {
                     returnedItem = dataStore.createDocumentFromUrl(processInstanceId, documentName, documentCreationType, urlPath);
                 }
                 return returnedItem;
-            } else {
-                throw new APIException("Error while attaching a new document. Request with bad param value.");
             }
+            throw new APIException("Error while attaching a new document. Request with bad param value.");
         } catch (final Exception e) {
             throw new APIException(e);
         }

@@ -125,13 +125,12 @@ public class ProcessMoreDetailsAdminPage extends ItemQuickDetailsPage<ProcessIte
     protected Clickable newChangeProcessActivationStateButton(final ProcessItem process) {
         if (process.isEnabled()) {
             return newDisableProcessButton(process);
-        } else {
-            final Clickable enableProcessButton = newEnableProcessButton(process);
-            if (!process.isResolved()) {
-                enableProcessButton.setEnabled(false);
-            }
-            return enableProcessButton;
         }
+        final Clickable enableProcessButton = newEnableProcessButton(process);
+        if (!process.isResolved()) {
+            enableProcessButton.setEnabled(false);
+        }
+        return enableProcessButton;
     }
 
     private Clickable newEnableProcessButton(final ProcessItem process) {
@@ -152,14 +151,14 @@ public class ProcessMoreDetailsAdminPage extends ItemQuickDetailsPage<ProcessIte
 
         private final ProcessItem process;
 
-        public ProcessResolutionProblemCallback(ProcessItem process) {
+        public ProcessResolutionProblemCallback(final ProcessItem process) {
             this.process = process;
         }
 
         @Override
         public void onSuccess(final int httpStatusCode, final String response, final Map<String, String> headers) {
             final List<ProcessResolutionProblemItem> processResolutionErrors = JSonItemReader.parseItems(response, ProcessResolutionProblemDefinition.get());
-            ProcessConfigurationStateResolver stateResolver = new ProcessConfigurationStateResolver(processResolutionErrors);
+            final ProcessConfigurationStateResolver stateResolver = new ProcessConfigurationStateResolver(processResolutionErrors);
             if (stateResolver.hasProblems()) {
                 addHeader(buildProcessResolutionProblemsCallout(stateResolver));
             }
@@ -176,12 +175,12 @@ public class ProcessMoreDetailsAdminPage extends ItemQuickDetailsPage<ProcessIte
     }
 
     /** Overriden in SP */
-    protected ConnectorSection buildConnectorSection(ProcessItem process, ProcessConfigurationStateResolver stateResolver) {
+    protected ConnectorSection buildConnectorSection(final ProcessItem process, final ProcessConfigurationStateResolver stateResolver) {
         return new ConnectorSection(process, stateResolver.getConnectorsConfigurationState());
     }
 
     /** Overriden in SP */
-    protected ProcessResolutionProblemsCallout buildProcessResolutionProblemsCallout(ProcessConfigurationStateResolver stateResolver) {
+    protected ProcessResolutionProblemsCallout buildProcessResolutionProblemsCallout(final ProcessConfigurationStateResolver stateResolver) {
         return new ProcessResolutionProblemsCallout(stateResolver);
     }
 

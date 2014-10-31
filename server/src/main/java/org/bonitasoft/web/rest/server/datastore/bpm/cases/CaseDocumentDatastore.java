@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -50,11 +48,10 @@ import org.bonitasoft.web.toolkit.client.data.APIID;
 
 /**
  * @author Fabio Lombardi
- *
  */
 public class CaseDocumentDatastore extends CommonDatastore<CaseDocumentItem, Document> implements DatastoreHasAdd<CaseDocumentItem>,
-DatastoreHasGet<CaseDocumentItem>,
-DatastoreHasUpdate<CaseDocumentItem>, DatastoreHasDelete {
+        DatastoreHasGet<CaseDocumentItem>,
+        DatastoreHasUpdate<CaseDocumentItem>, DatastoreHasDelete {
 
     protected final WebBonitaConstantsUtils constants;
 
@@ -119,9 +116,7 @@ DatastoreHasUpdate<CaseDocumentItem>, DatastoreHasDelete {
         }
 
         try {
-
             if (caseId != -1 && documentName != null) {
-
                 if (uploadPath != null && !uploadPath.isEmpty()) {
                     documentValue = buildDocumentValueFromUploadPath(uploadPath, index);
                 } else if (urlPath != null && !urlPath.isEmpty()) {
@@ -130,10 +125,8 @@ DatastoreHasUpdate<CaseDocumentItem>, DatastoreHasDelete {
 
                 final Document document = processAPI.addDocument(caseId, documentName, documentDescription, documentValue);
                 return convertEngineToConsoleItem(document);
-
-            } else {
-                throw new APIException("Error while attaching a new document. Request with bad param value.");
             }
+            throw new APIException("Error while attaching a new document. Request with bad param value.");
         } catch (final Exception e) {
             throw new APIException(e);
         }
@@ -148,7 +141,6 @@ DatastoreHasUpdate<CaseDocumentItem>, DatastoreHasDelete {
             final String urlPath;
 
             if (attributes.containsKey(CaseDocumentItem.ATTRIBUTE_UPLOAD_PATH) || attributes.containsKey(CaseDocumentItem.ATTRIBUTE_URL)) {
-
                 if (attributes.containsKey(CaseDocumentItem.ATTRIBUTE_UPLOAD_PATH)) {
                     urlPath = attributes.get(CaseDocumentItem.ATTRIBUTE_UPLOAD_PATH);
                     documentValue = buildDocumentValueFromUploadPath(urlPath, -1);
@@ -159,10 +151,8 @@ DatastoreHasUpdate<CaseDocumentItem>, DatastoreHasDelete {
 
                 final Document document = processAPI.updateDocument(id.toLong(), documentValue);
                 return convertEngineToConsoleItem(document);
-
-            } else {
-                throw new APIException("Error while attaching a new document. Request with bad param value.");
             }
+            throw new APIException("Error while attaching a new document. Request with bad param value.");
         } catch (final Exception e) {
             throw new APIException(e);
         }

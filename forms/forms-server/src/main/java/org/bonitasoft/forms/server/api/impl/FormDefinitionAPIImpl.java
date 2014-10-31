@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -128,14 +126,13 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
      *
      * @param document
      * @param applicationDeployementDate
-     *            the deployement date of the application
+     *        the deployement date of the application
      * @param locale
-     *            the user's locale as a String
+     *        the user's locale as a String
      * @return the FormDefinitionAPIImpl instance
      * @throws InvalidFormDefinitionException
      */
-    public FormDefinitionAPIImpl(final long tenantID, final Document document, final Date applicationDeploymentDate, final String locale)
-            throws InvalidFormDefinitionException {
+    public FormDefinitionAPIImpl(final long tenantID, final Document document, final Date applicationDeploymentDate, final String locale) {
         this.tenantID = tenantID;
         defaultDateFormatPattern = DefaultFormsPropertiesFactory.getDefaultFormProperties(tenantID).getDefaultDateFormat();
         formDefinitionDocument = document;
@@ -162,7 +159,7 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
      * get XMLApplicationFormDefAccessorImpl by FormServiceProvider
      *
      * @param formId
-     *            the form ID
+     *        the form ID
      * @throws ApplicationFormDefinitionNotFoundException
      * @throws InvalidFormDefinitionException
      * @throws FormServiceProviderNotFoundException
@@ -348,13 +345,13 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
      * Retrieve the template associated with a instantiation form page
      *
      * @param applicationDefAccessor
-     *            the application form definition accessor
+     *        the application form definition accessor
      * @param formType
-     *            the form type
+     *        the form type
      * @param pageId
-     *            the page ID
+     *        the page ID
      * @param context
-     *            the Map of context
+     *        the Map of context
      * @param pageWidgets
      * @param pageValidators
      * @return an {@link HtmlTemplate} object containing the elements required to
@@ -507,8 +504,7 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
      * @throws SessionTimeoutException
      */
     protected HtmlTemplate getApplicationLayout(final Map<String, Object> context) throws FileNotFoundException, InvalidFormTemplateException,
-            InvalidFormDefinitionException, ApplicationFormDefinitionNotFoundException, FormServiceProviderNotFoundException, SessionTimeoutException {
-
+            ApplicationFormDefinitionNotFoundException, FormServiceProviderNotFoundException, SessionTimeoutException {
         final IApplicationConfigDefAccessor applicationConfigFormDefinition = getApplicationConfigDefinition(context);
         final String applicationTemplateLocation = applicationConfigFormDefinition.getApplicationLayout();
         return getLayout(applicationTemplateLocation, "application", applicationDeploymentDate, context);
@@ -597,7 +593,8 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
                         try {
                             // Load both classes in the current classloader because evaluatedValue comes from another classloader (server side)
                             final Class<?> dataClass = Thread.currentThread().getContextClassLoader().loadClass(className);
-                            final Class<?> localEvaluatedValueClass = Thread.currentThread().getContextClassLoader().loadClass(evaluatedValue.getClass().getName());
+                            final Class<?> localEvaluatedValueClass = Thread.currentThread().getContextClassLoader()
+                                    .loadClass(evaluatedValue.getClass().getName());
                             localEvaluatedValueClass.asSubclass(dataClass);
                         } catch (final ClassCastException e) {
                             throw new IllegalArgumentException();
@@ -632,11 +629,11 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
      * get a page layout
      *
      * @param layoutPath
-     *            The path of the layout
+     *        The path of the layout
      * @param applicationDeploymentDate
-     *            The date of the application deployed
+     *        The date of the application deployed
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return HtmlTemplate
      * @throws FileNotFoundException
      * @throws InvalidFormDefinitionException
@@ -645,8 +642,7 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
      * @throws SessionTimeoutException
      */
     protected HtmlTemplate getPageLayout(final String layoutPath, final Date applicationDeploymentDate, final Map<String, Object> context)
-            throws FileNotFoundException, InvalidFormDefinitionException, ApplicationFormDefinitionNotFoundException, FormServiceProviderNotFoundException,
-            SessionTimeoutException {
+            throws FileNotFoundException, ApplicationFormDefinitionNotFoundException, FormServiceProviderNotFoundException, SessionTimeoutException {
         try {
             if (layoutPath == null) {
                 throw new IOException();
@@ -705,7 +701,6 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
             }
 
             return new HtmlTemplate(body, bodyAttributes, headNodes);
-
         } catch (final IOException e) {
             String message = null;
             if (layoutPath == null) {
@@ -727,13 +722,13 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
      * get a layout
      *
      * @param layoutLocation
-     *            The location of the layout
+     *        The location of the layout
      * @param layoutTypeName
-     *            The type of the layout
+     *        The type of the layout
      * @param applicationDeploymentDate
-     *            The date of the application deployed
+     *        The date of the application deployed
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return HtmlTemplate
      * @throws FileNotFoundException
      * @throws InvalidFormTemplateException
@@ -743,9 +738,8 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
      * @throws SessionTimeoutException
      */
     protected HtmlTemplate getLayout(final String layoutpath, final String layoutTypeName, final Date applicationDeploymentDate,
-            final Map<String, Object> context) throws FileNotFoundException, InvalidFormTemplateException, InvalidFormDefinitionException,
-            ApplicationFormDefinitionNotFoundException, FormServiceProviderNotFoundException, SessionTimeoutException {
-
+            final Map<String, Object> context) throws FileNotFoundException, InvalidFormTemplateException, ApplicationFormDefinitionNotFoundException,
+            FormServiceProviderNotFoundException, SessionTimeoutException {
         InputStream htmlFileStream = null;
         try {
             if (layoutpath == null) {
@@ -849,10 +843,8 @@ public class FormDefinitionAPIImpl implements IFormDefinitionAPI {
      */
     protected HtmlTemplate buildPageLayout(final Map<String, Object> context, final String defaultTemplatePath, final List<FormWidget> pageWidgets,
             final List<FormValidator> pageValidators, final FormType formType, final boolean isActivity) throws FileNotFoundException,
-            InvalidFormDefinitionException, ApplicationFormDefinitionNotFoundException, FormServiceProviderNotFoundException, SessionTimeoutException {
-
+            ApplicationFormDefinitionNotFoundException, FormServiceProviderNotFoundException, SessionTimeoutException {
         HtmlTemplate pageTemplate = null;
-
         final HtmlTemplate pageBaseTemplate = getPageLayout(defaultTemplatePath, applicationDeploymentDate, context);
         final String baseBody = pageBaseTemplate.getBodyContent();
         final Source source = new Source(baseBody);

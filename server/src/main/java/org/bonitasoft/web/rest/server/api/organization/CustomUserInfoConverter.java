@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -21,7 +19,6 @@ import org.bonitasoft.engine.identity.CustomUserInfoDefinition;
 import org.bonitasoft.engine.identity.CustomUserInfoValue;
 import org.bonitasoft.web.rest.model.identity.CustomUserInfoDefinitionItem;
 import org.bonitasoft.web.rest.model.identity.CustomUserInfoItem;
-import org.bonitasoft.web.rest.server.datastore.converter.AttributeConverter;
 import org.bonitasoft.web.rest.server.datastore.converter.ItemConverter;
 import org.bonitasoft.web.toolkit.client.data.APIID;
 
@@ -30,16 +27,16 @@ import org.bonitasoft.web.toolkit.client.data.APIID;
  */
 public class CustomUserInfoConverter extends ItemConverter<CustomUserInfoItem, CustomUserInfoValue> {
 
-    public CustomUserInfoDefinitionItem convert(CustomUserInfoDefinition definition) {
-        CustomUserInfoDefinitionItem item = new CustomUserInfoDefinitionItem();
+    public CustomUserInfoDefinitionItem convert(final CustomUserInfoDefinition definition) {
+        final CustomUserInfoDefinitionItem item = new CustomUserInfoDefinitionItem();
         item.setId(APIID.makeAPIID(definition.getId()));
         item.setName(definition.getName());
         item.setDescription(definition.getDescription());
         return item;
     }
 
-    public CustomUserInfoItem convert(CustomUserInfo information) {
-        CustomUserInfoItem item = new CustomUserInfoItem();
+    public CustomUserInfoItem convert(final CustomUserInfo information) {
+        final CustomUserInfoItem item = new CustomUserInfoItem();
         item.setUserId(information.getUserId());
         item.setDefinition(convert(information.getDefinition()));
         item.setValue(information.getValue());
@@ -47,8 +44,8 @@ public class CustomUserInfoConverter extends ItemConverter<CustomUserInfoItem, C
     }
 
     @Override
-    public CustomUserInfoItem convert(CustomUserInfoValue value) {
-        CustomUserInfoItem item = new CustomUserInfoItem();
+    public CustomUserInfoItem convert(final CustomUserInfoValue value) {
+        final CustomUserInfoItem item = new CustomUserInfoItem();
         item.setUserId(value.getUserId());
         item.setDefinition(APIID.makeAPIID(value.getDefinitionId()));
         item.setValue(value.getValue());

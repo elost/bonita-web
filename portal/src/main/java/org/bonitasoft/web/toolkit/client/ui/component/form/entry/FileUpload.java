@@ -45,7 +45,7 @@ public class FileUpload extends Input {
 
     private String submitionUrl = null;
 
-    private List<UploadFilter> filters = new ArrayList<UploadFilter>();
+    private final List<UploadFilter> filters = new ArrayList<UploadFilter>();
 
     public FileUpload(final String submitionUrl, final JsId jsid, final String label, final String tooltip, final String description, final String example) {
         super(jsid, label, tooltip, null, description, example);
@@ -63,18 +63,18 @@ public class FileUpload extends Input {
     }
 
     /**
-     * WARNING: can only be called in {@link org.bonitasoft.web.toolkit.client.ui.RawView#onLoad()} method 
+     * WARNING: can only be called in {@link org.bonitasoft.web.toolkit.client.ui.RawView#onLoad()} method
      */
     public FileUpload disable() {
-        Scheduler.get().scheduleDeferred(new DisableCommand(this.getElement()));
+        Scheduler.get().scheduleDeferred(new DisableCommand(getElement()));
         return this;
     }
 
     /**
-     * WARNING: can only be called in {@link org.bonitasoft.web.toolkit.client.ui.RawView#onLoad()} method 
+     * WARNING: can only be called in {@link org.bonitasoft.web.toolkit.client.ui.RawView#onLoad()} method
      */
     public FileUpload enable() {
-        Scheduler.get().scheduleDeferred(new EnableCommand(this.getElement()));
+        Scheduler.get().scheduleDeferred(new EnableCommand(getElement()));
         return this;
     }
 
@@ -82,7 +82,7 @@ public class FileUpload extends Input {
 
         private final Element e;
 
-        public DisableCommand(Element e) {
+        public DisableCommand(final Element e) {
             this.e = e;
         }
 
@@ -97,7 +97,7 @@ public class FileUpload extends Input {
 
         private final Element e;
 
-        public EnableCommand(Element e) {
+        public EnableCommand(final Element e) {
             this.e = e;
         }
 
@@ -109,14 +109,14 @@ public class FileUpload extends Input {
     }
 
     private native void _disable(Element e)
-        /*-{
-            $wnd.$(e, '.uploader').disable();
-        }-*/;
+    /*-{
+        $wnd.$(e, '.uploader').disable();
+    }-*/;
 
-    private void _enable(Element e) {
+    private void _enable(final Element e) {
         /*-{
             $wnd.$(e, '.uploader').enable();
-        }-*/;
+        }-*/
     }
 
     @Override
@@ -130,7 +130,7 @@ public class FileUpload extends Input {
         final Element input = DOM.createElement("input");
         input.setAttribute("type", getInputType());
         input.setAttribute("name", getJsId().toString());
-        input.setAttribute("title", this.tooltip);
+        input.setAttribute("title", tooltip);
         input.setAttribute("rel", createRelOptions());
         input.setId(uid);
         return input;
@@ -146,8 +146,8 @@ public class FileUpload extends Input {
     }
 
     private String createRelOptions() {
-        Map<String, Object> relOptions = new HashMap<String, Object>();
-        relOptions.put(OPTION_URL, this.submitionUrl);
+        final Map<String, Object> relOptions = new HashMap<String, Object>();
+        relOptions.put(OPTION_URL, submitionUrl);
         relOptions.put(OPTION_TEXT_FILE_PICKER, buildPickerLabel());
         relOptions.put(OPTION_TEXT_EXTENSION_ERROR, _("Unsupported file."));
         relOptions.put(OPTION_FILTERS, filters);
@@ -157,14 +157,13 @@ public class FileUpload extends Input {
     private String buildPickerLabel() {
         if (filters.isEmpty()) {
             return _("Click here to choose your file.");
-        } else {
-            return _("Click here to choose your file. ") + labelizeFilters(getFilters());
         }
+        return _("Click here to choose your file. ") + labelizeFilters(getFilters());
     }
 
     private String labelizeFilters(final List<UploadFilter> filters) {
-        StringBuilder builder = new StringBuilder();
-        for (UploadFilter filter : filters) {
+        final StringBuilder builder = new StringBuilder();
+        for (final UploadFilter filter : filters) {
             builder.append(filter);
             builder.append(" ");
         }

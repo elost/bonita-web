@@ -71,9 +71,8 @@ public class APISession extends ConsoleAPI<SessionItem> {
                     "tenantMaintenance",
                     "pagelisting",
                     "businessdatamodelimport"))).build());
-        } else {
-            return getUserRightsForProfiles(profiles, apiSession);
         }
+        return getUserRightsForProfiles(profiles, apiSession);
     }
 
     private List<Profile> getProfilesForUser(final org.bonitasoft.engine.session.APISession apiSession) {
@@ -92,7 +91,7 @@ public class APISession extends ConsoleAPI<SessionItem> {
         return JSonSerializer.serialize(rights);
     }
 
-    private ProfileEntryEngineClient createProfileEntryEngineClient(org.bonitasoft.engine.session.APISession session) {
+    private ProfileEntryEngineClient createProfileEntryEngineClient(final org.bonitasoft.engine.session.APISession session) {
         final EngineClientFactory engineClientFactory = new EngineClientFactory(new EngineAPIAccessor(session));
         return engineClientFactory.createProfileEntryEngineClient();
     }
@@ -101,9 +100,9 @@ public class APISession extends ConsoleAPI<SessionItem> {
      * enable to know if the logout button is visible or not
      *
      * @param tenantId
-     *            the current user tenant id
+     *        the current user tenant id
      */
-    protected boolean isLogoutDisabled(long tenantId) {
+    protected boolean isLogoutDisabled(final long tenantId) {
         return loginManagerPropertiesFactory.getProperties(tenantId).isLogoutDisabled();
     }
 

@@ -63,7 +63,7 @@ public class CaseDocumentDatastoreTest extends APITestWithMock {
     private final CaseDocumentItem mockedDocumentItem = new CaseDocumentItem();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
         System.setProperty("bonita.home", "target/bonita-home/bonita");
         when(engineSession.getTenantId()).thenReturn(1L);
@@ -97,7 +97,7 @@ public class CaseDocumentDatastoreTest extends APITestWithMock {
     }
 
     @Test
-    public void it_should_call_convertEngineToConsole_method() throws Exception {
+    public void it_should_call_convertEngineToConsole_method() {
         // Given
         final APIID id = APIID.makeAPIID(1l);
 
@@ -111,7 +111,7 @@ public class CaseDocumentDatastoreTest extends APITestWithMock {
     // ---------- CONVERT ITEM TESTS ------------------------------//
 
     @Test
-    public void it_should_convert_item_return_item() throws Exception {
+    public void it_should_convert_item_return_item() {
         // When
         final CaseDocumentItem convertedEngineToConsoleItem = documentDatastore.convertEngineToConsoleItem(mockedDocument);
         // Then
@@ -301,7 +301,7 @@ public class CaseDocumentDatastoreTest extends APITestWithMock {
     }
 
     @Test
-    public void it_should_throw_an_exception_when_input_is_null() throws DocumentNotFoundException, DeletionException {
+    public void it_should_throw_an_exception_when_input_is_null() {
         expectedEx.expect(APIException.class);
         expectedEx.expectMessage("Error while deleting a document. Document id not specified in the request");
 

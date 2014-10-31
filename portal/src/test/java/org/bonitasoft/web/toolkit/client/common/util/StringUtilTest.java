@@ -5,21 +5,19 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package org.bonitasoft.web.toolkit.client.common.util;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-import static junit.framework.Assert.assertEquals;
+import org.junit.Test;
 
 /**
  * Created by Vincent Elcrin
@@ -29,22 +27,22 @@ import static junit.framework.Assert.assertEquals;
 public class StringUtilTest {
 
     @Test
-    public void testWeUseDefaultStringWhenWeEnsureOnBlankString() throws Exception {
-        String result = StringUtil.ensure(" ", "default");
+    public void testWeUseDefaultStringWhenWeEnsureOnBlankString() {
+        final String result = StringUtil.ensure(" ", "default");
 
         assertEquals("default", result);
     }
 
     @Test
-    public void testWeUseDefaultStringWhenWeEnsureOnNullString() throws Exception {
-        String result = StringUtil.ensure(null, "default");
+    public void testWeUseDefaultStringWhenWeEnsureOnNullString() {
+        final String result = StringUtil.ensure(null, "default");
 
         assertEquals("default", result);
     }
 
     @Test
-    public void testWeCanRetrieveTheStringValueWithEnsure() throws Exception {
-        String result = StringUtil.ensure("value", "default");
+    public void testWeCanRetrieveTheStringValueWithEnsure() {
+        final String result = StringUtil.ensure("value", "default");
 
         assertEquals("value", result);
     }

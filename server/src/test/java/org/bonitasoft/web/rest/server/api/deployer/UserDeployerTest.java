@@ -5,19 +5,17 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.api.deployer;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -34,7 +32,6 @@ import org.mockito.Mock;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class UserDeployerTest {
 
@@ -48,35 +45,35 @@ public class UserDeployerTest {
     }
 
     @Test
-    public void testDeployableAttributeIsDeployed() throws Exception {
-        UserItem user = prepareGetterToReturnAUser();
-        ReportItem report = aReportInstalledBy(APIID.makeAPIID(6L));
+    public void testDeployableAttributeIsDeployed() {
+        final UserItem user = prepareGetterToReturnAUser();
+        final ReportItem report = aReportInstalledBy(APIID.makeAPIID(6L));
 
-        UserDeployer installedByDeployer = new UserDeployer(getter, ReportItem.ATTRIBUTE_INSTALLED_BY);
+        final UserDeployer installedByDeployer = new UserDeployer(getter, ReportItem.ATTRIBUTE_INSTALLED_BY);
         installedByDeployer.deployIn(report);
 
         assertEquals(user, report.getInstalledBy());
     }
 
     @Test
-    public void testNotDeployableAttributeIsNotDeployed() throws Exception {
+    public void testNotDeployableAttributeIsNotDeployed() {
         prepareGetterToReturnAUser();
-        ReportItem report = aReportInstalledBy(null);
+        final ReportItem report = aReportInstalledBy(null);
 
-        UserDeployer nameDeployer = new UserDeployer(getter, ReportItem.ATTRIBUTE_INSTALLED_BY);
+        final UserDeployer nameDeployer = new UserDeployer(getter, ReportItem.ATTRIBUTE_INSTALLED_BY);
         nameDeployer.deployIn(report);
 
         assertNull(report.getInstalledBy());
     }
 
     private UserItem prepareGetterToReturnAUser() {
-        UserItem user = new UserItem();
+        final UserItem user = new UserItem();
         doReturn(user).when(getter).get(any(APIID.class));
         return user;
     }
 
-    private ReportItem aReportInstalledBy(APIID userId) {
-        ReportItem item = new ReportItem();
+    private ReportItem aReportInstalledBy(final APIID userId) {
+        final ReportItem item = new ReportItem();
         item.setInstalledBy(userId);
         return item;
     }

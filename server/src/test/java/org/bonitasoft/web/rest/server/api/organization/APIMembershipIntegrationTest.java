@@ -27,7 +27,7 @@ import org.junit.Test;
 public class APIMembershipIntegrationTest extends AbstractConsoleTest {
 
     private APIMembership apiMembership;
-    
+
     @Override
     public void consoleTestSetUp() throws Exception {
         apiMembership = new APIMembership();
@@ -150,10 +150,10 @@ public class APIMembershipIntegrationTest extends AbstractConsoleTest {
 
         checkSearchResults(searchResults, 12, 1);
     }
-    
+
     @Test(expected = APIForbiddenException.class)
-    public void addingTwiceSameMembershipIsForbidden() throws Exception {
-        MembershipItem input = new MembershipItem();
+    public void addingTwiceSameMembershipIsForbidden() {
+        final MembershipItem input = new MembershipItem();
         input.setUserId(getInitiator().getId());
         input.setGroupId(TestGroupFactory.getWeb().getId());
         input.setRoleId(TestRoleFactory.getManager().getId());

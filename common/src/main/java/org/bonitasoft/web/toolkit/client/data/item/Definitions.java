@@ -29,7 +29,7 @@ public class Definitions {
 
     /**
      * Get the ViewController instance.
-     * 
+     *
      * @return the unique instance of the ViewController.
      */
     public static Definitions getInstance() {
@@ -41,19 +41,18 @@ public class Definitions {
     }
 
     public final ItemDefinition<?> getDefinition(final String token) {
-        if (this.itemDefinitions.containsKey(token)) {
-            return this.itemDefinitions.get(token);
+        if (itemDefinitions.containsKey(token)) {
+            return itemDefinitions.get(token);
         } else if (DummyItemDefinition.TOKEN.equals(token)) {
             return new DummyItemDefinition();
         } else {
             final ItemDefinition<?> itemDefinition = ItemDefinitionFactory.getDefaultFactory().defineItemDefinitions(token);
             if (itemDefinition != null) {
-                this.itemDefinitions.put(token, itemDefinition);
+                itemDefinitions.put(token, itemDefinition);
                 return itemDefinition;
-            } else {
-                // TODO Throw exception
-                return null;
             }
+            // TODO Throw exception
+            return null;
         }
     }
 

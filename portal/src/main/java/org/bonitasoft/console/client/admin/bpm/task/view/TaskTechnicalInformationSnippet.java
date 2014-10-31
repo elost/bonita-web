@@ -13,7 +13,6 @@ import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n._;
 import org.bonitasoft.console.client.admin.bpm.accessor.IActivityAccessor;
 import org.bonitasoft.console.client.common.component.snippet.SectionSnippet;
 import org.bonitasoft.console.client.data.item.attribute.reader.DeployedUserReader;
-import org.bonitasoft.web.rest.model.bpm.flownode.ActivityItem;
 import org.bonitasoft.web.rest.model.bpm.flownode.IFlowNodeItem;
 import org.bonitasoft.web.rest.model.bpm.flownode.TaskItem;
 import org.bonitasoft.web.toolkit.client.common.texttemplate.Arg;
@@ -23,7 +22,6 @@ import org.bonitasoft.web.toolkit.client.ui.utils.DateFormat;
 
 /**
  * @author Vincent Elcrin
- *
  */
 public class TaskTechnicalInformationSnippet implements SectionSnippet {
 
@@ -31,7 +29,6 @@ public class TaskTechnicalInformationSnippet implements SectionSnippet {
 
     /**
      * Default Constructor.
-     *
      * Need {@link ActivityItem#ATTRIBUTE_EXECUTED_BY_USER_ID} to be deployed!
      */
     public TaskTechnicalInformationSnippet(final IActivityAccessor activity) {
@@ -42,24 +39,24 @@ public class TaskTechnicalInformationSnippet implements SectionSnippet {
     public Section build() {
         String template = "";
 
-        final Arg executedByArg = buildExecutedByArg(this.activity);
+        final Arg executedByArg = buildExecutedByArg(activity);
 
-        if (TaskItem.VALUE_STATE_READY.equals(this.activity.getState())) {
+        if (TaskItem.VALUE_STATE_READY.equals(activity.getState())) {
             template = _("Ready since %task_last_update%",
-                    new Arg("task_last_update", DateFormat.dateToDisplayShort(this.activity.getLastUpdateDate())));
+                    new Arg("task_last_update", DateFormat.dateToDisplayShort(activity.getLastUpdateDate())));
 
-        } else if (TaskItem.VALUE_STATE_COMPLETED.equals(this.activity.getState())) {
+        } else if (TaskItem.VALUE_STATE_COMPLETED.equals(activity.getState())) {
             template = _("Done %task_last_update% by %executed_by%",
-                    new Arg("task_last_update", DateFormat.dateToDisplayShort(this.activity.getLastUpdateDate())),
+                    new Arg("task_last_update", DateFormat.dateToDisplayShort(activity.getLastUpdateDate())),
                     executedByArg);
 
-        } else if (TaskItem.VALUE_STATE_FAILED.equals(this.activity.getState())) {
+        } else if (TaskItem.VALUE_STATE_FAILED.equals(activity.getState())) {
             template = _("Failed on %task_last_update%",
-                    new Arg("task_last_update", DateFormat.dateToDisplay(this.activity.getLastUpdateDate())));
+                    new Arg("task_last_update", DateFormat.dateToDisplay(activity.getLastUpdateDate())));
 
-        } else if (TaskItem.VALUE_STATE_SKIPPED.equals(this.activity.getState())) {
+        } else if (TaskItem.VALUE_STATE_SKIPPED.equals(activity.getState())) {
             template = _("Skipped on %task_last_update% by %executed_by%",
-                    new Arg("task_last_update", DateFormat.dateToDisplayShort(this.activity.getLastUpdateDate())),
+                    new Arg("task_last_update", DateFormat.dateToDisplayShort(activity.getLastUpdateDate())),
                     executedByArg);
         }
 

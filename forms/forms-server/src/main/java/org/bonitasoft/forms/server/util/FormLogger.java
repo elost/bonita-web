@@ -13,21 +13,22 @@ public class FormLogger implements IFormLogger {
 
     protected Logger LOGGER;
 
-    public FormLogger(String className) {
-        LOGGER = Logger.getLogger(className);;
+    public FormLogger(final String className) {
+        LOGGER = Logger.getLogger(className);
     }
 
     @Override
-    public void log(Level level, String message, Map<String, Object> pcontext) {
+    public void log(final Level level, final String message, final Map<String, Object> pcontext) {
         this.log(level, message, null, pcontext);
     }
 
     @Override
-    public void log(Level level, String message, Throwable e, Map<String, Object> pcontext) {
-        if (e == null)
+    public void log(final Level level, String message, Throwable e, final Map<String, Object> pcontext) {
+        if (e == null) {
             e = new Exception();
+        }
 
-        FormContextUtil ctxu = new FormContextUtil(pcontext);
+        final FormContextUtil ctxu = new FormContextUtil(pcontext);
         String prefixMessage = "";
 
         if (ctxu.getSession() != null && ctxu.getUserName() != null) {
@@ -38,10 +39,10 @@ public class FormLogger implements IFormLogger {
             prefixMessage += "Form<" + ctxu.getFormName() + "> ";
         }
 
-        HashMap<String, FormFieldValue> submittedFields = ctxu.getSubmittedFields();
+        final HashMap<String, FormFieldValue> submittedFields = ctxu.getSubmittedFields();
         if (!submittedFields.isEmpty()) {
             prefixMessage += "Submitted Fields<";
-            String fieldStringRepresentation = getFormFieldStringRepresentation("", submittedFields);
+            final String fieldStringRepresentation = getFormFieldStringRepresentation("", submittedFields);
             prefixMessage += fieldStringRepresentation + "> ";
         }
 
@@ -57,9 +58,9 @@ public class FormLogger implements IFormLogger {
                 prefixMessage += "Task<" + ctxu.getTaskName() + "> ";
             }
 
-        } catch (ProcessDefinitionNotFoundException e1) {
+        } catch (final ProcessDefinitionNotFoundException e1) {
             prefixMessage += "Process definition not found " + e1.getMessage();
-        } catch (BPMEngineException e1) {
+        } catch (final BPMEngineException e1) {
             prefixMessage += e1.getMessage();
         }
         if (message == null) {
@@ -78,12 +79,12 @@ public class FormLogger implements IFormLogger {
         }
     }
 
-    protected String getFormFieldStringRepresentation(String returnedStr, Map<String, FormFieldValue> submittedFields) {
+    protected String getFormFieldStringRepresentation(String returnedStr, final Map<String, FormFieldValue> submittedFields) {
         int i = 0;
-        for (Map.Entry<String, FormFieldValue> entry : submittedFields.entrySet()) {
+        for (final Map.Entry<String, FormFieldValue> entry : submittedFields.entrySet()) {
             i = i + 1;
-            FormFieldValue fieldValue = entry.getValue();
-            String fieldName = entry.getKey();
+            final FormFieldValue fieldValue = entry.getValue();
+            final String fieldName = entry.getKey();
             if (!entry.getValue().hasChildWidgets()) {
                 returnedStr += formatLogField(fieldName, fieldValue);
             }
@@ -94,12 +95,12 @@ public class FormLogger implements IFormLogger {
         return returnedStr;
     }
 
-    protected String formatLogField(String fieldName, FormFieldValue fieldValue) {
+    protected String formatLogField(final String fieldName, final FormFieldValue fieldValue) {
         return fieldName + " (" + fieldValue.getValueType() + ")" + " => " + fieldValue.getValue();
     }
 
     @Override
-    public boolean isLoggable(Level level) {
+    public boolean isLoggable(final Level level) {
         return LOGGER.isLoggable(level);
     }
 }

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -34,21 +32,20 @@ import org.bonitasoft.web.toolkit.client.ui.utils.dateformat.RelativeStringDateF
  * <li>Display as a full date with time : MM/dd/YYYY HH:mm (localized format)</li>
  * <li>Display as time relative to current time : "1 hour ago", "in 5 minutes", "2 years ago"</li>
  * </ul>
- * 
+ *
  * @author Séverin Moussel
- * 
  */
-// TODO : 
+// TODO :
 // * pull out all kind of date formatter in different classes like RelativeStringDateFormatter
 // * make an interface implemented by all date formatter
 // * make a switch return a polimorph DateFormatter and just call dateFormatter.format(...)
 public abstract class DateFormat {
 
     private static RelativeStringDateFormatter relativeStringDateFormatter = new RelativeStringDateFormatter();
-    
+
     public static enum UNIT {
         YEAR, MONTH, DAY, HOUR, MINUTE, SECOND, MILLISECOND
-    };
+    }
 
     public static enum FORMAT {
         SQL("yyyy-MM-dd HH:mm:ss.SSS"),
@@ -69,9 +66,9 @@ public abstract class DateFormat {
         }
 
         public String getFormatString() {
-            return this.formatString;
+            return formatString;
         }
-    };
+    }
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // GENERIC TO RELATIVE conversion
@@ -153,9 +150,8 @@ public abstract class DateFormat {
     public static String formatToFormat(final String date, final FORMAT inputFormat, final FORMAT outputFormat) throws IllegalArgumentException {
         if (FORMAT.DISPLAY_RELATIVE.equals(outputFormat)) {
             return formatToDisplayRelative(date, inputFormat);
-        } else {
-            return formatToFormat(date, inputFormat.getFormatString(), outputFormat.getFormatString());
         }
+        return formatToFormat(date, inputFormat.getFormatString(), outputFormat.getFormatString());
     }
 
     public static String formatToFormat(final String date, final String inputFormat, final FORMAT outputFormat) throws IllegalArgumentException {

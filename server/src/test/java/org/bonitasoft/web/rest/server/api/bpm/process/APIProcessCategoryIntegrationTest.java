@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -18,8 +16,6 @@ package org.bonitasoft.web.rest.server.api.bpm.process;
 
 import java.util.Arrays;
 import java.util.List;
-
-import junit.framework.Assert;
 
 import org.bonitasoft.engine.bpm.category.Category;
 import org.bonitasoft.test.toolkit.bpm.TestCategory;
@@ -31,11 +27,11 @@ import org.bonitasoft.test.toolkit.organization.TestUserFactory;
 import org.bonitasoft.web.rest.model.bpm.process.ProcessCategoryItem;
 import org.bonitasoft.web.rest.server.AbstractConsoleTest;
 import org.bonitasoft.web.toolkit.client.data.APIID;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class APIProcessCategoryIntegrationTest extends AbstractConsoleTest {
 
@@ -43,8 +39,8 @@ public class APIProcessCategoryIntegrationTest extends AbstractConsoleTest {
 
     @Override
     public void consoleTestSetUp() throws Exception {
-        this.api = new APIProcessCategory();
-        this.api.setCaller(getAPICaller(getInitiator().getSession(),
+        api = new APIProcessCategory();
+        api.setCaller(getAPICaller(getInitiator().getSession(),
                 "API/bpm/processCategory"));
     }
 
@@ -64,7 +60,7 @@ public class APIProcessCategoryIntegrationTest extends AbstractConsoleTest {
         processCategory.setProcessId(process.getId());
         processCategory.setCategoryId(category.getId());
 
-        this.api.runAdd(processCategory);
+        api.runAdd(processCategory);
 
         // Check
         final List<TestCategory> categories = process.getCategories();
@@ -84,7 +80,7 @@ public class APIProcessCategoryIntegrationTest extends AbstractConsoleTest {
         process.addCategory(category.getId());
 
         // API call
-        this.api.runDelete(Arrays.asList(APIID.makeAPIID(process.getId(), category.getId())));
+        api.runDelete(Arrays.asList(APIID.makeAPIID(process.getId(), category.getId())));
 
         // Check
         final List<TestCategory> categories = process.getCategories();

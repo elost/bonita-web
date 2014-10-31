@@ -5,19 +5,17 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.datastore.profile.member;
 
-import static junit.framework.Assert.assertTrue;
 import static org.bonitasoft.web.rest.model.builder.profile.member.EngineProfileMemberBuilder.anEngineProfileMember;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.when;
@@ -42,7 +40,6 @@ import org.mockito.Mock;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class SearchProfileMembersHelperTest extends APITestWithMock {
 
@@ -58,20 +55,20 @@ public class SearchProfileMembersHelperTest extends APITestWithMock {
     }
 
     @Test
-    public void testWeCanSearchProfileMembers() throws Exception {
-        SearchResultImpl<ProfileMember> aKnownSearchResult = aKnownSearchResult();
-        List<ProfileMemberItem> expectedProfileMemberItems = new ProfileMemberItemConverter().convert(aKnownSearchResult().getResult());
+    public void testWeCanSearchProfileMembers() {
+        final SearchResultImpl<ProfileMember> aKnownSearchResult = aKnownSearchResult();
+        final List<ProfileMemberItem> expectedProfileMemberItems = new ProfileMemberItemConverter().convert(aKnownSearchResult().getResult());
         when(engineClient.searchProfileMembers(eq(MemberType.ROLE.getType()), any(SearchOptions.class))).thenReturn(aKnownSearchResult);
-        HashMap<String, String> filters = filterOnProfileIdAndMemberType(5L, MemberType.ROLE);
-        
-        ItemSearchResult<ProfileMemberItem> searchResult = searchProfilesHelper.search(0, 10, null, null, filters);
+        final HashMap<String, String> filters = filterOnProfileIdAndMemberType(5L, MemberType.ROLE);
+
+        final ItemSearchResult<ProfileMemberItem> searchResult = searchProfilesHelper.search(0, 10, null, null, filters);
 
         assertTrue(SearchUtils.areEquals(expectedProfileMemberItems, searchResult.getResults()));
     }
 
     @Test(expected = APIFilterMandatoryException.class)
     public void testSearchWithoutMandatoryFiltersThrowError() {
-        
+
         searchProfilesHelper.search(0, 10, null, null, Collections.<String, String> emptyMap());
     }
 
@@ -79,15 +76,16 @@ public class SearchProfileMembersHelperTest extends APITestWithMock {
         return SearchUtils.createEngineSearchResult(aKnownProfile(), anotherKnownProfile());
 
     }
-    private HashMap<String, String> filterOnProfileIdAndMemberType(long id, MemberType type) {
-        HashMap<String, String> filters = new HashMap<String, String>();
+
+    private HashMap<String, String> filterOnProfileIdAndMemberType(final long id, final MemberType type) {
+        final HashMap<String, String> filters = new HashMap<String, String>();
         filters.put(ProfileMemberItem.ATTRIBUTE_PROFILE_ID, String.valueOf(id));
         filters.put(ProfileMemberItem.FILTER_MEMBER_TYPE, type.getType());
         return filters;
     }
 
     private ProfileMember aKnownProfile() {
-        return anEngineProfileMember() .build();
+        return anEngineProfileMember().build();
     }
 
     private ProfileMember anotherKnownProfile() {

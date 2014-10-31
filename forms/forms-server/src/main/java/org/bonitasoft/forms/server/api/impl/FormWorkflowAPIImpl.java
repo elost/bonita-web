@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -43,7 +41,6 @@ import org.bonitasoft.engine.bpm.flownode.ActivityInstanceCriterion;
 import org.bonitasoft.engine.bpm.flownode.ActivityInstanceNotFoundException;
 import org.bonitasoft.engine.bpm.flownode.ActivityStates;
 import org.bonitasoft.engine.bpm.flownode.ArchivedActivityInstance;
-import org.bonitasoft.engine.bpm.flownode.ArchivedFlowNodeInstanceNotFoundException;
 import org.bonitasoft.engine.bpm.flownode.ArchivedHumanTaskInstance;
 import org.bonitasoft.engine.bpm.flownode.FlowNodeExecutionException;
 import org.bonitasoft.engine.bpm.flownode.HumanTaskInstance;
@@ -427,7 +424,6 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
      * @throws UserNotFoundException
      * @throws SearchException
      * @throws ProcessDefinitionNotFoundException
-     *
      */
     @Override
     public long getRelatedProcessesNextTask(final APISession session, final long processInstanceId) throws InvalidSessionException, BPMEngineException,
@@ -436,9 +432,8 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
             final long rootProcessInstanceId = getRootProcessInstanceId(getProcessAPI(session), processInstanceId);
             if (rootProcessInstanceId != NOT_FOUND) {
                 return getProcessInstanceTaskAvailableForUser(getProcessAPI(session), rootProcessInstanceId, session.getUserId());
-            } else {
-                return NOT_FOUND;
             }
+            return NOT_FOUND;
         } catch (final ProcessInstanceNotFoundException e) {
             return NOT_FOUND;
         }
@@ -457,7 +452,7 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
      * @throws ProcessDefinitionNotFoundException
      */
     private long getRootProcessInstanceId(final ProcessAPI processApi, final long processInstanceId) throws ProcessInstanceNotFoundException,
-            InvalidSessionException, BPMEngineException, ProcessDefinitionNotFoundException {
+            InvalidSessionException {
         final ProcessInstance processInstance = processApi.getProcessInstance(processInstanceId);
         return identifyRootProcessInstanceId(processInstanceId, processInstance.getRootProcessInstanceId());
     }
@@ -467,7 +462,7 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
     }
 
     public long getProcessInstanceTaskAvailableForUser(final ProcessAPI processAPI, final long processInstanceId, final long userId)
-            throws UserNotFoundException, InvalidSessionException, SearchException {
+            throws InvalidSessionException, SearchException {
         final SearchOptionsBuilder searchOptionBuilder = createProcessInstancePendingTasksSearchOption(1, processInstanceId);
         final SearchResult<HumanTaskInstance> searchPendingTasksForUser = processAPI.searchMyAvailableHumanTasks(userId, searchOptionBuilder.done());
         return extractFirstAcitivityId(searchPendingTasksForUser);
@@ -476,9 +471,8 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
     private long extractFirstAcitivityId(final SearchResult<HumanTaskInstance> searchPendingTasksForUser) {
         if (!isSearchResultEmpty(searchPendingTasksForUser)) {
             return searchPendingTasksForUser.getResult().get(0).getId();
-        } else {
-            return NOT_FOUND;
         }
+        return NOT_FOUND;
     }
 
     private boolean isSearchResultEmpty(final SearchResult<HumanTaskInstance> searchPendingTasksForUser) {
@@ -704,7 +698,6 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
 
     /**
      * {@inheritDoc}
-     *
      */
     @Override
     public long startInstance(final APISession session, final long userID, final long processDefinitionID) throws ProcessDefinitionNotFoundException,
@@ -717,7 +710,6 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
 
     /**
      * {@inheritDoc}
-     *
      */
     @Override
     public void terminateTask(final APISession session, final long userID, final long activityInstanceID) throws BPMEngineException, InvalidSessionException,
@@ -747,7 +739,7 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
      * {@inheritDoc}
      */
     @Override
-     public boolean canUserSeeProcessInstance(final APISession session, final boolean isInvolvedInProcessInstance, final long processInstanceID)
+    public boolean canUserSeeProcessInstance(final APISession session, final boolean isInvolvedInProcessInstance, final long processInstanceID)
             throws ProcessInstanceNotFoundException, BPMEngineException, InvalidSessionException, UserNotFoundException, ProcessDefinitionNotFoundException {
         //restore once BS-8953 is fixed engine-side
         //return bpmEngineAPIUtil.getProcessAPI(session).isInvolvedInProcessInstance(session.getUserId(), processInstanceID);
@@ -756,7 +748,7 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws BPMEngineException
      */
     @Override
@@ -934,7 +926,6 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
 
     /**
      * {@inheritDoc}
-     *
      */
     @Override
     public long getProcessDefinitionIDFromActivityInstanceID(final APISession session, final long activityInstanceID) throws ActivityInstanceNotFoundException,
@@ -971,9 +962,8 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
             }
             if (searchArchivedProcessInstances != null && searchArchivedProcessInstances.getCount() > 0) {
                 return searchArchivedProcessInstances.getResult().get(0).getProcessDefinitionId();
-            } else {
-                throw new ArchivedProcessInstanceNotFoundException(new Exception("Unable to find an archive process instance with ID " + processInstanceID));
             }
+            throw new ArchivedProcessInstanceNotFoundException(new Exception("Unable to find an archive process instance with ID " + processInstanceID));
         }
     }
 
@@ -1029,7 +1019,6 @@ public class FormWorkflowAPIImpl implements IFormWorkflowAPI {
 
     /**
      * {@inheritDoc}
-     *
      */
     @Override
     public String getActivityName(final APISession session, final long activityInstanceID) throws InvalidSessionException, BPMEngineException,

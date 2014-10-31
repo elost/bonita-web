@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -46,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * Accessor used to read the page nodes in the XML definition file and retrieve the widgets and validators
- * 
+ *
  * @author Anthony Birembaut
  */
 public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder {
@@ -85,7 +83,7 @@ public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder
 
     /**
      * Read a page node and return the list of {@link FormValidator} it contains
-     * 
+     *
      * @param pageNode
      *        the page node
      * @return a {@link List} of {@link FormValidator} Object
@@ -129,7 +127,7 @@ public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder
 
     /**
      * Read a page node and return the list of {@link FormWidget} it contains
-     * 
+     *
      * @param pageNode
      *        the page node
      * @param isEditMode
@@ -173,7 +171,7 @@ public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder
 
     /**
      * Read a widget and return a {@link FormWidget}
-     * 
+     *
      * @param widgetNode
      *        the widget node
      * @param isEditMode
@@ -397,7 +395,7 @@ public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder
 
     /**
      * Retrieve the available values from an available values list node
-     * 
+     *
      * @param availableValuesListNode
      * @return a List of {@link FormFieldAvailableValue}
      * @throws InvalidFormDefinitionException
@@ -417,7 +415,7 @@ public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder
 
     /**
      * Read a node and return the list of {@link FormAction} it contains
-     * 
+     *
      * @param parentNode
      *        the parent node of the actions
      * @param pageId
@@ -437,18 +435,17 @@ public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder
                 LOGGER.log(Level.WARNING, "Failed to parse the form definition file. query : " + xpath);
             }
             throw new InvalidFormDefinitionException("The actions were not found in the forms definition file");
-        } else {
-            for (int i = 0; i < actionNodes.getLength(); i++) {
-                final Node actionNode = actionNodes.item(i);
-                actions.add(parseAction(actionNode));
-            }
+        }
+        for (int i = 0; i < actionNodes.getLength(); i++) {
+            final Node actionNode = actionNodes.item(i);
+            actions.add(parseAction(actionNode));
         }
         return actions;
     }
 
     /**
      * Get the XPath query for the actions of a page
-     * 
+     *
      * @param pageId
      *        the page ID
      * @return the XPath query
@@ -471,7 +468,7 @@ public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder
 
     /**
      * Read an action node and return an action
-     * 
+     *
      * @param actionNode
      *        an action node
      * @return a {@link FormAction}
@@ -582,11 +579,10 @@ public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder
                 }
                 throw new InvalidFormDefinitionException(message, e);
             }
-        } else {
-            final String message = "the widget attribute \"type\" is mandatory.";
-            LOGGER.log(Level.SEVERE, message);
-            throw new InvalidFormDefinitionException(message);
         }
+        final String message = "the widget attribute \"type\" is mandatory.";
+        LOGGER.log(Level.SEVERE, message);
+        throw new InvalidFormDefinitionException(message);
     }
 
     /**
@@ -608,11 +604,10 @@ public class XMLWidgetBuilderImpl extends XPathUtil implements IXMLWidgetBuilder
                 }
                 throw new InvalidFormDefinitionException(message, e);
             }
-        } else {
-            final String message = "the action attribute \"type\" is mandatory.";
-            LOGGER.log(Level.SEVERE, message);
-            throw new InvalidFormDefinitionException(message);
         }
+        final String message = "the action attribute \"type\" is mandatory.";
+        LOGGER.log(Level.SEVERE, message);
+        throw new InvalidFormDefinitionException(message);
     }
 
 }

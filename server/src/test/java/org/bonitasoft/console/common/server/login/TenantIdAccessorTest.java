@@ -1,15 +1,15 @@
 package org.bonitasoft.console.common.server.login;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
-
-import javax.servlet.ServletException;
-
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.MockitoAnnotations.initMocks;
+
+import javax.servlet.ServletException;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
 
 /**
  * Created by Vincent Elcrin
@@ -22,7 +22,7 @@ public class TenantIdAccessorTest {
     private HttpServletRequestAccessor request;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
     }
 
@@ -30,7 +30,7 @@ public class TenantIdAccessorTest {
     public void testIfWeRetrieveRequestedTenantId() throws Exception {
         doReturn("5").when(request).getTenantId();
 
-        TenantIdAccessor accessor = new TenantIdAccessor(request);
+        final TenantIdAccessor accessor = new TenantIdAccessor(request);
 
         assertEquals(5L, accessor.getRequestedTenantId());
     }
@@ -46,7 +46,7 @@ public class TenantIdAccessorTest {
     public void testNullTenantId() throws Exception {
         doReturn(null).when(request).getTenantId();
 
-        TenantIdAccessor accessor = new TenantIdAccessor(request);
+        final TenantIdAccessor accessor = new TenantIdAccessor(request);
 
         assertEquals(-1L, accessor.getRequestedTenantId());
     }
@@ -55,7 +55,7 @@ public class TenantIdAccessorTest {
     public void testWeRetrieveDefaultTenantIdWhenRequestedOneIsNull() throws Exception {
         doReturn(null).when(request).getTenantId();
 
-        TenantIdAccessor accessor = spy(new TenantIdAccessor(request));
+        final TenantIdAccessor accessor = spy(new TenantIdAccessor(request));
 
         // avoid to have to rely on file
         doReturn(6L).when(accessor).getDefaultTenantId();

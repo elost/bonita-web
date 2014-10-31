@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -48,9 +46,8 @@ import org.bonitasoft.web.toolkit.client.data.APIID;
 
 /**
  * Process data store
- * 
+ *
  * @author Vincent Elcrin
- * 
  */
 public class ProcessDatastore extends CommonDatastore<ProcessItem, ProcessDeploymentInfo> implements
         DatastoreHasAdd<ProcessItem>,
@@ -81,11 +78,11 @@ public class ProcessDatastore extends CommonDatastore<ProcessItem, ProcessDeploy
                     getEngineSession(),
                     processDeploymentInfo.getProcessId(),
                     processDeploymentInfo.getDeploymentDate());
-        } catch (IOException e) {
+        } catch (final IOException e) {
             throw new APIException("", e);
-        } catch (ProcessDefinitionNotFoundException e) {
+        } catch (final ProcessDefinitionNotFoundException e) {
             throw new APIException("", e);
-        } catch (BPMEngineException e) {
+        } catch (final BPMEngineException e) {
             throw new APIException("", e);
         }
 
@@ -128,9 +125,8 @@ public class ProcessDatastore extends CommonDatastore<ProcessItem, ProcessDeploy
         if (!updater.getFields().isEmpty()) {
             final ProcessDeploymentInfo processDeploymentInfo = engineClient.updateProcessDeploymentInfo(id.toLong(), updater);
             return convertEngineToConsoleItem(processDeploymentInfo);
-        } else {
-            return convertEngineToConsoleItem(engineClient.getProcessDeploymentInfo(id.toLong()));
         }
+        return convertEngineToConsoleItem(engineClient.getProcessDeploymentInfo(id.toLong()));
     }
 
     private void changeProcessState(final ProcessEngineClient engineClient, final Long processId, final String state) {
@@ -169,9 +165,9 @@ public class ProcessDatastore extends CommonDatastore<ProcessItem, ProcessDeploy
         return null;
     }
 
-	private ProcessEngineClient getProcessEngineClient() {
-		return getEngineClientFactory().createProcessEngineClient();
-	}
+    private ProcessEngineClient getProcessEngineClient() {
+        return getEngineClientFactory().createProcessEngineClient();
+    }
 
     private EngineClientFactory getEngineClientFactory() {
         return new EngineClientFactory(new EngineAPIAccessor(getEngineSession()));

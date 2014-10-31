@@ -5,18 +5,16 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.api.bpm.cases;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +30,6 @@ import org.junit.Test;
 
 /**
  * @author Colin PUY
- * 
  */
 public class APICaseDocumentAnotherIntegrationTest extends AbstractConsoleTest {
 
@@ -50,17 +47,17 @@ public class APICaseDocumentAnotherIntegrationTest extends AbstractConsoleTest {
     }
 
     @Test
-    public void caseDocumentsCanBeCountedByCaseId() throws Exception {
-        TestCase startCase = TestProcessFactory.getProcessWithDocumentAttached().addActor(getInitiator()).startCase();
-        Map<String, String> caseIdfilter = buildCaseIdFilter(startCase.getId());
+    public void caseDocumentsCanBeCountedByCaseId() {
+        final TestCase startCase = TestProcessFactory.getProcessWithDocumentAttached().addActor(getInitiator()).startCase();
+        final Map<String, String> caseIdfilter = buildCaseIdFilter(startCase.getId());
 
-        ItemSearchResult<CaseDocumentItem> searchResult = apiCaseDocument.runSearch(0, 0, null, null, caseIdfilter, null, null);
+        final ItemSearchResult<CaseDocumentItem> searchResult = apiCaseDocument.runSearch(0, 0, null, null, caseIdfilter, null, null);
 
         assertEquals(1L, searchResult.getTotal());
     }
 
-    private Map<String, String> buildCaseIdFilter(long caseId) {
-        Map<String, String> filters = new HashMap<String, String>();
+    private Map<String, String> buildCaseIdFilter(final long caseId) {
+        final Map<String, String> filters = new HashMap<String, String>();
         filters.put(CaseDocumentItem.ATTRIBUTE_CASE_ID, String.valueOf(caseId));
         return filters;
     }

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -28,7 +26,6 @@ import org.junit.Test;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class WebBonitaConstantsUtilsTest {
 
@@ -39,7 +36,7 @@ public class WebBonitaConstantsUtilsTest {
     private WebBonitaConstantsUtils webBonitaConstantsUtils;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         webBonitaConstantsUtils = spy(new WebBonitaConstantsUtils(1L));
         doReturn(TEST_BONITA_HOME).when(webBonitaConstantsUtils).getBonitaHomePath();
 
@@ -47,12 +44,11 @@ public class WebBonitaConstantsUtilsTest {
         constants = new WebBonitaConstantsTenancyImpl(1L);
     }
 
-
     @Test
-    public void testWeCanGetFormsWorkFolder() throws Exception {
-        File expected = new File(TEST_BONITA_HOME, constants.getFormsWorkFolderPath());
+    public void testWeCanGetFormsWorkFolder() {
+        final File expected = new File(TEST_BONITA_HOME, constants.getFormsWorkFolderPath());
 
-        File folder = webBonitaConstantsUtils.getFormsWorkFolder();
+        final File folder = webBonitaConstantsUtils.getFormsWorkFolder();
 
         assertThat(folder.getPath(), equalTo(expected.getPath()));
     }

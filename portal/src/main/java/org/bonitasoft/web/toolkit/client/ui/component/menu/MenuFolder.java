@@ -74,7 +74,7 @@ public class MenuFolder extends Component implements MenuItem {
     }
 
     public MenuFolder addMenuItem(final MenuItem... menuItems) {
-        this.items.append(menuItems);
+        items.append(menuItems);
 
         return this;
     }
@@ -89,8 +89,8 @@ public class MenuFolder extends Component implements MenuItem {
 
     @Override
     protected Element makeElement() {
-        this.items.setRootTagName("ul");
-        this.items.setWrapTag(null, null);
+        items.setRootTagName("ul");
+        items.setWrapTag(null, null);
 
         final GQuery root = $("<li>");
         root.addClass("menuitem");
@@ -98,28 +98,28 @@ public class MenuFolder extends Component implements MenuItem {
             root.addClass(getJsId().toString("menuitem"));
         }
 
-        GQuery link = null;;
-        if (this.image != null || this.label != null && this.label.length() > 0) {
-            link = $("<a href=\"#\">" + this.label + "</a>");
+        GQuery link = null;
+        if (image != null || label != null && label.length() > 0) {
+            link = $("<a href=\"#\">" + label + "</a>");
             root.append(link);
 
-            if (this.label != null && this.label.length() > 0) {
-                link.text(this.label);
+            if (label != null && label.length() > 0) {
+                link.text(label);
             }
 
-            if (this.image != null) {
-                link.prepend(this.image.getElement());
+            if (image != null) {
+                link.prepend(image.getElement());
             }
 
         }
 
-        appendComponentToHtml((Element) root.get(0), this.items);
+        appendComponentToHtml((Element) root.get(0), items);
 
         return (Element) root.get(0);
     }
 
     public void clear() {
-        this.items.empty();
+        items.empty();
     }
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -130,7 +130,7 @@ public class MenuFolder extends Component implements MenuItem {
         this.label = label;
 
         if (isGenerated()) {
-            final GQuery link = $(this.element).children("a");
+            final GQuery link = $(element).children("a");
             final GQuery image = link.find("img");
 
             link.text(label);
@@ -145,7 +145,7 @@ public class MenuFolder extends Component implements MenuItem {
 
         if (isGenerated()) {
 
-            final GQuery link = $(this.element).children("a");
+            final GQuery link = $(element).children("a");
             final GQuery img = link.find("img");
 
             if (image == null) {

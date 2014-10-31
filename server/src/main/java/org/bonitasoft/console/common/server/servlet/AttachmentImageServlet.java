@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet allowing to download process instances attachments
- * 
+ *
  * @author Julien Mege
  */
 public abstract class AttachmentImageServlet extends AttachmentDownloadServlet {
@@ -50,7 +50,7 @@ public abstract class AttachmentImageServlet extends AttachmentDownloadServlet {
 
     /**
      * @param directoryPath
-     *            the directoryPath to set
+     *        the directoryPath to set
      */
     public void setDirectoryPath(final String directoryPath) {
         this.directoryPath = directoryPath;
@@ -68,15 +68,16 @@ public abstract class AttachmentImageServlet extends AttachmentDownloadServlet {
         byte[] attachment = null;
 
         if (srcStr != null) {
-            final File iconDir = new File(this.directoryPath);
+            final File iconDir = new File(directoryPath);
             final File file = new File(iconDir, srcStr);
-                        
+
             try {
                 if (!file.getCanonicalPath().startsWith(iconDir.getCanonicalPath())) {
                     throw new IOException();
                 }
             } catch (final IOException e) {
-                final String errorMessage = "Error while getting the resource " + srcStr + " For security reasons, access to paths other than " + iconDir.getName() + " is restricted";
+                final String errorMessage = "Error while getting the resource " + srcStr + " For security reasons, access to paths other than "
+                        + iconDir.getName() + " is restricted";
                 if (LOGGER.isLoggable(Level.SEVERE)) {
                     LOGGER.log(Level.SEVERE, errorMessage, e);
                 }
@@ -86,9 +87,8 @@ public abstract class AttachmentImageServlet extends AttachmentDownloadServlet {
             int fileLength = 0;
             if (file.length() > Integer.MAX_VALUE) {
                 throw new ServletException("file " + srcStr + " too big !");
-            } else {
-                fileLength = (int) file.length();
             }
+            fileLength = (int) file.length();
             if (fileName == null) {
                 fileName = file.getName();
             }

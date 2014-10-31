@@ -16,7 +16,6 @@ package org.bonitasoft.web.toolkit.client.data.item.attribute;
 
 import java.util.List;
 
-import org.bonitasoft.web.toolkit.client.data.item.Item;
 import org.bonitasoft.web.toolkit.client.data.item.attribute.modifier.DefaultValueModifier;
 import org.bonitasoft.web.toolkit.client.data.item.attribute.modifier.Modifier;
 import org.bonitasoft.web.toolkit.client.data.item.attribute.validator.FileIsImageValidator;
@@ -34,7 +33,7 @@ import org.bonitasoft.web.toolkit.client.data.item.attribute.validator.Validator
 
 /**
  * This class represents an attribute of an {@link Item}
- * 
+ *
  * @author Séverin Moussel
  */
 public final class ItemAttribute implements Validable, ModifiableInput, ModifiableOutput {
@@ -56,7 +55,6 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
 
     /**
      * The maximum length of a long in UI (arbitrary value)
-     * 
      */
     public static final int MAX_LENGTH_LONG = 2000;
 
@@ -82,7 +80,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
 
     /**
      * The type of value an attribute can get.
-     * 
+     *
      * @author Séverin Moussel
      */
     public static enum TYPE {
@@ -131,17 +129,17 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
          * </ul>
          */
         EMAIL,
-        
+
         /**
          * A URL
          * <ul>
          * <li>Validate max length of {@value #MAX_LENGTH_URL}</li>
          * </ul>
          */
-        URL, 
-        
+        URL,
+
         ITEM_ID
-    };
+    }
 
     private String name = null;
 
@@ -155,11 +153,11 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
 
     /**
      * Default constructor
-     * 
+     *
      * @param name
-     *            The name of the DataSource variable
+     *        The name of the DataSource variable
      * @param type
-     *            The type of the attribute datas choosen in ItemAttribute.TYPE_XXX
+     *        The type of the attribute datas choosen in ItemAttribute.TYPE_XXX
      */
     public ItemAttribute(final String name, final TYPE type) {
         this.name = name;
@@ -171,7 +169,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      * Define the default validators using the provided type
      */
     private void initType() {
-        switch (this.type) {
+        switch (type) {
             case PASSWORD:
             case STRING:
                 // Because Text inputs are not multiline
@@ -224,15 +222,15 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public TYPE getType() {
-        return this.type;
+        return type;
     }
 
     public String getDefaultValue() {
-        return this.defaultValue;
+        return defaultValue;
     }
 
     // // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -250,7 +248,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public List<Modifier> getInputModifiers() {
-        return this.inputModifiers.getModifiers();
+        return inputModifiers.getModifiers();
     }
 
     /**
@@ -259,7 +257,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public ItemAttribute addInputModifier(final Modifier modifier) {
-        this.inputModifiers.addModifier(modifier);
+        inputModifiers.addModifier(modifier);
         return this;
     }
 
@@ -269,7 +267,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public ItemAttribute addInputModifiers(final List<Modifier> modifiers) {
-        this.inputModifiers.addModifiers(modifiers);
+        inputModifiers.addModifiers(modifiers);
         return this;
     }
 
@@ -279,7 +277,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public ItemAttribute removeInputModifier(final String modifierClassName) {
-        this.inputModifiers.removeModifier(modifierClassName);
+        inputModifiers.removeModifier(modifierClassName);
         return this;
     }
 
@@ -289,7 +287,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public boolean hasInputModifier(final String modifierClassName) {
-        return this.inputModifiers.hasModifier(modifierClassName);
+        return inputModifiers.hasModifier(modifierClassName);
     }
 
     /**
@@ -298,7 +296,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public Modifier getInputModifier(final String modifierClassName) {
-        return this.inputModifiers.getModifier(modifierClassName);
+        return inputModifiers.getModifier(modifierClassName);
     }
 
     /**
@@ -306,7 +304,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public List<Modifier> getOutputModifiers() {
-        return this.outputModifiers.getModifiers();
+        return outputModifiers.getModifiers();
     }
 
     /**
@@ -315,7 +313,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public ItemAttribute addOutputModifier(final Modifier modifier) {
-        this.outputModifiers.addModifier(modifier);
+        outputModifiers.addModifier(modifier);
         return this;
     }
 
@@ -325,7 +323,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public ItemAttribute addOutputModifiers(final List<Modifier> modifiers) {
-        this.outputModifiers.addModifiers(modifiers);
+        outputModifiers.addModifiers(modifiers);
         return this;
     }
 
@@ -335,7 +333,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public ItemAttribute removeOutputModifier(final String modifierClassName) {
-        this.outputModifiers.removeModifier(modifierClassName);
+        outputModifiers.removeModifier(modifierClassName);
         return this;
     }
 
@@ -345,7 +343,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public boolean hasOutputModifier(final String modifierClassName) {
-        return this.outputModifiers.hasModifier(modifierClassName);
+        return outputModifiers.hasModifier(modifierClassName);
     }
 
     /**
@@ -354,7 +352,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public Modifier getOutputModifier(final String modifierClassName) {
-        return this.outputModifiers.getModifier(modifierClassName);
+        return outputModifiers.getModifier(modifierClassName);
     }
 
     /**
@@ -362,7 +360,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public List<Validator> getValidators() {
-        return this.validators.getValidators();
+        return validators.getValidators();
     }
 
     @Override
@@ -371,9 +369,9 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      * @see org.bonitasoft.web.toolkit.client.data.item.attribute.ValidatorsList#addValidator(org.bonitasoft.web.toolkit.client.data.item.attribute.validator.Validator)
      */
     public ItemAttribute addValidator(final Validator validator) {
-        validator.setAttributeName(this.name);
+        validator.setAttributeName(name);
 
-        this.validators.addValidator(validator);
+        validators.addValidator(validator);
         return this;
     }
 
@@ -393,7 +391,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public ItemAttribute removeValidator(final String validatorClassName) {
-        this.validators.removeValidator(validatorClassName);
+        validators.removeValidator(validatorClassName);
         return this;
     }
 
@@ -403,7 +401,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public boolean hasValidator(final String validatorClassName) {
-        return this.validators.hasValidator(validatorClassName);
+        return validators.hasValidator(validatorClassName);
     }
 
     /**
@@ -412,7 +410,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      */
     @Override
     public Validator getValidator(final String validatorClassName) {
-        return this.validators.getValidator(validatorClassName);
+        return validators.getValidator(validatorClassName);
     }
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -422,7 +420,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
     /**
      * Set the default value if no value is define for this attribute.<br />
      * This method add a DefaultValueModifier to the attribute
-     * 
+     *
      * @param value
      */
     public ItemAttribute setDefaultValue(final String value) {
@@ -433,7 +431,7 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
     /**
      * Define if this attribute is mandatory (mustn't be empty)<br />
      * This method add a DefaultValueModifier to the attribute
-     * 
+     *
      * @param isMandatory
      */
     public ItemAttribute isMandatory(final boolean isMandatory) {
@@ -448,7 +446,6 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
     /**
      * Define if this attribute is mandatory (mustn't be empty)<br />
      * This method add a DefaultValueModifier to the attribute
-     * 
      */
     public ItemAttribute isMandatory() {
         return isMandatory(true);

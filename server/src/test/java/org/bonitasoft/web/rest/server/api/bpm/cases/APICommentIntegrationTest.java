@@ -26,9 +26,9 @@ public class APICommentIntegrationTest extends AbstractConsoleTest {
      * @see org.bonitasoft.console.server.AbstractJUnitWebTest#webTestSetUp()
      */
     @Override
-    public void consoleTestSetUp() throws Exception {
-        this.apiComment = new APIComment();
-        this.apiComment.setCaller(getAPICaller(getInitiator().getSession(), "API/bpm/comment"));
+    public void consoleTestSetUp() {
+        apiComment = new APIComment();
+        apiComment.setCaller(getAPICaller(getInitiator().getSession(), "API/bpm/comment"));
 
         testCase = TestProcessFactory.getDefaultHumanTaskProcess().addActor(getInitiator()).startCase();
     }
@@ -44,8 +44,8 @@ public class APICommentIntegrationTest extends AbstractConsoleTest {
 
     @Test
     public void testAddCommentItem() throws Exception {
-        final CommentItem commentItem = createCommentItem(this.content);
-        this.apiComment.add(commentItem);
+        final CommentItem commentItem = createCommentItem(content);
+        apiComment.add(commentItem);
 
         assertEquals("Can't add a comment with the APIComment",
                 TenantAPIAccessor.getProcessAPI(getInitiator().getSession())
@@ -53,8 +53,8 @@ public class APICommentIntegrationTest extends AbstractConsoleTest {
     }
 
     @Test
-    public void testSearchCommentItem() throws Exception {
-        testCase.addComments(getInitiator(), 3, this.content);
+    public void testSearchCommentItem() {
+        testCase.addComments(getInitiator(), 3, content);
 
         // Set the filters
         final HashMap<String, String> filters = new HashMap<String, String>();
@@ -62,8 +62,8 @@ public class APICommentIntegrationTest extends AbstractConsoleTest {
         filters.put(CommentItem.ATTRIBUTE_PROCESS_INSTANCE_ID, String.valueOf(testCase.getId()));
 
         // Search the CommentItem
-        final CommentItem item = this.apiComment.search(0, 10, null, null, filters).getResults().get(0);
-        assertEquals("Find the wrong CommentItem with APIComment", this.content + "0",
+        final CommentItem item = apiComment.search(0, 10, null, null, filters).getResults().get(0);
+        assertEquals("Find the wrong CommentItem with APIComment", content + "0",
                 item.getAttributeValue(CommentItem.ATTRIBUTE_CONTENT));
 
     }

@@ -43,12 +43,9 @@ import org.bonitasoft.engine.bpm.process.ProcessActivationException;
 import org.bonitasoft.engine.bpm.process.ProcessDefinitionNotEnabledException;
 import org.bonitasoft.engine.bpm.process.ProcessDefinitionNotFoundException;
 import org.bonitasoft.engine.bpm.process.ProcessInstanceNotFoundException;
-import org.bonitasoft.engine.exception.BonitaHomeNotSetException;
 import org.bonitasoft.engine.exception.CreationException;
 import org.bonitasoft.engine.exception.ExecutionException;
 import org.bonitasoft.engine.exception.SearchException;
-import org.bonitasoft.engine.exception.ServerAPIException;
-import org.bonitasoft.engine.exception.UnknownAPITypeException;
 import org.bonitasoft.engine.expression.ExpressionType;
 import org.bonitasoft.engine.identity.UserNotFoundException;
 import org.bonitasoft.engine.session.APISession;
@@ -635,17 +632,16 @@ public class FormServiceProviderImpl implements FormServiceProvider {
                 getLogger().log(Level.SEVERE, message, context);
             }
             throw new FormNotFoundException(message);
+        }
+        final String[] formIdComponents = formId.split("\\" + FormServiceProviderUtil.FORM_ID_SEPARATOR);
+        if (formIdComponents.length > 1) {
+            formType = formIdComponents[1];
         } else {
-            final String[] formIdComponents = formId.split("\\" + FormServiceProviderUtil.FORM_ID_SEPARATOR);
-            if (formIdComponents.length > 1) {
-                formType = formIdComponents[1];
-            } else {
-                final String message = "Wrong FormId " + formId + ". It doesn't contain the form type.";
-                if (getLogger().isLoggable(Level.SEVERE)) {
-                    getLogger().log(Level.SEVERE, message, context);
-                }
-                throw new IllegalArgumentException(message);
+            final String message = "Wrong FormId " + formId + ". It doesn't contain the form type.";
+            if (getLogger().isLoggable(Level.SEVERE)) {
+                getLogger().log(Level.SEVERE, message, context);
             }
+            throw new IllegalArgumentException(message);
         }
         return formType;
     }
@@ -1548,9 +1544,8 @@ public class FormServiceProviderImpl implements FormServiceProvider {
      * @throws IOException
      * @throws SessionTimeoutException
      */
-    protected Date getDeployementDate(final APISession session, final long processDefinitionID,
-            final Map<String, Object> context) throws ProcessDefinitionNotFoundException, IOException,
-            SessionTimeoutException {
+    protected Date getDeployementDate(final APISession session, final long processDefinitionID, final Map<String, Object> context)
+            throws ProcessDefinitionNotFoundException, SessionTimeoutException {
         Date processDeployementDate = null;
         if (processDefinitionID != -1) {
             try {
@@ -1773,29 +1768,29 @@ public class FormServiceProviderImpl implements FormServiceProvider {
         String documentName = null;
         if (value != null) {
             if (value instanceof org.bonitasoft.engine.bpm.document.Document) {
-            	final org.bonitasoft.engine.bpm.document.Document document = (org.bonitasoft.engine.bpm.document.Document) value;
+                final org.bonitasoft.engine.bpm.document.Document document = (org.bonitasoft.engine.bpm.document.Document) value;
                 formFieldValue = convertDocumentToFromFieldValue(document, context);
             } else {
                 documentName = (String) value;
-	            try {
-	                try {
-	                    final Expression documentExpression = new Expression(null, documentName, ExpressionType.TYPE_DOCUMENT.name(),
-	                            org.bonitasoft.engine.bpm.document.Document.class.getName(), null, null);
-	                    final Serializable evaluationResult = resolveExpression(documentExpression, context);
-	                    final org.bonitasoft.engine.bpm.document.Document document = (org.bonitasoft.engine.bpm.document.Document) evaluationResult;
-	                    if (document != null) {
+                try {
+                    try {
+                        final Expression documentExpression = new Expression(null, documentName, ExpressionType.TYPE_DOCUMENT.name(),
+                                org.bonitasoft.engine.bpm.document.Document.class.getName(), null, null);
+                        final Serializable evaluationResult = resolveExpression(documentExpression, context);
+                        final org.bonitasoft.engine.bpm.document.Document document = (org.bonitasoft.engine.bpm.document.Document) evaluationResult;
+                        if (document != null) {
                             formFieldValue = convertDocumentToFromFieldValue(document, context);
-	                    }
-	                } catch (final FormNotFoundException e) {
-	                    final String message = "Error while trying to retrieve the document " + documentName;
-	                    logSevereWithContext(message, e, context);
-	                    throw new IllegalArgumentException(message);
-	                }
-	            } catch (final ClassCastException e) {
-	                final String message = "Error while setting the initial value of a file widget. A Document name is expected as initial value.";
-	                logSevereWithContext(message, e, context);
-	                throw new IllegalArgumentException(message);
-	            }
+                        }
+                    } catch (final FormNotFoundException e) {
+                        final String message = "Error while trying to retrieve the document " + documentName;
+                        logSevereWithContext(message, e, context);
+                        throw new IllegalArgumentException(message);
+                    }
+                } catch (final ClassCastException e) {
+                    final String message = "Error while setting the initial value of a file widget. A Document name is expected as initial value.";
+                    logSevereWithContext(message, e, context);
+                    throw new IllegalArgumentException(message);
+                }
             }
         }
         if (getLogger().isLoggable(Level.FINEST)) {
@@ -1813,25 +1808,25 @@ public class FormServiceProviderImpl implements FormServiceProvider {
     }
 
     protected FormFieldValue convertDocumentToFromFieldValue(final org.bonitasoft.engine.bpm.document.Document document, final Map<String, Object> context) {
-		FormFieldValue formFieldValue;
-		String documentValue = null;
-		String valueType = null;
-		if (document.hasContent()) {
-		    documentValue = document.getContentFileName();
-		    valueType = File.class.getName();
-		} else {
-		    documentValue = document.getUrl();
-		    valueType = String.class.getName();
-		}
-		if (getLogger().isLoggable(Level.FINE)) {
+        FormFieldValue formFieldValue;
+        String documentValue = null;
+        String valueType = null;
+        if (document.hasContent()) {
+            documentValue = document.getContentFileName();
+            valueType = File.class.getName();
+        } else {
+            documentValue = document.getUrl();
+            valueType = String.class.getName();
+        }
+        if (getLogger().isLoggable(Level.FINE)) {
             getLogger().log(Level.FINE, "Document " + document.getId() + " retrieved with value: " + documentValue, context);
-		}
-		formFieldValue = new FormFieldValue(documentValue, valueType);
-		formFieldValue.setDocumentId(document.getId());
-		formFieldValue.setDocumentName(document.getName());
-		formFieldValue.setDocument(true);
-		return formFieldValue;
-	}
+        }
+        formFieldValue = new FormFieldValue(documentValue, valueType);
+        formFieldValue.setDocumentId(document.getId());
+        formFieldValue.setDocumentName(document.getName());
+        formFieldValue.setDocument(true);
+        return formFieldValue;
+    }
 
     /**
      * {@inheritDoc}

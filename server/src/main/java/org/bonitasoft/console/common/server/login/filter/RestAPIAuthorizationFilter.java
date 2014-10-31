@@ -14,10 +14,11 @@
  */
 package org.bonitasoft.console.common.server.login.filter;
 
+import java.util.logging.Level;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.logging.Level;
 
 import org.bonitasoft.console.common.server.login.LoginManager;
 import org.bonitasoft.engine.session.APISession;
@@ -31,24 +32,22 @@ public class RestAPIAuthorizationFilter extends AbstractAuthorizationFilter {
     private static final String PLATFORM_API_URI = "API/platform/";
 
     protected static final String PLATFORM_SESSION_PARAM_KEY = "platformSession";
-    
+
     @Override
-    boolean checkValidCondition(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws ServletException {
+    boolean checkValidCondition(final HttpServletRequest httpRequest, final HttpServletResponse httpResponse) throws ServletException {
         try {
             if (httpRequest.getRequestURI().contains(PLATFORM_API_URI)) {
                 final PlatformSession platformSession = (PlatformSession) httpRequest.getSession().getAttribute(PLATFORM_SESSION_PARAM_KEY);
                 if (platformSession != null) {
                     return true;
-                } else {
-                    httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 }
+                httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             } else {
                 final APISession apiSession = (APISession) httpRequest.getSession().getAttribute(LoginManager.API_SESSION_PARAM_KEY);
                 if (apiSession != null) {
                     return true;
-                } else {
-                    httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 }
+                httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             }
             return false;
         } catch (final Exception e) {

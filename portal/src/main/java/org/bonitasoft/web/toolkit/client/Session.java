@@ -5,12 +5,10 @@
  * it under the terms of the GNU General public static License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General public static License for more details.
- * 
  * You should have received a copy of the GNU General public static License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -20,7 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gwt.user.client.Window;
 import org.bonitasoft.web.toolkit.client.common.TreeIndexed;
 import org.bonitasoft.web.toolkit.client.common.session.SessionItem;
 import org.bonitasoft.web.toolkit.client.common.url.UrlOption;
@@ -28,7 +25,6 @@ import org.bonitasoft.web.toolkit.client.data.APIID;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class Session extends ParametersStorage {
 
@@ -49,22 +45,22 @@ public class Session extends ParametersStorage {
      */
     @Override
     protected final void resetParameters() {
-        this.parameters.clear();
+        parameters.clear();
     }
 
     /**
      * Read the cookie from the user browser and parse it
-     * 
+     *
      * @return This method returns the content of the cookie as an indexed tree
      */
     @Override
     protected final TreeIndexed<String> readParameters(final boolean updateExpiresDate) {
-        return this.parameters;
+        return parameters;
     }
 
     /**
      * Save the cookie to the
-     * 
+     *
      * @param parameters
      */
     @Override
@@ -79,9 +75,9 @@ public class Session extends ParametersStorage {
 
     /**
      * Replace all parameters by the passed ones. Using this method also remove the parameters that are not redefined.
-     * 
+     *
      * @param params
-     *            The new parameters to set.
+     *        The new parameters to set.
      */
     public static void setParameters(final HashMap<String, String> params) {
         SINGLETON._setParameters(params);
@@ -89,9 +85,9 @@ public class Session extends ParametersStorage {
 
     /**
      * Replace all parameters by the passed ones. Using this method also remove the parameters that are not redefined.
-     * 
+     *
      * @param params
-     *            The new parameters to set.
+     *        The new parameters to set.
      */
     public static void setParameters(final TreeIndexed<String> params) {
         SINGLETON._setParameters(params);
@@ -99,7 +95,7 @@ public class Session extends ParametersStorage {
 
     /**
      * Add a parameter. If this parameter already exists, the value will be changed
-     * 
+     *
      * @param name
      * @param value
      */
@@ -109,7 +105,7 @@ public class Session extends ParametersStorage {
 
     /**
      * Add a parameter. If this parameter already exists, the value will be changed
-     * 
+     *
      * @param name
      * @param value
      */
@@ -119,7 +115,7 @@ public class Session extends ParametersStorage {
 
     /**
      * Add a parameter. If this parameter already exists, the value will be changed
-     * 
+     *
      * @param name
      * @param value
      */
@@ -129,7 +125,7 @@ public class Session extends ParametersStorage {
 
     /**
      * Get the value of a parameter.
-     * 
+     *
      * @param name
      * @return This method returns the value of a parameter or NULL if the parameter doesn't exist or is an array.
      */
@@ -139,7 +135,7 @@ public class Session extends ParametersStorage {
 
     /**
      * Get the value of a parameter.
-     * 
+     *
      * @param name
      * @param defaultValue
      * @return This method returns the value of a parameter or {defaultValue} if the parameter doesn't exist or is an array.
@@ -150,7 +146,7 @@ public class Session extends ParametersStorage {
 
     /**
      * Get the value of a parameter.
-     * 
+     *
      * @param name
      * @return This method returns the value of a parameter or NULL if the parameter doesn't exist.
      */
@@ -160,7 +156,7 @@ public class Session extends ParametersStorage {
 
     /**
      * Get the value of a parameter.
-     * 
+     *
      * @param name
      * @param defaultValue
      * @return This method returns the value of a parameter or {defaultValue} if the parameter doesn't exist.

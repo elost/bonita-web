@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -51,7 +49,7 @@ import org.bonitasoft.forms.server.validator.IFormPageValidator;
 
 /**
  * implementation of {@link IFormValidationAPI}
- * 
+ *
  * @author Anthony Birembaut
  */
 public class FormValidationAPIImpl implements IFormValidationAPI {
@@ -63,7 +61,7 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
 
     /**
      * Validate a form field value using the validator whose name is provided
-     * 
+     *
      * @param session
      *        the API session
      * @param activityInstanceID
@@ -141,7 +139,7 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
 
     /**
      * Validate a form page using the validator whose name is provided
-     * 
+     *
      * @param session
      *        the API session
      * @param activityInstanceID
@@ -214,7 +212,7 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
 
     /**
      * Validate a form field value using the validators whose name is provided
-     * 
+     *
      * @param session
      *        the API session
      * @param activityInstanceID
@@ -247,9 +245,8 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
      */
     protected List<FormValidator> validateField(final APISession session, final long processDefinitionID, final long processInstanceID,
             final long activityInstanceID, final List<FormValidator> validators, final String fieldId, final FormFieldValue value, final String submitButtonId,
-            final Locale userLocale, final Map<String, Serializable> transientDataContext) throws FormValidationException, ProcessInstanceNotFoundException,
-            ActivityInstanceNotFoundException, ProcessDefinitionNotFoundException, BPMEngineException, InvalidSessionException, FileTooBigException,
-            IOException, BPMExpressionEvaluationException {
+            final Locale userLocale, final Map<String, Serializable> transientDataContext) throws FormValidationException, BPMEngineException,
+            InvalidSessionException, FileTooBigException, IOException, BPMExpressionEvaluationException {
 
         final IFormWorkflowAPI formWorkflowAPI = FormAPIFactory.getFormWorkflowAPI();
         final List<FormValidator> nonCompliantValidators = new ArrayList<FormValidator>();
@@ -276,7 +273,7 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
 
     /**
      * Validate a form page using the validators whose name is provided
-     * 
+     *
      * @param session
      *        the API session
      * @param activityInstanceID
@@ -307,10 +304,8 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
      */
     protected List<FormValidator> validatePage(final APISession session, final long processDefinitionID, final long processInstanceID,
             final long activityInstanceID, final List<FormValidator> validators, final Map<String, FormFieldValue> fields, final String submitButtonId,
-            final Locale userLocale, final Map<String, Serializable> transientDataContext) throws FormValidationException, ProcessInstanceNotFoundException,
-            ActivityInstanceNotFoundException, ProcessDefinitionNotFoundException, BPMEngineException, InvalidSessionException, FileTooBigException,
-            IOException, BPMExpressionEvaluationException {
-
+            final Locale userLocale, final Map<String, Serializable> transientDataContext) throws FormValidationException, BPMEngineException,
+            InvalidSessionException, FileTooBigException, IOException, BPMExpressionEvaluationException {
         final IFormWorkflowAPI formWorkflowAPI = FormAPIFactory.getFormWorkflowAPI();
         final List<FormValidator> nonCompliantValidators = new ArrayList<FormValidator>();
         for (final FormValidator pageValidator : validators) {
@@ -334,7 +329,7 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ArchivedFlowNodeInstanceNotFoundException
      * @throws BPMExpressionEvaluationException
      */
@@ -353,7 +348,7 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ArchivedProcessInstanceNotFoundException
      * @throws BPMExpressionEvaluationException
      */
@@ -380,7 +375,7 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ArchivedProcessInstanceNotFoundException
      * @throws ArchivedFlowNodeInstanceNotFoundException
      * @throws BPMExpressionEvaluationException
@@ -400,7 +395,7 @@ public class FormValidationAPIImpl implements IFormValidationAPI {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ArchivedProcessInstanceNotFoundException
      * @throws BPMExpressionEvaluationException
      */

@@ -5,28 +5,24 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.framework.utils.converter.typed;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNull;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-import org.bonitasoft.web.rest.server.framework.utils.converter.typed.BooleanConverter;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * @author Colin PUY
- * 
  */
 public class BooleanConverterTest {
 
@@ -36,43 +32,43 @@ public class BooleanConverterTest {
     public void initConverter() {
         converter = new BooleanConverter();
     }
-    
-    @Test
-    public void trueIsConvertedToTrue() throws Exception {
 
-        Boolean converted = converter.convert("true");
+    @Test
+    public void trueIsConvertedToTrue() {
+
+        final Boolean converted = converter.convert("true");
 
         assertTrue(converted);
     }
 
     @Test
-    public void falseIsConvertedToFalse() throws Exception {
+    public void falseIsConvertedToFalse() {
 
-        Boolean converted = converter.convert("false");
+        final Boolean converted = converter.convert("false");
 
         assertFalse(converted);
     }
 
     @Test
-    public void nullIsConvertedToNull() throws Exception {
+    public void nullIsConvertedToNull() {
 
-        Boolean converted = converter.convert(null);
-
-        assertNull(converted);
-    }
-    
-    @Test
-    public void emptyIsConvertedToNull() throws Exception {
-
-        Boolean converted = converter.convert("");
+        final Boolean converted = converter.convert(null);
 
         assertNull(converted);
     }
-    
-    @Test
-    public void anythingElseIsConvertedToFalse() throws Exception {
 
-        Boolean converted = converter.convert("something");
+    @Test
+    public void emptyIsConvertedToNull() {
+
+        final Boolean converted = converter.convert("");
+
+        assertNull(converted);
+    }
+
+    @Test
+    public void anythingElseIsConvertedToFalse() {
+
+        final Boolean converted = converter.convert("something");
 
         assertFalse(converted);
     }

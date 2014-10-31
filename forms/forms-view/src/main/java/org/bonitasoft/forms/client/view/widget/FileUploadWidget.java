@@ -276,7 +276,7 @@ public class FileUploadWidget extends Composite implements ValueChangeHandler<Bo
         fileUpload.addChangeHandler(new ChangeHandler() {
 
             @Override
-            public void onChange(ChangeEvent event) {
+            public void onChange(final ChangeEvent event) {
                 formPanel.submit();
             }
         });
@@ -348,8 +348,8 @@ public class FileUploadWidget extends Composite implements ValueChangeHandler<Bo
          * But GWT is converting plain text in html element (pre).
          * Need to do this hack to get real servlet response
          */
-        private String getPlainTextResult(SubmitCompleteEvent event) {
-            Element label = DOM.createLabel();
+        private String getPlainTextResult(final SubmitCompleteEvent event) {
+            final Element label = DOM.createLabel();
             label.setInnerHTML(event.getResults());
             return label.getInnerText();
         }
@@ -362,9 +362,8 @@ public class FileUploadWidget extends Composite implements ValueChangeHandler<Bo
         if (FileWidgetInputType.ALL.equals(fileWidgetInputType)) {
             if (FILE_DOCUMENT_TYPE.equals(radioButtonGroupWidget.getValue())) {
                 return uploadedFilePath;
-            } else {
-                return urlTextBox.getValue();
             }
+            return urlTextBox.getValue();
         } else if (FileWidgetInputType.FILE.equals(fileWidgetInputType)) {
             return uploadedFilePath;
         } else {
@@ -379,9 +378,8 @@ public class FileUploadWidget extends Composite implements ValueChangeHandler<Bo
         if (FileWidgetInputType.ALL.equals(fileWidgetInputType)) {
             if (FILE_DOCUMENT_TYPE.equals(radioButtonGroupWidget.getValue())) {
                 return SupportedFieldTypes.JAVA_FILE_CLASSNAME;
-            } else {
-                return SupportedFieldTypes.JAVA_STRING_CLASSNAME;
             }
+            return SupportedFieldTypes.JAVA_STRING_CLASSNAME;
         } else if (FileWidgetInputType.FILE.equals(fileWidgetInputType)) {
             return SupportedFieldTypes.JAVA_FILE_CLASSNAME;
         } else {

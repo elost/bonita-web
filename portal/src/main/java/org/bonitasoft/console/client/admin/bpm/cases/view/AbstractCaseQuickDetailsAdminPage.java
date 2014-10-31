@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -60,7 +58,6 @@ import org.bonitasoft.web.toolkit.client.ui.page.ItemQuickDetailsPage.ItemQuickD
 
 /**
  * @author Nicolas Tith
- *
  */
 public abstract class AbstractCaseQuickDetailsAdminPage<T extends CaseItem> extends ItemQuickDetailsPage<T> {
 
@@ -96,9 +93,8 @@ public abstract class AbstractCaseQuickDetailsAdminPage<T extends CaseItem> exte
         if (item.getStartedByUserId() == null || item.getStartedBySubstituteUserId() == null
                 || item.getStartedByUserId().toLong().equals(item.getStartedBySubstituteUserId().toLong())) {
             return addStartedBy();
-        } else {
-            return addStartedBySubstitute(item.getStartedByUser(), item.getStartedBySubstituteUser());
         }
+        return addStartedBySubstitute(item.getStartedByUser(), item.getStartedBySubstituteUser());
     }
 
     private ItemDetailsMetadata addStartedBy() {
@@ -106,8 +102,8 @@ public abstract class AbstractCaseQuickDetailsAdminPage<T extends CaseItem> exte
                 _("Started by"), _("The user that has started this case"));
     }
 
-    private ItemDetailsMetadata addStartedBySubstitute(UserItem executedByUser, UserItem startedBySubstituteUser) {
-        StartedByDelegateAttributeReder attributeReader = new StartedByDelegateAttributeReder(CaseItem.ATTRIBUTE_STARTED_BY_SUBSTITUTE_USER_ID);
+    private ItemDetailsMetadata addStartedBySubstitute(final UserItem executedByUser, final UserItem startedBySubstituteUser) {
+        final StartedByDelegateAttributeReder attributeReader = new StartedByDelegateAttributeReder(CaseItem.ATTRIBUTE_STARTED_BY_SUBSTITUTE_USER_ID);
         attributeReader.setStartedBySubstitute(startedBySubstituteUser);
         attributeReader.setStartedBy(executedByUser);
         return new ItemDetailsMetadata(attributeReader,
@@ -133,7 +129,7 @@ public abstract class AbstractCaseQuickDetailsAdminPage<T extends CaseItem> exte
     }
 
     private Section technicalDetailsSection(final CaseItem item) {
-        Section technicalDetailsSection = new Section(_("Technical details"))
+        final Section technicalDetailsSection = new Section(_("Technical details"))
                 .addBody(lastExecutedTaskDefinition(item))
                 .addBody(numberOfOpenedTasksDefinition(item))
                 .addBody(numberOfAttachmentDefinition(item));

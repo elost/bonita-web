@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,7 +27,6 @@ import org.bonitasoft.web.toolkit.client.ui.utils.Color;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class SerieChart extends Chart {
 
@@ -44,7 +41,7 @@ public class SerieChart extends Chart {
     public static enum TYPE {
         LINE,
         BARS
-    };
+    }
 
     public static enum AXIS_FORMAT {
         // default (float)
@@ -123,7 +120,7 @@ public class SerieChart extends Chart {
 
     @Override
     protected final SerieChart setItem(final String label, final ChartItem item) {
-        ((ChartSerie) item).setMaxLength(this.maxPoints);
+        ((ChartSerie) item).setMaxLength(maxPoints);
         super.setItem(label, item);
         return this;
     }
@@ -140,7 +137,7 @@ public class SerieChart extends Chart {
     public final SerieChart addPoint(final String label, final ChartPoint point) {
         this.getItem(label, true).addPoint(point);
 
-        if (this.autoRedraw) {
+        if (autoRedraw) {
             refresh();
         }
 
@@ -388,11 +385,11 @@ public class SerieChart extends Chart {
         }
 
         if (xAxis) {
-            this.xAxisFormat = format;
-            this.xAxisFormatter = formatter;
+            xAxisFormat = format;
+            xAxisFormatter = formatter;
         } else {
-            this.yAxisFormat = format;
-            this.yAxisFormatter = formatter;
+            yAxisFormat = format;
+            yAxisFormatter = formatter;
         }
 
     }
@@ -420,11 +417,11 @@ public class SerieChart extends Chart {
     protected String prepareOptions() {
         final TreeIndexed<Object> options = this.options;
 
-        if (this.xAxisFormat != AXIS_FORMAT.AUTO) {
-            this.addOption(options, "xaxis.tickFormatter", this.xAxisFormatter);
+        if (xAxisFormat != AXIS_FORMAT.AUTO) {
+            this.addOption(options, "xaxis.tickFormatter", xAxisFormatter);
         }
-        if (this.yAxisFormat != AXIS_FORMAT.AUTO) {
-            this.addOption(options, "yaxis.tickFormatter", this.yAxisFormatter);
+        if (yAxisFormat != AXIS_FORMAT.AUTO) {
+            this.addOption(options, "yaxis.tickFormatter", yAxisFormatter);
         }
 
         return JSonSerializer.serialize(options);

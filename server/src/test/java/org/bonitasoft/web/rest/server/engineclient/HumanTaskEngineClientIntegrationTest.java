@@ -5,18 +5,16 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.engineclient;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.bonitasoft.engine.api.TenantAPIAccessor;
 import org.bonitasoft.test.toolkit.bpm.TestCaseFactory;
@@ -29,12 +27,11 @@ import org.junit.Test;
 
 /**
  * @author Colin PUY
- * 
  */
 public class HumanTaskEngineClientIntegrationTest extends AbstractConsoleTest {
 
     private HumanTaskEngineClient humanTaskEngineClient;
-    
+
     @Override
     public void consoleTestSetUp() throws Exception {
         humanTaskEngineClient = new HumanTaskEngineClient(TenantAPIAccessor.getProcessAPI(getInitiator().getSession()));
@@ -46,17 +43,17 @@ public class HumanTaskEngineClientIntegrationTest extends AbstractConsoleTest {
     }
 
     @Test
-    public void testCountOpenedTasks() throws Exception {
+    public void testCountOpenedTasks() {
         create2openedTasks();
-        
-        long openedTasks = humanTaskEngineClient.countOpenedHumanTasks();
-        
+
+        final long openedTasks = humanTaskEngineClient.countOpenedHumanTasks();
+
         assertEquals(2L, openedTasks);
     }
 
-    private void create2openedTasks() throws InterruptedException {
-        TestHumanTask task1 = TestCaseFactory.createRandomCase(getInitiator()).getNextHumanTask().assignTo(getInitiator());
-        TestHumanTask task2 = TestCaseFactory.createRandomCase(getInitiator()).getNextHumanTask().assignTo(getInitiator());
+    private void create2openedTasks() {
+        final TestHumanTask task1 = TestCaseFactory.createRandomCase(getInitiator()).getNextHumanTask().assignTo(getInitiator());
+        final TestHumanTask task2 = TestCaseFactory.createRandomCase(getInitiator()).getNextHumanTask().assignTo(getInitiator());
         task1.waitState(HumanTaskItem.VALUE_STATE_READY);
         task2.waitState(HumanTaskItem.VALUE_STATE_READY);
     }

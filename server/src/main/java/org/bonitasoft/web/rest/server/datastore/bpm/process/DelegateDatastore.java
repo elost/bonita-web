@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -28,18 +26,16 @@ import org.bonitasoft.web.rest.model.bpm.process.DelegationItem;
 
 /**
  * @author Haojie Yuan
- * 
  */
 public class DelegateDatastore {
-
 
     private LinkedHashMap<String, DelegationItem> USERS = null;
 
     /**
      * Set api session
-     * 
+     *
      * @param apiSession
-     *            the apiSession to set
+     *        the apiSession to set
      */
     public DelegateDatastore(final APISession apiSession) {
     }
@@ -48,12 +44,12 @@ public class DelegateDatastore {
      * Default constructor.
      */
     public DelegateDatastore() {
-        this.USERS = new LinkedHashMap<String, DelegationItem>();
+        USERS = new LinkedHashMap<String, DelegationItem>();
 
         final String iconPath = "http://www.veryicon.com/icon/png/System/Scrap/User.png";
 
         for (int id = 1; id < 11; id++) {
-            this.USERS
+            USERS
                     .put(String.valueOf(id), new DelegationItem(id, iconPath, "DelegateUser_" + id, getRandomDate(), getRandomDate(), "No delegates defined"));
         }
     }
@@ -63,18 +59,18 @@ public class DelegateDatastore {
         return date.toString();
     }
 
-    public long getDelegateCount() throws Exception {
-        return this.USERS.size();
+    public long getDelegateCount() {
+        return USERS.size();
     }
 
     public DelegationItem getDelegate(final long id) {
-        return this.USERS.get(String.valueOf(id));
+        return USERS.get(String.valueOf(id));
     }
 
     public List<DelegationItem> getDelegates(final String search, final Map<String, String> filters, final String order, final int pageIndex,
             final int itemPerPage)
-            throws Exception {
-        final ArrayList<DelegationItem> userList = new ArrayList<DelegationItem>(this.USERS.values());
+    {
+        final ArrayList<DelegationItem> userList = new ArrayList<DelegationItem>(USERS.values());
 
         if (search != null) {
             final String searchRef = search.toLowerCase();
@@ -107,25 +103,25 @@ public class DelegateDatastore {
         return userList.subList(pageIndex * itemPerPage, Math.min(userList.size(), pageIndex * itemPerPage + itemPerPage));
     }
 
-    public String addDelegate(final DelegationItem aUser) throws Exception {
+    public String addDelegate(final DelegationItem aUser) {
         aUser.setAttribute(DelegationItem.ATTRIBUTE_ID, String.valueOf(getDelegateCount() + 1));
-        this.USERS.put(String.valueOf(getDelegateCount() + 1), aUser);
+        USERS.put(String.valueOf(getDelegateCount() + 1), aUser);
 
         return String.valueOf(getDelegateCount());
     }
 
-    public DelegationItem updateDelegate(final long userUUID, final DelegationItem aUser) throws Exception {
+    public DelegationItem updateDelegate(final long userUUID, final DelegationItem aUser) {
 
-        final DelegationItem delegateItem = this.USERS.get(String.valueOf(userUUID));
+        final DelegationItem delegateItem = USERS.get(String.valueOf(userUUID));
         delegateItem.setAttributes(aUser.getAttributes());
 
         return delegateItem;
     }
 
-    public boolean deleteDelegates(final Collection<String> ids) throws Exception {
+    public boolean deleteDelegates(final Collection<String> ids) {
 
         for (final String uuid : ids) {
-            this.USERS.remove(uuid);
+            USERS.remove(uuid);
         }
         return true;
 

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -34,12 +32,9 @@ import org.bonitasoft.engine.search.SearchResult;
 import org.bonitasoft.test.toolkit.EngineSetup;
 import org.bonitasoft.test.toolkit.bpm.TestCase;
 import org.bonitasoft.test.toolkit.bpm.TestHumanTask;
-import org.bonitasoft.test.toolkit.bpm.TestProcess;
 import org.bonitasoft.test.toolkit.bpm.TestProcessFactory;
 import org.bonitasoft.test.toolkit.organization.TestToolkitCtx;
 import org.bonitasoft.test.toolkit.organization.TestUserFactory;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -47,14 +42,13 @@ import org.junit.Test;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class TestProcessValidation extends EngineSetup {
 
     private TestCase testCase;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         TestToolkitCtx.getInstance().setInitiator(TestUserFactory.getJohnCarpenter());
 
         testCase = TestProcessFactory.getDefaultHumanTaskProcess()
@@ -63,7 +57,7 @@ public class TestProcessValidation extends EngineSetup {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         TestToolkitCtx.getInstance().clearSession();
     }
 
@@ -96,7 +90,7 @@ public class TestProcessValidation extends EngineSetup {
 
     /**
      * Test assignation on 10 set up tear down process.
-     * 
+     *
      * @throws Exception
      */
     @Test
@@ -151,11 +145,11 @@ public class TestProcessValidation extends EngineSetup {
 
     @Test
     public void testArchivedCase() throws Exception {
-        TestCase processInstance = TestProcessFactory.getDefaultHumanTaskProcess().startCase();
+        final TestCase processInstance = TestProcessFactory.getDefaultHumanTaskProcess().startCase();
 
         processInstance.archive();
 
-        List<ArchivedProcessInstance> archivedCaseList = getProcessAPI().getArchivedProcessInstances(processInstance.getId(), 0, 10);
+        final List<ArchivedProcessInstance> archivedCaseList = getProcessAPI().getArchivedProcessInstances(processInstance.getId(), 0, 10);
         assertThat(archivedCaseList.size(), greaterThan(0));
     }
 
@@ -164,7 +158,7 @@ public class TestProcessValidation extends EngineSetup {
     }
 
     @Test
-    public void testProcessWithDocumentAttached() throws Exception {
+    public void testProcessWithDocumentAttached() {
         TestProcessFactory.getProcessWithDocumentAttached()
                 .addActor(TestUserFactory.getJohnCarpenter())
                 .startCase();

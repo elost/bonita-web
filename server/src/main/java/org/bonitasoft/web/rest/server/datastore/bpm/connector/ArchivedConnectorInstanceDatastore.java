@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -38,7 +36,6 @@ import org.bonitasoft.web.toolkit.client.common.exception.api.APIException;
 
 /**
  * @author Julien Mege
- * 
  */
 public class ArchivedConnectorInstanceDatastore extends CommonDatastore<ArchivedConnectorInstanceItem, ArchivedConnectorInstance> implements
         DatastoreHasSearch<ArchivedConnectorInstanceItem> {
@@ -70,15 +67,14 @@ public class ArchivedConnectorInstanceDatastore extends CommonDatastore<Archived
             final List<ArchivedConnectorInstanceItem> convertedResult = convertEngineItemsIntoConsoleItems(searchConnectorInstances.getResult());
             return new ItemSearchResult<ArchivedConnectorInstanceItem>(page, convertedResult.size(), searchConnectorInstances.getCount(),
                     convertedResult);
-        } else {
-            throw new APIException("Search failed for the following parameters <page: " + page + " - resulsByPage: " + resultsByPage + " - search: " + search
-                    + " - filters: " + filters + " - orders: " + orders + ">");
         }
+        throw new APIException("Search failed for the following parameters <page: " + page + " - resulsByPage: " + resultsByPage + " - search: " + search
+                + " - filters: " + filters + " - orders: " + orders + ">");
     }
 
     /**
      * Build search option converting console filters into engine filter
-     * 
+     *
      * @param page
      * @param resultsByPage
      * @param search
@@ -96,9 +92,9 @@ public class ArchivedConnectorInstanceDatastore extends CommonDatastore<Archived
 
     /**
      * Convert engine item into console item used by web
-     * 
+     *
      * @param engineItem
-     *            Item provided by engine
+     *        Item provided by engine
      */
     @Override
     protected ArchivedConnectorInstanceItem convertEngineToConsoleItem(final ArchivedConnectorInstance engineItem) {
@@ -106,7 +102,6 @@ public class ArchivedConnectorInstanceDatastore extends CommonDatastore<Archived
     }
 
     /**
-     * 
      * @param searchResult
      * @return
      */
@@ -117,9 +112,8 @@ public class ArchivedConnectorInstanceDatastore extends CommonDatastore<Archived
                 consoleItemList.add(convertEngineToConsoleItem(engineItem));
             }
             return consoleItemList;
-        } else {
-            throw new RuntimeException("List of engine items is null");
         }
+        throw new RuntimeException("List of engine items is null");
     }
 
 }

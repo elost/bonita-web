@@ -30,7 +30,6 @@ import org.mockito.Mock;
 
 /**
  * @author Colin PUY
- * 
  */
 public class APICaseVariableTest extends APITestWithMock {
 
@@ -47,32 +46,32 @@ public class APICaseVariableTest extends APITestWithMock {
         doReturn(datastore).when(apiCaseVariable).getDefaultDatastore();
     }
 
-    private APIID buildAPIID(long caseId, String variableName) {
-        APIID makeAPIID = makeAPIID(asList(String.valueOf(caseId), variableName));
+    private APIID buildAPIID(final long caseId, final String variableName) {
+        final APIID makeAPIID = makeAPIID(asList(String.valueOf(caseId), variableName));
         makeAPIID.setItemDefinition(CaseVariableDefinition.get());
         return makeAPIID;
     }
 
-    private Map<String, String> buildUpdateParameters(String newValue, String className) {
-        Map<String, String> map = new HashMap<String, String>();
+    private Map<String, String> buildUpdateParameters(final String newValue, final String className) {
+        final Map<String, String> map = new HashMap<String, String>();
         map.put(CaseVariableItem.ATTRIBUTE_VALUE, newValue);
         map.put(CaseVariableItem.ATTRIBUTE_TYPE, className);
         return map;
     }
 
-    private Map<String, String> buildCaseIdFilter(long caseId) {
-        Map<String, String> filters = new HashMap<String, String>();
+    private Map<String, String> buildCaseIdFilter(final long caseId) {
+        final Map<String, String> filters = new HashMap<String, String>();
         filters.put(CaseVariableItem.ATTRIBUTE_CASE_ID, String.valueOf(caseId));
         return filters;
     }
 
     @Test
-    public void updateUpdateTheVariableValue() throws Exception {
-        long caseId = 1L;
-        String variableName = "aName";
-        String newValue = "newValue";
-        Map<String, String> parameters = buildUpdateParameters(newValue, String.class.getName());
-        APIID apiid = buildAPIID(caseId, variableName);
+    public void updateUpdateTheVariableValue() {
+        final long caseId = 1L;
+        final String variableName = "aName";
+        final String newValue = "newValue";
+        final Map<String, String> parameters = buildUpdateParameters(newValue, String.class.getName());
+        final APIID apiid = buildAPIID(caseId, variableName);
 
         apiCaseVariable.runUpdate(apiid, parameters);
 
@@ -80,11 +79,11 @@ public class APICaseVariableTest extends APITestWithMock {
     }
 
     @Test
-    public void weCheckAttributesBeforeUpdating() throws Exception {
-        APICaseVariableAttributeChecker attributeChecker = mock(APICaseVariableAttributeChecker.class);
+    public void weCheckAttributesBeforeUpdating() {
+        final APICaseVariableAttributeChecker attributeChecker = mock(APICaseVariableAttributeChecker.class);
         apiCaseVariable.setAttributeChecker(attributeChecker);
-        APIID apiid = buildAPIID(1L, "aName");
-        Map<String, String> attributes = buildUpdateParameters("newValue", String.class.getName());
+        final APIID apiid = buildAPIID(1L, "aName");
+        final Map<String, String> attributes = buildUpdateParameters("newValue", String.class.getName());
 
         apiCaseVariable.runUpdate(apiid, attributes);
 
@@ -92,10 +91,10 @@ public class APICaseVariableTest extends APITestWithMock {
     }
 
     @Test
-    public void weCheckFiltersBeforeSearching() throws Exception {
-        APICaseVariableAttributeChecker attributeChecker = mock(APICaseVariableAttributeChecker.class);
+    public void weCheckFiltersBeforeSearching() {
+        final APICaseVariableAttributeChecker attributeChecker = mock(APICaseVariableAttributeChecker.class);
         apiCaseVariable.setAttributeChecker(attributeChecker);
-        Map<String, String> filters = buildCaseIdFilter(1L);
+        final Map<String, String> filters = buildCaseIdFilter(1L);
 
         apiCaseVariable.runSearch(0, 10, null, null, filters, null, null);
 
@@ -103,9 +102,9 @@ public class APICaseVariableTest extends APITestWithMock {
     }
 
     @Test
-    public void searchIsFilteredByCaseId() throws Exception {
-        long expectedCaseId = 1L;
-        Map<String, String> filters = buildCaseIdFilter(expectedCaseId);
+    public void searchIsFilteredByCaseId() {
+        final long expectedCaseId = 1L;
+        final Map<String, String> filters = buildCaseIdFilter(expectedCaseId);
 
         apiCaseVariable.runSearch(0, 10, null, null, filters, null, null);
 
@@ -113,10 +112,10 @@ public class APICaseVariableTest extends APITestWithMock {
     }
 
     @Test
-    public void getSearchInDatastoreById() throws Exception {
-        long expectedCaseId = 1L;
-        String expectedVariableName = "aName";
-        APIID apiid = buildAPIID(expectedCaseId, expectedVariableName);
+    public void getSearchInDatastoreById() {
+        final long expectedCaseId = 1L;
+        final String expectedVariableName = "aName";
+        final APIID apiid = buildAPIID(expectedCaseId, expectedVariableName);
 
         apiCaseVariable.runGet(apiid, null, null);
 

@@ -5,16 +5,23 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.server.api.impl.util;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.bonitasoft.engine.bpm.connector.ConnectorDefinition;
 import org.bonitasoft.engine.bpm.connector.ConnectorEvent;
@@ -24,14 +31,8 @@ import org.bonitasoft.engine.operation.Operation;
 import org.bonitasoft.forms.client.model.Connector;
 import org.bonitasoft.forms.client.model.FormAction;
 
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * @author Ruiheng Fan
- * 
  */
 public class ConnectorDefinitionAdapter implements ConnectorDefinition {
 
@@ -54,7 +55,7 @@ public class ConnectorDefinitionAdapter implements ConnectorDefinition {
      */
     @Override
     public String getName() {
-        return this.connector.getConnectorName();
+        return connector.getConnectorName();
     }
 
     /*
@@ -63,7 +64,7 @@ public class ConnectorDefinitionAdapter implements ConnectorDefinition {
      */
     @Override
     public String getConnectorId() {
-        return this.connector.getConnectorId();
+        return connector.getConnectorId();
     }
 
     /*
@@ -72,7 +73,7 @@ public class ConnectorDefinitionAdapter implements ConnectorDefinition {
      */
     @Override
     public String getVersion() {
-        return this.connector.getConnectorVersion();
+        return connector.getConnectorVersion();
     }
 
     /*
@@ -92,7 +93,7 @@ public class ConnectorDefinitionAdapter implements ConnectorDefinition {
     @Override
     public Map<String, Expression> getInputs() {
         final Map<String, Expression> inputMap = new HashMap<String, Expression>();
-        final Map<String, org.bonitasoft.forms.client.model.Expression> inputParameters = this.connector.getInputParameters();
+        final Map<String, org.bonitasoft.forms.client.model.Expression> inputParameters = connector.getInputParameters();
         final Iterator<Entry<String, org.bonitasoft.forms.client.model.Expression>> it = inputParameters.entrySet().iterator();
         final ExpressionAdapter adapter = new ExpressionAdapter();
         while (it.hasNext()) {
@@ -108,7 +109,7 @@ public class ConnectorDefinitionAdapter implements ConnectorDefinition {
      */
     @Override
     public List<Operation> getOutputs() {
-        final List<FormAction> actions = this.connector.getOutputOperations();
+        final List<FormAction> actions = connector.getOutputOperations();
         final FormActionAdapter adapter = new FormActionAdapter();
         final List<Operation> operations = new ArrayList<Operation>();
         for (final FormAction action : actions) {
@@ -124,11 +125,10 @@ public class ConnectorDefinitionAdapter implements ConnectorDefinition {
 
     @Override
     public FailAction getFailAction() {
-        if (this.connector.isThrowingException()) {
+        if (connector.isThrowingException()) {
             return FailAction.FAIL;
-        } else {
-            return FailAction.IGNORE;
         }
+        return FailAction.IGNORE;
     }
 
 }

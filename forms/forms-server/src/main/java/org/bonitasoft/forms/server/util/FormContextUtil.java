@@ -15,8 +15,6 @@ import org.bonitasoft.forms.client.model.FormFieldValue;
 import org.bonitasoft.forms.server.accessor.api.EngineClientFactory;
 import org.bonitasoft.forms.server.provider.impl.util.FormServiceProviderUtil;
 
-import com.google.gwt.core.shared.GWT;
-
 public class FormContextUtil {
 
     private final Map<String, Object> context = new HashMap<String, Object>();
@@ -27,7 +25,7 @@ public class FormContextUtil {
 
     private ProcessDeploymentInfo processInfo = null;
 
-    public FormContextUtil(Map<String, Object> context) {
+    public FormContextUtil(final Map<String, Object> context) {
         this.context.putAll(context);
         session = getAPISessionFromContext();
         if (context.get(FormServiceProviderUtil.URL_CONTEXT) != null) {
@@ -48,18 +46,18 @@ public class FormContextUtil {
     }
 
     public Long getUserId() {
-    	return getUserId(true);
+        return getUserId(true);
     }
-    
-    public Long getUserId(boolean returnLoggedInUserAsDefault) {
+
+    public Long getUserId(final boolean returnLoggedInUserAsDefault) {
         Long userID;
         if (urlContext.containsKey(FormServiceProviderUtil.USER_ID) && urlContext.get(FormServiceProviderUtil.USER_ID) != null) {
             userID = Long.valueOf(urlContext.get(FormServiceProviderUtil.USER_ID).toString());
         } else {
             if (returnLoggedInUserAsDefault) {
-            	userID = session.getUserId();
+                userID = session.getUserId();
             } else {
-            	userID = -1L;
+                userID = -1L;
             }
         }
         return userID;
@@ -68,9 +66,8 @@ public class FormContextUtil {
     public String getUserName() {
         if (session != null && session.getUserName() != null) {
             return session.getUserName();
-        } else {
-            return "";
         }
+        return "";
     }
 
     public String getFormName() {
@@ -116,13 +113,13 @@ public class FormContextUtil {
 
     /**
      * Retrieve the API session from the context
-     * 
+     *
      * @param context
-     *            the map of context
+     *        the map of context
      * @return the engine API session
      */
     public APISession getAPISessionFromContext() {
-        APISession session = (APISession) context.get(FormServiceProviderUtil.API_SESSION);
+        final APISession session = (APISession) context.get(FormServiceProviderUtil.API_SESSION);
         if (session == null) {
             final String errorMessage = "There is no engine API session in the HTTP session.";
             if (Logger.getLogger(FormContextUtil.class.getName()).isLoggable(Level.SEVERE)) {
@@ -156,11 +153,11 @@ public class FormContextUtil {
     }
 
     public String getTaskName() {
-        String formName = getFormName();
+        final String formName = getFormName();
         if (formName != null) {
-            int formIdDelimiterPos = formName.lastIndexOf(FormServiceProviderUtil.FORM_ID_SEPARATOR);
-            String taskDelimiter = "--";
-            int taskDelimiterPos = formName.lastIndexOf(taskDelimiter) + taskDelimiter.length();
+            final int formIdDelimiterPos = formName.lastIndexOf(FormServiceProviderUtil.FORM_ID_SEPARATOR);
+            final String taskDelimiter = "--";
+            final int taskDelimiterPos = formName.lastIndexOf(taskDelimiter) + taskDelimiter.length();
             if (formName != null && formIdDelimiterPos != -1 && taskDelimiterPos != -1) {
                 return formName.substring(taskDelimiterPos, formIdDelimiterPos);
             }

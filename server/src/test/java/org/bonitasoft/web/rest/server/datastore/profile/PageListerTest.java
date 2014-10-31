@@ -22,7 +22,6 @@ import org.junit.Test;
 
 /**
  * @author Fabio Lombardi
- * 
  */
 public class PageListerTest extends APITestWithMock {
 
@@ -36,25 +35,25 @@ public class PageListerTest extends APITestWithMock {
     @Test
     public void getPages_return_all_available_bonita_pages() {
 
-        List<BonitaPageItem> pages = pageLister.getPages();
+        final List<BonitaPageItem> pages = pageLister.getPages();
 
         assertThat(pages, equalTo(PageLister.pages));
     }
 
     @Test
-    public void getPages_return_all_pages_not_in_pagesToSkip_list() throws Exception {
-        BonitaPageItem pageToSkip1 = PageLister.pages.get(0);
-        BonitaPageItem pageToSkip2 = PageLister.pages.get(1);
-        List<BonitaPageItem> expectedPages = buildExpectedPagesList(pageToSkip1, pageToSkip2);
-        List<String> pagesTokenToSkip = asList(pageToSkip1.getToken(), pageToSkip2.getToken());
+    public void getPages_return_all_pages_not_in_pagesToSkip_list() {
+        final BonitaPageItem pageToSkip1 = PageLister.pages.get(0);
+        final BonitaPageItem pageToSkip2 = PageLister.pages.get(1);
+        final List<BonitaPageItem> expectedPages = buildExpectedPagesList(pageToSkip1, pageToSkip2);
+        final List<String> pagesTokenToSkip = asList(pageToSkip1.getToken(), pageToSkip2.getToken());
 
-        List<BonitaPageItem> pages = pageLister.getPages(pagesTokenToSkip);
+        final List<BonitaPageItem> pages = pageLister.getPages(pagesTokenToSkip);
 
         assertThat(pages, equalTo(expectedPages));
     }
 
-    private List<BonitaPageItem> buildExpectedPagesList(BonitaPageItem pageToSkip1, BonitaPageItem pageToSkip2) {
-        List<BonitaPageItem> expectedPages = new ArrayList<BonitaPageItem>(PageLister.pages);
+    private List<BonitaPageItem> buildExpectedPagesList(final BonitaPageItem pageToSkip1, final BonitaPageItem pageToSkip2) {
+        final List<BonitaPageItem> expectedPages = new ArrayList<BonitaPageItem>(PageLister.pages);
         expectedPages.remove(pageToSkip1);
         expectedPages.remove(pageToSkip2);
         return expectedPages;

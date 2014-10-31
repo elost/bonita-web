@@ -13,10 +13,6 @@
  **/
 package org.bonitasoft.forms.server;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,6 +23,11 @@ import java.net.URLEncoder;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConstants;
 import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConstantsUtils;
@@ -42,7 +43,7 @@ import org.bonitasoft.forms.server.api.IFormWorkflowAPI;
 
 /**
  * Servlet allowing to download process instances attachments
- * 
+ *
  * @author Anthony Birembaut
  */
 public class DocumentDownloadServlet extends HttpServlet {
@@ -151,7 +152,7 @@ public class DocumentDownloadServlet extends HttpServlet {
         } else if (fileName != null && contentStorageId != null) {
             try {
                 fileContent = bpmEngineAPIUtil.getProcessAPI(apiSession).getDocumentContent(contentStorageId);
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 final String errorMessage = "Error while retrieving the document  with content storage ID " + contentStorageId + " from the engine.";
                 if (LOGGER.isLoggable(Level.SEVERE)) {
                     LOGGER.log(Level.SEVERE, errorMessage, e);
@@ -263,9 +264,8 @@ public class DocumentDownloadServlet extends HttpServlet {
         int fileLength = 0;
         if (file.length() > Integer.MAX_VALUE) {
             throw new ServletException("file " + filePath + " too big !");
-        } else {
-            fileLength = (int) file.length();
         }
+        fileLength = (int) file.length();
 
         byte[] content;
         try {

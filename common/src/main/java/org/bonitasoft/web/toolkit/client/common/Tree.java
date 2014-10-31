@@ -22,14 +22,12 @@ import org.bonitasoft.web.toolkit.client.common.json.JSonSerializer;
 import org.bonitasoft.web.toolkit.client.common.url.UrlSerializer;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  * @param <VALUE_CLASS>
  */
 public class Tree<VALUE_CLASS> extends AbstractTreeNode<VALUE_CLASS> implements Iterable<AbstractTreeNode<VALUE_CLASS>> {
 
-    protected List<AbstractTreeNode<VALUE_CLASS>> children = new ArrayList<AbstractTreeNode<VALUE_CLASS>>();;
+    protected List<AbstractTreeNode<VALUE_CLASS>> children = new ArrayList<AbstractTreeNode<VALUE_CLASS>>();
 
     public Tree() {
     }

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,7 +28,6 @@ import org.bonitasoft.test.toolkit.exception.TestToolkitException;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class TestPlatform {
 
@@ -61,7 +58,7 @@ public class TestPlatform {
             }
         } catch (final Exception e) {
             throw new TestToolkitException("Can't create platform", e);
-        };
+        }
 
         // start
         try {
@@ -74,12 +71,12 @@ public class TestPlatform {
     }
 
     public PlatformAPI getPlatformAPI() {
-        if (this.platformAPI == null) {
+        if (platformAPI == null) {
             PlatformLoginAPI platformLoginAPI;
             try {
                 platformLoginAPI = PlatformAPIAccessor.getPlatformLoginAPI();
                 final PlatformSession platformSession = platformLoginAPI.login(PLATFORM_ADMIN, PLATFORM_PASSWORD);
-                this.platformAPI = PlatformAPIAccessor.getPlatformAPI(platformSession);
+                platformAPI = PlatformAPIAccessor.getPlatformAPI(platformSession);
             } catch (final BonitaHomeNotSetException e) {
                 throw new TestToolkitException("Bonita home isn't set", e);
             } catch (final ServerAPIException e) {
@@ -92,7 +89,7 @@ public class TestPlatform {
                 throw new TestToolkitException("Invalid session to create tenant", e);
             }
         }
-        return this.platformAPI;
+        return platformAPI;
     }
 
     /**

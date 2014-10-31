@@ -73,7 +73,7 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
     private boolean registerRefresh = true;
 
-    private HashMap<String, String> attributesForGroupedActions = new HashMap<String, String>();
+    private final HashMap<String, String> attributesForGroupedActions = new HashMap<String, String>();
 
     private boolean itemIdOnRow = false;
 
@@ -83,7 +83,7 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
         this(null, itemDefinition);
     }
 
-    public ItemTable(final ItemDefinition itemDefinition, boolean itemIdOnRow) {
+    public ItemTable(final ItemDefinition itemDefinition, final boolean itemIdOnRow) {
         this(null, itemDefinition);
         this.itemIdOnRow = itemIdOnRow;
     }
@@ -93,58 +93,58 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
         assert itemDefinition != null;
         this.itemDefinition = itemDefinition;
-        this.table = new Table(jsid);
+        table = new Table(jsid);
         setFillOnRefresh(true);
     }
 
-    public HandlerRegistration addItemCheckedHandler(ItemCheckedHandler handler) {
-        return this.table.addItemCheckedHandler(handler);
+    public HandlerRegistration addItemCheckedHandler(final ItemCheckedHandler handler) {
+        return table.addItemCheckedHandler(handler);
     }
 
-    public HandlerRegistration addItemUncheckedHandler(ItemUncheckedHandler handler) {
-        return this.table.addItemUncheckedHandler(handler);
+    public HandlerRegistration addItemUncheckedHandler(final ItemUncheckedHandler handler) {
+        return table.addItemUncheckedHandler(handler);
     }
 
-    public HandlerRegistration addItemTableLoadedHandler(ItemTableLoadedHandler handler) {
+    public HandlerRegistration addItemTableLoadedHandler(final ItemTableLoadedHandler handler) {
         return addHandler(handler, ItemTableLoadedEvent.TYPE);
     }
 
     public ItemTable setRegisterRefresh(final boolean register) {
-        this.registerRefresh = register;
+        registerRefresh = register;
         return this;
     }
 
     /**
      * Define the line to select by default.
-     * 
+     *
      * @param line
-     *            the zero based index of the line
+     *        the zero based index of the line
      */
     public ItemTable setDefaultSelectedLine(final Integer line) {
-        this.defaultSelectedLine = line;
+        defaultSelectedLine = line;
         return this;
     }
 
     public Integer getDefaultSelectedLine() {
-        return this.defaultSelectedLine;
+        return defaultSelectedLine;
     }
 
     public void setDefaultSelectedId(final APIID id) {
-        this.defaultSelectedId = id;
+        defaultSelectedId = id;
     }
 
     public APIID getDefaultSelectedId() {
-        return this.defaultSelectedId;
+        return defaultSelectedId;
     }
 
     public final ItemDefinition<?> getItemDefinition() {
-        return this.itemDefinition;
+        return itemDefinition;
     }
 
     @Override
     public final ItemTable setFillOnLoad(final boolean fillOnLoad) {
         super.setFillOnLoad(fillOnLoad);
-        this.table.setFillOnLoad(fillOnLoad);
+        table.setFillOnLoad(fillOnLoad);
         return this;
     }
 
@@ -157,22 +157,22 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
     public final ItemTable addItems(final List<IItem> items) {
 
-        if (!this.table.isSaveCheckboxes()) {
-            this.table.clearSelectedIds();
+        if (!table.isSaveCheckboxes()) {
+            table.clearSelectedIds();
         }
 
         int i = 1; // index of the first line of the table
         int selectedIndex = -1;
         for (final IItem item : items) {
             this.addItem(item);
-            if (this.defaultSelectedId != null && this.defaultSelectedId.equals(item.getId())) {
+            if (defaultSelectedId != null && defaultSelectedId.equals(item.getId())) {
                 selectedIndex = i;
-            } else if (this.defaultSelectedLine != null && this.defaultSelectedLine == i - 1) {
+            } else if (defaultSelectedLine != null && defaultSelectedLine == i - 1) {
                 selectedIndex = i;
             }
             i++;
         }
-        this.table.updateHtml();
+        table.updateHtml();
         if (selectedIndex > -1) {
             $(".tr_" + selectedIndex, getElement()).click();
         }
@@ -188,26 +188,26 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
         loadedItems.put(item.getId().toString(), item);
 
-        if (this.actionColumnPosition == -1 && !this.actionSets.isEmpty()) {
+        if (actionColumnPosition == -1 && !actionSets.isEmpty()) {
             addActionColumn();
         }
 
         // Get default action (if there is one)
         Action defAction = null;
-        final int lineNumber = this.table.getLinesNumber();
-        if (this.defaultAction != null) {
+        final int lineNumber = table.getLinesNumber();
+        if (defaultAction != null) {
             defAction = new Action() {
 
                 @Override
                 public void execute() {
-                    ItemTable.this.defaultAction.addParameter("id", item.getId().toString());
-                    ItemTable.this.defaultAction.addParameter("cell_index", String.valueOf(lineNumber + 1));// +1 because the line is build in the next
-                                                                                                            // instruction
-                    ItemTable.this.defaultAction.execute();
+                    defaultAction.addParameter("id", item.getId().toString());
+                    defaultAction.addParameter("cell_index", String.valueOf(lineNumber + 1));// +1 because the line is build in the next
+                                                                                             // instruction
+                    defaultAction.execute();
                 }
             };
-        } else if (this.actionSets != null) {
-            for (final ItemTableActionSet actionSet : this.actionSets) {
+        } else if (actionSets != null) {
+            for (final ItemTableActionSet actionSet : actionSets) {
                 defAction = actionSet.getDefaultAction(item);
                 if (defAction != null) {
                     break;
@@ -216,12 +216,12 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
         }
         if (defAction != null) {
             defAction.addParameter("id", item.getId().toString());
-            defAction.addParameter("cell_index", String.valueOf(this.table.getLinesNumber() + 1));// +1 because the line is build in the next instruction
+            defAction.addParameter("cell_index", String.valueOf(table.getLinesNumber() + 1));// +1 because the line is build in the next instruction
         }
 
         // Create the line component
-        this.table.setItemIdOnRow(this.itemIdOnRow);
-        this.table.addLine(item.getId().toString(), className, defAction, isGroupedActionAllowed(item));
+        table.setItemIdOnRow(itemIdOnRow);
+        table.addLine(item.getId().toString(), className, defAction, isGroupedActionAllowed(item));
 
         // Fill it with data columns
         addItemCells(item);
@@ -232,22 +232,21 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
         return this;
     }
 
-    private Boolean isGroupedActionAllowed(IItem item) {
+    private Boolean isGroupedActionAllowed(final IItem item) {
         if (attributesForGroupedActions.isEmpty()) {
             return true;
-        } else {
-            Iterator it = attributesForGroupedActions.entrySet().iterator();
-            while (it.hasNext()) {
-                Map.Entry<String, String> pairs = (Map.Entry<String, String>) it.next();
-                if (item.getAttributeValue(pairs.getKey().toString()).equals(pairs.getValue())) {
-                    return false;
-                }
-            }
-            return true;
         }
+        final Iterator it = attributesForGroupedActions.entrySet().iterator();
+        while (it.hasNext()) {
+            final Map.Entry<String, String> pairs = (Map.Entry<String, String>) it.next();
+            if (item.getAttributeValue(pairs.getKey().toString()).equals(pairs.getValue())) {
+                return false;
+            }
+        }
+        return true;
     }
 
-    public ItemTable addAttributeToCheckForGroupedActions(String attributeName, String value) {
+    public ItemTable addAttributeToCheckForGroupedActions(final String attributeName, final String value) {
         attributesForGroupedActions.put(attributeName, value);
         return this;
     }
@@ -255,9 +254,9 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     protected final void addItemCells(final IItem item) {
         int index = 0;
 
-        for (final AbstractAttributeReader column : this.columns) {
+        for (final AbstractAttributeReader column : columns) {
 
-            if (index == this.actionColumnPosition) {
+            if (index == actionColumnPosition) {
                 this.addItemActions(item);
             } else {
 
@@ -270,23 +269,23 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
                     for (final String deployedAttribute : ((HasDeploys) column).getDeploys()) {
 
                         final String compoundAttribute = new DeployedJsId(deployedAttribute, column.getLeadAttribute()).toString();
-                        if (this.cellFormatters.containsKey(compoundAttribute)) {
-                            cellFormatter = this.cellFormatters.get(compoundAttribute);
+                        if (cellFormatters.containsKey(compoundAttribute)) {
+                            cellFormatter = cellFormatters.get(compoundAttribute);
                             break;
                         }
                     }
 
                 } else {
-                    cellFormatter = this.cellFormatters.get(column.getLeadAttribute());
+                    cellFormatter = cellFormatters.get(column.getLeadAttribute());
                 }
 
                 if (cellFormatter == null) {
                     cellFormatter = new DefaultItemTableCellFormatter();
                 }
 
-                cellFormatter.setTable(this.table);
-                cellFormatter.setColumn(this.table.getLastColumn());
-                cellFormatter.setLine(this.table.getLastLine());
+                cellFormatter.setTable(table);
+                cellFormatter.setColumn(table.getLastColumn());
+                cellFormatter.setLine(table.getLastLine());
                 cellFormatter.setAttribute(column);
                 cellFormatter.setItem(item);
 
@@ -303,11 +302,11 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     protected void addItemActions(final IItem item, final List<ItemTableAction> actions) {
         final ContainerDummy<ItemTableAction> actionComponents = new ContainerDummy<ItemTableAction>();
         for (final ItemTableAction itemTableAction : actions) {
-            itemTableAction.addParameter("cell_index", String.valueOf(this.table.getLinesNumber()));
+            itemTableAction.addParameter("cell_index", String.valueOf(table.getLinesNumber()));
             itemTableAction.addParameter("id", item.getId().toString());
             actionComponents.append(itemTableAction);
         }
-        this.table.addCell(actionComponents);
+        table.addCell(actionComponents);
     }
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -315,43 +314,43 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public ItemTable resetFilters() {
-        this.table.resetFilters();
+        table.resetFilters();
         return this;
     }
 
     public final ItemTable addTextFilter(final String label, final String tooltip, final String name) {
-        this.table.addTextFilter(label, tooltip, name);
+        table.addTextFilter(label, tooltip, name);
         return this;
     }
 
     public final ItemTable addTextFilter(final String label, final String tooltip, final String name, final String defaultValue) {
-        this.table.addTextFilter(label, tooltip, name, defaultValue);
+        table.addTextFilter(label, tooltip, name, defaultValue);
         return this;
     }
 
     public final ItemTable addSelectFilter(final String label, final String tooltip, final String name, final Map<String, String> values) {
-        this.table.addSelectFilter(label, tooltip, name, values);
+        table.addSelectFilter(label, tooltip, name, values);
         return this;
     }
 
     public final ItemTable addSelectFilter(final String label, final String tooltip, final String name, final LinkedHashMap<String, String> values,
             final String defaultValue) {
-        this.table.addSelectFilter(label, tooltip, name, values, defaultValue);
+        table.addSelectFilter(label, tooltip, name, values, defaultValue);
         return this;
     }
 
     public final ItemTable addSelectFilter(final String label, final String tooltip, final String name, final Filler<?> filler) {
-        this.table.addSelectFilter(label, tooltip, name, filler);
+        table.addSelectFilter(label, tooltip, name, filler);
         return this;
     }
 
     public final ItemTable addSelectFilter(final String label, final String tooltip, final String name, final Filler<?> filler, final String defaultValue) {
-        this.table.addSelectFilter(label, tooltip, name, filler, defaultValue);
+        table.addSelectFilter(label, tooltip, name, filler, defaultValue);
         return this;
     }
 
     public final ItemTable addHiddenFilter(final String name, final String value) {
-        this.table.addHiddenFilter(name, value);
+        table.addHiddenFilter(name, value);
         return this;
     }
 
@@ -363,31 +362,31 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     }
 
     public ItemTable resetHiddenFilters() {
-        this.table.resetHiddenFilters();
+        table.resetHiddenFilters();
         return this;
     }
 
     public final ItemTable addHiddenFilters(final Map<String, String> filters) {
-        this.table.addHiddenFilters(filters);
+        table.addHiddenFilters(filters);
         return this;
     }
 
     public final ItemTable addHiddenFilter(final Map<String, String> filters) {
-        this.table.addHiddenFilters(filters);
+        table.addHiddenFilters(filters);
         return this;
     }
 
     public final Map<String, String> getFilters() {
-        return this.table.getFilters();
+        return table.getFilters();
     }
 
     public final Map<String, String> getHiddenFilters() {
-        return this.table.getHiddenFilters();
+        return table.getHiddenFilters();
     }
 
     public final List<String> getDeploys() {
         final List<String> result = new ArrayList<String>();
-        for (final AbstractAttributeReader reader : this.columns) {
+        for (final AbstractAttributeReader reader : columns) {
             getAttributeReaderDeploys(reader, result);
         }
         return result;
@@ -411,14 +410,14 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     public final List<String> getCounters() {
         final List<String> result = new ArrayList<String>();
         // go through readers
-        for (final AbstractAttributeReader reader : this.columns) {
+        for (final AbstractAttributeReader reader : columns) {
             if (reader instanceof HasCounters) {
                 result.addAll(((HasCounters) reader).getCounters());
             }
         }
 
         // go through actions
-        for (final ItemTableActionSet<?> actionSet : this.actionSets) {
+        for (final ItemTableActionSet<?> actionSet : actionSets) {
             if (actionSet instanceof HasCounters) {
                 result.addAll(((HasCounters) actionSet).getCounters());
             }
@@ -433,8 +432,8 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
     public ItemTable addActionColumn() {
         // this.table.addColumn(new JsId("actions"), _("Actions"));
-        this.actionColumnPosition = this.columns.size();
-        this.columns.add(null);
+        actionColumnPosition = columns.size();
+        columns.add(null);
 
         return this;
     }
@@ -444,8 +443,8 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     }
 
     public final ItemTable addColumn(final AbstractAttributeReader attribute, final String label, final boolean sorted, final boolean ascendant) {
-        this.table.addColumn(new JsId(attribute.getLeadAttribute()), label, attribute.getLeadAttribute(), sorted, ascendant);
-        this.columns.add(attribute);
+        table.addColumn(new JsId(attribute.getLeadAttribute()), label, attribute.getLeadAttribute(), sorted, ascendant);
+        columns.add(attribute);
 
         return this;
     }
@@ -460,8 +459,8 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
             columnJsid = new JsId(attribute.getLeadAttribute());
         }
 
-        this.table.addColumn(columnJsid, label, sortable ? attribute.getLeadAttribute() : null);
-        this.columns.add(attribute);
+        table.addColumn(columnJsid, label, sortable ? attribute.getLeadAttribute() : null);
+        columns.add(attribute);
 
         return this;
     }
@@ -471,19 +470,19 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     }
 
     public final ItemTable addColumn(final String attributeName, final String label, final boolean sorted, final boolean ascendant) {
-        this.table.addColumn(new JsId(attributeName), label, attributeName, sorted, ascendant);
-        this.columns.add(new AttributeReader(attributeName));
+        table.addColumn(new JsId(attributeName), label, attributeName, sorted, ascendant);
+        columns.add(new AttributeReader(attributeName));
 
         return this;
     }
 
     public final ItemTable addColumn(final String attributeName, final String label, final boolean sortable) {
         if (sortable) {
-            this.table.addColumn(new JsId(attributeName), label, attributeName);
+            table.addColumn(new JsId(attributeName), label, attributeName);
         } else {
-            this.table.addColumn(new JsId(attributeName), label);
+            table.addColumn(new JsId(attributeName), label);
         }
-        this.columns.add(new AttributeReader(attributeName));
+        columns.add(new AttributeReader(attributeName));
 
         return this;
     }
@@ -493,26 +492,26 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
      * @see org.bonitasoft.web.toolkit.client.ui.component.table.Table#getColumn(org.bonitasoft.web.toolkit.client.ui.JsId)
      */
     public TableColumn getColumn(final JsId jsid) {
-        return this.table.getColumn(jsid);
+        return table.getColumn(jsid);
     }
 
     /**
      * @see org.bonitasoft.web.toolkit.client.ui.component.table.Table#getColumns()
      */
     public List<TableColumn> getColumns() {
-        return this.table.getColumns();
+        return table.getColumns();
     }
 
     /**
      * @see org.bonitasoft.web.toolkit.client.ui.component.table.Table#getLastColumn()
      */
     public TableColumn getLastColumn() {
-        return this.table.getLastColumn();
+        return table.getLastColumn();
     }
 
     public final ArrayList<String> getColumnsName() {
         final ArrayList<String> results = new ArrayList<String>();
-        for (final AbstractAttributeReader attribute : this.columns) {
+        for (final AbstractAttributeReader attribute : columns) {
             results.add(attribute.getLeadAttribute());
         }
         return results;
@@ -523,7 +522,7 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public final ItemTable addCellFormatter(final String attributeName, final ItemTableCellFormatter cellFormatter) {
-        this.cellFormatters.put(attributeName, cellFormatter);
+        cellFormatters.put(attributeName, cellFormatter);
         return this;
     }
 
@@ -535,7 +534,7 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
     /**
      * @param defaultAction
-     *            the defaultAction to set
+     *        the defaultAction to set
      */
     public final ItemTable setDefaultAction(final Action defaultAction) {
         this.defaultAction = defaultAction;
@@ -543,7 +542,7 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     }
 
     public final ItemTable resetActions() {
-        this.actionSets.clear();
+        actionSets.clear();
         return this;
     }
 
@@ -554,21 +553,21 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
     public final ItemTable addActions(final ItemTableActionSet itemTableActionSet) {
         itemTableActionSet.setItemTable(this);
-        this.actionSets.add(itemTableActionSet);
+        actionSets.add(itemTableActionSet);
 
         return this;
     }
 
     public final ItemTable addGroupedAction(final JsId id, final String label, final String tooltip, final Action action) {
-        this.table.addGroupedAction(id, label, tooltip, action);
+        table.addGroupedAction(id, label, tooltip, action);
         return this;
     }
 
     /**
      * Add an action to the table - action not link to checkbox, always visible
      */
-    public final ItemTable addAction(Link link) {
-        this.table.addAction(link);
+    public final ItemTable addAction(final Link link) {
+        table.addAction(link);
         return this;
     }
 
@@ -576,57 +575,55 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
      * @see org.bonitasoft.web.toolkit.client.ui.component.table.Table#getGroupedActions()
      */
     public List<Link> getGroupedActions() {
-        return this.table.getGroupedActions();
+        return table.getGroupedActions();
     }
 
     /**
-     * 
      * @param link
      * @param force
-     *            Force the visibility of the action (can't be disabled)
+     *        Force the visibility of the action (can't be disabled)
      * @return
      */
-    public final ItemTable addGroupedAction(Link link, final boolean force) {
-        this.table.addGroupedAction(link, force);
+    public final ItemTable addGroupedAction(final Link link, final boolean force) {
+        table.addGroupedAction(link, force);
         return this;
     }
 
-    public final ItemTable addGroupedAction(Link link) {
+    public final ItemTable addGroupedAction(final Link link) {
         return addGroupedAction(link, false);
     }
 
     /**
-     * 
      * @param label
      * @param tooltip
      * @param action
      * @param force
-     *            Force the visibility of the action (can't be disabled)
+     *        Force the visibility of the action (can't be disabled)
      */
     public final ItemTable addGroupedAction(final JsId id, final String label, final String tooltip, final Action action, final boolean force) {
-        this.table.addGroupedAction(id, label, tooltip, action, force);
+        table.addGroupedAction(id, label, tooltip, action, force);
         return this;
     }
 
     public final ItemTable addGroupedDeleteAction(final String tooltip, final ItemDefinition definition) {
-        this.table.addGroupedAction(new JsId("delete"), _("Delete"), tooltip, new ItemDeletePopupAction(definition));
+        table.addGroupedAction(new JsId("delete"), _("Delete"), tooltip, new ItemDeletePopupAction(definition));
         return this;
     }
 
     public final ItemTable addGroupedMultipleDeleteAction(final String tooltip, final ItemDefinition definition, final String itemName,
             final String itemNamePlural) {
-        this.table.addGroupedAction(new JsId("delete"), _("Delete"), tooltip, new DeleteMultipleItemsPopupAction(definition, itemName, itemNamePlural));
+        table.addGroupedAction(new JsId("delete"), _("Delete"), tooltip, new DeleteMultipleItemsPopupAction(definition, itemName, itemNamePlural));
         return this;
     }
 
     public List<ItemTableAction> getActionsFor(final IItem item) {
-        if (this.actionSets == null) {
+        if (actionSets == null) {
             return new LinkedList<ItemTableAction>();
         }
 
         final List<ItemTableAction> actions = new LinkedList<ItemTableAction>();
 
-        for (final ItemTableActionSet set : this.actionSets) {
+        for (final ItemTableActionSet set : actionSets) {
             actions.addAll(set.getActionsFor(item));
         }
         return actions;
@@ -637,22 +634,22 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public final ItemTable setNbLinesByPage(final int nbLinesByPage) {
-        this.table.setPager(0, 0, nbLinesByPage);
+        table.setPager(0, 0, nbLinesByPage);
         return this;
     }
 
     public final ItemTable setView(final VIEW_TYPE view) {
-        this.table.setView(view);
+        table.setView(view);
         return this;
     }
 
     public final ItemTable saveCheckboxes(final boolean save) {
-        this.table.saveCheckboxes(save);
+        table.saveCheckboxes(save);
         return this;
     }
 
     public final ItemTable setRefreshEvery(final int milliseconds) {
-        this.table.setRefreshEvery(milliseconds);
+        table.setRefreshEvery(milliseconds);
         return this;
     }
 
@@ -662,16 +659,16 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
     @Override
     protected Element makeElement() {
-        if (this.actionSets != null && this.actionSets.size() > 0 && this.actionColumnPosition == -1) {
+        if (actionSets != null && actionSets.size() > 0 && actionColumnPosition == -1) {
             final JsId actionJsId = new JsId("actions");
 
-            this.table.addColumn(actionJsId, _("Actions"));
-            if (this.actionColumnPosition > -1) {
-                this.table.setColumnPos(actionJsId, this.actionColumnPosition);
+            table.addColumn(actionJsId, _("Actions"));
+            if (actionColumnPosition > -1) {
+                table.setColumnPos(actionJsId, actionColumnPosition);
             }
         }
 
-        return this.table.getElement();
+        return table.getElement();
     }
 
     @Override
@@ -679,7 +676,7 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
         super.postProcessHtml();
 
         final ItemTableFiller filler = new ItemTableFiller();
-        this.table.setRefreshFiller(filler);
+        table.setRefreshFiller(filler);
         filler.setTarget(this);
         setFiller(filler);
 
@@ -700,93 +697,93 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
     @Override
     public final ItemTable addClass(final String className) {
-        if (this.table != null) {
-            this.table.addClass(className);
+        if (table != null) {
+            table.addClass(className);
         }
         return this;
     }
 
     public final int getNbPages() {
-        return this.table.getNbPages();
+        return table.getNbPages();
     }
 
     public final int getNbLinesByPage() {
-        return this.table.getNbLinesByPage();
+        return table.getNbLinesByPage();
     }
 
     public final int getPage() {
-        return this.table.getPage();
+        return table.getPage();
     }
 
     public final List<String> getSelectedIds() {
-        return this.table.getSelectedIds();
+        return table.getSelectedIds();
     }
 
     public final String getSearch() {
-        return this.table.getSearch();
+        return table.getSearch();
     }
 
     /**
      * @see org.bonitasoft.web.toolkit.client.ui.component.table.Table#setSearch(java.lang.String)
      */
     public final ItemTable setSearch(final String query) {
-        this.table.setSearch(query);
+        table.setSearch(query);
         return this;
     }
 
-    public final ItemTable setSelectLineOnClick(boolean value) {
-        this.table.setSelectLineOnClick(value);
+    public final ItemTable setSelectLineOnClick(final boolean value) {
+        table.setSelectLineOnClick(value);
         return this;
     }
 
     public final String getOrder() {
-        return this.table.getOrder();
+        return table.getOrder();
     }
 
     public final ItemTable resetLines() {
-        this.table.resetLines();
-        this.loadedItems.clear();
+        table.resetLines();
+        loadedItems.clear();
         return this;
     }
 
     public final ItemTable setPager(final int currentPage, final int nbPages, final int nbLinesByPage) {
-        this.table.setPager(currentPage, nbPages, nbLinesByPage);
+        table.setPager(currentPage, nbPages, nbLinesByPage);
         return this;
     }
 
     public final ItemTable setPage(final int page) {
-        this.table.setPage(page);
+        table.setPage(page);
         return this;
     }
 
     public final void changePage(final int page) {
-        this.table.changePage(page);
+        table.changePage(page);
     }
 
     @Override
     public final String toString() {
-        return this.table.toString();
+        return table.toString();
     }
 
     public final boolean hasGroupedActions() {
-        return this.table.hasGroupedActions();
+        return table.hasGroupedActions();
     }
 
     public final ItemTable setOrder(final String sortName, final boolean sortAscending) {
-        this.table.setOrder(sortName, sortAscending);
+        table.setOrder(sortName, sortAscending);
         return this;
     }
 
     public ItemTable setShowSearch(final boolean show) {
-        this.table.setShowSearch(show);
+        table.setShowSearch(show);
         return this;
     }
 
     public void updateView() {
-        this.table.updateView();
+        table.updateView();
     }
 
-    public IItem getItem(String itemId) {
+    public IItem getItem(final String itemId) {
         return loadedItems.get(itemId);
     }
 

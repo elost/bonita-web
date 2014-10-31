@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -18,7 +16,6 @@
 package org.bonitasoft.console.common;
 
 import org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n;
-import org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n.LOCALE;
 
 /**
  * Created by Vincent Elcrin
@@ -34,15 +31,15 @@ public class FakeI18n extends AbstractI18n {
     }
 
     @Override
-    public void loadLocale(LOCALE locale) {
+    public void loadLocale(final LOCALE locale) {
     }
 
     @Override
-    protected String getText(LOCALE locale, String key) {
+    protected String getText(final LOCALE locale, final String key) {
         return l10n;
     }
 
-    public void setL10n(String value) {
+    public void setL10n(final String value) {
         l10n = value;
     }
 }

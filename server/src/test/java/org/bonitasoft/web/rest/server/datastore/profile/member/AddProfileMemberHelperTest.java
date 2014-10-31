@@ -5,20 +5,18 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.datastore.profile.member;
 
-import static junit.framework.Assert.assertTrue;
 import static org.bonitasoft.web.rest.model.builder.profile.member.EngineProfileMemberBuilder.anEngineProfileMember;
 import static org.bonitasoft.web.rest.model.builder.profile.member.ProfileMemberItemBuilder.aProfileMemberItem;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -32,7 +30,6 @@ import org.mockito.Mock;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class AddProfileMemberHelperTest extends APITestWithMock {
 
@@ -40,7 +37,6 @@ public class AddProfileMemberHelperTest extends APITestWithMock {
     ProfileMemberEngineClient engineClient;
 
     AddProfileMemberHelper addProfileHelper;
-
 
     @Before
     public void setUp() {
@@ -50,13 +46,13 @@ public class AddProfileMemberHelperTest extends APITestWithMock {
 
     @Test
     public void testWeCanCreateAMembershipForAUSer() {
-        ProfileMember aKnownProfile = anEngineProfileMember().build();
+        final ProfileMember aKnownProfile = anEngineProfileMember().build();
         when(engineClient.createProfileMember(1L, 2L, null, null)).thenReturn(aKnownProfile);
 
-        ProfileMemberItem item = aProfileMemberItem().withProfileId(1L).withUserId(2L).withGroupId(null)
+        final ProfileMemberItem item = aProfileMemberItem().withProfileId(1L).withUserId(2L).withGroupId(null)
                 .withRoleId(null).build();
 
-        ProfileMemberItem newItem = addProfileHelper.add(item);
+        final ProfileMemberItem newItem = addProfileHelper.add(item);
 
         assertTrue(areEquals(aProfileMemberItem().from(aKnownProfile).build(), newItem));
     }

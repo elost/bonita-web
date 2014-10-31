@@ -1,9 +1,16 @@
 package org.bonitasoft.web.rest.server.engineclient;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willThrow;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
+
 import java.util.Arrays;
 import java.util.List;
 
 import org.bonitasoft.engine.api.IdentityAPI;
+import org.bonitasoft.engine.exception.AlreadyExistsException;
 import org.bonitasoft.engine.exception.CreationException;
 import org.bonitasoft.engine.exception.DeletionException;
 import org.bonitasoft.engine.exception.UpdateException;
@@ -20,12 +27,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.willThrow;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.verify;
-
 /**
  * @author Vincent Elcrin
  */
@@ -39,17 +40,17 @@ public class CustomUserInfoEngineClientTest {
     private CustomUserInfoEngineClient client;
 
     @Test
-    public void should_create_a_given_definition() throws Exception {
+    public void should_create_a_given_definition() throws AlreadyExistsException, CreationException {
         given(engine.createCustomUserInfoDefinition(any(CustomUserInfoDefinitionCreator.class)))
                 .willReturn(new EngineCustomUserInfoDefinition(1L, "foo", "bar"));
 
-        CustomUserInfoDefinition definition = client.createDefinition(new CustomUserInfoDefinitionCreator("foo"));
+        final CustomUserInfoDefinition definition = client.createDefinition(new CustomUserInfoDefinitionCreator("foo"));
 
         assertThat(definition.getName()).isEqualTo("foo");
     }
 
     @Test(expected = APIException.class)
-    public void should_fail_to_create_a_given_definition_when_engine_throw_an_exception() throws Exception {
+    public void should_fail_to_create_a_given_definition_when_engine_throw_an_exception() throws AlreadyExistsException, CreationException {
         given(engine.createCustomUserInfoDefinition(any(CustomUserInfoDefinitionCreator.class)))
                 .willThrow(new CreationException("failure"));
 
@@ -57,7 +58,7 @@ public class CustomUserInfoEngineClientTest {
     }
 
     @Test
-    public void should_delete_a_given_definition() throws Exception {
+    public void should_delete_a_given_definition() throws DeletionException {
 
         client.deleteDefinition(1L);
 
@@ -65,7 +66,7 @@ public class CustomUserInfoEngineClientTest {
     }
 
     @Test(expected = APIException.class)
-    public void should_fail_to_delete_a_given_definition_when_engine_throw_an_exception() throws Exception {
+    public void should_fail_to_delete_a_given_definition_when_engine_throw_an_exception() throws DeletionException {
         willThrow(new DeletionException("failure")).given(engine)
                 .deleteCustomUserInfoDefinition(1L);
 
@@ -73,19 +74,19 @@ public class CustomUserInfoEngineClientTest {
     }
 
     @Test
-    public void should_list_definitions_for_a_given_range() throws Exception {
-        given(engine.getCustomUserInfoDefinitions(0, 2)).willReturn(Arrays.<CustomUserInfoDefinition>asList(
+    public void should_list_definitions_for_a_given_range() {
+        given(engine.getCustomUserInfoDefinitions(0, 2)).willReturn(Arrays.<CustomUserInfoDefinition> asList(
                 new EngineCustomUserInfoDefinition(1L),
                 new EngineCustomUserInfoDefinition(2L)));
 
-        List<CustomUserInfoDefinition> definitions = client.listDefinitions(0, 2);
+        final List<CustomUserInfoDefinition> definitions = client.listDefinitions(0, 2);
 
         assertThat(definitions.get(0).getId()).isEqualTo(1L);
         assertThat(definitions.get(1).getId()).isEqualTo(2L);
     }
 
     @Test
-    public void should_count_definitions() throws Exception {
+    public void should_count_definitions() {
         given(engine.getNumberOfCustomInfoDefinitions()).willReturn(5L);
 
         assertThat(client.countDefinitions()).isEqualTo(5);
@@ -97,7 +98,7 @@ public class CustomUserInfoEngineClientTest {
                 new CustomUserInfo(1L, new EngineCustomUserInfoDefinition(1L), new CustomUserInfoValueImpl()),
                 new CustomUserInfo(1L, new EngineCustomUserInfoDefinition(2L), new CustomUserInfoValueImpl())));
 
-        List<CustomUserInfo> information = client.listCustomInformation(1L, 0, 2);
+        final List<CustomUserInfo> information = client.listCustomInformation(1L, 0, 2);
 
         assertThat(information.get(0).getDefinition().getId()).isEqualTo(1L);
         assertThat(information.get(1).getDefinition().getId()).isEqualTo(2L);
@@ -105,11 +106,11 @@ public class CustomUserInfoEngineClientTest {
 
     @Test
     public void should_the_value_of_a_given_custom_user_info() throws UpdateException {
-        CustomUserInfoValueImpl value = new CustomUserInfoValueImpl();
+        final CustomUserInfoValueImpl value = new CustomUserInfoValueImpl();
         value.setValue("foo");
         given(engine.setCustomUserInfoValue(1L, 2L, "foo")).willReturn(value);
 
-        CustomUserInfoValue foo = client.setCustomUserInfoValue(1L, 2L, "foo");
+        final CustomUserInfoValue foo = client.setCustomUserInfoValue(1L, 2L, "foo");
 
         assertThat(foo.getValue()).isEqualTo("foo");
     }

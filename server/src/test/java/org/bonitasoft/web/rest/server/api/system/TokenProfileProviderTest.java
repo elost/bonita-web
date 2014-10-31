@@ -14,6 +14,9 @@
  */
 package org.bonitasoft.web.rest.server.api.system;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+
 import java.util.Arrays;
 
 import org.bonitasoft.engine.profile.Profile;
@@ -24,9 +27,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
 
 /**
  * @author Vincent Elcrin
@@ -50,7 +50,7 @@ public class TokenProfileProviderTest {
     private Profile profile2;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         given(profile1.getId()).willReturn(1L);
         given(client.getProfileEntriesByProfile(1L)).willReturn(Arrays.asList(entry1));
         given(profile2.getId()).willReturn(2L);
@@ -58,11 +58,11 @@ public class TokenProfileProviderTest {
     }
 
     @Test
-    public void should_return_all_page_tokens_for_each_profile_entries() throws Exception {
+    public void should_return_all_page_tokens_for_each_profile_entries() {
         given(entry1.getPage()).willReturn("token 1");
         given(entry2.getPage()).willReturn("token 2");
 
-        TokenProfileProvider provider = new TokenProfileProvider(Arrays.asList(
+        final TokenProfileProvider provider = new TokenProfileProvider(Arrays.asList(
                 profile1,
                 profile2), client);
 
@@ -70,11 +70,11 @@ public class TokenProfileProviderTest {
     }
 
     @Test
-    public void should_not_return_a_token_if_the_page_from_the_profile_entry_is_null() throws Exception {
+    public void should_not_return_a_token_if_the_page_from_the_profile_entry_is_null() {
         given(entry1.getPage()).willReturn(null);
         given(entry2.getPage()).willReturn("token 2");
 
-        TokenProfileProvider provider = new TokenProfileProvider(Arrays.asList(
+        final TokenProfileProvider provider = new TokenProfileProvider(Arrays.asList(
                 profile1,
                 profile2), client);
 

@@ -14,22 +14,28 @@
  */
 package org.bonitasoft.console.common.server.servlet;
 
-import org.bonitasoft.console.common.server.login.LoginManager;
-import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConstants;
-import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConstantsUtils;
-import org.bonitasoft.engine.api.ProcessAPI;
-import org.bonitasoft.engine.api.TenantAPIAccessor;
-import org.bonitasoft.engine.session.APISession;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.*;
-import java.net.URLEncoder;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.bonitasoft.console.common.server.login.LoginManager;
+import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConstants;
+import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConstantsUtils;
+import org.bonitasoft.engine.api.ProcessAPI;
+import org.bonitasoft.engine.api.TenantAPIAccessor;
+import org.bonitasoft.engine.session.APISession;
 
 /**
  * @author Yongtao Guo
@@ -94,28 +100,27 @@ public class DocumentDownloadServlet extends HttpServlet {
                     }
                     throw new ServletException(errorMessage);
                 }
-                this.fileName = file.getName();
+                fileName = file.getName();
                 int fileLength = 0;
                 if (file.length() > Integer.MAX_VALUE) {
                     throw new ServletException("file " + attachmentPath + " too big !");
-                } else {
-                    fileLength = (int) file.length();
                 }
-                this.content = getFileContent(file, fileLength, attachmentPath);
+                fileLength = (int) file.length();
+                content = getFileContent(file, fileLength, attachmentPath);
             } else {
-                    final ProcessAPI processAPI = TenantAPIAccessor.getProcessAPI(apiSession);
-                if (this.fileName == null && documentId != null && !documentId.isEmpty()) {
+                final ProcessAPI processAPI = TenantAPIAccessor.getProcessAPI(apiSession);
+                if (fileName == null && documentId != null && !documentId.isEmpty()) {
                     if ("ARCHIVED".equals(caseType)) {
-                        this.fileName = processAPI.getArchivedProcessDocument(Long.valueOf(documentId)).getDocumentContentFileName();
+                        fileName = processAPI.getArchivedProcessDocument(Long.valueOf(documentId)).getDocumentContentFileName();
                     } else {
-                        this.fileName = processAPI.getDocument(Long.valueOf(documentId)).getContentFileName();
+                        fileName = processAPI.getDocument(Long.valueOf(documentId)).getContentFileName();
                     }
                 }
 
-                    if (contentStorageId != null && !contentStorageId.isEmpty()) {
-                        this.content = processAPI.getDocumentContent(contentStorageId);
-                    }
+                if (contentStorageId != null && !contentStorageId.isEmpty()) {
+                    content = processAPI.getDocumentContent(contentStorageId);
                 }
+            }
         } catch (final Exception ex) {
             if (LOGGER.isLoggable(Level.SEVERE)) {
                 LOGGER.log(Level.SEVERE, "Error while retrieving the file name and content of attachment.", ex);
@@ -126,14 +131,14 @@ public class DocumentDownloadServlet extends HttpServlet {
     @Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         initParams(request);
-        if (this.content != null) {
+        if (content != null) {
             if (LOGGER.isLoggable(Level.FINEST)) {
-                LOGGER.log(Level.FINEST, "fileName: " + this.fileName);
+                LOGGER.log(Level.FINEST, "fileName: " + fileName);
             }
 
             response.setContentType("application/octet-stream");
             response.setCharacterEncoding("UTF-8");
-            final String encodedfileName = URLEncoder.encode(this.fileName, "UTF-8");
+            final String encodedfileName = URLEncoder.encode(fileName, "UTF-8");
             final String userAgent = request.getHeader("User-Agent");
             if (userAgent != null && userAgent.contains("Firefox")) {
                 response.setHeader("Content-Disposition", "attachment; filename*=UTF-8''" + encodedfileName.replace("+", "%20"));
@@ -142,7 +147,7 @@ public class DocumentDownloadServlet extends HttpServlet {
                         + encodedfileName.replace("+", "%20"));
             }
             final OutputStream out = response.getOutputStream();
-            out.write(this.content);
+            out.write(content);
             out.close();
         }
     }

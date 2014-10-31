@@ -181,17 +181,16 @@ public class ProfileEntryItem extends Item implements ItemHasUniqueId {
         this.setAttribute(ATTRIBUTE_IS_CUSTOM_ICON, iconPath);
     }
 
-
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // DEPLOYS
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public ProfileEntryItem getParentEntry() {
-        return (ProfileEntryItem) ProfileEntryDefinition.get().createItem(getDeploy(ATTRIBUTE_PARENT_ID));
+        return ProfileEntryDefinition.get().createItem(getDeploy(ATTRIBUTE_PARENT_ID));
     }
 
     public ProfileItem getProfile() {
-        return (ProfileItem) ProfileDefinition.get().createItem(getDeploy(ATTRIBUTE_PROFILE_ID));
+        return ProfileDefinition.get().createItem(getDeploy(ATTRIBUTE_PROFILE_ID));
     }
 
     public BonitaPageItem getBonitaPage() {

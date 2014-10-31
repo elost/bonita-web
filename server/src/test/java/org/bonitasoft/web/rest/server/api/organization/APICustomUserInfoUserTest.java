@@ -5,21 +5,24 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.api.organization;
 
-import javax.servlet.http.HttpSession;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.bonitasoft.engine.api.IdentityAPI;
 import org.bonitasoft.engine.identity.CustomUserInfo;
@@ -38,10 +41,6 @@ import org.mockito.Answers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 
 /**
  * @author Vincent Elcrin
@@ -71,7 +70,7 @@ public class APICustomUserInfoUserTest {
     private APICustomUserInfoUser api;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         api.setCaller(caller);
         given(caller.getHttpSession()).willReturn(httpSession);
         given(httpSession.getAttribute("apiSession")).willReturn(apiSession);
@@ -79,20 +78,20 @@ public class APICustomUserInfoUserTest {
     }
 
     @Test
-    public void should_retrieve_the_CustomUserInfo_for_a_given_user_id() throws Exception {
+    public void should_retrieve_the_CustomUserInfo_for_a_given_user_id() {
         given(engine.listCustomInformation(3L, 0, 2)).willReturn(Arrays.asList(
                 new CustomUserInfo(3L, new EngineCustomUserInfoDefinition(5L), new CustomUserInfoValueImpl()),
                 new CustomUserInfo(3L, new EngineCustomUserInfoDefinition(6L), new CustomUserInfoValueImpl())));
         given(engine.countDefinitions()).willReturn(2L);
 
-        List<CustomUserInfoItem> information = api.search(0, 2, null, "Fix order", Collections.singletonMap("userId", "3")).getResults();
+        final List<CustomUserInfoItem> information = api.search(0, 2, null, "Fix order", Collections.singletonMap("userId", "3")).getResults();
 
         assertThat(information.get(0).getDefinition().getId()).isEqualTo(APIID.makeAPIID(5L));
         assertThat(information.get(1).getDefinition().getId()).isEqualTo(APIID.makeAPIID(6L));
     }
 
     @Test
-    public void should_paginate_CustomUserInfo_search() throws Exception {
+    public void should_paginate_CustomUserInfo_search() {
         given(engine.countDefinitions()).willReturn(2L);
 
         api.search(2, 2, null, "Fix order", Collections.singletonMap("userId", "3")).getResults();

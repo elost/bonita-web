@@ -3,8 +3,6 @@ package org.bonitasoft.web.rest.server.datastore.profile.member;
 import java.util.HashMap;
 import java.util.Map;
 
-import junit.framework.Assert;
-
 import org.bonitasoft.test.toolkit.organization.TestGroup;
 import org.bonitasoft.test.toolkit.organization.TestGroupFactory;
 import org.bonitasoft.test.toolkit.organization.TestUser;
@@ -17,6 +15,7 @@ import org.bonitasoft.web.rest.server.AbstractConsoleTest;
 import org.bonitasoft.web.rest.server.api.profile.APIProfileMember;
 import org.bonitasoft.web.rest.server.framework.search.ItemSearchResult;
 import org.bonitasoft.web.toolkit.client.data.APIID;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -26,8 +25,8 @@ public class ProfileMemberDatastoreIntegrationTest extends AbstractConsoleTest {
 
     @Override
     public void consoleTestSetUp() throws Exception {
-        this.apiProfileMember = new APIProfileMember();
-        this.apiProfileMember.setCaller(getAPICaller(getInitiator().getSession(), "API/portal/profileMember"));
+        apiProfileMember = new APIProfileMember();
+        apiProfileMember.setCaller(getAPICaller(getInitiator().getSession(), "API/portal/profileMember"));
     }
 
     @Override
@@ -38,11 +37,11 @@ public class ProfileMemberDatastoreIntegrationTest extends AbstractConsoleTest {
     @Ignore("TestProfileFactory need to be updated to stop using command")
     @Test
     public void testWeCanSearchAUser() {
-        TestProfile profile = TestProfileFactory.newProfile(getInitiator().getSession()).create();
-        TestProfileMember membership = profile.addMember(getInitiator());
-        Map<String, String> filters = createSearchFilters(profile, ProfileMemberItem.VALUE_MEMBER_TYPE_USER);
+        final TestProfile profile = TestProfileFactory.newProfile(getInitiator().getSession()).create();
+        final TestProfileMember membership = profile.addMember(getInitiator());
+        final Map<String, String> filters = createSearchFilters(profile, ProfileMemberItem.VALUE_MEMBER_TYPE_USER);
 
-        ItemSearchResult<ProfileMemberItem> search = apiProfileMember.search(0, 1, null, null, filters);
+        final ItemSearchResult<ProfileMemberItem> search = apiProfileMember.search(0, 1, null, null, filters);
 
         Assert.assertEquals(APIID.makeAPIID(membership.getMembershipId()), search.getResults().get(0).getId());
     }
@@ -53,18 +52,18 @@ public class ProfileMemberDatastoreIntegrationTest extends AbstractConsoleTest {
     @Ignore
     @Test
     public void testWeCanSearchAGroup() {
-        TestProfile profile = TestProfileFactory.newProfile(getInitiator().getSession()).create();
-        TestGroup group = TestGroupFactory.createGroup("name", "desciption");
-        TestProfileMember membership = profile.addMember(group);
-        Map<String, String> filters = createSearchFilters(profile, ProfileMemberItem.VALUE_MEMBER_TYPE_GROUP);
+        final TestProfile profile = TestProfileFactory.newProfile(getInitiator().getSession()).create();
+        final TestGroup group = TestGroupFactory.createGroup("name", "desciption");
+        final TestProfileMember membership = profile.addMember(group);
+        final Map<String, String> filters = createSearchFilters(profile, ProfileMemberItem.VALUE_MEMBER_TYPE_GROUP);
 
-        ItemSearchResult<ProfileMemberItem> search = apiProfileMember.search(0, 1, null, null, filters);
+        final ItemSearchResult<ProfileMemberItem> search = apiProfileMember.search(0, 1, null, null, filters);
 
         Assert.assertEquals(APIID.makeAPIID(membership.getMembershipId()), search.getResults().get(0).getId());
     }
 
-    private Map<String, String> createSearchFilters(TestProfile profile, String memberType) {
-        Map<String, String> filters = new HashMap<String, String>();
+    private Map<String, String> createSearchFilters(final TestProfile profile, final String memberType) {
+        final Map<String, String> filters = new HashMap<String, String>();
         filters.put(ProfileMemberItem.ATTRIBUTE_PROFILE_ID, String.valueOf(profile.getId()));
         filters.put(ProfileMemberItem.FILTER_MEMBER_TYPE, memberType);
         return filters;

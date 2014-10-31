@@ -5,19 +5,17 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.api.bpm.process;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,14 +35,13 @@ import org.junit.Test;
 
 /**
  * @author Colin PUY
- * 
  */
 public class APIProcessConnectorIntegrationTest extends AbstractConsoleTest {
 
     private APIProcessConnector apiProcessConnector;
 
     @Override
-    public void consoleTestSetUp() throws Exception {
+    public void consoleTestSetUp() {
         apiProcessConnector = new APIProcessConnector();
         apiProcessConnector.setCaller(getAPICaller(getInitiator().getSession(), "API/bpm/processConnector"));
     }
@@ -55,39 +52,39 @@ public class APIProcessConnectorIntegrationTest extends AbstractConsoleTest {
     }
 
     @Test
-    public void testSearch() throws Exception {
-        TestProcessConnector defaultConnector = TestProcessConnectorFactory.getDefaultConnector();
-        TestProcess processWithConnector = TestProcessFactory.createProcessWithConnector(defaultConnector);
-        Map<String, String> filters = new HashMap<String, String>();
+    public void testSearch() {
+        final TestProcessConnector defaultConnector = TestProcessConnectorFactory.getDefaultConnector();
+        final TestProcess processWithConnector = TestProcessFactory.createProcessWithConnector(defaultConnector);
+        final Map<String, String> filters = new HashMap<String, String>();
         filters.put(ProcessConnectorItem.ATTRIBUTE_PROCESS_ID, String.valueOf(processWithConnector.getId()));
 
-        ItemSearchResult<ProcessConnectorItem> search = apiProcessConnector.runSearch(0, 10, "", null, filters, null, null);
+        final ItemSearchResult<ProcessConnectorItem> search = apiProcessConnector.runSearch(0, 10, "", null, filters, null, null);
 
-        ProcessConnectorItem expectedItem = toProcessConnectorItem(defaultConnector, processWithConnector.getId());
+        final ProcessConnectorItem expectedItem = toProcessConnectorItem(defaultConnector, processWithConnector.getId());
         assertTrue(areEquals(expectedItem, search.getResults().get(0)));
         assertEquals(1L, search.getTotal());
     }
 
     @Test
-    public void testGet() throws Exception {
-        TestProcessConnector defaultConnector = TestProcessConnectorFactory.getDefaultConnector();
-        TestProcess processWithConnector = TestProcessFactory.createProcessWithConnector(defaultConnector);
+    public void testGet() {
+        final TestProcessConnector defaultConnector = TestProcessConnectorFactory.getDefaultConnector();
+        final TestProcess processWithConnector = TestProcessFactory.createProcessWithConnector(defaultConnector);
 
-        APIID apiid = anApiId(processWithConnector.getId(), defaultConnector.getId(), defaultConnector.getVersion());
-        ProcessConnectorItem processConnectorItem = apiProcessConnector.runGet(apiid, null, null);
+        final APIID apiid = anApiId(processWithConnector.getId(), defaultConnector.getId(), defaultConnector.getVersion());
+        final ProcessConnectorItem processConnectorItem = apiProcessConnector.runGet(apiid, null, null);
 
-        ProcessConnectorItem expectedItem = toProcessConnectorItem(defaultConnector, processWithConnector.getId());
+        final ProcessConnectorItem expectedItem = toProcessConnectorItem(defaultConnector, processWithConnector.getId());
         assertTrue(areEquals(expectedItem, processConnectorItem));
     }
 
-    private APIID anApiId(long processId, String connectorId, String connectorVersion) {
-        APIID apiid = APIID.makeAPIID(String.valueOf(processId), connectorId, connectorVersion);
+    private APIID anApiId(final long processId, final String connectorId, final String connectorVersion) {
+        final APIID apiid = APIID.makeAPIID(String.valueOf(processId), connectorId, connectorVersion);
         apiid.setItemDefinition(ProcessConnectorDefinition.get());
         return apiid;
     }
 
-    private ProcessConnectorItem toProcessConnectorItem(TestProcessConnector testProcessConnector, long processId) {
-        ProcessConnectorItem item = new ProcessConnectorItem();
+    private ProcessConnectorItem toProcessConnectorItem(final TestProcessConnector testProcessConnector, final long processId) {
+        final ProcessConnectorItem item = new ProcessConnectorItem();
         item.setName(testProcessConnector.getId());
         item.setVersion(testProcessConnector.getVersion());
         item.setProcessId(processId);

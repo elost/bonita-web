@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.server.validator;
 
@@ -27,40 +25,43 @@ import org.bonitasoft.forms.client.model.FormFieldValue;
 
 /**
  * Example of page validator used to test the Form validation API
+ * 
  * @author Anthony Birembaut
- *
  */
-public class DateOrderTestPageValidator implements IFormPageValidator{
+public class DateOrderTestPageValidator implements IFormPageValidator {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.bonitasoft.forms.server.validator.IFormPageValidator#validate(java.util.Map)
      */
-    public boolean validate(Map<String, FormFieldValue> fieldValues, Locale locale) {
-        
+    @Override
+    public boolean validate(final Map<String, FormFieldValue> fieldValues, final Locale locale) {
+
         try {
-            FormFieldValue fieldInput1 = fieldValues.get("fieldId1");
-            String formatPattern1 = fieldInput1.getFormat();
-            DateFormat df1 = new SimpleDateFormat(formatPattern1, locale);
-            Date date1 = df1.parse((String)fieldInput1.getValue());
-            
-            FormFieldValue fieldInput2 = fieldValues.get("fieldId2");
-            String formatPattern2 = fieldInput1.getFormat();
-            DateFormat df2 = new SimpleDateFormat(formatPattern2, locale);
-            Date date2 = df2.parse((String)fieldInput2.getValue());
-            
+            final FormFieldValue fieldInput1 = fieldValues.get("fieldId1");
+            final String formatPattern1 = fieldInput1.getFormat();
+            final DateFormat df1 = new SimpleDateFormat(formatPattern1, locale);
+            final Date date1 = df1.parse((String) fieldInput1.getValue());
+
+            final FormFieldValue fieldInput2 = fieldValues.get("fieldId2");
+            final String formatPattern2 = fieldInput1.getFormat();
+            final DateFormat df2 = new SimpleDateFormat(formatPattern2, locale);
+            final Date date2 = df2.parse((String) fieldInput2.getValue());
+
             if (date1.compareTo(date2) < 0) {
                 return true;
-            } else {
-                return false;
             }
-        } catch (ParseException e) {
+            return false;
+        } catch (final ParseException e) {
             return false;
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.bonitasoft.forms.server.validator.IFormPageValidator#getDisplayName()
      */
+    @Override
     public String getDisplayName() {
         return "Date Order validator";
     }

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -43,7 +41,6 @@ import org.bonitasoft.engine.session.InvalidSessionException;
 
 /**
  * @author Anthony Birembaut
- * 
  */
 public class FormsResourcesUtils {
 
@@ -84,7 +81,7 @@ public class FormsResourcesUtils {
 
     /**
      * Retrieve the web resources from the business archive and store them in a local directory
-     * 
+     *
      * @param session
      *        the engine API session
      * @param processDefinitionID
@@ -99,12 +96,12 @@ public class FormsResourcesUtils {
     public static synchronized void retrieveApplicationFiles(final APISession session, final long processDefinitionID, final Date processDeployementDate)
             throws IOException, ProcessDefinitionNotFoundException, InvalidSessionException, RetrieveException, BPMEngineException {
 
-        ProcessAccessor process = new ProcessAccessor(bpmEngineAPIUtil.getProcessAPI(session));
+        final ProcessAccessor process = new ProcessAccessor(bpmEngineAPIUtil.getProcessAPI(session));
         final File formsDir = getApplicationResourceDir(session, processDefinitionID, processDeployementDate);
         if (!formsDir.exists()) {
             formsDir.mkdirs();
         }
-        Map<String, byte[]> formsResources = process.getResources(processDefinitionID, FORMS_DIRECTORY_IN_BAR + "/.*");
+        final Map<String, byte[]> formsResources = process.getResources(processDefinitionID, FORMS_DIRECTORY_IN_BAR + "/.*");
         for (final Entry<String, byte[]> formResource : formsResources.entrySet()) {
             final String filePath = formResource.getKey().substring(FORMS_DIRECTORY_IN_BAR.length() + 1);
             final byte[] fileContent = formResource.getValue();
@@ -133,7 +130,7 @@ public class FormsResourcesUtils {
             }
         }
 
-        ProcessDefinition definition = process.getDefinition(processDefinitionID);
+        final ProcessDefinition definition = process.getDefinition(processDefinitionID);
         SecurityProperties.cleanProcessConfig(session.getTenantId(),
                 new ProcessIdentifier(definition.getName(), definition.getVersion()));
 
@@ -221,9 +218,9 @@ public class FormsResourcesUtils {
             processClassLoader = PROCESS_CLASSLOADERS.get(processDefinitionID);
         } else {
             try {
-                ProcessDefinition processDefinition = bpmEngineAPIUtil.getProcessAPI(session).getProcessDefinition(processDefinitionID);
+                final ProcessDefinition processDefinition = bpmEngineAPIUtil.getProcessAPI(session).getProcessDefinition(processDefinitionID);
 
-                String processPath = WebBonitaConstantsUtils.getInstance(session.getTenantId()).getFormsWorkFolder() + File.separator;
+                final String processPath = WebBonitaConstantsUtils.getInstance(session.getTenantId()).getFormsWorkFolder() + File.separator;
                 final File processDir = new File(processPath, processDefinition.getName() + "--" + processDefinition.getVersion());
                 if (processDir.exists()) {
                     final File[] directories = processDir.listFiles(new FileFilter() {
@@ -262,13 +259,13 @@ public class FormsResourcesUtils {
                 if (LOGGER.isLoggable(Level.SEVERE)) {
                     LOGGER.log(Level.SEVERE, message, e);
                 }
-            } catch (ProcessDefinitionNotFoundException e1) {
+            } catch (final ProcessDefinitionNotFoundException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
-            } catch (InvalidSessionException e1) {
+            } catch (final InvalidSessionException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
-            } catch (BPMEngineException e1) {
+            } catch (final BPMEngineException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
@@ -321,7 +318,7 @@ public class FormsResourcesUtils {
      * @throws org.bonitasoft.engine.exception.RetrieveException
      */
     public static File getApplicationResourceDir(final APISession session, final long processDefinitionID, final Date processDeployementDate)
-            throws IOException, InvalidSessionException, ProcessDefinitionNotFoundException, RetrieveException, BPMEngineException {
+            throws InvalidSessionException, ProcessDefinitionNotFoundException, RetrieveException, BPMEngineException {
         final ProcessAccessor process = new ProcessAccessor(bpmEngineAPIUtil.getProcessAPI(session));
         final ProcessDefinition processDefinition = process.getDefinition(processDefinitionID);
         final String processUUID = processDefinition.getName() + UUID_SEPARATOR + processDefinition.getVersion();
@@ -331,13 +328,13 @@ public class FormsResourcesUtils {
 
     /**
      * Delete a directory and its content
-     * 
+     *
      * @param directory
      *        the directory to delete
      * @return return true if the directory and its content were deleted successfully, false otherwise
      */
     private static boolean deleteDirectory(final File directory) {
-        boolean success = true;;
+        boolean success = true;
         if (directory.exists()) {
             final File[] files = directory.listFiles();
             for (int i = 0; i < files.length; i++) {

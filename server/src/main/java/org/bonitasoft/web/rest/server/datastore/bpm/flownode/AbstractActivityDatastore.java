@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -43,8 +41,6 @@ import org.bonitasoft.web.rest.server.datastore.utils.VariablesMapper;
 import org.bonitasoft.web.rest.server.engineclient.ActivityEngineClient;
 import org.bonitasoft.web.rest.server.engineclient.EngineAPIAccessor;
 import org.bonitasoft.web.rest.server.engineclient.EngineClientFactory;
-import org.bonitasoft.web.rest.server.framework.api.DatastoreHasGet;
-import org.bonitasoft.web.rest.server.framework.api.DatastoreHasUpdate;
 import org.bonitasoft.web.toolkit.client.common.exception.api.APIException;
 import org.bonitasoft.web.toolkit.client.common.exception.api.APIItemNotFoundException;
 import org.bonitasoft.web.toolkit.client.common.util.MapUtil;
@@ -52,10 +48,9 @@ import org.bonitasoft.web.toolkit.client.data.APIID;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class AbstractActivityDatastore<CONSOLE_ITEM extends ActivityItem, ENGINE_ITEM extends ActivityInstance> extends
-        AbstractFlowNodeDatastore<CONSOLE_ITEM, ENGINE_ITEM> implements DatastoreHasGet<CONSOLE_ITEM>, DatastoreHasUpdate<CONSOLE_ITEM> {
+        AbstractFlowNodeDatastore<CONSOLE_ITEM, ENGINE_ITEM> {
 
     public AbstractActivityDatastore(final APISession engineSession) {
         super(engineSession);
@@ -63,11 +58,11 @@ public class AbstractActivityDatastore<CONSOLE_ITEM extends ActivityItem, ENGINE
 
     /**
      * Fill a console item using the engine item passed.
-     * 
+     *
      * @param result
-     *            The console item to fill
+     *        The console item to fill
      * @param item
-     *            The engine item to use for filling
+     *        The engine item to use for filling
      * @return This method returns the result parameter passed.
      */
     protected static ActivityItem fillConsoleItem(final ActivityItem result, final ActivityInstance item) {
@@ -155,11 +150,11 @@ public class AbstractActivityDatastore<CONSOLE_ITEM extends ActivityItem, ENGINE
 
     /**
      * @param item
-     *            The item to update
+     *        The item to update
      * @param state
-     *            The state to set
+     *        The state to set
      */
-    protected void updateState(final CONSOLE_ITEM item, final String state, String userExecuteById) {
+    protected void updateState(final CONSOLE_ITEM item, final String state, final String userExecuteById) {
         try {
             if (state == null) {
                 return;

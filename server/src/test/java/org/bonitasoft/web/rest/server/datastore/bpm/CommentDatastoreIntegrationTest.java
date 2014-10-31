@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -41,7 +39,7 @@ public class CommentDatastoreIntegrationTest extends AbstractConsoleTest {
     }
 
     @Override
-    public void consoleTestSetUp() throws Exception {
+    public void consoleTestSetUp() {
         commentDatastore = new CommentDatastore(TestUserFactory.getJohnCarpenter().getSession());
     }
 
@@ -49,19 +47,19 @@ public class CommentDatastoreIntegrationTest extends AbstractConsoleTest {
         return TestProcessFactory.getDefaultHumanTaskProcess().addActor(TestUserFactory.getJohnCarpenter()).startCase();
     }
 
-    private HashMap<String, String> filterByCaseId(long caseId) {
-        HashMap<String, String> filters = new HashMap<String, String>();
+    private HashMap<String, String> filterByCaseId(final long caseId) {
+        final HashMap<String, String> filters = new HashMap<String, String>();
         filters.put(CommentItem.ATTRIBUTE_PROCESS_INSTANCE_ID, String.valueOf(caseId));
         return filters;
     }
 
     @Test
-    public void comment_datastore_can_do_a_paginated_search() throws Exception {
-        TestCase aCase = aCase();
+    public void comment_datastore_can_do_a_paginated_search() {
+        final TestCase aCase = aCase();
         aCase.addComment("Comment 1");
         aCase.addComment("Comment 2");
         aCase.addComment("Comment 3");
-        
+
         final ItemSearchResult<CommentItem> results = commentDatastore.search(0, 2, null, null, filterByCaseId(aCase.getId()));
 
         assertThat(results.getTotal(), is(3L));
@@ -71,9 +69,9 @@ public class CommentDatastoreIntegrationTest extends AbstractConsoleTest {
     }
 
     @Test
-    public void comment_datastore_can_search_comments_with_special_characters() throws Exception {
-        String specialCharComment = "#*Ã©Ã Ã¢Ã¤Ã«ÃªÃ©~Ã§ÃžÅ¡Å’Ã˜Ã�Ã†";
-        TestCase aCase = aCase();
+    public void comment_datastore_can_search_comments_with_special_characters() {
+        final String specialCharComment = "#*Ã©Ã Ã¢Ã¤Ã«ÃªÃ©~Ã§ÃžÅ¡Å’Ã˜Ã�Ã†";
+        final TestCase aCase = aCase();
         aCase.addComment(specialCharComment);
 
         final ItemSearchResult<CommentItem> results = commentDatastore.search(0, 10, null, null, filterByCaseId(aCase.getId()));

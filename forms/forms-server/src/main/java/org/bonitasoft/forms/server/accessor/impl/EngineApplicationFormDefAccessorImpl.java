@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -58,7 +56,7 @@ import org.bonitasoft.forms.server.provider.impl.util.FormServiceProviderUtil;
 
 /**
  * Implementation of {@link IApplicationFormDefAccessor} allowing to generate the application config from the engine
- * 
+ *
  * @author Anthony Birembaut, Haojie Yuan, Vincent Elcrin, Julien Mege
  */
 public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDefAccessor {
@@ -154,7 +152,7 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
 
     /**
      * Default constructor.
-     * 
+     *
      * @param session
      * @param processDefinitionID
      * @param activityInstanceID
@@ -227,7 +225,7 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
 
     /**
      * build the form widgets
-     * 
+     *
      * @param pageId
      * @throws Exception
      */
@@ -309,10 +307,10 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
 
     /**
      * Calculate the index of the first field of the form page to display
-     * 
+     *
      * @param pageId
      * @param numberPerPage
-     *            return index of the first field of the form page to display
+     *        return index of the first field of the form page to display
      */
     private int getFirstFieldIndex(final String pageId, final int numberPerPage) {
         return Integer.valueOf(pageId) * numberPerPage;
@@ -320,7 +318,7 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
 
     /**
      * create the widgets data objects and put it in the applicationWidgets list
-     * 
+     *
      * @param applicationDataFields
      */
     protected void createWidgets(final Set<DataDefinition> applicationDataFields) {
@@ -339,7 +337,7 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
 
     /**
      * create the widgets data objects and put it in the activityWidgets list
-     * 
+     *
      * @param applicationDataFields
      * @param activityDataFields
      */
@@ -367,9 +365,8 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
     public String getFormPermissions() {
         if (activityName == null) {
             return FormServiceProviderUtil.PROCESS_UUID + "#" + processName + "--" + processVersion;
-        } else {
-            return FormServiceProviderUtil.ACTIVITY_UUID + "#" + processName + "--" + processVersion + "--" + activityName;
         }
+        return FormServiceProviderUtil.ACTIVITY_UUID + "#" + processName + "--" + processVersion + "--" + activityName;
     }
 
     /**
@@ -388,9 +385,8 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
         }
         if (nbOfPages > 0) {
             return new Expression("firstPageExpression", "0", ExpressionType.TYPE_CONSTANT.toString(), String.class.getName(), null, null);
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -497,7 +493,7 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
 
     /**
      * Get number of process data definition pages
-     * 
+     *
      * @return
      * @throws Exception
      */
@@ -506,14 +502,13 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
         if (nbOfProcessDataDefinition > 0) {
             final DefaultFormsProperties defaultProperties = DefaultFormsPropertiesFactory.getDefaultFormProperties(tenantId);
             return getRoundedNbOfPages(nbOfProcessDataDefinition, defaultProperties.getMaxWigdetPerPage());
-        } else {
-            return nbOfProcessDataDefinition;
         }
+        return nbOfProcessDataDefinition;
     }
 
     /**
      * Get number of activity data definition pages
-     * 
+     *
      * @return
      * @throws Exception
      */
@@ -522,9 +517,8 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
         if (nbOfProcessDataDefinition > 0) {
             final DefaultFormsProperties defaultProperties = DefaultFormsPropertiesFactory.getDefaultFormProperties(tenantId);
             return getRoundedNbOfPages(nbOfProcessDataDefinition, defaultProperties.getMaxWigdetPerPage());
-        } else {
-            return nbOfProcessDataDefinition;
         }
+        return nbOfProcessDataDefinition;
     }
 
     private int getRoundedNbOfPages(final int nbDataDefinition, final int nbMaxPerPage) {
@@ -534,7 +528,7 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
 
     /**
      * Get number of pages for process and activity data definition
-     * 
+     *
      * @return
      * @throws Exception
      */
@@ -586,7 +580,7 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws InvalidFormDefinitionException
      */
     @Override
@@ -611,18 +605,16 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
             if (applicationLabel != null && applicationLabel.length() != 0) {
                 return new Expression("pageLabelExpression", "Current state : " + toUpperCaseFirstLetter(applicationLabel + pageLabelComplement),
                         ExpressionType.TYPE_CONSTANT.toString(), String.class.getName(), null, null);
-            } else {
-                return new Expression("pageLabelExpression", "Current state : " + toUpperCaseFirstLetter(applicationName + pageLabelComplement),
-                        ExpressionType.TYPE_CONSTANT.toString(), String.class.getName(), null, null);
             }
+            return new Expression("pageLabelExpression", "Current state : " + toUpperCaseFirstLetter(applicationName + pageLabelComplement),
+                    ExpressionType.TYPE_CONSTANT.toString(), String.class.getName(), null, null);
         } else if (activityName == null) {
             if (applicationLabel != null && applicationLabel.length() != 0) {
                 return new Expression("pageLabelExpression", "#" + toUpperCaseFirstLetter(applicationLabel + pageLabelComplement),
                         ExpressionType.TYPE_CONSTANT.toString(), String.class.getName(), null, null);
-            } else {
-                return new Expression("pageLabelExpression", "#" + toUpperCaseFirstLetter(applicationName + pageLabelComplement),
-                        ExpressionType.TYPE_CONSTANT.toString(), String.class.getName(), null, null);
             }
+            return new Expression("pageLabelExpression", "#" + toUpperCaseFirstLetter(applicationName + pageLabelComplement),
+                    ExpressionType.TYPE_CONSTANT.toString(), String.class.getName(), null, null);
         } else {
             return new Expression("pageLabelExpression", toUpperCaseFirstLetter(activityDisplayName + pageLabelComplement),
                     ExpressionType.TYPE_CONSTANT.toString(), String.class.getName(), null, null);
@@ -631,18 +623,17 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
 
     /**
      * put set the fisrt letter of a label to uppercase
-     * 
+     *
      * @param label
-     *            the label
+     *        the label
      * @return the new label
      */
     protected String toUpperCaseFirstLetter(final String label) {
         if (label.length() > 0) {
             final Character firstLetter = Character.toUpperCase(label.charAt(0));
             return firstLetter + label.substring(1, label.length());
-        } else {
-            return label;
         }
+        return label;
     }
 
     /**
@@ -713,9 +704,8 @@ public class EngineApplicationFormDefAccessorImpl implements IApplicationFormDef
     public FormType getFormType() throws InvalidFormDefinitionException {
         if (isEditMode) {
             return FormType.entry;
-        } else {
-            return FormType.view;
         }
+        return FormType.view;
     }
 
 }

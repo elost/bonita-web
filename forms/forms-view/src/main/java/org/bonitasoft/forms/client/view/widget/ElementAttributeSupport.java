@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.view.widget;
 
@@ -70,19 +68,19 @@ import com.google.gwt.user.datepicker.client.DateBox;
 
 /**
  * @author Anthony Birembaut
- *
  */
-public class ElementAttributeSupport  {
+public class ElementAttributeSupport {
 
     /**
      * Supported HTML events on form fields and buttons
-     *
      */
-    private static enum SUPPORTED_EVENT {onclick, ondbclick, onmousedown, onmousemove, onmouseout, onmouseover, onmouseup, onchange, onblur, onfocus, onkeydown, onkeypress, onkeyup};
-    
-    
+    private static enum SUPPORTED_EVENT {
+        onclick, ondbclick, onmousedown, onmousemove, onmouseout, onmouseover, onmouseup, onchange, onblur, onfocus, onkeydown, onkeypress, onkeyup
+    }
+
     /**
      * Set the HTML attributes of a widget.
+     * 
      * @param fieldWidget the field widget
      * @param widgetData the widget data object
      */
@@ -93,169 +91,185 @@ public class ElementAttributeSupport  {
             }
         }
     }
-    
+
     protected void addHtmlAttribute(Widget fieldWidget, final String htmlAttributeName, final String htmlAttributeValue) {
         //Working for bug 4991: the "Html Attributes" of date widget
-        if(fieldWidget instanceof DateBox){
+        if (fieldWidget instanceof DateBox) {
             fieldWidget = ((DateBox) fieldWidget).getTextBox();
         }
         try {
             final SUPPORTED_EVENT event = SUPPORTED_EVENT.valueOf(htmlAttributeName.toLowerCase());
             switch (event) {
-            case onclick:
-                 ((HasClickHandlers)fieldWidget).addClickHandler(new ClickHandler() {
-                    
-                    public void onClick(final ClickEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case ondbclick:
-                ((HasDoubleClickHandlers)fieldWidget).addDoubleClickHandler(new DoubleClickHandler() {
-                    
-                    public void onDoubleClick(final DoubleClickEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case onblur:
-                ((HasBlurHandlers)fieldWidget).addBlurHandler(new BlurHandler() {
-                    
-                    public void onBlur(final BlurEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case onchange:
-                if (fieldWidget instanceof HasChangeHandlers) {
-                    ((HasChangeHandlers)fieldWidget).addChangeHandler(new ChangeHandler() {
-                        
-                        public void onChange(final ChangeEvent event) {
+                case onclick:
+                    ((HasClickHandlers) fieldWidget).addClickHandler(new ClickHandler() {
+
+                        @Override
+                        public void onClick(final ClickEvent event) {
                             DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
                         }
                     });
-                } else if (fieldWidget instanceof HasValueChangeHandlers<?>) {
-                    final HasValueChangeHandlers<Serializable> widget = (HasValueChangeHandlers<Serializable>)fieldWidget;
-                    widget.addValueChangeHandler(new ValueChangeHandler<Serializable>() {
-                        
-                        public void onValueChange(final ValueChangeEvent<Serializable> event) {
+                    break;
+                case ondbclick:
+                    ((HasDoubleClickHandlers) fieldWidget).addDoubleClickHandler(new DoubleClickHandler() {
+
+                        @Override
+                        public void onDoubleClick(final DoubleClickEvent event) {
                             DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
                         }
                     });
-                }
-                break;
-            case onfocus:
-                ((HasFocusHandlers)fieldWidget).addFocusHandler(new FocusHandler() {
-                    
-                    public void onFocus(final FocusEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                    break;
+                case onblur:
+                    ((HasBlurHandlers) fieldWidget).addBlurHandler(new BlurHandler() {
+
+                        @Override
+                        public void onBlur(final BlurEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                case onchange:
+                    if (fieldWidget instanceof HasChangeHandlers) {
+                        ((HasChangeHandlers) fieldWidget).addChangeHandler(new ChangeHandler() {
+
+                            @Override
+                            public void onChange(final ChangeEvent event) {
+                                DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                            }
+                        });
+                    } else if (fieldWidget instanceof HasValueChangeHandlers<?>) {
+                        final HasValueChangeHandlers<Serializable> widget = (HasValueChangeHandlers<Serializable>) fieldWidget;
+                        widget.addValueChangeHandler(new ValueChangeHandler<Serializable>() {
+
+                            @Override
+                            public void onValueChange(final ValueChangeEvent<Serializable> event) {
+                                DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                            }
+                        });
                     }
-                });
-                break;
-            case onkeydown:
-                ((HasKeyDownHandlers)fieldWidget).addKeyDownHandler(new KeyDownHandler() {
-                    
-                    public void onKeyDown(final KeyDownEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case onkeyup:
-                ((HasKeyUpHandlers)fieldWidget).addKeyUpHandler(new KeyUpHandler() {
-                    
-                    public void onKeyUp(final KeyUpEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case onkeypress:
-                ((HasKeyUpHandlers)fieldWidget).addKeyUpHandler(new KeyUpHandler() {
-                    
-                    public void onKeyUp(final KeyUpEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case onmousedown:
-                ((HasMouseDownHandlers)fieldWidget).addMouseDownHandler(new MouseDownHandler() {
-                    
-                    public void onMouseDown(final MouseDownEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case onmouseup:
-                ((HasMouseUpHandlers)fieldWidget).addMouseUpHandler(new MouseUpHandler() {
-                    
-                    public void onMouseUp(final MouseUpEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case onmouseover:
-                ((HasMouseOverHandlers)fieldWidget).addMouseOverHandler(new MouseOverHandler() {
-                    
-                    public void onMouseOver(final MouseOverEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case onmouseout:
-                ((HasMouseOutHandlers)fieldWidget).addMouseOutHandler(new MouseOutHandler() {
-                    
-                    public void onMouseOut(final MouseOutEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            case onmousemove:
-                ((HasMouseMoveHandlers)fieldWidget).addMouseMoveHandler(new MouseMoveHandler() {
-                    
-                    public void onMouseMove(final MouseMoveEvent event) {
-                        DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
-                    }
-                });
-                break;
-            default:
-                break;
+                    break;
+                case onfocus:
+                    ((HasFocusHandlers) fieldWidget).addFocusHandler(new FocusHandler() {
+
+                        @Override
+                        public void onFocus(final FocusEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                case onkeydown:
+                    ((HasKeyDownHandlers) fieldWidget).addKeyDownHandler(new KeyDownHandler() {
+
+                        @Override
+                        public void onKeyDown(final KeyDownEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                case onkeyup:
+                    ((HasKeyUpHandlers) fieldWidget).addKeyUpHandler(new KeyUpHandler() {
+
+                        @Override
+                        public void onKeyUp(final KeyUpEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                case onkeypress:
+                    ((HasKeyUpHandlers) fieldWidget).addKeyUpHandler(new KeyUpHandler() {
+
+                        @Override
+                        public void onKeyUp(final KeyUpEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                case onmousedown:
+                    ((HasMouseDownHandlers) fieldWidget).addMouseDownHandler(new MouseDownHandler() {
+
+                        @Override
+                        public void onMouseDown(final MouseDownEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                case onmouseup:
+                    ((HasMouseUpHandlers) fieldWidget).addMouseUpHandler(new MouseUpHandler() {
+
+                        @Override
+                        public void onMouseUp(final MouseUpEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                case onmouseover:
+                    ((HasMouseOverHandlers) fieldWidget).addMouseOverHandler(new MouseOverHandler() {
+
+                        @Override
+                        public void onMouseOver(final MouseOverEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                case onmouseout:
+                    ((HasMouseOutHandlers) fieldWidget).addMouseOutHandler(new MouseOutHandler() {
+
+                        @Override
+                        public void onMouseOut(final MouseOutEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                case onmousemove:
+                    ((HasMouseMoveHandlers) fieldWidget).addMouseMoveHandler(new MouseMoveHandler() {
+
+                        @Override
+                        public void onMouseMove(final MouseMoveEvent event) {
+                            DOMUtils.getInstance().javascriptEval(htmlAttributeValue);
+                        }
+                    });
+                    break;
+                default:
+                    break;
             }
         } catch (final Exception e) {
-            if (fieldWidget instanceof CheckBox || fieldWidget instanceof CheckboxGroupWidget || fieldWidget instanceof RadioButtonGroupWidget || fieldWidget instanceof FileUploadWidget || fieldWidget instanceof SuggestBox || fieldWidget instanceof AsyncSuggestBoxWidget || fieldWidget instanceof DateBox) {
+            if (fieldWidget instanceof CheckBox || fieldWidget instanceof CheckboxGroupWidget || fieldWidget instanceof RadioButtonGroupWidget
+                    || fieldWidget instanceof FileUploadWidget || fieldWidget instanceof SuggestBox || fieldWidget instanceof AsyncSuggestBoxWidget
+                    || fieldWidget instanceof DateBox) {
                 final NodeList<Element> inputs = fieldWidget.getElement().getElementsByTagName("input");
                 if (inputs != null) {
                     for (int i = 0; i < inputs.getLength(); i++) {
                         inputs.getItem(i).setAttribute(htmlAttributeName, htmlAttributeValue);
                     }
                 }
-            } else if (fieldWidget instanceof DurationWidget) {  
+            } else if (fieldWidget instanceof DurationWidget) {
                 final NodeList<Element> selects = fieldWidget.getElement().getElementsByTagName("select");
                 if (selects != null) {
                     for (int i = 0; i < selects.getLength(); i++) {
                         selects.getItem(i).setAttribute(htmlAttributeName, htmlAttributeValue);
                     }
                 }
-            } else if (fieldWidget instanceof ImageWidget) {  
+            } else if (fieldWidget instanceof ImageWidget) {
                 final NodeList<Element> images = fieldWidget.getElement().getElementsByTagName("img");
                 if (images != null) {
                     for (int i = 0; i < images.getLength(); i++) {
                         images.getItem(i).setAttribute(htmlAttributeName, htmlAttributeValue);
                     }
                 }
-            } else if (fieldWidget instanceof FileDownloadWidget) {  
+            } else if (fieldWidget instanceof FileDownloadWidget) {
                 final NodeList<Element> links = fieldWidget.getElement().getElementsByTagName("a");
                 if (links != null) {
                     for (int i = 0; i < links.getLength(); i++) {
                         links.getItem(i).setAttribute(htmlAttributeName, htmlAttributeValue);
                     }
                 }
-            } else if (fieldWidget instanceof TableWidget || fieldWidget instanceof EditableGridWidget) {  
+            } else if (fieldWidget instanceof TableWidget || fieldWidget instanceof EditableGridWidget) {
                 final NodeList<Element> tables = fieldWidget.getElement().getElementsByTagName("table");
                 if (tables != null) {
                     for (int i = 0; i < tables.getLength(); i++) {
                         tables.getItem(i).setAttribute(htmlAttributeName, htmlAttributeValue);
                     }
                 }
-            } else if (fieldWidget instanceof RichTextWidget) {  
+            } else if (fieldWidget instanceof RichTextWidget) {
                 final NodeList<Element> iframes = fieldWidget.getElement().getElementsByTagName("iframe");
                 if (iframes != null) {
                     for (int i = 0; i < iframes.getLength(); i++) {

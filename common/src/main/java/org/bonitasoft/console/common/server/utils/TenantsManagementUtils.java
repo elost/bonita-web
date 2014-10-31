@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,7 +27,6 @@ import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConst
 import org.bonitasoft.console.common.server.preferences.properties.PropertiesFactory;
 import org.bonitasoft.engine.api.ProfileAPI;
 import org.bonitasoft.engine.api.TenantAPIAccessor;
-import org.bonitasoft.engine.exception.BonitaException;
 import org.bonitasoft.engine.exception.BonitaHomeNotSetException;
 import org.bonitasoft.engine.exception.NotFoundException;
 import org.bonitasoft.engine.exception.ServerAPIException;
@@ -40,9 +37,8 @@ import org.bonitasoft.engine.session.InvalidSessionException;
 
 /**
  * Tenant management utils class
- * 
+ *
  * @author Anthony Birembaut
- * 
  */
 public class TenantsManagementUtils {
 
@@ -58,7 +54,7 @@ public class TenantsManagementUtils {
 
     /**
      * Copy file
-     * 
+     *
      * @param sourceFile
      * @param targetFile
      * @throws IOException
@@ -99,7 +95,7 @@ public class TenantsManagementUtils {
 
     /**
      * Copy a directory
-     * 
+     *
      * @param sourceDir
      * @param targetDir
      * @throws IOException
@@ -126,7 +122,7 @@ public class TenantsManagementUtils {
 
     /**
      * Delete a directory
-     * 
+     *
      * @param targetDir
      */
     protected static void deleteDirectory(final String targetDir) {
@@ -165,13 +161,13 @@ public class TenantsManagementUtils {
 
     /**
      * copy the tenant template directory
-     * 
+     *
      * @return true if the tenant directory was created
      * @param tenantId
      * @throws IOException
      * @throws BonitaException
      */
-    public static synchronized boolean addDirectoryForTenant(final long tenantId) throws IOException, BonitaException {
+    public static synchronized boolean addDirectoryForTenant(final long tenantId) throws IOException {
         // add tenant folder
         final String targetDirPath = WebBonitaConstantsUtils.getInstance().getTenantsFolder().getPath() + File.separator + tenantId;
         final String sourceDirPath = WebBonitaConstantsUtils.getInstance().getTenantTemplateFolder().getPath();
@@ -191,9 +187,9 @@ public class TenantsManagementUtils {
 
     /**
      * Get default tenant ID
-     * 
+     *
      * @throws DefaultTenantIdException
-     *             If default tenant id couldn't be retrieved
+     *         If default tenant id couldn't be retrieved
      */
     public static long getDefaultTenantId() {
         try {
@@ -206,11 +202,11 @@ public class TenantsManagementUtils {
         }
     }
 
-    public static String getTechnicalUserUsername() throws Exception {
+    public static String getTechnicalUserUsername() {
         return PropertiesFactory.getPlatformTenantConfigProperties().defaultTenantUserName();
     }
 
-    public static String getTechnicalUserPassword() throws Exception {
+    public static String getTechnicalUserPassword() {
         return PropertiesFactory.getPlatformTenantConfigProperties().defaultTenantPassword();
     }
 }

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -31,15 +29,14 @@ import org.bonitasoft.web.toolkit.client.data.item.template.ItemHasUniqueId;
 
 /**
  * @author Yongtao Guo
- * 
  */
 public class GroupItem extends Item implements ItemHasDualName, ItemHasUniqueId, ItemHasCreator, ItemHasLastUpdateDate, ItemHasIcon {
 
     public static String ATTRIBUTE_DESCRIPTION = "description";
-    public static String ATTRIBUTE_PATH ="path";
+    public static String ATTRIBUTE_PATH = "path";
     public static String ATTRIBUTE_PARENT_PATH = "parent_path";
-    public static String ATTRIBUTE_PARENT_GROUP_ID ="parent_group_id";
-    
+    public static String ATTRIBUTE_PARENT_GROUP_ID = "parent_group_id";
+
     public GroupItem() {
         super();
     }
@@ -74,9 +71,8 @@ public class GroupItem extends Item implements ItemHasDualName, ItemHasUniqueId,
     public String getDisplayName() {
         if (!StringUtil.isBlank(this.getAttributeValue(ATTRIBUTE_DISPLAY_NAME))) {
             return this.getAttributeValue(ATTRIBUTE_DISPLAY_NAME);
-        } else {
-            return this.getAttributeValue(ATTRIBUTE_NAME);
         }
+        return this.getAttributeValue(ATTRIBUTE_NAME);
     }
 
     public String getDescription() {
@@ -111,11 +107,11 @@ public class GroupItem extends Item implements ItemHasDualName, ItemHasUniqueId,
     public String getParentPath() {
         return getAttributeValue(ATTRIBUTE_PARENT_PATH);
     }
-    
+
     public String getPath() {
         return getAttributeValue(ATTRIBUTE_PATH);
     }
-    
+
     public String getParentGroupId() {
         return getAttributeValue(ATTRIBUTE_PARENT_GROUP_ID);
     }
@@ -193,11 +189,11 @@ public class GroupItem extends Item implements ItemHasDualName, ItemHasUniqueId,
     public void setParentPath(final String parentPath) {
         this.setAttribute(ATTRIBUTE_PARENT_PATH, parentPath);
     }
-    
+
     public void setPath(final String parentPath) {
         this.setAttribute(ATTRIBUTE_PATH, parentPath);
     }
-    
+
     public void setParentGroupId(final String parentGroupId) {
         this.setAttribute(ATTRIBUTE_PARENT_GROUP_ID, parentGroupId);
     }

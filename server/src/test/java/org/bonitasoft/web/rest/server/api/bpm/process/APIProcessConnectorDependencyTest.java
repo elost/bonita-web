@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -36,7 +34,6 @@ import org.mockito.Spy;
 
 /**
  * @author Colin PUY
- * 
  */
 public class APIProcessConnectorDependencyTest extends APITestWithMock {
 
@@ -53,8 +50,8 @@ public class APIProcessConnectorDependencyTest extends APITestWithMock {
         doReturn(datastore).when(apiProcessConnectorDependency).defineDefaultDatastore();
     }
 
-    private Map<String, String> buildFilters(String processId, String connectorName, String connectorVersion) {
-        Map<String, String> filters = new HashMap<String, String>();
+    private Map<String, String> buildFilters(final String processId, final String connectorName, final String connectorVersion) {
+        final Map<String, String> filters = new HashMap<String, String>();
         filters.put(ATTRIBUTE_PROCESS_ID, processId);
         filters.put(ATTRIBUTE_CONNECTOR_NAME, connectorName);
         filters.put(ATTRIBUTE_CONNECTOR_VERSION, connectorVersion);
@@ -62,29 +59,29 @@ public class APIProcessConnectorDependencyTest extends APITestWithMock {
     }
 
     @Test(expected = APIFilterMandatoryException.class)
-    public void checkProcessIdIsMandatory() throws Exception {
-        Map<String, String> filters = buildFilters(null, "aConnectorName", "aConnectorVersion");
+    public void checkProcessIdIsMandatory() {
+        final Map<String, String> filters = buildFilters(null, "aConnectorName", "aConnectorVersion");
 
         apiProcessConnectorDependency.checkMandatoryAttributes(filters);
     }
 
     @Test(expected = APIFilterMandatoryException.class)
-    public void checkConnectorNameIsMandatory() throws Exception {
-        Map<String, String> filters = buildFilters("1", "", "aConnectorVersion");
+    public void checkConnectorNameIsMandatory() {
+        final Map<String, String> filters = buildFilters("1", "", "aConnectorVersion");
 
         apiProcessConnectorDependency.checkMandatoryAttributes(filters);
     }
 
     @Test(expected = APIFilterMandatoryException.class)
-    public void checkConnectorVersionIsMandatory() throws Exception {
-        Map<String, String> filters = buildFilters("1", "aConnectorName", "");
+    public void checkConnectorVersionIsMandatory() {
+        final Map<String, String> filters = buildFilters("1", "aConnectorName", "");
 
         apiProcessConnectorDependency.checkMandatoryAttributes(filters);
     }
 
     @Test
-    public void checkMandatoryAttributesDontThrowExceptionIfAllAtributesAreSet() throws Exception {
-        Map<String, String> filters = buildFilters("1", "aConnectorName", "aConnectorVersion");
+    public void checkMandatoryAttributesDontThrowExceptionIfAllAtributesAreSet() {
+        final Map<String, String> filters = buildFilters("1", "aConnectorName", "aConnectorVersion");
 
         apiProcessConnectorDependency.checkMandatoryAttributes(filters);
 
@@ -92,9 +89,9 @@ public class APIProcessConnectorDependencyTest extends APITestWithMock {
     }
 
     @Test(expected = APIFilterMandatoryException.class)
-    public void searchCheckMandatoryAttributes() throws Exception {
-        Map<String, String> filtersWithoutProcessId = buildFilters(null, "aConnectorName", "aConnectorVersion");
-        
+    public void searchCheckMandatoryAttributes() {
+        final Map<String, String> filtersWithoutProcessId = buildFilters(null, "aConnectorName", "aConnectorVersion");
+
         apiProcessConnectorDependency.search(0, 10, null, null, filtersWithoutProcessId);
     }
 }

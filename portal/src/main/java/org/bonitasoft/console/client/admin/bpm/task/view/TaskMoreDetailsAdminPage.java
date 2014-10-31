@@ -195,7 +195,7 @@ public class TaskMoreDetailsAdminPage extends ArchivableItemDetailsPage<IFlowNod
                 metadatas.addExecutedBy();
             }
         }
-        if (!(task.getRootContainerProcess().ensureName().equals(task.getProcess().ensureName()))) {
+        if (!task.getRootContainerProcess().ensureName().equals(task.getProcess().ensureName())) {
             metadatas.AddSubAppsName();
             metadatas.AddSubAppsVersion();
         }
@@ -226,11 +226,10 @@ public class TaskMoreDetailsAdminPage extends ArchivableItemDetailsPage<IFlowNod
     protected Section createConnectorSection(final IFlowNodeItem item) {
         if (item.isArchived()) {
             return new ArchivedConnectorInstanceSectionSnippet(item).setNbLinesByPage(10).build();
-        } else {
-            Section connectorSection = new Section(_("Connectors"));
-            connectorSection.setId(CssId.MD_SECTION_CONNECTORS);
-            return connectorSection.addBody(createConnectorInstanceTable(item).setNbLinesByPage(10));
         }
+        final Section connectorSection = new Section(_("Connectors"));
+        connectorSection.setId(CssId.MD_SECTION_CONNECTORS);
+        return connectorSection.addBody(createConnectorInstanceTable(item).setNbLinesByPage(10));
     }
 
     /**

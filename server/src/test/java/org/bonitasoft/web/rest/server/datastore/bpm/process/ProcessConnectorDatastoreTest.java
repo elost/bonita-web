@@ -5,24 +5,27 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.datastore.bpm.process;
 
-import static java.util.Arrays.*;
-import static java.util.Collections.*;
-import static junit.framework.Assert.*;
-import static org.bonitasoft.web.rest.model.bpm.process.ProcessConnectorItem.*;
-import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.*;
-import static org.mockito.MockitoAnnotations.*;
+import static java.util.Arrays.asList;
+import static java.util.Collections.EMPTY_LIST;
+import static org.bonitasoft.web.rest.model.bpm.process.ProcessConnectorItem.ATTRIBUTE_PROCESS_ID;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
 
 import java.util.HashMap;
 
@@ -42,7 +45,6 @@ import org.mockito.Mock;
 
 /**
  * @author Colin PUY
- *
  */
 @SuppressWarnings("unchecked")
 public class ProcessConnectorDatastoreTest extends APITestWithMock {
@@ -56,9 +58,9 @@ public class ProcessConnectorDatastoreTest extends APITestWithMock {
     public void initializeMocks() {
         initMocks(this);
 
-        this.processConnectorDatastore = spy(new ProcessConnectorDatastore(null));
+        processConnectorDatastore = spy(new ProcessConnectorDatastore(null));
 
-        doReturn(this.processAPI).when(this.processConnectorDatastore).getProcessAPI();
+        doReturn(processAPI).when(processConnectorDatastore).getProcessAPI();
     }
 
     private APIID anAPIID(final String id, final String name, final String version) {
@@ -80,7 +82,7 @@ public class ProcessConnectorDatastoreTest extends APITestWithMock {
     }
 
     private ProcessConnectorItem convertToItem(final ConnectorImplementationDescriptor descriptor1, final String processId) {
-        final ProcessConnectorItem item = this.processConnectorDatastore.convertEngineToConsoleItem(descriptor1);
+        final ProcessConnectorItem item = processConnectorDatastore.convertEngineToConsoleItem(descriptor1);
         item.setProcessId(processId);
         return item;
     }
@@ -88,9 +90,9 @@ public class ProcessConnectorDatastoreTest extends APITestWithMock {
     @Test
     public void getRetrieveConnectorImplementationAndSetProcessId() throws Exception {
         final ConnectorImplementationDescriptor descriptor = aConnectorImplementationDescriptor("aName");
-        when(this.processAPI.getConnectorImplementation(1L, "name", "1")).thenReturn(descriptor);
+        when(processAPI.getConnectorImplementation(1L, "name", "1")).thenReturn(descriptor);
 
-        final ProcessConnectorItem fetchedItem = this.processConnectorDatastore.get(anAPIID("1", "name", "1"));
+        final ProcessConnectorItem fetchedItem = processConnectorDatastore.get(anAPIID("1", "name", "1"));
 
         final ProcessConnectorItem expectedItem = convertToItem(descriptor, "1");
         assertTrue(areEquals(expectedItem, fetchedItem));
@@ -98,29 +100,29 @@ public class ProcessConnectorDatastoreTest extends APITestWithMock {
 
     @Test(expected = APIException.class)
     public void getThrowExceptionIfProcessDefinitionIsNotFound() throws Exception {
-        when(this.processAPI.getConnectorImplementation(anyLong(), anyString(), anyString()))
+        when(processAPI.getConnectorImplementation(anyLong(), anyString(), anyString()))
                 .thenThrow(new ConnectorNotFoundException(null));
 
-        this.processConnectorDatastore.get(anAPIID("1", "name", "1"));
+        processConnectorDatastore.get(anAPIID("1", "name", "1"));
     }
 
     @Test(expected = APIException.class)
-    public void searchThrowExceptionIfProcessDefinitionIsNotFound() throws Exception {
-        when(this.processAPI.getConnectorImplementations(anyLong(), anyInt(), anyInt(), any(ConnectorCriterion.class)))
+    public void searchThrowExceptionIfProcessDefinitionIsNotFound() {
+        when(processAPI.getConnectorImplementations(anyLong(), anyInt(), anyInt(), any(ConnectorCriterion.class)))
                 .thenThrow(new NullPointerException());
 
-        this.processConnectorDatastore.search(0, 10, null, null, aProcessIdFilter("1"));
+        processConnectorDatastore.search(0, 10, null, null, aProcessIdFilter("1"));
     }
 
     @Test
-    public void searchReturnAllProcessConnectorForAProcessDefinitionId() throws Exception {
+    public void searchReturnAllProcessConnectorForAProcessDefinitionId() {
         final ConnectorImplementationDescriptor descriptor1 = aConnectorImplementationDescriptor("aName");
         final ConnectorImplementationDescriptor descriptor2 = aConnectorImplementationDescriptor("anOtherName");
-        when(this.processAPI.getConnectorImplementations(anyLong(), anyInt(), anyInt(), any(ConnectorCriterion.class)))
+        when(processAPI.getConnectorImplementations(anyLong(), anyInt(), anyInt(), any(ConnectorCriterion.class)))
                 .thenReturn(asList(descriptor1, descriptor2));
 
         final ItemSearchResult<ProcessConnectorItem> search =
-                this.processConnectorDatastore.search(0, 10, null, "DEFINITION_ID_ASC", aProcessIdFilter("1"));
+                processConnectorDatastore.search(0, 10, null, "DEFINITION_ID_ASC", aProcessIdFilter("1"));
 
         final ProcessConnectorItem expectedItem1 = convertToItem(descriptor1, "1");
         final ProcessConnectorItem expectedItem2 = convertToItem(descriptor2, "1");
@@ -129,7 +131,7 @@ public class ProcessConnectorDatastoreTest extends APITestWithMock {
     }
 
     @Test
-    public void testConvertEngineToConsoleItem() throws Exception {
+    public void testConvertEngineToConsoleItem() {
         final ConnectorImplementationDescriptor descriptor = new ConnectorImplementationDescriptor("implementationClassName",
                 "name", "version", "definitionId", "definitionVersion", EMPTY_LIST);
         final ProcessConnectorItem expectedItem = new ProcessConnectorItem();
@@ -139,7 +141,7 @@ public class ProcessConnectorDatastoreTest extends APITestWithMock {
         expectedItem.setImplementationVersion("version");
         expectedItem.setClassname("implementationClassName");
 
-        final ProcessConnectorItem convertedItem = this.processConnectorDatastore.convertEngineToConsoleItem(descriptor);
+        final ProcessConnectorItem convertedItem = processConnectorDatastore.convertEngineToConsoleItem(descriptor);
 
         assertTrue(areEquals(expectedItem, convertedItem));
     }

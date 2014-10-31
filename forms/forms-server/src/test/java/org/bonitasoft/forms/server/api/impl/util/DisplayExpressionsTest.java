@@ -5,18 +5,16 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.server.api.impl.util;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +26,6 @@ import org.junit.Test;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class DisplayExpressionsTest {
 
@@ -41,13 +38,13 @@ public class DisplayExpressionsTest {
 
     @Test
     public void testWeCanRetrieveDisplayExpressionOfAWidget() {
-        Expression displayExp1 = new Expression();
-        Expression displayExp2 = new Expression();
-        List<FormWidget> widgets = Arrays.asList(
+        final Expression displayExp1 = new Expression();
+        final Expression displayExp2 = new Expression();
+        final List<FormWidget> widgets = Arrays.asList(
                 aWidget("widget1", displayExp1),
                 aWidget("widget2", displayExp2));
 
-        Map<WidgetExpressionEntry, Expression> map =
+        final Map<WidgetExpressionEntry, Expression> map =
                 new DisplayExpressions(widgets).asMap();
 
         assertEquals(2, map.size());
@@ -59,12 +56,12 @@ public class DisplayExpressionsTest {
 
     @Test
     public void testAWidgetWithoutDisplayExpressionIsNotListed() {
-        Expression displayExp = new Expression();
-        List<FormWidget> widgets = Arrays.asList(
+        final Expression displayExp = new Expression();
+        final List<FormWidget> widgets = Arrays.asList(
                 aWidget("widget1", null),
                 aWidget("widget2", displayExp));
 
-        Map<WidgetExpressionEntry, Expression> map =
+        final Map<WidgetExpressionEntry, Expression> map =
                 new DisplayExpressions(widgets).asMap();
 
         assertEquals(1, map.size());
@@ -74,17 +71,17 @@ public class DisplayExpressionsTest {
 
     @Test
     public void testWeCanRetrieveDisplayExpressionsOfNestedGroups() {
-        Expression displayExp1 = new Expression();
-        Expression displayExp2 = new Expression();
-        Expression displayExp3 = new Expression();
-        List<FormWidget> widgets = Arrays.asList(
+        final Expression displayExp1 = new Expression();
+        final Expression displayExp2 = new Expression();
+        final Expression displayExp3 = new Expression();
+        final List<FormWidget> widgets = Arrays.asList(
                 aGroup("group1", displayExp1,
                         Arrays.asList(
                                 aGroup("group2", displayExp2,
                                         Arrays.asList(
                                                 aWidget("child", displayExp3))))));
 
-        Map<WidgetExpressionEntry, Expression> map =
+        final Map<WidgetExpressionEntry, Expression> map =
                 new DisplayExpressions(widgets).asMap();
 
         assertEquals(3, map.size());
@@ -98,13 +95,13 @@ public class DisplayExpressionsTest {
 
     @Test
     public void testWeCanRetrieveChildExpressionOfAGroupWihtoutExpression() {
-        Expression displayExp = new Expression();
-        List<FormWidget> widgets = Arrays.asList(
+        final Expression displayExp = new Expression();
+        final List<FormWidget> widgets = Arrays.asList(
                 aGroup("group", null,
                         Arrays.asList(
                                 aWidget("child", displayExp))));
 
-        Map<WidgetExpressionEntry, Expression> map =
+        final Map<WidgetExpressionEntry, Expression> map =
                 new DisplayExpressions(widgets).asMap();
 
         assertEquals(1, map.size());
@@ -112,15 +109,15 @@ public class DisplayExpressionsTest {
                 map.get(new WidgetExpressionEntry("child", ExpressionId.WIDGET_DISPLAY_CONDITION)));
     }
 
-    private FormWidget aWidget(String id, Expression displayExp) {
-        FormWidget widget = new FormWidget();
+    private FormWidget aWidget(final String id, final Expression displayExp) {
+        final FormWidget widget = new FormWidget();
         widget.setId(id);
         widget.setDisplayConditionExpression(displayExp);
         return widget;
     }
 
-    private FormWidget aGroup(String id, Expression displayExp, List<FormWidget> children) {
-        FormWidget group = new FormWidget();
+    private FormWidget aGroup(final String id, final Expression displayExp, final List<FormWidget> children) {
+        final FormWidget group = new FormWidget();
         group.setId(id);
         group.setDisplayConditionExpression(displayExp);
         group.setChildWidgets(children);

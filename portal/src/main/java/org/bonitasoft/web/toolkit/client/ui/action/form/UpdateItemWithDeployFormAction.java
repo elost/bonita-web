@@ -24,15 +24,13 @@ import org.bonitasoft.web.toolkit.client.data.api.callback.APICallback;
 import org.bonitasoft.web.toolkit.client.data.item.IItem;
 import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 import org.bonitasoft.web.toolkit.client.data.item.attribute.ValidatorEngine;
-import org.bonitasoft.web.toolkit.client.ui.JsId;
 import org.bonitasoft.web.toolkit.client.ui.component.form.AbstractForm;
 
 /**
  * Execute an update for an ItemForm.
  *
  * @param <ITEM_TYPE>
- *            The type of the item that will be updated
- *
+ *        The type of the item that will be updated
  * @author Vincent Elcrin
  */
 public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends ItemFormAction<ITEM_TYPE> {
@@ -42,10 +40,11 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
     private Promise errorPromise;
 
     public interface Promise {
+
         public void apply(String message, Integer errorCode);
     }
 
-    public void onError(Promise errorPromise) {
+    public void onError(final Promise errorPromise) {
         this.errorPromise = errorPromise;
     }
 
@@ -53,9 +52,9 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
      * Default constructor.
      *
      * @param itemDefinition
-     *            The definition of the item to update.
+     *        The definition of the item to update.
      * @param form
-     *            The form that contains the attribute to updates
+     *        The form that contains the attribute to updates
      */
     public UpdateItemWithDeployFormAction(final ItemDefinition itemDefinition, final AbstractForm form, final String... deploysToUpdate) {
         super(itemDefinition, form);
@@ -66,7 +65,7 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
      * Default constructor.
      *
      * @param itemDefinition
-     *            The definition of the item to update.
+     *        The definition of the item to update.
      */
     public UpdateItemWithDeployFormAction(final ItemDefinition itemDefinition, final String... deploys) {
         super(itemDefinition);
@@ -75,23 +74,23 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
 
     @Override
     public void execute() {
-        final HashMap<String, String> values = this.form.getValues().getValues();
+        final HashMap<String, String> values = form.getValues().getValues();
         final LinkedHashMap<ItemDefinition<?>, HashMap<String, String>> updateQueue = new LinkedHashMap<ItemDefinition<?>, HashMap<String, String>>();
 
         // The whole form has to be valid before to update anything
         for (final String deploy : this.deploys) {
             final HashMap<String, String> deployValues = getValuesWithKeyStartingWith(deploy + "_", values);
-            final ItemDefinition<?> deployDefinition = this.itemDefinition.getDeployDefinition(deploy);
+            final ItemDefinition<?> deployDefinition = itemDefinition.getDeployDefinition(deploy);
             // Validate input from the form (mandatory, text format, ...)
             ValidatorEngine.validate(deployValues, deployDefinition.getValidators());
             // no need to do it twice. save it for later
             updateQueue.put(deployDefinition, deployValues);
         }
         // Validate input from the form (mandatory, text format, ...)
-        ValidatorEngine.validate(this.form.getValues(), this.itemDefinition.getValidators());
+        ValidatorEngine.validate(form.getValues(), itemDefinition.getValidators());
 
         // Call REST API to update item following by deploys
-        new APICaller(this.itemDefinition).update(this.getParameter("id"),
+        new APICaller(itemDefinition).update(this.getParameter("id"),
                 values,
                 new UpdateDeploysCallback(updateQueue));
     }
@@ -117,7 +116,7 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
         }
 
         @Override
-        public void onError(String message, Integer errorCode) {
+        public void onError(final String message, final Integer errorCode) {
             if (errorPromise != null) {
                 errorPromise.apply(message, errorCode);
             } else {
@@ -125,12 +124,12 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
             }
         }
 
-        private HashMap<String, String> popValues(LinkedHashMap<ItemDefinition<?>, HashMap<String, String>> queue,
-                                                  final ItemDefinition<?> itemDefinition) {
+        private HashMap<String, String> popValues(final LinkedHashMap<ItemDefinition<?>, HashMap<String, String>> queue,
+                final ItemDefinition<?> itemDefinition) {
             return queue.remove(itemDefinition);
         }
 
-        private ItemDefinition<?> getNextItem(LinkedHashMap<ItemDefinition<?>, HashMap<String, String>> queue) {
+        private ItemDefinition<?> getNextItem(final LinkedHashMap<ItemDefinition<?>, HashMap<String, String>> queue) {
             return queue.keySet().iterator().next();
         }
     }

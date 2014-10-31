@@ -89,9 +89,8 @@ public class DeleteItemPage extends ItemPage {
     private String getConfirmButtonLabel() {
         if (hasParameter(PARAM_CONFIRMBUTTON_LABEL)) {
             return getParameter(PARAM_CONFIRMBUTTON_LABEL);
-        } else {
-            return _("Delete");
         }
+        return _("Delete");
     }
 
 }

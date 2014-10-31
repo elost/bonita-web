@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -18,12 +16,9 @@ package org.bonitasoft.console.common.server.themes;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 /**
  * @author Cuisha Gai
- * 
  */
 public class ThemeValidator {
 
@@ -35,13 +30,13 @@ public class ThemeValidator {
 
     /**
      * Do theme package validate for Portal
-     * 
+     *
      * @param themePath
      * @throws IOException
      * @throws FileNotFoundException
      */
     public void doPortalValidation(final String themePath) throws ThemeStructureException {
-    	final File themeFolder = new File(themePath);
+        final File themeFolder = new File(themePath);
         boolean hasConsoleTemplateFile = false;
         boolean hasFormTemplateFile = false;
         boolean hasMainLessFile = false;
@@ -78,5 +73,5 @@ public class ThemeValidator {
             throw new ThemeStructureException(state);
         }
     }
-    
+
 }

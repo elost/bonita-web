@@ -11,19 +11,17 @@ import org.junit.Test;
 
 /**
  * @author Vincent Elcrin
- * 
  *         Test user creation (as well as platform and default tenant)
  */
 public class TestUserValidation extends EngineSetup {
 
-
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         TestToolkitCtx.getInstance().clearSession();
     }
 
     @Test
-    public void createAndGetUserWithoutException() throws Exception
+    public void createAndGetUserWithoutException()
     {
         try {
             final IdentityAPI identityAPI = TenantAPIAccessor.getIdentityAPI(TestUserFactory.getJohnCarpenter().getSession());

@@ -37,36 +37,36 @@ public class JsonExceptionSerializerTest {
     private FakeI18n fakeI18n;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         fakeI18n = new FakeI18n();
     }
 
     @Test
-    public void testWeCanConvertExceptionWithoutMessage() throws Exception {
-        HttpException exception = new HttpException();
-        JsonExceptionSerializer serializer = new JsonExceptionSerializer(exception);
+    public void testWeCanConvertExceptionWithoutMessage() {
+        final HttpException exception = new HttpException();
+        final JsonExceptionSerializer serializer = new JsonExceptionSerializer(exception);
 
-        String json = serializer.end();
-
-        assertEquals(exception, json);
-    }
-
-    @Test
-    public void testWeCanConvertExceptionWithMessageToJson() throws Exception {
-        HttpException exception = new HttpException("message");
-        JsonExceptionSerializer serializer = new JsonExceptionSerializer(exception);
-
-        String json = serializer.end();
+        final String json = serializer.end();
 
         assertEquals(exception, json);
     }
 
     @Test
-    public void testWeCanAppendNewAttributeBeforeEndCall() throws Exception {
-        HttpException exception = new HttpException();
-        JsonExceptionSerializer serializer = new JsonExceptionSerializer(exception);
+    public void testWeCanConvertExceptionWithMessageToJson() {
+        final HttpException exception = new HttpException("message");
+        final JsonExceptionSerializer serializer = new JsonExceptionSerializer(exception);
 
-        String json = serializer
+        final String json = serializer.end();
+
+        assertEquals(exception, json);
+    }
+
+    @Test
+    public void testWeCanAppendNewAttributeBeforeEndCall() {
+        final HttpException exception = new HttpException();
+        final JsonExceptionSerializer serializer = new JsonExceptionSerializer(exception);
+
+        final String json = serializer
                 .appendAttribute("attributeKey", "attributeValue")
                 .end();
 
@@ -78,13 +78,13 @@ public class JsonExceptionSerializerTest {
     }
 
     @Test
-    public void testJsonContainsInternationalizedMessageWhenLocalIsSet() throws Exception {
-        APIException exception = new APIException(new _("message"));
+    public void testJsonContainsInternationalizedMessageWhenLocalIsSet() {
+        final APIException exception = new APIException(new _("message"));
         fakeI18n.setL10n("localization");
         exception.setLocale(LOCALE.en);
-        JsonExceptionSerializer serializer = new JsonExceptionSerializer(exception);
+        final JsonExceptionSerializer serializer = new JsonExceptionSerializer(exception);
 
-        String json = serializer.end();
+        final String json = serializer.end();
 
         assertThat(json, equalTo(
                 "{\"exception\":\"" + exception.getClass().toString() + "\"," +
@@ -92,7 +92,7 @@ public class JsonExceptionSerializerTest {
                         "\"stacktrace\":\"" + Arrays.toString(exception.getStackTrace()) + "\"}"));
     }
 
-    private void assertEquals(Exception e, String json) {
+    private void assertEquals(final Exception e, final String json) {
         assertThat(json, equalTo("{\"exception\":\"" + e.getClass().toString() + "\"," +
                 "\"message\":\"" + e.getMessage() + "\"," +
                 "\"stacktrace\":\"" + Arrays.toString(e.getStackTrace()) + "\"}"));

@@ -92,9 +92,9 @@ public class WebBonitaConstantsTenancyImpl implements WebBonitaConstants {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param tenantId
-     *            Tenant Id
+     *        Tenant Id
      */
     public WebBonitaConstantsTenancyImpl(final long tenantId) {
         tenantFolderPath = getTenantsFolderPath() + tenantId + File.separator;
@@ -103,7 +103,7 @@ public class WebBonitaConstantsTenancyImpl implements WebBonitaConstants {
     @Override
     public String getTenantsFolderPath() {
         if (tenantsFolderPath == null) {
-            tenantsFolderPath = clientFolderPath + tenantsFolderName + File.separator;;
+            tenantsFolderPath = clientFolderPath + tenantsFolderName + File.separator;
         }
         return tenantsFolderPath;
     }

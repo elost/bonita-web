@@ -5,21 +5,26 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.api.organization;
 
-import javax.servlet.http.HttpSession;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.bonitasoft.engine.api.IdentityAPI;
 import org.bonitasoft.engine.identity.CustomUserInfoDefinition;
@@ -30,7 +35,6 @@ import org.bonitasoft.web.rest.server.engineclient.CustomUserInfoEngineClient;
 import org.bonitasoft.web.rest.server.engineclient.CustomUserInfoEngineClientCreator;
 import org.bonitasoft.web.rest.server.framework.APIServletCall;
 import org.bonitasoft.web.rest.server.framework.search.ItemSearchResult;
-import org.bonitasoft.web.rest.server.framework.utils.converter.typed.StringConverter;
 import org.bonitasoft.web.toolkit.client.common.exception.api.APIException;
 import org.bonitasoft.web.toolkit.client.data.APIID;
 import org.junit.Before;
@@ -41,12 +45,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 /**
  * @author Vincent Elcrin
@@ -76,7 +74,7 @@ public class APICustomUserInfoDefinitionTest {
     private APICustomUserInfoDefinition api;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         api.setCaller(caller);
         given(caller.getHttpSession()).willReturn(httpSession);
         given(httpSession.getAttribute("apiSession")).willReturn(apiSession);
@@ -84,21 +82,21 @@ public class APICustomUserInfoDefinitionTest {
     }
 
     @Test
-    public void add_should_return_the_added_item() throws Exception {
+    public void add_should_return_the_added_item() {
         given(engine.createDefinition(any(CustomUserInfoDefinitionCreator.class)))
                 .willReturn(new EngineCustomUserInfoDefinition(2L));
 
-        CustomUserInfoDefinitionItem added = api.add(new CustomUserInfoDefinitionItem());
+        final CustomUserInfoDefinitionItem added = api.add(new CustomUserInfoDefinitionItem());
 
         assertThat(added.getId()).isEqualTo(APIID.makeAPIID(2L));
     }
 
     @Test
-    public void add_should_create_an_item_based_on_item_passed_in_parameter() throws Exception {
+    public void add_should_create_an_item_based_on_item_passed_in_parameter() {
         given(engine.createDefinition(any(CustomUserInfoDefinitionCreator.class)))
                 .willReturn(new EngineCustomUserInfoDefinition(1L));
-        ArgumentCaptor<CustomUserInfoDefinitionCreator> argument = ArgumentCaptor.forClass(CustomUserInfoDefinitionCreator.class);
-        CustomUserInfoDefinitionItem item = new CustomUserInfoDefinitionItem();
+        final ArgumentCaptor<CustomUserInfoDefinitionCreator> argument = ArgumentCaptor.forClass(CustomUserInfoDefinitionCreator.class);
+        final CustomUserInfoDefinitionItem item = new CustomUserInfoDefinitionItem();
         item.setName("foo");
         item.setDescription("bar");
 
@@ -110,8 +108,8 @@ public class APICustomUserInfoDefinitionTest {
     }
 
     @Test
-    public void delete_should_delete_all_items_with_id_passed_through() throws Exception {
-        ArgumentCaptor<Long> argument = ArgumentCaptor.forClass(Long.class);
+    public void delete_should_delete_all_items_with_id_passed_through() {
+        final ArgumentCaptor<Long> argument = ArgumentCaptor.forClass(Long.class);
 
         api.delete(Arrays.asList(
                 APIID.makeAPIID(1L),
@@ -122,13 +120,13 @@ public class APICustomUserInfoDefinitionTest {
     }
 
     @Test
-    public void search_should_retrieve_the_list_of_item_from_the_specified_range() throws Exception {
+    public void search_should_retrieve_the_list_of_item_from_the_specified_range() {
         given(engine.listDefinitions(4, 2)).willReturn(Arrays.<CustomUserInfoDefinition> asList(
                 new EngineCustomUserInfoDefinition(3L),
                 new EngineCustomUserInfoDefinition(4L)));
         given(engine.countDefinitions()).willReturn(6L);
 
-        List<CustomUserInfoDefinitionItem> result = api.search(2, 2,
+        final List<CustomUserInfoDefinitionItem> result = api.search(2, 2,
                 null,
                 APICustomUserInfoDefinition.FIX_ORDER,
                 null).getResults();
@@ -138,10 +136,10 @@ public class APICustomUserInfoDefinitionTest {
     }
 
     @Test
-    public void search_should_retrieve_the_total_number_of_definitions() throws Exception {
+    public void search_should_retrieve_the_total_number_of_definitions() {
         given(engine.countDefinitions()).willReturn(42L);
 
-        ItemSearchResult<CustomUserInfoDefinitionItem> result = api.search(0, 2,
+        final ItemSearchResult<CustomUserInfoDefinitionItem> result = api.search(0, 2,
                 null,
                 APICustomUserInfoDefinition.FIX_ORDER,
                 null);
@@ -150,10 +148,10 @@ public class APICustomUserInfoDefinitionTest {
     }
 
     @Test
-    public void should_allow_an_empty_filter() throws Exception {
+    public void should_allow_an_empty_filter() {
         given(engine.countDefinitions()).willReturn(42L);
 
-        ItemSearchResult<CustomUserInfoDefinitionItem> result = api.search(0, 2,
+        final ItemSearchResult<CustomUserInfoDefinitionItem> result = api.search(0, 2,
                 null,
                 APICustomUserInfoDefinition.FIX_ORDER,
                 Collections.<String, String> emptyMap());
@@ -162,7 +160,7 @@ public class APICustomUserInfoDefinitionTest {
     }
 
     @Test(expected = APIException.class)
-    public void search_should_throw_an_exception_when_filters_are_passed_through() throws Exception {
+    public void search_should_throw_an_exception_when_filters_are_passed_through() {
         api.search(0, 1,
                 null,
                 APICustomUserInfoDefinition.FIX_ORDER,
@@ -170,12 +168,12 @@ public class APICustomUserInfoDefinitionTest {
     }
 
     @Test(expected = APIException.class)
-    public void search_should_throw_an_exception_when_an_order_is_passed_through() throws Exception {
+    public void search_should_throw_an_exception_when_an_order_is_passed_through() {
         api.search(0, 1, null, "NAME ASC", null);
     }
 
     @Test(expected = APIException.class)
-    public void search_should_throw_an_exception_when_a_search_is_passed_through() throws Exception {
+    public void search_should_throw_an_exception_when_a_search_is_passed_through() {
         api.search(0, 1, "foo", APICustomUserInfoDefinition.FIX_ORDER, null);
     }
 }

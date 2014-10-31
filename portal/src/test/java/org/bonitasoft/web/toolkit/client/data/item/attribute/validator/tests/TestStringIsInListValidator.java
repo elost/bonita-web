@@ -17,7 +17,7 @@ public class TestStringIsInListValidator {
      * @throws java.lang.Exception
      */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         I18n.getInstance();
     }
 

@@ -5,23 +5,28 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.datastore.bpm.process;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.bonitasoft.console.common.server.utils.ListUtil;
 import org.bonitasoft.engine.api.ProcessAPI;
 import org.bonitasoft.engine.api.TenantAPIAccessor;
 import org.bonitasoft.engine.bpm.actor.ActorMember;
-import org.bonitasoft.engine.bpm.actor.ActorNotFoundException;
-import org.bonitasoft.engine.exception.*;
+import org.bonitasoft.engine.exception.AlreadyExistsException;
+import org.bonitasoft.engine.exception.BonitaHomeNotSetException;
+import org.bonitasoft.engine.exception.CreationException;
+import org.bonitasoft.engine.exception.ServerAPIException;
+import org.bonitasoft.engine.exception.UnknownAPITypeException;
 import org.bonitasoft.engine.session.APISession;
 import org.bonitasoft.engine.session.InvalidSessionException;
 import org.bonitasoft.web.rest.model.bpm.process.ActorMemberItem;
@@ -39,10 +44,6 @@ import org.bonitasoft.web.toolkit.client.common.i18n._;
 import org.bonitasoft.web.toolkit.client.common.util.MapUtil;
 import org.bonitasoft.web.toolkit.client.common.util.StringUtil;
 import org.bonitasoft.web.toolkit.client.data.APIID;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Séverin Moussel
@@ -119,7 +120,7 @@ public class ActorMemberDatastore extends CommonDatastore<ActorMemberItem, Actor
 
     /**
      * @param filterType
-     *            We accept filter value or {@link MemberType} enum value. Better use MemberType enum value
+     *        We accept filter value or {@link MemberType} enum value. Better use MemberType enum value
      */
     private List<ActorMember> applyTypeFilter(final String filterType, final List<ActorMember> unfilteredResults) {
         final List<ActorMember> filteredResults = new ArrayList<ActorMember>();
@@ -216,19 +217,19 @@ public class ActorMemberDatastore extends CommonDatastore<ActorMemberItem, Actor
         }
     }
 
-    private ActorMember addGroupActorMember(final ActorMemberItem item) throws InvalidSessionException, ActorNotFoundException, NotFoundException,
-             BonitaHomeNotSetException, ServerAPIException, UnknownAPITypeException {
+    private ActorMember addGroupActorMember(final ActorMemberItem item) throws InvalidSessionException, BonitaHomeNotSetException, ServerAPIException,
+            UnknownAPITypeException {
         try {
             return getProcessAPI().addGroupToActor(item.getActorId().toLong(), item.getGroupId().toLong());
         } catch (final AlreadyExistsException e) {
             throw new APIForbiddenException(new _("This group has already been mapped to actor"), e);
-        } catch (CreationException e) {
+        } catch (final CreationException e) {
             throw new APIException(new _("Error when adding group to actor member"), e);
         }
     }
 
-    private ActorMember addRoleActorMember(final ActorMemberItem item) throws InvalidSessionException, ActorNotFoundException, NotFoundException,
-            BonitaHomeNotSetException, ServerAPIException, UnknownAPITypeException {
+    private ActorMember addRoleActorMember(final ActorMemberItem item) throws InvalidSessionException, BonitaHomeNotSetException, ServerAPIException,
+            UnknownAPITypeException {
         try {
             return getProcessAPI().addRoleToActor(item.getActorId().toLong(), item.getRoleId().toLong());
         } catch (final CreationException e) {
@@ -236,8 +237,8 @@ public class ActorMemberDatastore extends CommonDatastore<ActorMemberItem, Actor
         }
     }
 
-    private ActorMember addMembershipActorMember(final ActorMemberItem item) throws InvalidSessionException, ActorNotFoundException, NotFoundException,
-            NotFoundException, BonitaHomeNotSetException, ServerAPIException, UnknownAPITypeException {
+    private ActorMember addMembershipActorMember(final ActorMemberItem item) throws InvalidSessionException, BonitaHomeNotSetException, ServerAPIException,
+            UnknownAPITypeException {
         try {
             return getProcessAPI()
                     .addRoleAndGroupToActor(item.getActorId().toLong(), item.getRoleId().toLong(), item.getGroupId().toLong());
@@ -246,8 +247,8 @@ public class ActorMemberDatastore extends CommonDatastore<ActorMemberItem, Actor
         }
     }
 
-    private ActorMember addUserActorMember(final ActorMemberItem item) throws InvalidSessionException, ActorNotFoundException, NotFoundException,
-            BonitaHomeNotSetException, ServerAPIException, UnknownAPITypeException {
+    private ActorMember addUserActorMember(final ActorMemberItem item) throws InvalidSessionException, BonitaHomeNotSetException, ServerAPIException,
+            UnknownAPITypeException {
         try {
             return getProcessAPI().addUserToActor(item.getActorId().toLong(), item.getUserId().toLong());
         } catch (final CreationException e) {

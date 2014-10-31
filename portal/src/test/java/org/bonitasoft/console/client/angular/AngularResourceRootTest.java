@@ -1,14 +1,14 @@
 package org.bonitasoft.console.client.angular;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-import static junit.framework.Assert.assertEquals;
+import org.junit.Test;
 
 public class AngularResourceRootTest {
 
     @Test
-    public void should_add_slash_to_url_as_context() throws Exception {
-        AngularResourceRoot root = new AngularResourceRoot();
+    public void should_add_slash_to_url_as_context() {
+        final AngularResourceRoot root = new AngularResourceRoot();
 
         assertEquals("../portal.js/path/to/resource", root.contextualize("path/to/resource"));
     }

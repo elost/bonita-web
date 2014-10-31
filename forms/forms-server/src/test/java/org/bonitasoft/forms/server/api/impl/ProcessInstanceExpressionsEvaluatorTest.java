@@ -5,18 +5,16 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.server.api.impl;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -36,7 +34,6 @@ import org.mockito.Mock;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class ProcessInstanceExpressionsEvaluatorTest {
 
@@ -54,7 +51,7 @@ public class ProcessInstanceExpressionsEvaluatorTest {
     @Mock
     ProcessInstanceAccessor processInstance;
 
-    private Map<Expression, Map<String, Serializable>> someExpressions =
+    private final Map<Expression, Map<String, Serializable>> someExpressions =
             Collections.<Expression, java.util.Map<String, Serializable>> emptyMap();
 
     @Before
@@ -72,7 +69,7 @@ public class ProcessInstanceExpressionsEvaluatorTest {
         when(engineEvaluator.evaluateExpressionsOnProcessInstance(1L, someExpressions))
                 .thenReturn(aKnownResultSet());
 
-        Map<String, Serializable> evaluated = evaluator.evaluate(processInstance,
+        final Map<String, Serializable> evaluated = evaluator.evaluate(processInstance,
                 someExpressions,
                 false);
 
@@ -87,7 +84,7 @@ public class ProcessInstanceExpressionsEvaluatorTest {
         when(engineEvaluator.evaluateExpressionsOnCompletedProcessInstance(2L, someExpressions))
                 .thenReturn(aKnownResultSet());
 
-        Map<String, Serializable> evaluated = evaluator.evaluate(processInstance,
+        final Map<String, Serializable> evaluated = evaluator.evaluate(processInstance,
                 someExpressions,
                 false);
 
@@ -102,7 +99,7 @@ public class ProcessInstanceExpressionsEvaluatorTest {
         when(engineEvaluator.evaluateExpressionsAtProcessInstanciation(3L, someExpressions))
                 .thenReturn(aKnownResultSet());
 
-        Map<String, Serializable> evaluated = evaluator.evaluate(processInstance,
+        final Map<String, Serializable> evaluated = evaluator.evaluate(processInstance,
                 someExpressions,
                 true);
 
@@ -110,7 +107,7 @@ public class ProcessInstanceExpressionsEvaluatorTest {
     }
 
     private Map<String, Serializable> aKnownResultSet() {
-        Map<String, Serializable> aKnownResultSet = new HashMap<String, Serializable>();
+        final Map<String, Serializable> aKnownResultSet = new HashMap<String, Serializable>();
         aKnownResultSet.put("key", "value");
         return aKnownResultSet;
     }

@@ -5,28 +5,25 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.toolkit.client.common.i18n;
 
-import org.bonitasoft.web.toolkit.client.common.texttemplate.Arg;
-import org.bonitasoft.web.toolkit.client.common.texttemplate.TextTemplate;
-import org.bonitasoft.web.toolkit.client.common.util.StringUtil;
-
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.bonitasoft.web.toolkit.client.common.texttemplate.Arg;
+import org.bonitasoft.web.toolkit.client.common.texttemplate.TextTemplate;
+import org.bonitasoft.web.toolkit.client.common.util.StringUtil;
+
 /**
  * @author Séverin Moussel
- * 
  */
 public abstract class AbstractI18n {
 
@@ -959,17 +956,16 @@ public abstract class AbstractI18n {
 
     public Map<String, String> getLocale(final LOCALE locale) {
         if (locale != null) {
-            if (!this.locales.containsKey(locale)) {
+            if (!locales.containsKey(locale)) {
                 loadLocale(locale);
             }
-            return this.locales.get(locale);
-        } else {
-            return getLocale(getDefaultLocale());
+            return locales.get(locale);
         }
+        return getLocale(getDefaultLocale());
     }
 
     protected final void setLocale(final LOCALE locale, final Map<String, String> map) {
-        this.locales.put(locale, map);
+        locales.put(locale, map);
     }
 
     public static void load(final LOCALE locale) {
@@ -983,11 +979,11 @@ public abstract class AbstractI18n {
     }
 
     public final LOCALE _getDefaultLocale() {
-        return this.defaultLocale;
+        return defaultLocale;
     }
 
     private void _setDefaultLocale(final LOCALE locale) {
-        this.defaultLocale = locale;
+        defaultLocale = locale;
     }
 
     public static void setDefaultLocale(final LOCALE locale) {
@@ -1006,7 +1002,7 @@ public abstract class AbstractI18n {
     }
 
     protected String getText(final String string) {
-        return this.getText(this.defaultLocale, string);
+        return this.getText(defaultLocale, string);
     }
 
     protected String getText(final LOCALE locale, final String string) {

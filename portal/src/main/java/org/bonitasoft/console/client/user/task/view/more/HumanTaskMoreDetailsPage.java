@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,7 +28,6 @@ import org.bonitasoft.console.client.user.task.action.TaskClaimAction;
 import org.bonitasoft.console.client.user.task.action.TaskRelaseAction;
 import org.bonitasoft.console.client.user.task.action.UserTasksHideAction;
 import org.bonitasoft.console.client.user.task.action.UserTasksUnhideAction;
-import org.bonitasoft.console.client.user.task.view.PluginTask;
 import org.bonitasoft.console.client.user.task.view.TaskButtonFactory;
 import org.bonitasoft.console.client.user.task.view.TasksListingPage;
 import org.bonitasoft.web.rest.model.bpm.flownode.HiddenUserTaskDefinition;
@@ -48,12 +45,12 @@ import org.bonitasoft.web.toolkit.client.ui.action.ActionShowView;
  * @author Vincent Elcrin
  * @author Colin PUY
  */
-public class HumanTaskMoreDetailsPage extends AbstractMoreTaskDetailPage<HumanTaskItem> implements PluginTask {
+public class HumanTaskMoreDetailsPage extends AbstractMoreTaskDetailPage<HumanTaskItem> {
 
-    public static String TOKEN = "taskdetails";    
-    
+    public static String TOKEN = "taskdetails";
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(TasksListingPage.TOKEN);
         PRIVILEGES.add(TaskListingAdminPage.TOKEN);
@@ -68,12 +65,12 @@ public class HumanTaskMoreDetailsPage extends AbstractMoreTaskDetailPage<HumanTa
         super(HumanTaskDefinition.get());
     }
 
-    public HumanTaskMoreDetailsPage(HumanTaskItem task) {
+    public HumanTaskMoreDetailsPage(final HumanTaskItem task) {
         super(HumanTaskDefinition.get(), task);
     }
 
     @Override
-    protected void buildToolbar(HumanTaskItem item) {
+    protected void buildToolbar(final HumanTaskItem item) {
         super.buildToolbar(item);
         final TaskButtonFactory factory = new TaskButtonFactory();
         if (!isTaskAssignedToOtherUser(item) && item.isUserTask()) {
@@ -99,7 +96,7 @@ public class HumanTaskMoreDetailsPage extends AbstractMoreTaskDetailPage<HumanTa
                 }
 
                 @Override
-                protected void on404NotFound(String message) {
+                protected void on404NotFound(final String message) {
                     addIgnoreButton(factory);
                 }
 
@@ -120,7 +117,7 @@ public class HumanTaskMoreDetailsPage extends AbstractMoreTaskDetailPage<HumanTa
         addToolbarLink(factory.createIgnoreButton(new UserTasksHideAction(Session.getUserId(), getItemId())));
     }
 
-    private void isTaskHidden(HumanTaskItem item, APICallback callback) {
+    private void isTaskHidden(final HumanTaskItem item, final APICallback callback) {
         final APIID compAPIId = APIID.makeAPIID(Session.getUserId().toLong(), item.getId().toLong());
         APIRequest.get(compAPIId, Definitions.get(HiddenUserTaskDefinition.TOKEN), callback).run();
     }

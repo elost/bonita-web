@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -23,7 +21,6 @@ import org.bonitasoft.web.toolkit.client.data.item.attribute.ModifiersList;
 import org.bonitasoft.web.toolkit.client.data.item.attribute.modifier.Modifier;
 import org.bonitasoft.web.toolkit.client.ui.JsId;
 import org.bonitasoft.web.toolkit.client.ui.action.Action;
-import org.bonitasoft.web.toolkit.client.ui.component.core.Component;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
@@ -31,7 +28,6 @@ import com.google.gwt.user.client.Event;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class TableColumn extends TableComponent implements ModifiableOutput {
 
@@ -57,19 +53,19 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
 
     /**
      * Constructor
-     * 
+     *
      * @param table
-     *            The table containing this column
+     *        The table containing this column
      * @param jsid
-     *            The jsid of the column
+     *        The jsid of the column
      * @param label
-     *            The label displayed for this column
+     *        The label displayed for this column
      * @param sortName
-     *            The name of the attribute to sort on
+     *        The name of the attribute to sort on
      * @param sorted
-     *            Indicate whether or not the column is currently sorted
+     *        Indicate whether or not the column is currently sorted
      * @param sortAscending
-     *            Indicate if the sort is ascending or descending
+     *        Indicate if the sort is ascending or descending
      */
     public TableColumn(final Table table, final JsId jsid, final String label, final String sortName, final boolean sorted, final boolean sortAscending) {
         super(table, jsid);
@@ -87,20 +83,20 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
     protected final Element makeElement() {
         final Element th = DOM.createElement("div");
         th.addClassName("th " + getJsId().toString("th"));
-        th.setInnerText(this.label);
+        th.setInnerText(label);
 
         // Sort on columns
-        if (this.sortName != null) {
+        if (sortName != null) {
             th.addClassName("sortable");
             DOM.sinkEvents(th, Event.ONCLICK);
             DOM.setEventListener(th, new Action() {
 
                 @Override
                 public void execute() {
-                    if (TableColumn.this.sorted) {
-                        TableColumn.this.sortAscending = !TableColumn.this.sortAscending;
+                    if (sorted) {
+                        sortAscending = !sortAscending;
                     }
-                    TableColumn.this.table.setOrder(TableColumn.this.sortName, TableColumn.this.sortAscending);
+                    TableColumn.this.table.setOrder(sortName, sortAscending);
 
                     TableColumn.this.setSorted(true);
 
@@ -113,9 +109,9 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
 
     /**
      * Define if the element is currently sorted
-     * 
+     *
      * @param sorted
-     *            TRUE if sorted, otherwise FALSE
+     *        TRUE if sorted, otherwise FALSE
      */
     public final void setSorted(final boolean sorted) {
         this.sorted = sorted;
@@ -135,7 +131,7 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
     }
 
     public void setSortAscending(final boolean asc) {
-        this.sortAscending = asc;
+        sortAscending = asc;
     }
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -152,7 +148,7 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
      */
     @Override
     public final List<Modifier> getOutputModifiers() {
-        return this.outputModifiers.getModifiers();
+        return outputModifiers.getModifiers();
     }
 
     /**
@@ -160,7 +156,7 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
      */
     @Override
     public final TableColumn addOutputModifier(final Modifier modifier) {
-        this.outputModifiers.addModifier(modifier);
+        outputModifiers.addModifier(modifier);
         return this;
     }
 
@@ -169,7 +165,7 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
      */
     @Override
     public final TableColumn addOutputModifiers(final List<Modifier> modifiers) {
-        this.outputModifiers.addModifiers(modifiers);
+        outputModifiers.addModifiers(modifiers);
         return this;
     }
 
@@ -178,7 +174,7 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
      */
     @Override
     public final TableColumn removeOutputModifier(final String modifierClassName) {
-        this.outputModifiers.removeModifier(modifierClassName);
+        outputModifiers.removeModifier(modifierClassName);
 
         return this;
     }
@@ -188,7 +184,7 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
      */
     @Override
     public final boolean hasOutputModifier(final String modifierClassName) {
-        return this.outputModifiers.hasModifier(modifierClassName);
+        return outputModifiers.hasModifier(modifierClassName);
     }
 
     /**
@@ -196,40 +192,40 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
      */
     @Override
     public final Modifier getOutputModifier(final String modifierClassName) {
-        return this.outputModifiers.getModifier(modifierClassName);
+        return outputModifiers.getModifier(modifierClassName);
     }
 
     /**
      * check if the column is currently sorted
      */
     public final boolean getSorted() {
-        return this.sorted;
+        return sorted;
     }
 
     /**
      * Get the SortName
      */
     public final String getSortName() {
-        return this.sortName;
+        return sortName;
     }
 
     /**
      * @return the sortAscending
      */
     public final boolean isSortAscending() {
-        return this.sortAscending;
+        return sortAscending;
     }
 
     /**
      * @return the label
      */
     public String getLabel() {
-        return this.label;
+        return label;
     }
 
     /**
      * @param label
-     *            the label to set
+     *        the label to set
      */
     public void setLabel(final String label) {
         this.label = label;
@@ -237,7 +233,7 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
 
     /**
      * Check if this column can be sorted.
-     * 
+     *
      * @return This method returns TRUE if the column can be sorted, otherwise FALSE.
      */
     public final boolean isSortable() {

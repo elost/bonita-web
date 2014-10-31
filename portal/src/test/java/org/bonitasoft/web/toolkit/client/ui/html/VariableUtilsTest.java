@@ -1,13 +1,14 @@
 package org.bonitasoft.web.toolkit.client.ui.html;
 
-import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.verify;
+import static org.mockito.MockitoAnnotations.initMocks;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.verify;
-import static org.mockito.MockitoAnnotations.initMocks;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 /**
  * Created by Vincent Elcrin
@@ -20,12 +21,12 @@ public class VariableUtilsTest {
     private HtmlAccessor accessor;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
     }
 
     @Test
-    public void testWeCanReplaceASpecificVariable() throws Exception {
+    public void testWeCanReplaceASpecificVariable() {
         doReturn("<p>This is %variable1% for variable1 but not for variable2</p>")
                 .when(accessor)
                 .getInnerHTML();
@@ -36,7 +37,7 @@ public class VariableUtilsTest {
     }
 
     @Test
-    public void testWeHtmlWithoutVariableStayTheSame() throws Exception {
+    public void testWeHtmlWithoutVariableStayTheSame() {
         doReturn("<p class='aside'>This is a test</p>")
                 .when(accessor)
                 .getInnerHTML();
@@ -47,7 +48,7 @@ public class VariableUtilsTest {
     }
 
     @Test
-    public void testWeCanReplaceMultipleVariables() throws Exception {
+    public void testWeCanReplaceMultipleVariables() {
         doReturn("<p class='%variable%'>This is %variable%</p>")
                 .when(accessor)
                 .getInnerHTML();

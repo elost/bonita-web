@@ -99,7 +99,7 @@ public class FormServiceProviderImplTest {
     }
 
     @Test
-    public void testextractProcessDefinitionUUID() throws Exception {
+    public void testextractProcessDefinitionUUID() {
 
         //given
         final String formId = "processName--1.0$entry";
@@ -113,7 +113,7 @@ public class FormServiceProviderImplTest {
     }
 
     @Test
-    public void testextractProcessDefinitionUUID_with_step_name() throws Exception {
+    public void testextractProcessDefinitionUUID_with_step_name() {
         //given
         final String formId = "processName--1.0--Step1$entry";
 

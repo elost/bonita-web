@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -45,7 +43,6 @@ import org.w3c.dom.NodeList;
  * config
  *
  * @author Anthony Birembaut, Haojie Yuan
- *
  */
 public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApplicationFormDefAccessor {
 
@@ -100,7 +97,6 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
     protected XMLExpressionsUtil xmlExpressionsUtil;
 
     /**
-     *
      * Default constructor.
      *
      * @param tenantID
@@ -228,16 +224,15 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
                 LOGGER.log(Level.SEVERE, errorMessage);
             }
             throw new InvalidFormDefinitionException(errorMessage);
-        } else {
-            final Node pageTemplateNode = getNodeByXpath(pageNode, XMLForms.PAGE_LAYOUT);
-            if (pageTemplateNode == null) {
-                if (LOGGER.isLoggable(Level.FINE)) {
-                    LOGGER.log(Level.FINE, "Failed to parse the form definition file. The default page template will be used.");
-                }
-                templatePath = null;
-            } else {
-                templatePath = pageTemplateNode.getTextContent();
+        }
+        final Node pageTemplateNode = getNodeByXpath(pageNode, XMLForms.PAGE_LAYOUT);
+        if (pageTemplateNode == null) {
+            if (LOGGER.isLoggable(Level.FINE)) {
+                LOGGER.log(Level.FINE, "Failed to parse the form definition file. The default page template will be used.");
             }
+            templatePath = null;
+        } else {
+            templatePath = pageTemplateNode.getTextContent();
         }
         return templatePath;
     }
@@ -276,7 +271,7 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
      * Retrieve the page node for a given page id
      *
      * @param formId
-     *            the formId
+     *        the formId
      * @return the {@link Node} for the page
      */
     protected Node getFormNode(final String formId) {
@@ -288,7 +283,7 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
      * Build the xpath query to get a application page
      *
      * @param formId
-     *            the formId
+     *        the formId
      * @return an xpath query under the form of a String
      */
     protected String getFormPageXpath(final String formId) {
@@ -321,9 +316,8 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
                 LOGGER.log(Level.SEVERE, errorMessage);
             }
             throw new InvalidFormDefinitionException(errorMessage);
-        } else {
-            widgets = WidgetBuilderFactory.getXMLWidgetBuilder().getPageWidgets(pageNode, isEditMode);
         }
+        widgets = WidgetBuilderFactory.getXMLWidgetBuilder().getPageWidgets(pageNode, isEditMode);
         return widgets;
     }
 
@@ -342,9 +336,8 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
                 LOGGER.log(Level.SEVERE, errorMessage);
             }
             throw new InvalidFormDefinitionException(errorMessage);
-        } else {
-            pageValidators = WidgetBuilderFactory.getXMLWidgetBuilder().getPageValidators(pageNode);
         }
+        pageValidators = WidgetBuilderFactory.getXMLWidgetBuilder().getPageValidators(pageNode);
         return pageValidators;
     }
 
@@ -363,18 +356,16 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
                 LOGGER.log(Level.SEVERE, errorMessage);
             }
             throw new InvalidFormDefinitionException(errorMessage);
-        } else {
-            final Node pageLabelNode = getNodeByXpath(pageNode, XMLForms.PAGE_LABEL);
-            if (pageLabelNode == null) {
-                final String errorMessage = "The label for page " + pageId + " for process instantiation was not found in the forms definition file";
-                if (LOGGER.isLoggable(Level.SEVERE)) {
-                    LOGGER.log(Level.SEVERE, errorMessage);
-                }
-                throw new InvalidFormDefinitionException(errorMessage);
-            } else {
-                label = xmlExpressionsUtil.parseExpression(pageId, pageLabelNode);
-            }
         }
+        final Node pageLabelNode = getNodeByXpath(pageNode, XMLForms.PAGE_LABEL);
+        if (pageLabelNode == null) {
+            final String errorMessage = "The label for page " + pageId + " for process instantiation was not found in the forms definition file";
+            if (LOGGER.isLoggable(Level.SEVERE)) {
+                LOGGER.log(Level.SEVERE, errorMessage);
+            }
+            throw new InvalidFormDefinitionException(errorMessage);
+        }
+        label = xmlExpressionsUtil.parseExpression(pageId, pageLabelNode);
         return label;
     }
 
@@ -393,12 +384,11 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
                 LOGGER.log(Level.SEVERE, errorMessage);
             }
             throw new InvalidFormDefinitionException(errorMessage);
-        } else {
-            final Node pageAllowHTMLNode = getNodeByXpath(pageNode, XMLForms.ALLOW_HTML_IN_LABEL);
-            if (pageAllowHTMLNode != null) {
-                final String allowHTMLInLabelStr = pageAllowHTMLNode.getTextContent();
-                allowHTMLInLabel = Boolean.parseBoolean(allowHTMLInLabelStr);
-            }
+        }
+        final Node pageAllowHTMLNode = getNodeByXpath(pageNode, XMLForms.ALLOW_HTML_IN_LABEL);
+        if (pageAllowHTMLNode != null) {
+            final String allowHTMLInLabelStr = pageAllowHTMLNode.getTextContent();
+            allowHTMLInLabel = Boolean.parseBoolean(allowHTMLInLabelStr);
         }
         return allowHTMLInLabel;
     }
@@ -417,11 +407,10 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
                 LOGGER.log(Level.SEVERE, errorMessage);
             }
             throw new InvalidFormDefinitionException(errorMessage);
-        } else {
-            final Node nextPageNode = getNodeByXpath(pageNode, XMLForms.NEXT_PAGE);
-            if (nextPageNode != null) {
-                nextPageExpression = xmlExpressionsUtil.parseExpression(nextPageNode);
-            }
+        }
+        final Node nextPageNode = getNodeByXpath(pageNode, XMLForms.NEXT_PAGE);
+        if (nextPageNode != null) {
+            nextPageExpression = xmlExpressionsUtil.parseExpression(nextPageNode);
         }
         return nextPageExpression;
     }
@@ -529,9 +518,8 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
                 LOGGER.log(Level.SEVERE, errorMessage);
             }
             throw new InvalidFormDefinitionException(errorMessage);
-        } else {
-            formType = formTypeNode.getTextContent();
         }
+        formType = formTypeNode.getTextContent();
         return FormType.valueOf(formType);
     }
 }

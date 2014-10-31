@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -28,9 +26,9 @@ import org.bonitasoft.web.toolkit.client.ui.utils.DateFormat.UNIT;
  */
 public class RelativeStringDateFormatter {
 
-    public String format(Long date) {
-        long dateSpan = new Date().getTime() - date;
-        boolean ago = dateSpan > 0;
+    public String format(final Long date) {
+        final long dateSpan = new Date().getTime() - date;
+        final boolean ago = dateSpan > 0;
 
         // In seconds
         long value = (long) Math.abs(Math.floor(dateSpan / 1000));
@@ -94,8 +92,7 @@ public class RelativeStringDateFormatter {
         }
         if (ago) {
             return _("%time% ago", new Arg("time", time + " " + unitString));
-        } else {
-            return _("in %time%", new Arg("time", time + " " + unitString));
         }
+        return _("in %time%", new Arg("time", time + " " + unitString));
     }
 }

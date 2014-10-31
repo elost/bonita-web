@@ -5,19 +5,15 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.server.accessor.impl.util;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,6 +25,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.bonitasoft.console.common.server.utils.BPMEngineException;
 import org.bonitasoft.console.common.server.utils.FormsResourcesUtils;
@@ -42,9 +41,8 @@ import org.w3c.dom.Document;
 
 /**
  * The Form definition file document builder
- * 
+ *
  * @author Anthony Birembaut, Nicolas Chabanoles
- * 
  */
 public class FormDocumentBuilder {
 
@@ -112,15 +110,15 @@ public class FormDocumentBuilder {
      * Retrieve an instance of FormDocumentBuilder or create a new one if necessary.
      * The map contains a cache of instances. Each instance has a validity duration equals to the INSTANCE_EXPIRATION_TIME constant value
      * The deployement date is also check because a process can be undeployed and redeployed (after modifications) with the same UUID
-     * 
+     *
      * @param session
-     *            the engine API session
+     *        the engine API session
      * @param processDefinitionID
-     *            the process definition ID
+     *        the process definition ID
      * @param locale
-     *            the user's locale
+     *        the user's locale
      * @param processDeployementDate
-     *            the deployement date of the process
+     *        the deployement date of the process
      * @throws IOException
      * @throws InvalidFormDefinitionException
      * @throws BPMEngineException
@@ -137,17 +135,17 @@ public class FormDocumentBuilder {
      * Retrieve an instance of FormDocumentBuilder or create a new one if necessary.
      * The map contains a cache of instances. Each instance has a validity duration equals to the INSTANCE_EXPIRATION_TIME constant value
      * The deployement date is also check because a process can be undeployed and redeployed (after modifications) with the same UUID
-     * 
+     *
      * @param session
-     *            the engine API session
+     *        the engine API session
      * @param processDefinitionID
-     *            the process definition ID
+     *        the process definition ID
      * @param locale
-     *            the user's locale
+     *        the user's locale
      * @param processDeployementDate
-     *            the deployement date of the process
+     *        the deployement date of the process
      * @param getFormDefinitionFromBAR
-     *            indicate if the form definition file should be retrieved from the business archive only (if false, it's sought in the classpath first)
+     *        indicate if the form definition file should be retrieved from the business archive only (if false, it's sought in the classpath first)
      * @throws IOException
      * @throws InvalidFormDefinitionException
      * @throws BPMEngineException
@@ -167,7 +165,7 @@ public class FormDocumentBuilder {
                 @Override
                 protected boolean removeEldestEntry(final Map.Entry<String, Map<String, FormDocumentBuilder>> eldest) {
                     return size() > DefaultFormsPropertiesFactory.getDefaultFormProperties(tenantID).getMaxProcessesInCache();
-                };
+                }
             };
         }
 
@@ -189,7 +187,7 @@ public class FormDocumentBuilder {
             }
             boolean outOfDateDefinition = false;
             if (instance != null
-                    && ((processDeployementDate != null && processDeployementDate.compareTo(instance.processDeployementDate) != 0) || instance
+                    && (processDeployementDate != null && processDeployementDate.compareTo(instance.processDeployementDate) != 0 || instance
                             .hasExpired(tenantID))) {
                 localeInstances.remove(locale);
                 outOfDateDefinition = true;
@@ -227,21 +225,21 @@ public class FormDocumentBuilder {
 
     /**
      * Private constructor to prevent instantiation
-     * 
+     *
      * @param session
-     *            the engine APISession
+     *        the engine APISession
      * @param processDefinitionID
-     *            the process definition ID
+     *        the process definition ID
      * @param locale
-     *            the user's locale
+     *        the user's locale
      * @param processDeployementDate
-     *            the deployement date of the process
+     *        the deployement date of the process
      * @param getFormDefinitionFromBAR
-     *            indicate if the form definition file should be retrieved from the business archive only
+     *        indicate if the form definition file should be retrieved from the business archive only
      * @throws IOException
-     *             if the forms definition file is not found
+     *         if the forms definition file is not found
      * @throws InvalidFormDefinitionException
-     *             if the form definition file cannot be parsed
+     *         if the form definition file cannot be parsed
      * @throws BPMEngineException
      * @throws InvalidSessionException
      */
@@ -259,7 +257,7 @@ public class FormDocumentBuilder {
         final InputStream formsDefinitionStream = getFormsDefinitionInputStream(session);
         try {
             final DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            this.document = builder.parse(formsDefinitionStream);
+            document = builder.parse(formsDefinitionStream);
         } catch (final Exception e) {
             final String errorMessage = "Failed to parse the forms definition file";
             if (LOGGER.isLoggable(Level.SEVERE)) {
@@ -276,7 +274,7 @@ public class FormDocumentBuilder {
     /**
      * @return the form definition as an input stream
      * @param session
-     *            the engine APISession
+     *        the engine APISession
      * @throws IOException
      * @throws BPMEngineException
      * @throws InvalidSessionException
@@ -333,13 +331,13 @@ public class FormDocumentBuilder {
 
     /**
      * Determinates whether the current instance has expired or not
-     * 
+     *
      * @param tenantID
-     *            the tenant ID
+     *        the tenant ID
      * @return true if the current instance has expired, false otherwise
      */
     protected boolean hasExpired(final long tenantID) {
         final long now = new Date().getTime();
-        return this.lastAccess + DefaultFormsPropertiesFactory.getDefaultFormProperties(tenantID).getProcessesTimeToLiveInCache() < now;
+        return lastAccess + DefaultFormsPropertiesFactory.getDefaultFormProperties(tenantID).getProcessesTimeToLiveInCache() < now;
     }
 }

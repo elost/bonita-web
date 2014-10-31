@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -42,7 +40,6 @@ import org.bonitasoft.web.toolkit.client.data.APIID;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class CommentDatastore extends CommonDatastore<CommentItem, Comment> implements DatastoreHasAdd<CommentItem>, DatastoreHasSearch<CommentItem> {
 
@@ -64,7 +61,7 @@ public class CommentDatastore extends CommonDatastore<CommentItem, Comment> impl
 
     /**
      * Default Constructor.
-     * 
+     *
      * @param engineSession
      */
     public CommentDatastore(final APISession engineSession) {
@@ -78,7 +75,6 @@ public class CommentDatastore extends CommonDatastore<CommentItem, Comment> impl
     @Override
     public ItemSearchResult<CommentItem> search(final int page, final int resultsByPage, final String search, final String orders,
             final Map<String, String> filters) {
-
         // prepare search
         final SearchOptionsBuilder builder = SearchOptionsBuilderUtil.buildSearchOptions(page, resultsByPage, "", search);
         adjustSearchBuilder(filters, builder);
@@ -123,15 +119,14 @@ public class CommentDatastore extends CommonDatastore<CommentItem, Comment> impl
                 consoleSearchResults.add(convertEngineToConsoleItem(comment));
             }
             return new ItemSearchResult<CommentItem>(page, resultsByPage, engineSearchResults.getCount(), consoleSearchResults);
-        } else {
-            throw new APIException("Search failed for the following parameters <page: " + page + " - resulsByPage: " + resultsByPage + " - search: " + search
-                    + " - filters: " + filters + " - orders: " + orders + ">");
         }
+        throw new APIException("Search failed for the following parameters <page: " + page + " - resulsByPage: " + resultsByPage + " - search: " + search
+                + " - filters: " + filters + " - orders: " + orders + ">");
     }
 
     /**
      * Search comments managed by specified user (ex administrator)
-     * 
+     *
      * @param builder
      * @param categorized
      * @return
@@ -149,7 +144,7 @@ public class CommentDatastore extends CommonDatastore<CommentItem, Comment> impl
 
     /**
      * Search comment involving specified user.
-     * 
+     *
      * @param userId
      * @param builder
      * @param categorized
@@ -169,7 +164,7 @@ public class CommentDatastore extends CommonDatastore<CommentItem, Comment> impl
 
     /**
      * Search custom. It's up to you!
-     * 
+     *
      * @param builder
      * @return
      */
@@ -186,7 +181,7 @@ public class CommentDatastore extends CommonDatastore<CommentItem, Comment> impl
 
     /**
      * Search comment supervised by specified user (ex process owner)
-     * 
+     *
      * @param supervisorId
      * @param builder
      * @param categorized
@@ -223,7 +218,7 @@ public class CommentDatastore extends CommonDatastore<CommentItem, Comment> impl
 
     /**
      * Convert ProcessItem filters into engine filers
-     * 
+     *
      * @param filters
      * @param builder
      */

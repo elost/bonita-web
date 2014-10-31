@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -24,13 +22,12 @@ import org.junit.Test;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class UrlBuilderTest {
 
     @Test
-    public void testWeCanBuildAUrlWithParameters() throws Exception {
-        UrlBuilder builder = createHackedUrlBuilder("rootUrl");
+    public void testWeCanBuildAUrlWithParameters() {
+        final UrlBuilder builder = createHackedUrlBuilder("rootUrl");
         builder.addParameter("aParameter", "itsValue");
         builder.addParameter("anotherParameter", "itsOwnValue");
 
@@ -39,11 +36,11 @@ public class UrlBuilderTest {
                         equalTo("rootUrl?anotherParameter=itsOwnValue&aParameter=itsValue")));
     }
 
-    private UrlBuilder createHackedUrlBuilder(String rootUrl) {
+    private UrlBuilder createHackedUrlBuilder(final String rootUrl) {
         return new UrlBuilder(rootUrl) {
 
             @Override
-            protected String encode(String decodedURL) {
+            protected String encode(final String decodedURL) {
                 return decodedURL;
             }
         };

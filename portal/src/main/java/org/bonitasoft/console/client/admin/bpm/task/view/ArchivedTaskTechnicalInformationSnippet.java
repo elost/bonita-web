@@ -13,7 +13,6 @@ import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n._;
 import org.bonitasoft.console.client.admin.bpm.accessor.IActivityAccessor;
 import org.bonitasoft.console.client.common.component.snippet.SectionSnippet;
 import org.bonitasoft.console.client.data.item.attribute.reader.DeployedUserReader;
-import org.bonitasoft.web.rest.model.bpm.flownode.ActivityItem;
 import org.bonitasoft.web.rest.model.bpm.flownode.IFlowNodeItem;
 import org.bonitasoft.web.rest.model.bpm.flownode.TaskItem;
 import org.bonitasoft.web.toolkit.client.common.texttemplate.Arg;
@@ -24,7 +23,6 @@ import org.bonitasoft.web.toolkit.client.ui.utils.DateFormat;
 
 /**
  * @author Julien Mege
- * 
  */
 public class ArchivedTaskTechnicalInformationSnippet implements SectionSnippet {
 
@@ -32,7 +30,6 @@ public class ArchivedTaskTechnicalInformationSnippet implements SectionSnippet {
 
     /**
      * Default Constructor.
-     * 
      * Need {@link ActivityItem#ATTRIBUTE_EXECUTED_BY_USER_ID} to be deployed!
      */
     public ArchivedTaskTechnicalInformationSnippet(final IActivityAccessor activity) {
@@ -43,20 +40,20 @@ public class ArchivedTaskTechnicalInformationSnippet implements SectionSnippet {
     public Section build() {
         String template = "";
 
-        final Arg executedByArg = buildExecutedByArg(this.activity);
+        final Arg executedByArg = buildExecutedByArg(activity);
 
-        if (TaskItem.VALUE_STATE_COMPLETED.equals(this.activity.getState())) {
+        if (TaskItem.VALUE_STATE_COMPLETED.equals(activity.getState())) {
             template = _("Done %task_last_update% by %executed_by%",
-                    new Arg("task_last_update", DateFormat.dateToDisplayShort(this.activity.getLastUpdateDate())),
+                    new Arg("task_last_update", DateFormat.dateToDisplayShort(activity.getLastUpdateDate())),
                     executedByArg);
 
-        } else if (TaskItem.VALUE_STATE_SKIPPED.equals(this.activity.getState())) {
+        } else if (TaskItem.VALUE_STATE_SKIPPED.equals(activity.getState())) {
             template = _("Skipped on %task_last_update% by %executed_by%",
-                    new Arg("task_last_update", DateFormat.dateToDisplayShort(this.activity.getLastUpdateDate())),
+                    new Arg("task_last_update", DateFormat.dateToDisplayShort(activity.getLastUpdateDate())),
                     executedByArg);
         }
 
-        Section techinicalDetailsSection = new Section(_("Technical details"));
+        final Section techinicalDetailsSection = new Section(_("Technical details"));
         techinicalDetailsSection.setId(CssId.QD_SECTION_TECHNICAL_DETAILS);
         return techinicalDetailsSection
                 .addBody(new Text(template));

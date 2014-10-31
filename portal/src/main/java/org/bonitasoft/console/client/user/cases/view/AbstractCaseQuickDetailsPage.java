@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,9 +28,7 @@ import org.bonitasoft.console.client.common.formatter.ArchivedFlowNodeDateFormat
 import org.bonitasoft.console.client.common.formatter.FlowNodeDisplayNameFormatter;
 import org.bonitasoft.console.client.common.view.StartedByDelegateAttributeReder;
 import org.bonitasoft.console.client.data.item.attribute.reader.DeployedUserReader;
-import org.bonitasoft.console.client.user.cases.view.AbstractCaseQuickDetailsPage.CommentsTableAsyncBuilder;
 import org.bonitasoft.console.client.user.cases.view.snippet.ArchivedTasksSection;
-import org.bonitasoft.console.client.user.task.view.AbstractTaskDetailsPage;
 import org.bonitasoft.console.client.user.task.view.more.HumanTaskMoreDetailsPage;
 import org.bonitasoft.web.rest.model.bpm.cases.ArchivedCaseDefinition;
 import org.bonitasoft.web.rest.model.bpm.cases.ArchivedCommentDefinition;
@@ -64,7 +60,6 @@ import org.bonitasoft.web.toolkit.client.ui.page.ItemQuickDetailsPage.ItemQuickD
 
 /**
  * @author Séverin Moussel
- *
  */
 abstract class AbstractCaseQuickDetailsPage<T extends CaseItem> extends ItemQuickDetailsPage<T> implements PluginCase {
 
@@ -115,8 +110,8 @@ abstract class AbstractCaseQuickDetailsPage<T extends CaseItem> extends ItemQuic
                 _("Started by"), _("The user that has started this case"));
     }
 
-    private ItemDetailsMetadata addStartedByDelegate(UserItem startedByUser, UserItem startedByDelegateUser) {
-        StartedByDelegateAttributeReder addStartedByDelegate = new StartedByDelegateAttributeReder(CaseItem.ATTRIBUTE_STARTED_BY_SUBSTITUTE_USER_ID);
+    private ItemDetailsMetadata addStartedByDelegate(final UserItem startedByUser, final UserItem startedByDelegateUser) {
+        final StartedByDelegateAttributeReder addStartedByDelegate = new StartedByDelegateAttributeReder(CaseItem.ATTRIBUTE_STARTED_BY_SUBSTITUTE_USER_ID);
         addStartedByDelegate.setStartedBySubstitute(startedByDelegateUser);
         addStartedByDelegate.setStartedBy(startedByUser);
         return new ItemDetailsMetadata(addStartedByDelegate,
@@ -135,7 +130,7 @@ abstract class AbstractCaseQuickDetailsPage<T extends CaseItem> extends ItemQuic
     protected void buildAvailableTasks(final CaseItem item) {
         final ItemTable tasksTable = getTaskTable(item);
         preparetasksTable(tasksTable);
-        Section availableTaskSection = new Section(_("Tasks to do"), tasksTable.setView(VIEW_TYPE.VIEW_LIST));
+        final Section availableTaskSection = new Section(_("Tasks to do"), tasksTable.setView(VIEW_TYPE.VIEW_LIST));
         availableTaskSection.addClass("tasks");
         availableTaskSection.addCssTaskType();
         availableTaskSection.setId(CssId.QD_SECTION_AVAILABLE_TASK);
@@ -212,12 +207,10 @@ abstract class AbstractCaseQuickDetailsPage<T extends CaseItem> extends ItemQuic
 
     /**
      * Class helper to build CommentsTable Asynchronously.
-     *
      * An instance of this class is used to build the common comments
      * table with {@link AbstractTaskDetailsPage#buildComments(APIID, CommentsTableAsyncBuilder)}
      *
      * @author Vincent Elcrin
-     *
      */
     public class CommentsTableAsyncBuilder {
 

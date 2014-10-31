@@ -32,7 +32,7 @@ import org.junit.Test;
 public class APIRoleIntegrationTest extends AbstractConsoleTest {
 
     @Override
-    public void consoleTestSetUp() throws Exception {
+    public void consoleTestSetUp() {
     }
 
     @Override
@@ -101,7 +101,7 @@ public class APIRoleIntegrationTest extends AbstractConsoleTest {
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Test
-    public void testSearch() throws Exception {
+    public void testSearch() {
         TestRoleFactory.createRandomRoles(13);
 
         final ItemSearchResult<RoleItem> roleItems = getAPIRole().runSearch(0, 10, null, null, null, null, null);
@@ -123,7 +123,7 @@ public class APIRoleIntegrationTest extends AbstractConsoleTest {
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Test
-    public void testDeleteOne() throws Exception {
+    public void testDeleteOne() {
         TestRoleFactory.createRandomRoles(13);
 
         final ItemSearchResult<RoleItem> roleItems = getAPIRole().runSearch(0, 10, null, null, null, null, null);
@@ -134,7 +134,7 @@ public class APIRoleIntegrationTest extends AbstractConsoleTest {
     }
 
     @Test
-    public void testDeleteMultiple() throws Exception {
+    public void testDeleteMultiple() {
         TestRoleFactory.createRandomRoles(13);
 
         final ItemSearchResult<RoleItem> roleItems = getAPIRole().runSearch(0, 10, null, null, null, null, null);
@@ -153,7 +153,7 @@ public class APIRoleIntegrationTest extends AbstractConsoleTest {
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Test
-    public void testUpdate() throws Exception {
+    public void testUpdate() {
         final String newDescription = "Lorem ipsum dolor sit amet";
 
         // Add
@@ -177,19 +177,19 @@ public class APIRoleIntegrationTest extends AbstractConsoleTest {
     }
 
     @Test
-    public void weCanCountAllUsersInAGroup() throws Exception {
-        Role roleWith2Users = createRoleWithAssignedUsers(getJohnCarpenter(), getMrSpechar());
-        List<String> counters = asList(RoleItem.COUNTER_NUMBER_OF_USERS);
-        
-        RoleItem roleItem = getAPIRole().runGet(APIID.makeAPIID(roleWith2Users.getId()), null, counters);
-        
+    public void weCanCountAllUsersInAGroup() {
+        final Role roleWith2Users = createRoleWithAssignedUsers(getJohnCarpenter(), getMrSpechar());
+        final List<String> counters = asList(RoleItem.COUNTER_NUMBER_OF_USERS);
+
+        final RoleItem roleItem = getAPIRole().runGet(APIID.makeAPIID(roleWith2Users.getId()), null, counters);
+
         assertEquals(2L, (long) roleItem.getNumberOfUsers());
     }
-    
-    private Role createRoleWithAssignedUsers(TestUser... users) {
-        TestGroup aGroup = TestGroupFactory.getRAndD();
-        TestRole aRole = TestRoleFactory.getDeveloper();
-        for (TestUser user : users) {
+
+    private Role createRoleWithAssignedUsers(final TestUser... users) {
+        final TestGroup aGroup = TestGroupFactory.getRAndD();
+        final TestRole aRole = TestRoleFactory.getDeveloper();
+        for (final TestUser user : users) {
             TestMembershipFactory.assignMembership(user, aGroup, aRole);
         }
         return aRole.getRole();

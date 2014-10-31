@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -26,13 +24,11 @@ import java.util.logging.Logger;
 
 import org.apache.commons.lang3.BooleanUtils;
 import org.bonitasoft.console.common.server.login.impl.standard.StandardLoginManagerImpl;
-import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConstantsUtils;
 
 /**
  * Utility class for Session Manager access (read in a properties file)
- * 
+ *
  * @author Ruiheng Fan
- * 
  */
 public class LoginManagerProperties {
 
@@ -85,7 +81,6 @@ public class LoginManagerProperties {
      */
     private static final Logger LOGGER = Logger.getLogger(LoginManagerProperties.class.getName());
 
-
     /**
      * properties
      */
@@ -94,12 +89,12 @@ public class LoginManagerProperties {
     /**
      * Private constructor to prevent instantiation
      */
-    protected LoginManagerProperties(File propertiesFile) {
+    protected LoginManagerProperties(final File propertiesFile) {
         // Read properties file.
         InputStream inputStream = null;
         try {
             inputStream = new FileInputStream(propertiesFile);
-            this.defaultProperties.load(inputStream);
+            defaultProperties.load(inputStream);
         } catch (final IOException e) {
             if (LOGGER.isLoggable(Level.WARNING)) {
                 if (propertiesFile != null) {
@@ -124,7 +119,7 @@ public class LoginManagerProperties {
      * @return get login manager implementation
      */
     public String getLoginManagerImpl() {
-        final String sessionManagerImpl = this.defaultProperties.getProperty(LOGIN_MANAGER);
+        final String sessionManagerImpl = defaultProperties.getProperty(LOGIN_MANAGER);
         if (sessionManagerImpl == null || sessionManagerImpl.isEmpty()) {
             final String defaultImpl = StandardLoginManagerImpl.class.getName();
             LOGGER.log(Level.FINEST, "The login manager implementation is undefined. Using default implementation : " + defaultImpl);
@@ -137,48 +132,48 @@ public class LoginManagerProperties {
      * @return get OAuth service provider name
      */
     public String getOAuthServiceProviderName() {
-        return this.defaultProperties.getProperty(OAUTH_SERVICE_PROVIDER);
+        return defaultProperties.getProperty(OAUTH_SERVICE_PROVIDER);
     }
 
     /**
      * @return get OAuth consumer key
      */
     public String getOAuthConsumerKey() {
-        return this.defaultProperties.getProperty(OAUTH_CONSUMER_KEY);
+        return defaultProperties.getProperty(OAUTH_CONSUMER_KEY);
     }
 
     /**
      * @return get OAuth consumer secret
      */
     public String getOAuthConsumerSecret() {
-        return this.defaultProperties.getProperty(OAUTH_CONSUMER_SECRET);
+        return defaultProperties.getProperty(OAUTH_CONSUMER_SECRET);
     }
 
     /**
      * @return get OAuth callback URL
      */
     public String getOAuthCallbackURL() {
-        return this.defaultProperties.getProperty(OAUTH_CALLBACK_URL);
+        return defaultProperties.getProperty(OAUTH_CALLBACK_URL);
     }
 
     /**
      * @return get OAuth callback URL
      */
     public String getCasServerURL() {
-        return this.defaultProperties.getProperty(CAS_SERVER_URL);
+        return defaultProperties.getProperty(CAS_SERVER_URL);
     }
 
     /**
      * @return get OAuth callback URL
      */
     public String getCasBonitaServiceUrl() {
-        return this.defaultProperties.getProperty(CAS_BONITA_SERVICE_URL);
+        return defaultProperties.getProperty(CAS_BONITA_SERVICE_URL);
     }
 
     /**
      * @return if properties are set up to display the logout button
      */
     public boolean isLogoutDisabled() {
-        return BooleanUtils.toBoolean(this.defaultProperties.getProperty(LOGOUT_DISABLED));
+        return BooleanUtils.toBoolean(defaultProperties.getProperty(LOGOUT_DISABLED));
     }
 }

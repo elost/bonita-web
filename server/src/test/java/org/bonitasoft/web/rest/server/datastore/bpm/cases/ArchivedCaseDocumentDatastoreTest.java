@@ -1,6 +1,5 @@
 package org.bonitasoft.web.rest.server.datastore.bpm.cases;
 
-
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.spy;
@@ -20,7 +19,6 @@ import org.bonitasoft.engine.bpm.document.ArchivedDocument;
 import org.bonitasoft.engine.bpm.document.ArchivedDocumentNotFoundException;
 import org.bonitasoft.engine.bpm.document.DocumentException;
 import org.bonitasoft.engine.bpm.document.DocumentNotFoundException;
-import org.bonitasoft.engine.exception.DeletionException;
 import org.bonitasoft.engine.exception.SearchException;
 import org.bonitasoft.engine.search.SearchOptions;
 import org.bonitasoft.engine.search.SearchResult;
@@ -61,10 +59,8 @@ public class ArchivedCaseDocumentDatastoreTest extends APITestWithMock {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
-    private final CaseDocumentItem mockedDocumentItem = new CaseDocumentItem();
-
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
         System.setProperty("bonita.home", "target/bonita-home/bonita");
         when(engineSession.getTenantId()).thenReturn(1L);
@@ -98,7 +94,7 @@ public class ArchivedCaseDocumentDatastoreTest extends APITestWithMock {
     }
 
     @Test
-    public void it_should_call_convertEngineToConsole_method() throws Exception {
+    public void it_should_call_convertEngineToConsole_method() {
         // Given
         final APIID id = APIID.makeAPIID(1l);
 
@@ -112,7 +108,7 @@ public class ArchivedCaseDocumentDatastoreTest extends APITestWithMock {
     // ---------- CONVERT ITEM TESTS ------------------------------//
 
     @Test
-    public void it_should_convert_item_return_item() throws Exception {
+    public void it_should_convert_item_return_item() {
         // When
         final ArchivedCaseDocumentItem convertedEngineToConsoleItem = documentDatastore.convertEngineToConsoleItem(mockedDocument);
         // Then
@@ -184,7 +180,7 @@ public class ArchivedCaseDocumentDatastoreTest extends APITestWithMock {
     }
 
     @Test
-    public void it_should_throw_an_exception_when_input_is_null() throws DocumentNotFoundException, DeletionException {
+    public void it_should_throw_an_exception_when_input_is_null() {
         expectedEx.expect(APIException.class);
         expectedEx.expectMessage("Error while deleting a document. Document id not specified in the request");
 

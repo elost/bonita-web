@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.view.widget;
 
@@ -36,67 +34,67 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Generic form flow Button widget
- * 
+ *
  * @author Anthony Birembaut
  */
 public class FormButtonWidget extends Composite implements HasClickHandlers, ClickHandler {
-    
+
     /**
      * the flow panel used to display the widget
      */
     protected FlowPanel flowPanel;
-    
+
     /**
      * widget field type
      */
     protected WidgetType widgetType;
-    
+
     /**
      * Button widget
      */
     protected Button button;
-    
+
     /**
      * Label Button widget
      */
     protected HTML labelButton;
-    
+
     /**
      * indicates whether the button is a label button or not
      */
     protected boolean isLabelButton;
-    
+
     /**
      * Click handlers registered for the widget
      */
     protected Map<String, ClickHandler> clickHandlers;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param formWidget the widget data object
      */
     public FormButtonWidget(final ReducedFormWidget formButtonData) {
 
         flowPanel = new FlowPanel();
-        
+
         isLabelButton = formButtonData.isLabelButton();
-        
+
         createWidget(formButtonData);
-        
+
         initWidget(flowPanel);
     }
-    
+
     /**
      * Create the button widget
-     * 
+     *
      * @param widgetData
-     *            the widget data object
+     *        the widget data object
      */
     protected void createWidget(final ReducedFormWidget formButtonData) {
-        
+
         widgetType = formButtonData.getType();
-        
+
         if (isLabelButton) {
             labelButton = new HTML(formButtonData.getLabel());
             labelButton.setStyleName("bonita_form_buttonlabel");
@@ -113,7 +111,7 @@ public class FormButtonWidget extends Composite implements HasClickHandlers, Cli
             flowPanel.addStyleName("bonita_form_button_entry");
             if (formButtonData.getInputStyle() != null && formButtonData.getInputStyle().length() > 0) {
                 flowPanel.addStyleName(formButtonData.getInputStyle());
-                String css = "bonita_form_button " + formButtonData.getInputStyle();
+                final String css = "bonita_form_button " + formButtonData.getInputStyle();
                 button.setStyleName(css);
             } else {
                 button.setStyleName("bonita_form_button");
@@ -125,9 +123,10 @@ public class FormButtonWidget extends Composite implements HasClickHandlers, Cli
         }
         insertButtonInPanel(formButtonData);
     }
-    
+
     /**
      * Insert the generated button in the panel and set the fieldWidget attribute to keep a reference to it
+     * 
      * @param formButtonData the button data object
      */
     protected void insertButtonInPanel(final ReducedFormWidget formButtonData) {
@@ -148,10 +147,11 @@ public class FormButtonWidget extends Composite implements HasClickHandlers, Cli
             flowPanel.add(button);
         }
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public void onClick(final ClickEvent clickEvent) {
         if (clickHandlers != null) {
             for (final ClickHandler clickHandler : clickHandlers.values()) {
@@ -159,21 +159,22 @@ public class FormButtonWidget extends Composite implements HasClickHandlers, Cli
             }
         }
     }
-    
+
     /**
      * {@inheritDoc}
      */
-    public HandlerRegistration addClickHandler(String id, final ClickHandler clickHandler) {
+    public HandlerRegistration addClickHandler(final String id, final ClickHandler clickHandler) {
         if (clickHandlers == null) {
             clickHandlers = new HashMap<String, ClickHandler>();
         }
         clickHandlers.put(id, clickHandler);
         return new EventHandlerRegistration(clickHandler);
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public HandlerRegistration addClickHandler(final ClickHandler clickHandler) {
         if (clickHandlers == null) {
             clickHandlers = new HashMap<String, ClickHandler>();
@@ -188,31 +189,31 @@ public class FormButtonWidget extends Composite implements HasClickHandlers, Cli
     protected class EventHandlerRegistration implements HandlerRegistration {
 
         protected EventHandler eventHandler;
-        
+
         public EventHandlerRegistration(final EventHandler eventHandler) {
             this.eventHandler = eventHandler;
         }
-        
+
+        @Override
         public void removeHandler() {
             clickHandlers.remove(eventHandler);
         }
     }
-    
+
     /**
      * @return the button type
      */
     public WidgetType getWidgetType() {
         return widgetType;
     }
-    
+
     /**
      * @return the button widget
      */
     public Widget getButton() {
         if (isLabelButton) {
             return labelButton;
-        } else {
-            return button;
         }
+        return button;
     }
 }

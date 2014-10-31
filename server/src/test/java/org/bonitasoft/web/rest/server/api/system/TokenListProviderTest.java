@@ -14,11 +14,11 @@
  */
 package org.bonitasoft.web.rest.server.api.system;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.Arrays;
 
 import org.junit.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Vincent Elcrin
@@ -26,9 +26,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TokenListProviderTest {
 
     @Test
-    public void should_return_the_list_of_provided_token_without_null() throws Exception {
+    public void should_return_the_list_of_provided_token_without_null() {
 
-        TokenListProvider provider = new TokenListProvider(Arrays.asList(
+        final TokenListProvider provider = new TokenListProvider(Arrays.asList(
                 "token 1",
                 null,
                 "token 2"));

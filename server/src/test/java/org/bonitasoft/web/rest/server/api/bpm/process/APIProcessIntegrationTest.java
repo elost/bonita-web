@@ -35,16 +35,15 @@ public class APIProcessIntegrationTest extends AbstractConsoleTest {
     }
 
     @Override
-    public void consoleTestSetUp() throws Exception {
-        this.apiProcess = new APIProcess();
-        this.apiProcess.setCaller(getAPICaller(TestUserFactory.getJohnCarpenter().getSession(), "API/bpm/process"));
+    public void consoleTestSetUp() {
+        apiProcess = new APIProcess();
+        apiProcess.setCaller(getAPICaller(TestUserFactory.getJohnCarpenter().getSession(), "API/bpm/process"));
 
     }
 
     /**
      * Add a process uploaded
-     * 
-     * @throws Exception
+     * @
      */
     @Test
     public void testAddProcessItem() throws Exception {
@@ -56,7 +55,7 @@ public class APIProcessIntegrationTest extends AbstractConsoleTest {
         // use api to deploy process uploaded
         final ProcessItem item = new ProcessItem();
         item.setAttribute("fileupload", file.getAbsolutePath());
-        this.apiProcess.add(item);
+        apiProcess.add(item);
 
         // check the process has been correctly uploaded
         final ProcessAPI processAPI = TenantAPIAccessor.getProcessAPI(TestUserFactory.getJohnCarpenter().getSession());
@@ -66,8 +65,7 @@ public class APIProcessIntegrationTest extends AbstractConsoleTest {
 
     /**
      * Update state of an enabled process to disabled
-     * 
-     * @throws Exception
+     * @
      */
     @Test
     public void testUpdateProcessItem() throws Exception {
@@ -84,7 +82,7 @@ public class APIProcessIntegrationTest extends AbstractConsoleTest {
         // use process api to update the state
         final Map<String, String> attributes = new HashMap<String, String>();
         attributes.put(ProcessItem.ATTRIBUTE_ACTIVATION_STATE, ProcessItem.VALUE_ACTIVATION_STATE_DISABLED);
-        final ProcessItem processItem = this.apiProcess.update(processDefinitionId, attributes);
+        final ProcessItem processItem = apiProcess.update(processDefinitionId, attributes);
 
         // check the process is disabled (resolved)
         assertEquals("Can't update a processItem with APIProcess <" + processItem.getActivationState() + " - " + ProcessItem.VALUE_ACTIVATION_STATE_DISABLED
@@ -94,11 +92,10 @@ public class APIProcessIntegrationTest extends AbstractConsoleTest {
 
     /**
      * Get a process
-     * 
-     * @throws Exception
+     * @
      */
     @Test
-    public void testGetProcessItem() throws Exception {
+    public void testGetProcessItem() {
         final APIID processDefinitionId = APIID.makeAPIID(TestProcessFactory.getDefaultHumanTaskProcess()
                 .addActor(getInitiator())
                 .getId());
@@ -106,19 +103,18 @@ public class APIProcessIntegrationTest extends AbstractConsoleTest {
         final ArrayList<String> deploys = new ArrayList<String>();
         final ArrayList<String> counters = new ArrayList<String>();
 
-        assertEquals("Can't get a processItem with APIProcess", this.apiProcess.runGet(processDefinitionId, deploys, counters).getName(),
+        assertEquals("Can't get a processItem with APIProcess", apiProcess.runGet(processDefinitionId, deploys, counters).getName(),
                 TestProcessFactory.getDefaultHumanTaskProcess().getProcessDefinition().getName());
-        assertEquals("Can't get a processItem with APIProcess", this.apiProcess.runGet(processDefinitionId, deploys, counters).getDescription(),
+        assertEquals("Can't get a processItem with APIProcess", apiProcess.runGet(processDefinitionId, deploys, counters).getDescription(),
                 TestProcessFactory.getDefaultHumanTaskProcess().getProcessDefinition().getDescription());
     }
 
     /**
      * Search process by its id
-     * 
-     * @throws Exception
+     * @
      */
     @Test
-    public void testSearchProcessItemForUser() throws Exception {
+    public void testSearchProcessItemForUser() {
         final APIID processDefinitionId = APIID.makeAPIID(TestProcessFactory.getDefaultHumanTaskProcess()
                 .addActor(getInitiator())
                 .setEnable(true)
@@ -131,7 +127,7 @@ public class APIProcessIntegrationTest extends AbstractConsoleTest {
         // Search the ProcessItem
         final ArrayList<String> deploys = new ArrayList<String>();
         final ArrayList<String> counters = new ArrayList<String>();
-        final ProcessItem processItem = this.apiProcess.runSearch(0, 10, null, ProcessItem.ATTRIBUTE_DISPLAY_NAME + " ASC", filters, deploys, counters)
+        final ProcessItem processItem = apiProcess.runSearch(0, 10, null, ProcessItem.ATTRIBUTE_DISPLAY_NAME + " ASC", filters, deploys, counters)
                 .getResults().get(0);
         assertEquals("Can't search a processItem with APIProcess <" + processDefinitionId + " - " + processItem.getId().toLong() + ">", processDefinitionId,
                 processItem.getId().toLong());
@@ -160,15 +156,14 @@ public class APIProcessIntegrationTest extends AbstractConsoleTest {
 
     /**
      * Get the latest process version
-     * 
-     * @throws Exception
+     * @
      */
     @Test
-    public void testGetLastProcessVersion() throws Exception {
+    public void testGetLastProcessVersion() {
         // create 3 version of a process
-        TestProcess p1 = new TestProcess(TestProcessFactory.getDefaultProcessDefinitionBuilder("multipleVersionsProcess", "aVersion"));
-        TestProcess p2 = new TestProcess(TestProcessFactory.getDefaultProcessDefinitionBuilder("multipleVersionsProcess", "aVersion2"));
-        TestProcess p3 = new TestProcess(TestProcessFactory.getDefaultProcessDefinitionBuilder("multipleVersionsProcess", "anOtherVersion"));
+        final TestProcess p1 = new TestProcess(TestProcessFactory.getDefaultProcessDefinitionBuilder("multipleVersionsProcess", "aVersion"));
+        final TestProcess p2 = new TestProcess(TestProcessFactory.getDefaultProcessDefinitionBuilder("multipleVersionsProcess", "aVersion2"));
+        final TestProcess p3 = new TestProcess(TestProcessFactory.getDefaultProcessDefinitionBuilder("multipleVersionsProcess", "anOtherVersion"));
 
         // map actor John Carpenter on the created processes, then set enable
         p1.addActor(TestUserFactory.getJohnCarpenter()).setEnable(true);
@@ -181,11 +176,11 @@ public class APIProcessIntegrationTest extends AbstractConsoleTest {
         filters.put(ProcessItem.ATTRIBUTE_DISPLAY_NAME, "multipleVersionsProcess");
 
         // search the last version of a process
-        final List<ProcessItem> resultList = this.apiProcess.runSearch(0, 1, null, ProcessItem.ATTRIBUTE_DEPLOYMENT_DATE + " DESC", filters, null, null)
+        final List<ProcessItem> resultList = apiProcess.runSearch(0, 1, null, ProcessItem.ATTRIBUTE_DEPLOYMENT_DATE + " DESC", filters, null, null)
                 .getResults();
 
         // get the first element
-        ProcessItem searchedProcessItem = resultList.get(0);
+        final ProcessItem searchedProcessItem = resultList.get(0);
         assertEquals("multipleVersionsProcess", searchedProcessItem.getDisplayName());
         assertEquals("anOtherVersion", searchedProcessItem.getVersion());
 
