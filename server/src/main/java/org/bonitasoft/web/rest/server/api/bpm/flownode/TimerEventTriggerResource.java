@@ -17,6 +17,7 @@ package org.bonitasoft.web.rest.server.api.bpm.flownode;
 import java.util.Date;
 import java.util.List;
 
+import org.bonitasoft.engine.api.ProcessAPI;
 import org.bonitasoft.engine.bpm.flownode.TimerEventTriggerInstance;
 import org.bonitasoft.engine.exception.SearchException;
 import org.bonitasoft.engine.search.SearchOptions;
@@ -24,6 +25,8 @@ import org.bonitasoft.web.rest.server.api.resource.CommonResource;
 import org.bonitasoft.web.toolkit.client.common.exception.api.APIException;
 import org.restlet.resource.Get;
 import org.restlet.resource.Put;
+
+import com.google.inject.Inject;
 
 /**
  * REST resource to operate on BPM Timer event triggers.
@@ -34,20 +37,21 @@ public class TimerEventTriggerResource extends CommonResource {
 
     public static final String ID_PARAM_NAME = "id";
 
+    @Inject
+    private ProcessAPI processAPI;
+
     @Get("json")
     public List<TimerEventTriggerInstance> searchTimerEventTriggers() {
         try {
             final Long caseId = getLongParameter("caseId", true);
-            final List<TimerEventTriggerInstance> triggers = runEngineSearch(caseId, buildSearchOptions());
-            //            System.out.println("List of triggers IDs: " + triggers);
-            return triggers;
+            return processAPI.searchTimerEventTriggerInstances(caseId, buildSearchOptions()).getResult();
         } catch (final Exception e) {
             throw new APIException(e);
         }
     }
 
     protected List<TimerEventTriggerInstance> runEngineSearch(final long caseId, final SearchOptions searchOptions) throws SearchException {
-        return getEngineProcessAPI().searchTimerEventTriggerInstances(caseId, searchOptions).getResult();
+        return processAPI.searchTimerEventTriggerInstances(caseId, searchOptions).getResult();
     }
 
     @Put("json")

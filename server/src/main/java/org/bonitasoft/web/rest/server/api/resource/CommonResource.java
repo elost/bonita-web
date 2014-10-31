@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 
 import org.bonitasoft.engine.api.ProcessAPI;
 import org.bonitasoft.engine.api.TenantAPIAccessor;
+import org.bonitasoft.engine.exception.SearchException;
 import org.bonitasoft.engine.search.SearchOptions;
 import org.bonitasoft.engine.session.APISession;
 import org.bonitasoft.web.rest.server.datastore.filter.Filters;
@@ -31,18 +32,14 @@ import org.bonitasoft.web.rest.server.datastore.utils.SearchOptionsCreator;
 import org.bonitasoft.web.rest.server.datastore.utils.Sorts;
 import org.bonitasoft.web.rest.server.framework.APIServletCall;
 import org.bonitasoft.web.toolkit.client.common.exception.api.APIException;
+import org.restlet.data.Status;
+import org.restlet.ext.guice.SelfInjectingServerResource;
 import org.restlet.ext.servlet.ServletUtils;
-import org.restlet.resource.ServerResource;
 
 /**
  * @author Emmanuel Duchastenier
  */
-public class CommonResource extends ServerResource {
-
-    /**
-     * Json format for dates
-     */
-    //    protected static final String JSON_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+public class CommonResource extends SelfInjectingServerResource {
 
     private APISession sessionSingleton = null;
 
@@ -104,11 +101,11 @@ public class CommonResource extends ServerResource {
     }
 
     protected int getSearchPageNumber() {
-        return getIntegerParameter(APIServletCall.PARAMETER_PAGE, false);
+        return getIntegerParameter(APIServletCall.PARAMETER_PAGE, true);
     }
 
     protected int getSearchPageSize() {
-        return getIntegerParameter(APIServletCall.PARAMETER_LIMIT, false);
+        return getIntegerParameter(APIServletCall.PARAMETER_LIMIT, true);
     }
 
     protected String getSearchTerm() {
@@ -140,7 +137,7 @@ public class CommonResource extends ServerResource {
     }
 
     protected String getRequestParameter(final String parameterName) {
-        return getHttpRequest().getParameter(parameterName);
+        return getQueryValue(parameterName);
     }
 
     protected void verifyNotNullParameter(final Object parameter, final String parameterName) throws APIException {
@@ -157,9 +154,12 @@ public class CommonResource extends ServerResource {
      * @return The values of a parameter as a list of String, or <code>null</code> if the parameter doesn't exist.
      */
     public List<String> getParameterAsList(final String name) {
-        final String[] parameterValues = getHttpRequest().getParameterValues(name);
-        if (parameterValues != null && parameterValues.length > 0) {
-            return Arrays.asList(parameterValues);
+        final String values = getQuery().getValues(name);
+        if (values != null) {
+            final String[] parameterValues = values.split(",");
+            if (parameterValues != null && parameterValues.length > 0) {
+                return Arrays.asList(parameterValues);
+            }
         }
         return null;
     }
@@ -176,7 +176,12 @@ public class CommonResource extends ServerResource {
         super.doCatch(t);
 
         getLogger().log(Level.SEVERE, "*** problem on " + getClass().getName() + " rest resource: " + t.getMessage());
-        getResponse().setStatus(getStatus(), "Cannot execute REST resource " + getClass().getName() + " rest resource: " + t.getMessage());
+        final String description = "Cannot execute REST resource " + getClass().getName() + " rest resource: " + t.getMessage();
+        Status status = getStatus();
+        if (t instanceof SearchException || t.getCause() instanceof SearchException) {
+            status = Status.CLIENT_ERROR_NOT_FOUND;
+        }
+        getResponse().setStatus(status, description);
     }
 
 }

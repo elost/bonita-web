@@ -66,7 +66,7 @@ public class CommonResourceTest {
         doReturn(new Integer(88)).when(spy).getIntegerParameter(anyString(), anyBoolean());
         spy.getSearchPageNumber();
 
-        verify(spy).getIntegerParameter(APIServletCall.PARAMETER_PAGE, false);
+        verify(spy).getIntegerParameter(APIServletCall.PARAMETER_PAGE, true);
     }
 
     @Test
@@ -75,7 +75,7 @@ public class CommonResourceTest {
         doReturn(new Integer(77)).when(spy).getIntegerParameter(anyString(), anyBoolean());
         spy.getSearchPageSize();
 
-        verify(spy).getIntegerParameter(APIServletCall.PARAMETER_LIMIT, false);
+        verify(spy).getIntegerParameter(APIServletCall.PARAMETER_LIMIT, true);
     }
 
     @Test

@@ -145,6 +145,17 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.restlet.jse</groupId>
+            <artifactId>org.restlet.ext.guice</artifactId>
+            <version>${restlet-version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.restlet.jse</groupId>
+                    <artifactId>org.restlet</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <build>
