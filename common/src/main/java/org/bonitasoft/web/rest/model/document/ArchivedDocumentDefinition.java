@@ -37,7 +37,7 @@ public class ArchivedDocumentDefinition extends ItemDefinition {
     /**
      * token
      */
-    public static final String TOKEN = "archivedDocument";
+    public static final String TOKEN = "archiveddocument";
 
     /**
      * the URL of document
