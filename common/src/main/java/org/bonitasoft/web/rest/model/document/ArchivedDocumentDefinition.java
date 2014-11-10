@@ -42,7 +42,7 @@ public class ArchivedDocumentDefinition extends ItemDefinition {
     /**
      * the URL of document
      */
-    private static final String API_URL = "../API/bpm/archiveddocument";
+    private static final String API_URL = "../API/bpm/archivedDocument";
 
     @Override
     public String defineToken() {
