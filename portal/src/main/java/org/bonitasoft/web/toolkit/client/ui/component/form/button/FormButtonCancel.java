@@ -27,6 +27,9 @@ import org.bonitasoft.web.toolkit.client.ui.action.HistoryBackAction;
  */
 public class FormButtonCancel extends FormButton {
 
+    /**
+     * A comment to test crowdin optimization (ie. not changing key but refactoring code).
+     */
     public FormButtonCancel() {
         this(new JsId("cancel"), _("Cancel"), _("Cancel this form"));
     }
