@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-10 02:03+0200\n"
-"PO-Revision-Date: 2014-11-13 05:26-0500\n"
+"PO-Revision-Date: 2014-11-14 05:51-0500\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -18,7 +18,7 @@ msgid "Columns"
 msgstr "Colonnes"
 
 msgid "{{currentFirstResultIndex}} to {{currentLastResultIndex}} of {{pagination.total}}"
-msgstr "{{currentFirstResultIndex}} to {{currentLastResultIndex}} of {{pagination.total}}"
+msgstr "{{currentFirstResultIndex}} à {{currentLastResultIndex}} de {{pagination.total}}"
 
 msgid "Filters"
 msgstr "Filtres"
@@ -36,35 +36,35 @@ msgid "Process name"
 msgstr "Nom du processus"
 
 msgid "Healthy"
-msgstr "Healthy"
+msgstr "Sains"
 
 msgid "With failures"
-msgstr "With failures"
+msgstr "Avec des erreurs"
 
 msgid "Cases list"
-msgstr "Cases list"
+msgstr "Liste des cas"
 
 msgid "Failed Tasks"
 msgstr "Tâches en échec"
 
 msgid "Pending Tasks"
-msgstr "Pending Tasks"
+msgstr "Tâches en attente"
 
 msgid "{{nbOfDeletedCases}} case deleted successfully"
-msgstr "{{nbOfDeletedCases}} case deleted successfully"
+msgstr "{{nbOfDeletedCases}} cas supprimé avec succès"
 
 msgid "{{nbOfDeletedCases}} cases deleted successfully"
-msgstr "{{nbOfDeletedCases}} cases deleted successfully"
+msgstr "{{nbOfDeletedCases}} cas supprimés avec succès"
 
 msgid "Confirm delete?"
 msgstr "Confirmer la suppression?"
 
 msgid "End date"
-msgstr "End date"
+msgstr "Date de fin "
 
 msgid "No cases to display"
-msgstr "No cases to display"
+msgstr "Aucun cas à afficher"
 
 msgid "Loading"
-msgstr "Loading"
+msgstr "Chargement…"
 
