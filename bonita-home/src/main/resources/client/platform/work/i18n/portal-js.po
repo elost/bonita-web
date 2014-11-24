@@ -20,54 +20,129 @@ msgstr ""
 msgid "Columns"
 msgstr ""
 
-msgid "{{currentFirstResultIndex}} to {{currentLastResultIndex}} of {{pagination.total}}"
+msgid "Results: {{currentFirstResultIndex}} to {{currentLastResultIndex}} of {{total}}"
 msgstr ""
 
 msgid "Filters"
 msgstr ""
 
-msgid "This case will be definitively deleted."
+msgid "All versions"
 msgstr ""
 
-msgid "These cases will be definitively deleted."
+msgid "All apps"
+msgstr ""
+
+
+# processMonitoring
+
+msgid  "Monitor active cases"
+msgstr ""
+
+msgid "Open cases"
+msgstr ""
+
+msgid  "Healthy cases"
+msgstr ""
+
+msgid  "Cases with failures"
+msgstr ""
+
+msgid  "Filter on process"
+msgstr ""
+
+msgid  "Process list"
+msgstr ""
+
+msgid  "Refresh"
+msgstr ""
+
+msgid  "Process name"
+msgstr ""
+
+msgid  "Failed"
+msgstr ""
+
+msgid  "Actions"
+msgstr ""
+
+msgid  "Wait ..."
+msgstr ""
+
+# Pagination label: "1 - 10 of 300"
+msgid  "of"
+msgstr ""
+
+msgid  "No data"
+msgstr ""
+
+msgid  "Error!"
+msgstr ""
+
+msgid  "Started"
+msgstr ""
+
+msgid  "All"
+msgstr ""
+
+msgid  "Never"
+msgstr ""
+
+msgid  "30 s."
+msgstr ""
+
+msgid  "1 min."
+msgstr ""
+
+msgid  "10 min."
+msgstr ""
+
+msgid  "Technical error."
+msgstr ""
+
+msgid  "Process state"
+msgstr ""
+
+msgid  "Show"
+msgstr ""
+
+msgid  "Healthy cases"
+msgstr ""
+
+msgid "Open"
 msgstr ""
 
 msgid "Process version"
 msgstr ""
 
-msgid "Process name"
+msgid  "Case state"
 msgstr ""
 
-msgid "Healthy"
+msgid  "{{getStartIndexOfPage()}} to {{getEndIndexOfPage()}} of {{getTotalProcesses()}}"
 msgstr ""
 
-msgid "With failures"
+msgid  "Disabled, no new instance can be started"
 msgstr ""
 
-msgid "Cases list"
+msgid  "Process enabled"
 msgstr ""
 
-msgid "Failed Tasks"
+msgid  "View case list"
 msgstr ""
 
-msgid "Pending Tasks"
+msgid  "View diagram"
 msgstr ""
 
-msgid "{{nbOfDeletedCases}} case deleted successfully"
+msgid  "Drawing diagram ..."
 msgstr ""
 
-msgid "{{nbOfDeletedCases}} cases deleted successfully"
+msgid  "Error on drawing diagram !"
 msgstr ""
 
-msgid "Confirm delete?"
+msgid  "DEFAULT ZOOM LEVEL"
 msgstr ""
 
-msgid "End date"
+msgid  "MIN"
 msgstr ""
 
-msgid "No cases to display"
+msgid  "MAX"
 msgstr ""
-
-msgid "Loading"
-msgstr ""
-
