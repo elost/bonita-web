@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-10 02:03+0200\n"
-"PO-Revision-Date: 2014-11-18 05:04-0500\n"
+"PO-Revision-Date: 2014-11-25 13:29-0500\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -15,22 +15,22 @@ msgstr ""
 "X-Generator: crowdin.com\n"
 
 msgid "Columns"
-msgstr "Columns"
+msgstr "Columnas"
 
 msgid "Results: {{currentFirstResultIndex}} to {{currentLastResultIndex}} of {{total}}"
-msgstr "Results: {{currentFirstResultIndex}} to {{currentLastResultIndex}} of {{total}}"
+msgstr "Resultados: {{currentFirstResultIndex}} a {{currentLastResultIndex}} de {{total}}"
 
 msgid "Filters"
 msgstr "Filtros"
 
 msgid "All versions"
-msgstr "All versions"
+msgstr "Todas las versiones"
 
 msgid "All apps"
-msgstr "All apps"
+msgstr "Todas las aplicaciones"
 
 msgid "Monitor active cases"
-msgstr "Monitor active cases"
+msgstr "Monitorización casos activos"
 
 msgid "Open cases"
 msgstr "Casos abiertos"
@@ -39,10 +39,10 @@ msgid "Healthy cases"
 msgstr "Casos activos"
 
 msgid "Cases with failures"
-msgstr "Cases with failures"
+msgstr "Casos con fallos"
 
 msgid "Filter on process"
-msgstr "Filter on process"
+msgstr "Filtrar por proceso"
 
 msgid "Process list"
 msgstr "Lista de Procesos"
