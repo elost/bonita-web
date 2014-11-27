@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: bonita-bpm-new-features\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-10 02:03+0200\n"
-"PO-Revision-Date: 2014-11-25 13:11-0500\n"
+"PO-Revision-Date: 2014-11-26 11:59-0500\n"
 "Last-Translator: rlg <rodrigue.legall@bonitasoft.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -30,10 +30,10 @@ msgid "All apps"
 msgstr "Tous les processus"
 
 msgid "Monitor active cases"
-msgstr "Monitoring des cas en cours"
+msgstr "Monitoring des cas actifs"
 
 msgid "Open cases"
-msgstr "Cas démarrés"
+msgstr "Cas en cours"
 
 msgid "Healthy cases"
 msgstr "Cas sans erreur"
@@ -115,10 +115,10 @@ msgid "{{getStartIndexOfPage()}} to {{getEndIndexOfPage()}} of {{getTotalProcess
 msgstr "{{getStartIndexOfPage()}} à {{getEndIndexOfPage()}} de {{getTotalProcesses()}}"
 
 msgid "Disabled, no new instance can be started"
-msgstr "Disabled, no new instance can be started"
+msgstr "Désactivé, aucune nouvelle instance ne peut être démarrée"
 
 msgid "Process enabled"
-msgstr "Process enabled"
+msgstr "Processus activé"
 
 msgid "View case list"
 msgstr "Voir la liste des cas"
@@ -133,7 +133,7 @@ msgid "Error on drawing diagram !"
 msgstr "Error lors du dessin du diagramme !"
 
 msgid "DEFAULT ZOOM LEVEL"
-msgstr "Niveau de zoom par défaut"
+msgstr "NIVEAU DE ZOOM PAR DEFAUT"
 
 msgid "MIN"
 msgstr "MIN"
