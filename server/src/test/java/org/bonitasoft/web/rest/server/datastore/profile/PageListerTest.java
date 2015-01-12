@@ -22,7 +22,6 @@ import org.junit.Test;
 
 /**
  * @author Fabio Lombardi
- * 
  */
 public class PageListerTest extends APITestWithMock {
 

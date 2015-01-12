@@ -8,9 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
 public class InternalSSOManagerTest {
-    
+
     protected InternalSSOManager internalSSOManager;
 
     @Before
@@ -27,14 +26,14 @@ public class InternalSSOManagerTest {
     public void testAdd() {
         assertNotNull("Cannot add ", internalSSOManager.add(new Object()));
     }
-    
+
     @Test
     public void testGet() {
         Object o = new Object();
         String token = internalSSOManager.add(o);
         assertEquals("Cannot get ", internalSSOManager.get(token), o);
     }
-    
+
     @Test
     public void testRemove() {
         Object o = new Object();

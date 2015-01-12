@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -37,7 +35,6 @@ import org.bonitasoft.web.toolkit.client.common.exception.api.APIException;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class ConnectorInstanceDatastore extends CommonDatastore<ConnectorInstanceItem, ConnectorInstance> implements DatastoreHasSearch<ConnectorInstanceItem> {
 
@@ -96,7 +93,7 @@ public class ConnectorInstanceDatastore extends CommonDatastore<ConnectorInstanc
      * Convert engine item into console item used by web
      * 
      * @param engineItem
-     *            Item provided by engine
+     *        Item provided by engine
      */
     @Override
     protected ConnectorInstanceItem convertEngineToConsoleItem(final ConnectorInstance engineItem) {
@@ -104,7 +101,6 @@ public class ConnectorInstanceDatastore extends CommonDatastore<ConnectorInstanc
     }
 
     /**
-     * 
      * @param searchResult
      * @return
      */

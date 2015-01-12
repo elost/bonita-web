@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,7 +27,6 @@ import org.bonitasoft.web.toolkit.client.data.item.template.ItemHasUniqueId;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class ReportItem extends Item implements ItemHasUniqueId, ItemHasIcon, ItemHasLastUpdateDate {
 
@@ -40,9 +37,8 @@ public class ReportItem extends Item implements ItemHasUniqueId, ItemHasIcon, It
     public static final String ATTRIBUTE_INSTALLED_ON = "installedOn";
 
     public static final String ATTRIBUTE_INSTALLED_BY = "installedBy";
-    
+
     public static final String ATTRIBUTE_IS_PROVIDED = "isProvided";
-    
 
     @Override
     public void setId(final String id) {
@@ -69,11 +65,11 @@ public class ReportItem extends Item implements ItemHasUniqueId, ItemHasIcon, It
     public void setInstalledBy(final APIID userId) {
         setAttribute(ATTRIBUTE_INSTALLED_BY, userId);
     }
-    
+
     public void setIsProvided(final boolean isProvided) {
         setAttribute(ATTRIBUTE_IS_PROVIDED, isProvided);
     }
-    
+
     @Override
     public void setIcon(String icon) {
         setAttribute(ATTRIBUTE_ICON, icon);
@@ -108,11 +104,11 @@ public class ReportItem extends Item implements ItemHasUniqueId, ItemHasIcon, It
     public UserItem getInstalledBy() {
         return (UserItem) getDeploy(ATTRIBUTE_INSTALLED_BY);
     }
-    
+
     public boolean isProvided() {
         return Boolean.parseBoolean(getAttributeValue(ATTRIBUTE_IS_PROVIDED));
     }
-    
+
     public String getIcon() {
         return getAttributeValue(ATTRIBUTE_ICON);
     }
@@ -121,7 +117,7 @@ public class ReportItem extends Item implements ItemHasUniqueId, ItemHasIcon, It
     public Date getLastUpdateDate() {
         return getAttributeValueAsDate(ATTRIBUTE_LAST_UPDATE_DATE);
     }
-    
+
     @Override
     public ItemDefinition getItemDefinition() {
         return Definitions.get(ReportDefinition.TOKEN);

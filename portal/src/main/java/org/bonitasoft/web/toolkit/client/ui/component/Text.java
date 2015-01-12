@@ -44,7 +44,7 @@ public class Text extends Component {
      * Default Constructor.
      * 
      * @param text
-     *            The text to display
+     *        The text to display
      */
     public Text(final String text) {
         this(text, (AbstractComponent) null);
@@ -54,9 +54,9 @@ public class Text extends Component {
      * Default Constructor.
      * 
      * @param text
-     *            The text to display
+     *        The text to display
      * @param components
-     *            The list of argument values to replace in the text.
+     *        The list of argument values to replace in the text.
      */
     public Text(final String text, final AbstractComponent... components) {
         super(null);

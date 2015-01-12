@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.view.widget;
 
@@ -45,7 +43,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * @author Anthony Birembaut
- *
  */
 public class EditableGridWidget extends Composite implements HasValueChangeHandlers<List<List<String>>> {
 
@@ -191,6 +188,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
 
     /**
      * Constructor
+     * 
      * @param selectedItems
      */
     public EditableGridWidget(final String formID, final ReducedFormWidget widgetData, final List<List<String>> value) {
@@ -224,7 +222,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
         }
         final String tableStyle = widgetData.getTableStyle();
         if (tableStyle != null && tableStyle.length() > 0) {
-        	flexTable.addStyleName(tableStyle);
+            flexTable.addStyleName(tableStyle);
         }
         int extendedMaxColumns = maxColumns;
         int maxColumnsIncludingLeftHeader = maxColumns;
@@ -257,11 +255,11 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
         columnCount = 0;
         if (topHeadings) {
             final List<String> topHeaderCellsValues = new ArrayList<String>();
-			final int verticalHeadings = leftHeadings && rightHeadings ? 2
-					: leftHeadings || rightHeadings ? 1 : 0;
-			final int showTableColumns = getTableColumnNum(values) + verticalHeadings;
+            final int verticalHeadings = leftHeadings && rightHeadings ? 2
+                    : leftHeadings || rightHeadings ? 1 : 0;
+            final int showTableColumns = getTableColumnNum(values) + verticalHeadings;
             for (final String header : horizontalHeader) {
-				if (column < showTableColumns) {
+                if (column < showTableColumns) {
                     if (maxColumns < 0 || column < extendedMaxColumns) {
                         topHeaderCellsValues.add(header);
                         createCellContent(row, column, header, false);
@@ -323,7 +321,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
                 }
             }
             final int rowsToAdd = minRows - values.size();
-            if(rowsToAdd > 0) {
+            if (rowsToAdd > 0) {
                 for (int i = 0; i < rowsToAdd; i++) {
                     createNewRow(true);
                 }
@@ -337,11 +335,11 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
             column = 0;
             row = flexTable.getRowCount();
             final List<String> bottomHeaderCellsValues = new ArrayList<String>();
-			final int verticalHeadings = leftHeadings && rightHeadings ? 2
-					: leftHeadings || rightHeadings ? 1 : 0;
-			final int showTableColumns =getTableColumnNum(values) + verticalHeadings;
+            final int verticalHeadings = leftHeadings && rightHeadings ? 2
+                    : leftHeadings || rightHeadings ? 1 : 0;
+            final int showTableColumns = getTableColumnNum(values) + verticalHeadings;
             for (final String header : horizontalHeader) {
-				if (column < showTableColumns) {
+                if (column < showTableColumns) {
                     if (maxColumns < 0 || column < extendedMaxColumns) {
                         bottomHeaderCellsValues.add(header);
                         createCellContent(row, column, header, false);
@@ -369,7 +367,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
             tableContainer.add(flexTable);
             flowPanel.add(tableContainer);
 
-            if(widgetData.isVariableColumnNumber()) {
+            if (widgetData.isVariableColumnNumber()) {
                 checkColumnCountAndDisplayRemoveButton();
                 checkColumnCountAndDisplayAddButton();
             }
@@ -378,7 +376,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
             rowButtonsContainer.addStyleName("bonita_form_grid_row_buttons");
             flowPanel.add(rowButtonsContainer);
 
-            if(widgetData.isVariableRowNumber()) {
+            if (widgetData.isVariableRowNumber()) {
                 checkRowCountAndDisplayRemoveButton();
                 checkRowCountAndDisplayAddButton();
             }
@@ -412,6 +410,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
 
     protected void handleEvents() {
         flexTable.addClickHandler(new ClickHandler() {
+
             @Override
             public void onClick(final ClickEvent event) {
                 final Cell clickedCell = flexTable.getCellForEvent(event);
@@ -429,9 +428,10 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
         });
     }
 
-    protected int addMissingColumns(final int currentRow, int currentColumn, final List<String> currentRowCellsValues, final int currentNbOfItems, final int minNumberOfItems) {
+    protected int addMissingColumns(final int currentRow, int currentColumn, final List<String> currentRowCellsValues, final int currentNbOfItems,
+            final int minNumberOfItems) {
         final int columnsToAdd = minNumberOfItems - currentNbOfItems;
-        if(columnsToAdd > 0) {
+        if (columnsToAdd > 0) {
             for (int i = 0; i < columnsToAdd; i++) {
                 currentRowCellsValues.add(null);
                 createCellContent(currentRow, currentColumn, null, false);
@@ -455,7 +455,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
         }
         final int colCount = getColumnCount();
         if (colCount > 0 && colCount > minColumns) {
-             removeColumnButton.setVisible(true);
+            removeColumnButton.setVisible(true);
         }
     }
 
@@ -465,6 +465,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
 
         /**
          * Default Constructor.
+         * 
          * @param editableGridWidget
          */
         public RemoveColumnClickHandler(final EditableGridWidget editableGridWidget) {
@@ -518,6 +519,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
 
         /**
          * Default Constructor.
+         * 
          * @param editableGridWidget
          */
         public AddColumnClickHandler(final EditableGridWidget editableGridWidget) {
@@ -549,9 +551,9 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
 
     protected void createNewRow(final boolean isInitWidget) {
         int rowIndex = flexTable.getRowCount();
-        if(isInitWidget){
+        if (isInitWidget) {
             flexTable.insertRow(flexTable.getRowCount());
-        }else if (bottomHeadings) {
+        } else if (bottomHeadings) {
             flexTable.insertRow(flexTable.getRowCount() - 1);
             rowIndex--;
         }
@@ -613,6 +615,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
 
         /**
          * Default Constructor.
+         * 
          * @param editableGridWidget
          */
         public RemoveRowClickHandler(final EditableGridWidget editableGridWidget) {
@@ -663,6 +666,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
 
         /**
          * Default Constructor.
+         * 
          * @param editableGridWidget
          */
         public AddRowClickHandler(final EditableGridWidget editableGridWidget) {
@@ -682,7 +686,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
             if (oldRowCount == 0) {
                 final int colCount = getColumnCount();
                 if (colCount > 0 && colCount > minColumns && removeColumnButton != null) {
-                     removeColumnButton.setVisible(true);
+                    removeColumnButton.setVisible(true);
                 }
                 if ((maxColumns < 0 || colCount < maxColumns) && addColumnButton != null) {
                     addColumnButton.setVisible(true);
@@ -732,6 +736,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
 
         /**
          * Default Constructor.
+         * 
          * @param row
          * @param column
          * @param hasValueChangeHandlers
@@ -748,7 +753,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
          */
         @Override
         public void onBlur(final BlurEvent event) {
-            final String value = ((TextArea)event.getSource()).getValue();
+            final String value = ((TextArea) event.getSource()).getValue();
             final String oldValue = currentCellsValues.get(row).get(column);
             if (!(value == null && oldValue == null || value != null && value.equals(oldValue))) {
                 currentCellsValues.get(row).set(column, value);
@@ -772,6 +777,7 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
             textArea.setVisibleLines(1);
             textArea.addBlurHandler(new CellBlurHandler(row, column, this));
             textArea.addKeyPressHandler(new KeyPressHandler() {
+
                 @Override
                 public void onKeyPress(final KeyPressEvent event) {
                     final int keycode = event.getNativeEvent().getKeyCode();
@@ -828,45 +834,45 @@ public class EditableGridWidget extends Composite implements HasValueChangeHandl
         }
     }
 
-    protected void addViewCellStyle (final int row, final int column) {
+    protected void addViewCellStyle(final int row, final int column) {
         flexTable.getFlexCellFormatter().addStyleName(row, column, TABLE_CELL_DEFAULT_STYLE);
         if (widgetData.getCellsStyle() != null && widgetData.getCellsStyle().length() > 0) {
             flexTable.getFlexCellFormatter().addStyleName(row, column, widgetData.getCellsStyle());
         }
     }
 
-    protected void removeViewCellStyle (final int row, final int column) {
+    protected void removeViewCellStyle(final int row, final int column) {
         flexTable.getFlexCellFormatter().removeStyleName(row, column, TABLE_CELL_DEFAULT_STYLE);
         if (widgetData.getCellsStyle() != null && widgetData.getCellsStyle().length() > 0) {
             flexTable.getFlexCellFormatter().removeStyleName(row, column, widgetData.getCellsStyle());
         }
     }
 
-    protected void addEditCellStyle (final int row, final int column) {
+    protected void addEditCellStyle(final int row, final int column) {
         flexTable.getFlexCellFormatter().addStyleName(row, column, TABLE_CELL_EDITION_STYLE);
     }
 
-    protected void removeEditCellStyle (final int row, final int column) {
+    protected void removeEditCellStyle(final int row, final int column) {
         flexTable.getFlexCellFormatter().removeStyleName(row, column, TABLE_CELL_EDITION_STYLE);
     }
 
-    protected void addEditableCellStyle (final int row, final int column) {
+    protected void addEditableCellStyle(final int row, final int column) {
         flexTable.getFlexCellFormatter().addStyleName(row, column, TABLE_CELL_EDITABLE_STYLE);
     }
 
-    protected void removeEditableCellStyle (final int row, final int column) {
+    protected void removeEditableCellStyle(final int row, final int column) {
         flexTable.getFlexCellFormatter().removeStyleName(row, column, TABLE_CELL_EDITABLE_STYLE);
     }
 
     protected void addHeadingsStyle(final int rowCount, final int columnCount) {
         for (int row = 0; row < rowCount; row++) {
             for (int column = 0; column < columnCount; column++) {
-                if(column == 0 && widgetData.hasLeftHeadings() || column == columnCount - 1 && widgetData.hasRightHeadings()) {
+                if (column == 0 && widgetData.hasLeftHeadings() || column == columnCount - 1 && widgetData.hasRightHeadings()) {
                     if (widgetData.getHeadingsStyle() != null && widgetData.getHeadingsStyle().length() > 0) {
                         flexTable.getFlexCellFormatter().addStyleName(row, column, widgetData.getHeadingsStyle());
                     }
                 }
-                if(row == 0 && widgetData.hasTopHeadings() || row == rowCount - 1 && widgetData.hasBottomHeadings()) {
+                if (row == 0 && widgetData.hasTopHeadings() || row == rowCount - 1 && widgetData.hasBottomHeadings()) {
                     if (widgetData.getHeadingsStyle() != null && widgetData.getHeadingsStyle().length() > 0) {
                         flexTable.getFlexCellFormatter().addStyleName(row, column, widgetData.getHeadingsStyle());
                     }

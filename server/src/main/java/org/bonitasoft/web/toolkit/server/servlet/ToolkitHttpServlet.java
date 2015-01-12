@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -44,7 +42,6 @@ import org.bonitasoft.web.toolkit.server.utils.ServerDateFormater;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public abstract class ToolkitHttpServlet extends HttpServlet {
 
@@ -92,11 +89,11 @@ public abstract class ToolkitHttpServlet extends HttpServlet {
      * Output an exception in JSon.
      * 
      * @param e
-     *            The exception to output
+     *        The exception to output
      * @param resp
-     *            The response to fill
+     *        The response to fill
      * @param httpStatusCode
-     *            The status code to return
+     *        The status code to return
      */
     protected final void outputException(final Throwable e, final HttpServletRequest req, final HttpServletResponse resp, final int httpStatusCode) {
 
@@ -105,7 +102,7 @@ public abstract class ToolkitHttpServlet extends HttpServlet {
 
         try {
             final PrintWriter output = resp.getWriter();
-            if(e instanceof APIException) {
+            if (e instanceof APIException) {
                 setLocalization((APIException) e, LocaleUtils.getUserLocale(req));
             }
 
@@ -117,7 +114,7 @@ public abstract class ToolkitHttpServlet extends HttpServlet {
     }
 
     private void setLocalization(APIException localizable, String locale) {
-        if(locale != null && !locale.isEmpty()) {
+        if (locale != null && !locale.isEmpty()) {
             localizable.setLocale(LOCALE.valueOf(locale));
         }
     }
@@ -136,9 +133,9 @@ public abstract class ToolkitHttpServlet extends HttpServlet {
 
     /**
      * @param req
-     *            The request called
+     *        The request called
      * @param resp
-     *            The response to send
+     *        The response to send
      */
     protected void catchAllExceptions(final Throwable exception, final HttpServletRequest req, final HttpServletResponse resp) {
         if (exception instanceof APIMethodNotAllowedException) {

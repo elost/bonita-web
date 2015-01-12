@@ -60,7 +60,6 @@ public class RestAPIAuthorizationFilter extends AbstractAuthorizationFilter {
     protected static final String PLATFORM_SESSION_PARAM_KEY = "platformSession";
     private final Boolean reload;
 
-
     public RestAPIAuthorizationFilter(final boolean reload) {
         this.reload = reload;
     }
@@ -304,6 +303,6 @@ public class RestAPIAuthorizationFilter extends AbstractAuthorizationFilter {
     }
 
     private boolean shouldReload(final APISession apiSession) {
-        return reload == null ? PropertiesFactory.getSecurityProperties(apiSession.getTenantId()).isAPIAuthorizationsCheckInDebugMode():reload;
+        return reload == null ? PropertiesFactory.getSecurityProperties(apiSession.getTenantId()).isAPIAuthorizationsCheckInDebugMode() : reload;
     }
 }

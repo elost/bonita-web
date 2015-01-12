@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -25,7 +23,6 @@ import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
  * Document item
  * 
  * @author Gai Cuisha
- * 
  */
 public class DocumentItem extends Item {
 
@@ -68,12 +65,12 @@ public class DocumentItem extends Item {
     public static final String DOCUMENT_CREATION_TYPE = "DOCUMENT_CREATION_TYPE";
 
     public static final String DOCUMENT_UPLOAD = "documentUpload";
-    
+
     /* Filter are in uppercase due to a refactoring (delete FilterKey class), please put them in lowercase if there is no side effect */
     public static final String FILTER_CASE_ID = "CASE_ID";
     public static final String FILTER_VIEW_TYPE = "VIEW";
     public static final String FILTER_USER_ID = "USER_ID";
-    
+
     /* idem for values */
     public static final String VALUE_VIEW_TYPE_ADMINISTRATOR = "ADMINISTRATOR";
     public static final String VALUE_VIEW_TYPE_USER = "USER";

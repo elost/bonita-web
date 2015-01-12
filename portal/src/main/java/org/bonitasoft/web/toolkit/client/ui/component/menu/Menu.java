@@ -19,9 +19,7 @@ import org.bonitasoft.web.toolkit.client.ui.JsId;
 import com.google.gwt.user.client.Element;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  */
 public class Menu extends MenuFolder {
 

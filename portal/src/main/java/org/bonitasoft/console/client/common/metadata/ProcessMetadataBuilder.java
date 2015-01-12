@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -25,7 +23,6 @@ import org.bonitasoft.web.toolkit.client.ui.page.ItemQuickDetailsPage.ItemDetail
 
 /**
  * @author Colin PUY
- * 
  */
 public class ProcessMetadataBuilder extends MetadataBuilder {
 
@@ -60,20 +57,20 @@ public class ProcessMetadataBuilder extends MetadataBuilder {
     private ItemDetailsMetadata activationState() {
         return new ItemDetailsMetadata(ProcessItem.ATTRIBUTE_ACTIVATION_STATE, _("Activation state"), _("The state of the process"));
     }
-    
+
     public void addInstalledDate() {
         add(installedDate());
     }
-    
+
     private ItemDetailsMetadata installedDate() {
         return new ItemDetailsMetadata(new DateAttributeReader(ProcessItem.ATTRIBUTE_DEPLOYMENT_DATE), _("Installed on"),
                 _("The date when this process has been installed"));
     }
-    
+
     public void addInstalledBy() {
         add(installedBy());
     }
-    
+
     private ItemDetailsMetadata installedBy() {
         return new ItemDetailsMetadata(new DeployedUserReader(ProcessItem.ATTRIBUTE_DEPLOYED_BY_USER_ID),
                 _("Installed by"), _("The user that has uploaded this process"));

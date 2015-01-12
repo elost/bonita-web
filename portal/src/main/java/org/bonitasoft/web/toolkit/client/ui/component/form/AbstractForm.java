@@ -14,9 +14,6 @@
  */
 package org.bonitasoft.web.toolkit.client.ui.component.form;
 
-import static com.google.gwt.query.client.GQuery.$;
-import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n._;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,7 +23,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Stack;
 
-import com.google.gwt.query.client.GQuery;
 import org.bonitasoft.web.toolkit.client.common.AbstractTreeNode;
 import org.bonitasoft.web.toolkit.client.common.Tree;
 import org.bonitasoft.web.toolkit.client.common.TreeIndexed;
@@ -59,6 +55,7 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.query.client.Function;
+import com.google.gwt.query.client.GQuery;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
@@ -274,7 +271,7 @@ public abstract class AbstractForm extends Component implements JsonSerializable
      * Open a new section and make it the target of the next <i>addEntry</i> and <i>addSection</i> until <i>closeLastSection</i> is called.
      * 
      * @param section
-     *            The section to add
+     *        The section to add
      */
     public final AbstractForm openSection(final Section section) {
         // A section can't contain a section as direct child
@@ -358,7 +355,6 @@ public abstract class AbstractForm extends Component implements JsonSerializable
         }
     }
 
-    
     /**
      * Section is the highest container implementing FormNode
      * 
@@ -380,7 +376,7 @@ public abstract class AbstractForm extends Component implements JsonSerializable
         getLastContainer().append(entry);
         this.entriesIndex.put(entry.getJsId().toString(), entry);
     }
-    
+
     private InputCompleteHandler createInputCompleteHandler() {
         return new InputCompleteHandler() {
 
@@ -508,7 +504,7 @@ public abstract class AbstractForm extends Component implements JsonSerializable
 
     /**
      * @param defaultAction
-     *            the defaultAction to set
+     *        the defaultAction to set
      */
     protected final void setDefaultAction(final Action defaultAction) {
         this.defaultAction = defaultAction;

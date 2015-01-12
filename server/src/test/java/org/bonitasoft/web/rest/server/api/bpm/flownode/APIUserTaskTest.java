@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.bonitasoft.web.rest.server.APITestWithMock;
 import org.junit.Test;
 
-
 public class APIUserTaskTest extends APITestWithMock {
 
     @Test

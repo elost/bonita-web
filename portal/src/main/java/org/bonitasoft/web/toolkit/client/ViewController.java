@@ -14,7 +14,7 @@
  */
 package org.bonitasoft.web.toolkit.client;
 
-import static com.google.gwt.query.client.GQuery.*;
+import static com.google.gwt.query.client.GQuery.$;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -174,7 +174,6 @@ public class ViewController {
     public static RawView showView(final String token, final Element rootElement, final TreeIndexed<String> params) {
         return showView(ViewController.getInstance().createView(token, params), rootElement, params);
     }
-
 
     public static RawView showView(final RawView view, final Element rootElement, final TreeIndexed<String> params) {
         // Set the parent Element to the view that will be displayed

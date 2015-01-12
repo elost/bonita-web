@@ -24,7 +24,6 @@ import org.bonitasoft.web.toolkit.client.ui.utils.DateFormat;
 
 /**
  * @author Julien Mege
- * 
  */
 public class ArchivedTaskTechnicalInformationSnippet implements SectionSnippet {
 
@@ -32,7 +31,6 @@ public class ArchivedTaskTechnicalInformationSnippet implements SectionSnippet {
 
     /**
      * Default Constructor.
-     * 
      * Need {@link ActivityItem#ATTRIBUTE_EXECUTED_BY_USER_ID} to be deployed!
      */
     public ArchivedTaskTechnicalInformationSnippet(final IActivityAccessor activity) {

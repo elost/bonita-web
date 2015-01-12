@@ -43,5 +43,4 @@ public class TenantFileUploadServlet extends FileUploadServlet {
         return (APISession) session.getAttribute("apiSession");
     }
 
-
 }

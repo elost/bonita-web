@@ -42,86 +42,86 @@ public class UserEngineClientTest extends APITestWithMock {
 
     @Mock
     private IdentityAPI identityAPI;
-    
+
     private UserEngineClient userEngineClient;
-    
+
     @Before
     public void init() {
         initMocks(this);
         userEngineClient = new UserEngineClient(identityAPI);
     }
-    
+
     @Test
     public void update_update_a_user_in_engine_repository() throws Exception {
         UserUpdater userUpdater = new UserUpdater();
-        
+
         userEngineClient.update(1L, userUpdater);
-        
+
         verify(identityAPI).updateUser(1L, userUpdater);
     }
-    
+
     @Test(expected = APIException.class)
     public void update_throw_APIException_if_user_is_not_found_in_engine_repository() throws Exception {
         UserUpdater userUpdater = new UserUpdater();
         when(identityAPI.updateUser(1L, userUpdater)).thenThrow(new UserNotFoundException("aMessage"));
-        
+
         userEngineClient.update(1L, userUpdater);
     }
-    
+
     @Test(expected = APIException.class)
     public void update_throw_APIException_if_exception_occur_when_updating_user_in_engine_repository() throws Exception {
         UserUpdater userUpdater = new UserUpdater();
         when(identityAPI.updateUser(1L, userUpdater)).thenThrow(new UpdateException("aMessage"));
-        
+
         userEngineClient.update(1L, userUpdater);
     }
-    
+
     @Test
     public void create_create_a_user_in_engine_repository() throws Exception {
         UserCreator userCreator = new UserCreator("aName", "aPassword");
-        
+
         userEngineClient.create(userCreator);
-        
+
         verify(identityAPI).createUser(userCreator);
     }
-    
+
     @Test(expected = APIException.class)
     public void create_throw_APIException_if_exception_occur_when_creating_user_in_engine_repository() throws Exception {
         UserCreator userCreator = new UserCreator("aName", "aPassword");
         when(identityAPI.createUser(userCreator)).thenThrow(new CreationException("aMessage"));
-        
+
         userEngineClient.create(userCreator);
     }
 
     @Test
     public void get_fetch_a_user_from_engine_repository() throws Exception {
-        
+
         userEngineClient.get(1L);
-        
+
         verify(identityAPI).getUser(1L);
     }
-    
+
     @Test(expected = APIException.class)
     public void get_throw_APIException_if_user_is_not_found_in_engine_repository() throws Exception {
         when(identityAPI.getUser(1L)).thenThrow(new UserNotFoundException("aMessage"));
-        
+
         userEngineClient.get(1L);
     }
-    
+
     @Test
     public void delete_delete_users_in_engine_repository() throws Exception {
         List<Long> idsToBeDeleted = asList(1L, 2L);
-        
+
         userEngineClient.delete(idsToBeDeleted);
-        
+
         verify(identityAPI).deleteUsers(idsToBeDeleted);
     }
-    
+
     @Test(expected = APIException.class)
     public void delete_throw_APIException_if_exception_occur_when_deleting_users_in_engine_repository() throws Exception {
         List<Long> idsToBeDeleted = asList(1L, 2L);
         doThrow(new DeletionException("aMessage")).when(identityAPI).deleteUsers(idsToBeDeleted);
-        
+
         userEngineClient.delete(idsToBeDeleted);
     }
 }

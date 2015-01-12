@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -62,7 +60,7 @@ public class FormMessageWidget extends Composite {
      * Constructor
      * 
      * @param formWidget
-     *            the widget data object
+     *        the widget data object
      */
     public FormMessageWidget(final ReducedFormWidget formWidget) {
 
@@ -73,9 +71,9 @@ public class FormMessageWidget extends Composite {
      * Constructor
      * 
      * @param formWidget
-     *            the widget data object
+     *        the widget data object
      * @param fieldValue
-     *            the widget field value object
+     *        the widget field value object
      */
     public FormMessageWidget(final ReducedFormWidget formWidget, final FormFieldValue fieldValue) {
 
@@ -92,9 +90,9 @@ public class FormMessageWidget extends Composite {
      * Create the message widget
      * 
      * @param formMessageData
-     *            the widget data object
+     *        the widget data object
      * @param fieldValue
-     *            the widget field value object
+     *        the widget field value object
      */
     protected void createWidget(final ReducedFormWidget formMessageData, final FormFieldValue fieldValue) {
 
@@ -134,9 +132,9 @@ public class FormMessageWidget extends Composite {
      * Get the string display value for a date
      * 
      * @param widgetData
-     *            the widget data object
+     *        the widget data object
      * @param fieldValue
-     *            the field value
+     *        the field value
      * @return the date as a String
      */
     protected String getDateAsText(final ReducedFormWidget widgetData, final FormFieldValue fieldValue) {
@@ -160,7 +158,7 @@ public class FormMessageWidget extends Composite {
      * Get the string value of a {@link FormFieldValue}
      * 
      * @param fieldValue
-     *            the {@link FormFieldValue}
+     *        the {@link FormFieldValue}
      * @return a String
      */
     protected String getStringValue(final FormFieldValue fieldValue) {

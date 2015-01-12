@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * @author Fabio Lombardi
- * 
  */
 public class ProfileImportStatusMessageFake {
 

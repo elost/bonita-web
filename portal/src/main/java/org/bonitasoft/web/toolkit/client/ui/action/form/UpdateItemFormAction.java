@@ -28,8 +28,7 @@ import org.bonitasoft.web.toolkit.client.ui.component.form.AbstractForm;
  * Execute an update for an ItemForm.
  * 
  * @param <ITEM_TYPE>
- *            The type of the item that will be updated
- * 
+ *        The type of the item that will be updated
  * @author Julien Mege
  */
 public class UpdateItemFormAction<ITEM_TYPE extends IItem> extends ItemFormAction<ITEM_TYPE> {
@@ -38,9 +37,9 @@ public class UpdateItemFormAction<ITEM_TYPE extends IItem> extends ItemFormActio
      * Default constructor.
      * 
      * @param itemDefinition
-     *            The definition of the item to update.
+     *        The definition of the item to update.
      * @param form
-     *            The form that contains the attribute to updates
+     *        The form that contains the attribute to updates
      */
     public UpdateItemFormAction(final ItemDefinition itemDefinition, final AbstractForm form) {
         super(itemDefinition, form);
@@ -50,7 +49,7 @@ public class UpdateItemFormAction<ITEM_TYPE extends IItem> extends ItemFormActio
      * Default constructor.
      * 
      * @param itemDefinition
-     *            The definition of the item to update.
+     *        The definition of the item to update.
      */
     public UpdateItemFormAction(final ItemDefinition itemDefinition) {
         super(itemDefinition);

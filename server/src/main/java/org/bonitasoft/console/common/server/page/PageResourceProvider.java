@@ -25,7 +25,6 @@ import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConst
  * This class provide access to the resources contained in the custom page zip
  * 
  * @author Anthony Birembaut
- * 
  */
 public class PageResourceProvider {
 

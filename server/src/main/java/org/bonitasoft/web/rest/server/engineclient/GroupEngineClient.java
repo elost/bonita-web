@@ -1,21 +1,20 @@
 /**
  * Copyright (C) 2012 BonitaSoft S.A.
- * 
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.engineclient;
+
+import java.util.List;
 
 import org.bonitasoft.engine.api.GroupAPI;
 import org.bonitasoft.engine.exception.AlreadyExistsException;
@@ -32,11 +31,8 @@ import org.bonitasoft.web.toolkit.client.common.exception.api.APIForbiddenExcept
 import org.bonitasoft.web.toolkit.client.common.i18n._;
 import org.bonitasoft.web.toolkit.client.common.texttemplate.Arg;
 
-import java.util.List;
-
 /**
  * @author Paul AMAR
- * 
  */
 public class GroupEngineClient {
 
@@ -53,7 +49,7 @@ public class GroupEngineClient {
             throw new APIException(new _("Unable to find group %groupId%", new Arg("groupId", groupId)));
         }
     }
-    
+
     public String getPath(String groupId) {
         try {
             return groupAPI.getGroup(parseId(groupId)).getPath();
@@ -61,7 +57,7 @@ public class GroupEngineClient {
             throw new APIException(new _("Unable to get group path, group not found"));
         }
     }
-    
+
     private long parseId(String groupId) {
         try {
             return Long.parseLong(groupId);
@@ -69,7 +65,7 @@ public class GroupEngineClient {
             throw new APIException("Illegal argument, groupId must be a number");
         }
     }
-    
+
     public void delete(List<Long> groupIds) {
         try {
             groupAPI.deleteGroups(groupIds);
@@ -77,7 +73,7 @@ public class GroupEngineClient {
             throw new APIException(new _("Error when deleting groups"), e);
         }
     }
-    
+
     public Group update(long groupId, GroupUpdater groupUpdater) {
         try {
             return groupAPI.updateGroup(groupId, groupUpdater);
@@ -87,7 +83,7 @@ public class GroupEngineClient {
             throw new APIException(new _("Error when updating group"), e);
         }
     }
-    
+
     public Group create(GroupCreator groupCreator) {
         try {
             return groupAPI.createGroup(groupCreator);

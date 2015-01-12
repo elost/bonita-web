@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -24,7 +22,6 @@ import org.bonitasoft.engine.expression.InvalidExpressionException;
 
 /**
  * @author Colin PUY
- * 
  */
 public class ProcessVariable {
 
@@ -33,22 +30,22 @@ public class ProcessVariable {
     private Class<?> classe;
 
     private Expression defaultValue;
-    
+
     public static ProcessVariable aStringVariable(String name, String defaultValue) throws InvalidExpressionException {
-        return new ProcessVariable(name, String.class, 
+        return new ProcessVariable(name, String.class,
                 new ExpressionBuilder().createConstantStringExpression(defaultValue));
     }
-    
+
     public static ProcessVariable aLongVariable(String name, long defaultValue) throws InvalidExpressionException {
-        return new ProcessVariable(name, Long.class, 
+        return new ProcessVariable(name, Long.class,
                 new ExpressionBuilder().createConstantLongExpression(defaultValue));
     }
-    
+
     public static ProcessVariable aDateVariable(String name, String defaultValue) throws InvalidExpressionException {
-        return new ProcessVariable(name, Date.class, 
+        return new ProcessVariable(name, Date.class,
                 new ExpressionBuilder().createConstantDateExpression(defaultValue));
     }
-    
+
     public ProcessVariable(String name, Class<?> classe, Expression defaultValue) {
         this.name = name;
         this.classe = classe;

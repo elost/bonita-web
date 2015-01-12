@@ -31,7 +31,7 @@ import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 public class APII18nLocale extends API<I18nLocaleItem> {
 
     private static final String DEFAULT_APPLICATION = "portal";
-    
+
     @Override
     protected ItemDefinition<I18nLocaleItem> defineItemDefinition() {
         return I18nLocaleDefinition.get();

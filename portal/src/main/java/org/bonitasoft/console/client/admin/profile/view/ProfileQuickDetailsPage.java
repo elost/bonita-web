@@ -109,7 +109,6 @@ public class ProfileQuickDetailsPage extends AbstractProfileDetailsPage {
 
     /**
      * @author Bastien ROHART
-     * 
      */
     private final class UsersFiller extends Filler<Text> {
 
@@ -135,7 +134,6 @@ public class ProfileQuickDetailsPage extends AbstractProfileDetailsPage {
 
     /**
      * @author Bastien ROHART
-     * 
      */
     private final class GroupsFiller extends Filler<Text> {
 
@@ -161,7 +159,6 @@ public class ProfileQuickDetailsPage extends AbstractProfileDetailsPage {
 
     /**
      * @author Bastien ROHART
-     * 
      */
     private final class RolesFiller extends Filler<Text> {
 
@@ -187,7 +184,6 @@ public class ProfileQuickDetailsPage extends AbstractProfileDetailsPage {
 
     /**
      * @author Bastien ROHART
-     * 
      */
     private final class MembershipsFiller extends Filler<Text> {
 

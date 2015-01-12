@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,7 +27,6 @@ import org.bonitasoft.web.toolkit.client.ui.utils.Url;
  * Define an action on Item(s)
  * 
  * @author Séverin Moussel
- * 
  */
 public class ItemTableAction extends Link {
 
@@ -55,13 +52,13 @@ public class ItemTableAction extends Link {
      * Default Constructor.
      * 
      * @param jsid
-     *            The jsId of the component that will trigger the action
+     *        The jsId of the component that will trigger the action
      * @param label
-     *            The label of the component that will trigger the action
+     *        The label of the component that will trigger the action
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final JsId jsid, final String label, final String tooltip, final Action action, final boolean alwaysVisible) {
         super(jsid, label, tooltip, action);
@@ -72,13 +69,13 @@ public class ItemTableAction extends Link {
      * Default Constructor.
      * 
      * @param jsid
-     *            The jsId of the component that will trigger the action
+     *        The jsId of the component that will trigger the action
      * @param label
-     *            The label of the component that will trigger the action
+     *        The label of the component that will trigger the action
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final JsId jsid, final String label, final String tooltip, final Action action) {
         this(jsid, label, tooltip, action, false);
@@ -88,11 +85,11 @@ public class ItemTableAction extends Link {
      * Default Constructor without JsId.
      * 
      * @param label
-     *            The label of the component that will trigger the action
+     *        The label of the component that will trigger the action
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final String label, final String tooltip, final Action action) {
         this(null, label, tooltip, action);
@@ -102,11 +99,11 @@ public class ItemTableAction extends Link {
      * Default Constructor without JsId.
      * 
      * @param label
-     *            The label of the component that will trigger the action
+     *        The label of the component that will trigger the action
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final String label, final String tooltip, final Action action, final boolean alwaysVisible) {
         this(null, label, tooltip, action, alwaysVisible);
@@ -116,13 +113,13 @@ public class ItemTableAction extends Link {
      * Default Constructor.
      * 
      * @param jsid
-     *            The jsId of the component that will trigger the action
+     *        The jsId of the component that will trigger the action
      * @param image
-     *            The Url of the image to display as a button that will trigger the action
+     *        The Url of the image to display as a button that will trigger the action
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final JsId jsid, final Url image, final String tooltip, final Action action) {
         this(jsid, "", tooltip, action);
@@ -133,13 +130,13 @@ public class ItemTableAction extends Link {
      * Default Constructor.
      * 
      * @param jsid
-     *            The jsId of the component that will trigger the action
+     *        The jsId of the component that will trigger the action
      * @param image
-     *            The Url of the image to display as a button that will trigger the action
+     *        The Url of the image to display as a button that will trigger the action
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final JsId jsid, final Url image, final String tooltip, final Action action, final boolean alwaysVisible) {
         this(jsid, "", tooltip, action, alwaysVisible);
@@ -150,11 +147,11 @@ public class ItemTableAction extends Link {
      * Default Constructor without JsId.
      * 
      * @param image
-     *            The Url of the image to display as a button that will trigger the action
+     *        The Url of the image to display as a button that will trigger the action
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final Url image, final String tooltip, final Action action) {
         this(null, image, tooltip, action);
@@ -164,11 +161,11 @@ public class ItemTableAction extends Link {
      * Default Constructor without JsId.
      * 
      * @param image
-     *            The Url of the image to display as a button that will trigger the action
+     *        The Url of the image to display as a button that will trigger the action
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final Url image, final String tooltip, final Action action, final boolean alwaysVisible) {
         this(null, image, tooltip, action, alwaysVisible);
@@ -178,9 +175,9 @@ public class ItemTableAction extends Link {
      * Default Constructor without JsId.
      * 
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final ICON icon, final String tooltip, final Action action) {
         this(null, icon, tooltip, action);
@@ -190,9 +187,9 @@ public class ItemTableAction extends Link {
      * Default Constructor without JsId.
      * 
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final ICON icon, final String tooltip, final Action action, final boolean alwaysVisible) {
         this(null, icon, tooltip, action, alwaysVisible);
@@ -202,9 +199,9 @@ public class ItemTableAction extends Link {
      * Default Constructor without JsId.
      * 
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final JsId jsid, final ICON icon, final String tooltip, final Action action) {
         this(jsid, "", tooltip, action);
@@ -215,9 +212,9 @@ public class ItemTableAction extends Link {
      * Default Constructor without JsId.
      * 
      * @param tooltip
-     *            The tooltip of the component that will trigger the action
+     *        The tooltip of the component that will trigger the action
      * @param action
-     *            The action to trigger
+     *        The action to trigger
      */
     public ItemTableAction(final JsId jsid, final ICON icon, final String tooltip, final Action action, final boolean alwaysVisible) {
         this(jsid, "", tooltip, action, alwaysVisible);

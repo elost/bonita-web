@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -38,7 +36,6 @@ import org.bonitasoft.web.toolkit.client.common.exception.api.APISessionInvalidE
 
 /**
  * @author Paul AMAR
- * 
  */
 public class ArchivedCommentDatastore extends CommonDatastore<ArchivedCommentItem, ArchivedComment> implements DatastoreHasSearch<ArchivedCommentItem> {
 
@@ -107,7 +104,8 @@ public class ArchivedCommentDatastore extends CommonDatastore<ArchivedCommentIte
      * @param builder
      */
     private void adjustSearchBuilder(final Map<String, String> filters, final SearchOptionsBuilder builder) {
-        addStringFilterToSearchBuilder(filters, builder, ArchivedCommentItem.ATTRIBUTE_PROCESS_INSTANCE_ID, ArchivedCommentsSearchDescriptor.PROCESS_INSTANCE_ID);
+        addStringFilterToSearchBuilder(filters, builder, ArchivedCommentItem.ATTRIBUTE_PROCESS_INSTANCE_ID,
+                ArchivedCommentsSearchDescriptor.PROCESS_INSTANCE_ID);
     }
 
     /*

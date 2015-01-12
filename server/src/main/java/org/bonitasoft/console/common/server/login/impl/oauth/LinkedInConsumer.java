@@ -13,6 +13,9 @@
  **/
 package org.bonitasoft.console.common.server.login.impl.oauth;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.bonitasoft.engine.exception.BonitaException;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -22,12 +25,8 @@ import org.scribe.model.Response;
 import org.scribe.model.Token;
 import org.scribe.model.Verb;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * @author Ruiheng Fan, Chong Zhao
- * 
  */
 public class LinkedInConsumer extends OAuthConsumer {
 

@@ -54,7 +54,7 @@ public class UserUpdaterConverter {
         }
         return userUpdater;
     }
-    
+
     private Long getManagerId(final Map<String, String> attributes) {
         try {
             return Long.valueOf(attributes.get(UserItem.ATTRIBUTE_MANAGER_ID));

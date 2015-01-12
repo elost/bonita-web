@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -100,16 +98,15 @@ public class RadioButtonGroupWidget extends Composite implements HasClickHandler
      * Constructor
      * 
      * @param radioButtonGroupId
-     *            Id of the radio button group
+     *        Id of the radio button group
      * @param availableValues
-     *            available values of the group
+     *        available values of the group
      * @param initialValue
-     *            initial value
+     *        initial value
      * @param itemsStyle
-     *            the css classes of each radio button
+     *        the css classes of each radio button
      * @param allowHTML
-     *            allow HTML in the radio buttons labels
-     * 
+     *        allow HTML in the radio buttons labels
      */
     public RadioButtonGroupWidget(final String radioButtonGroupId, final List<ReducedFormFieldAvailableValue> availableValues, final String initialValue,
             final String itemsStyle, final boolean allowHTML) {
@@ -120,18 +117,17 @@ public class RadioButtonGroupWidget extends Composite implements HasClickHandler
      * Constructor
      * 
      * @param radioButtonGroupId
-     *            Id of the radio button group
+     *        Id of the radio button group
      * @param availableValues
-     *            available values of the group
+     *        available values of the group
      * @param initialValue
-     *            initial value
+     *        initial value
      * @param itemsStyle
-     *            the css classes of each radio button
+     *        the css classes of each radio button
      * @param allowHTML
-     *            allow HTML in the radio buttons labels
+     *        allow HTML in the radio buttons labels
      * @param isElementOfMultipleWidget
-     *            indicates if the widget instance is a child of a multiple element
-     * 
+     *        indicates if the widget instance is a child of a multiple element
      */
     public RadioButtonGroupWidget(final String radioButtonGroupId, final List<ReducedFormFieldAvailableValue> availableValues, final String initialValue,
             final String itemsStyle, final boolean allowHTML, final boolean isElementOfMultipleWidget) {
@@ -183,7 +179,7 @@ public class RadioButtonGroupWidget extends Composite implements HasClickHandler
      * Useful in case the groups of radio buttons is displayed in several widget group instances
      * 
      * @param radioButtonGroupId
-     *            the radio button definition Id
+     *        the radio button definition Id
      * @return a name that can be used for the radio button group instance
      */
     protected String getRadioButtonGroupName(final String radioButtonGroupId) {

@@ -15,7 +15,6 @@ import org.bonitasoft.web.toolkit.client.data.item.attribute.ItemAttribute;
 
 /**
  * @author Fabio Lombardi
- *
  */
 public class BonitaPageDefinition extends ItemDefinition<BonitaPageItem> {
 

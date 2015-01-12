@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -28,7 +26,6 @@ import com.google.gwt.http.client.RequestBuilder;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class APISearchRequest extends AbstractAPIReadRequest {
 
@@ -56,7 +53,7 @@ public class APISearchRequest extends AbstractAPIReadRequest {
 
     /**
      * @param page
-     *            the page to set
+     *        the page to set
      */
     public APISearchRequest setPage(final int page) {
         this.page = page;
@@ -65,7 +62,7 @@ public class APISearchRequest extends AbstractAPIReadRequest {
 
     /**
      * @param resultsPerPage
-     *            the resultsPerPage to set
+     *        the resultsPerPage to set
      */
     public APISearchRequest setResultsPerPage(final int resultsPerPage) {
         this.resultsPerPage = resultsPerPage;
@@ -74,7 +71,7 @@ public class APISearchRequest extends AbstractAPIReadRequest {
 
     /**
      * @param order
-     *            the order to set
+     *        the order to set
      */
     public APISearchRequest setOrder(final String order) {
         this.order = order;
@@ -83,7 +80,7 @@ public class APISearchRequest extends AbstractAPIReadRequest {
 
     /**
      * @param search
-     *            the search to set
+     *        the search to set
      */
     public APISearchRequest setSearch(final String search) {
         this.search = search;
@@ -133,7 +130,7 @@ public class APISearchRequest extends AbstractAPIReadRequest {
      * Set the filters to send. This method will remove previously added filters.
      * 
      * @param filters
-     *            The filters to set as a map <name, value> where name can be an ATTRIBUTE_ or a FILTER_ of the Item.
+     *        The filters to set as a map <name, value> where name can be an ATTRIBUTE_ or a FILTER_ of the Item.
      * @return This method returns "this" to allow cascading calls.
      */
     public APISearchRequest setFilters(final Map<String, String> filters) {
@@ -145,7 +142,7 @@ public class APISearchRequest extends AbstractAPIReadRequest {
      * Add filters to send.
      * 
      * @param filters
-     *            The filters to add as a map <name, value> where name can be an ATTRIBUTE_ or a FILTER_ of the Item.
+     *        The filters to add as a map <name, value> where name can be an ATTRIBUTE_ or a FILTER_ of the Item.
      * @return This method returns "this" to allow cascading calls.
      */
     public APISearchRequest addFilters(final Map<String, String> filters) {
@@ -159,10 +156,9 @@ public class APISearchRequest extends AbstractAPIReadRequest {
      * Add a filter to send.
      * 
      * @param name
-     *            The name of the filter. Can be an ATTRIBUTE_ or a FILTER_ of the Item
+     *        The name of the filter. Can be an ATTRIBUTE_ or a FILTER_ of the Item
      * @param value
-     *            The value of the filter.
-     * 
+     *        The value of the filter.
      * @return This method returns "this" to allow cascading calls.
      */
     public APISearchRequest addFilter(final String name, final String value) {
@@ -174,7 +170,7 @@ public class APISearchRequest extends AbstractAPIReadRequest {
      * Remove an already defined filter
      * 
      * @param filter
-     *            The filter to remove.
+     *        The filter to remove.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest removeFilter(final String filter) {
@@ -186,7 +182,7 @@ public class APISearchRequest extends AbstractAPIReadRequest {
      * Remove multiple filters.
      * 
      * @param filters
-     *            The list of filters to remove.
+     *        The list of filters to remove.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest removeFilters(final String... filters) {
@@ -198,7 +194,7 @@ public class APISearchRequest extends AbstractAPIReadRequest {
      * Remove multiple filters.
      * 
      * @param filters
-     *            The list of filters to remove.
+     *        The list of filters to remove.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest removeFilters(final List<String> filters) {

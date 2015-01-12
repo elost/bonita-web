@@ -102,7 +102,7 @@ public class Link extends Clickable {
 
     /**
      * @param label
-     *            the label to set
+     *        the label to set
      */
     public void setLabel(final String label) {
         this.label = label;

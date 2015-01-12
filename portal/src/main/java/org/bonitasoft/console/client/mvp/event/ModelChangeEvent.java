@@ -1,7 +1,8 @@
 package org.bonitasoft.console.client.mvp.event;
 
-import com.google.gwt.event.shared.GwtEvent;
 import org.bonitasoft.web.toolkit.client.eventbus.SubjectEvent;
+
+import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * @author Vincent Elcrin

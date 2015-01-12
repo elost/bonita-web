@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -27,7 +25,6 @@ import org.bonitasoft.web.toolkit.client.ui.component.containers.Container;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class MessagePage extends Page implements MessageTyped {
 
@@ -45,11 +42,11 @@ public class MessagePage extends Page implements MessageTyped {
      * Constructor
      * 
      * @param type
-     *            The type of the message to display. The type will change the design of the message.
+     *        The type of the message to display. The type will change the design of the message.
      * @param message
-     *            The message to display. New lines will be kept on display.
+     *        The message to display. New lines will be kept on display.
      * @param callback
-     *            The action to call while clicking on Ok (or YES for CONFIRM type)
+     *        The action to call while clicking on Ok (or YES for CONFIRM type)
      */
     public MessagePage(final TYPE type, final String message, final Action callback) {
         this(type, callback);
@@ -60,9 +57,9 @@ public class MessagePage extends Page implements MessageTyped {
      * Constructor
      * 
      * @param type
-     *            The type of the message to display. The type will change the design of the message.
+     *        The type of the message to display. The type will change the design of the message.
      * @param message
-     *            The message to display. New lines will be kept on display.
+     *        The message to display. New lines will be kept on display.
      */
     public MessagePage(final TYPE type, final String message) {
         this(type, message, (Action) null);
@@ -72,9 +69,9 @@ public class MessagePage extends Page implements MessageTyped {
      * Constructor
      * 
      * @param type
-     *            The type of the message to display. The type will change the design of the message.
+     *        The type of the message to display. The type will change the design of the message.
      * @param callback
-     *            The action to call while clicking on Ok (or YES for CONFIRM type)
+     *        The action to call while clicking on Ok (or YES for CONFIRM type)
      */
     public MessagePage(final TYPE type, final Action callback) {
         super();
@@ -91,7 +88,7 @@ public class MessagePage extends Page implements MessageTyped {
      * Constructor
      * 
      * @param type
-     *            The type of the message to display. The type will change the design of the message.
+     *        The type of the message to display. The type will change the design of the message.
      */
     public MessagePage(final TYPE type) {
         this(type, (Action) null);
@@ -126,8 +123,6 @@ public class MessagePage extends Page implements MessageTyped {
 
         addClass(this.type.toString());
     }
-
-    
 
     @Override
     public String defineToken() {

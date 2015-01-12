@@ -1,22 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<parent>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
         <groupId>org.bonitasoft.console</groupId>
         <artifactId>bonita-console</artifactId>
         <version>6.5.0-SNAPSHOT</version>
-	</parent>
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>console-client</artifactId>
-	<name>Bonita portal</name>
-	<packaging>war</packaging>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>console-client</artifactId>
+    <name>Bonita portal</name>
+    <packaging>war</packaging>
 
-	<properties>
-		<permutations>All</permutations>
-		<!--<jacoco.skip>true</jacoco.skip>-->
+    <properties>
+        <permutations>All</permutations>
+        <!--<jacoco.skip>true</jacoco.skip>-->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-	</properties>
+    </properties>
 
-	<dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.bonitasoft.console</groupId>
             <artifactId>console-common</artifactId>
@@ -25,54 +25,54 @@
             <scope>provided</scope>
         </dependency>
 
-		<!-- Compile dependency -->
-		<dependency>
-			<groupId>org.bonitasoft.forms</groupId>
-			<artifactId>forms-view</artifactId>
-			<version>${project.version}</version>
+        <!-- Compile dependency -->
+        <dependency>
+            <groupId>org.bonitasoft.forms</groupId>
+            <artifactId>forms-view</artifactId>
+            <version>${project.version}</version>
             <scope>provided</scope>
-		</dependency>
+        </dependency>
 
-		<!-- GWT dependency (sources) -->
-		<dependency>
-			<groupId>org.bonitasoft.forms</groupId>
-			<artifactId>forms-view</artifactId>
-			<classifier>sources</classifier>
-			<version>${project.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bonitasoft.forms</groupId>
-			<artifactId>forms-rpc</artifactId>
-			<classifier>sources</classifier>
-			<version>${project.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bonitasoft.forms</groupId>
-			<artifactId>forms-model</artifactId>
-			<version>${project.version}</version>
-			<classifier>sources</classifier>
-			<scope>provided</scope>
-		</dependency>
+        <!-- GWT dependency (sources) -->
+        <dependency>
+            <groupId>org.bonitasoft.forms</groupId>
+            <artifactId>forms-view</artifactId>
+            <classifier>sources</classifier>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bonitasoft.forms</groupId>
+            <artifactId>forms-rpc</artifactId>
+            <classifier>sources</classifier>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bonitasoft.forms</groupId>
+            <artifactId>forms-model</artifactId>
+            <version>${project.version}</version>
+            <classifier>sources</classifier>
+            <scope>provided</scope>
+        </dependency>
 
-		<!-- GWT deps -->
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<scope>provided</scope>
-		</dependency>
+        <!-- GWT deps -->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.googlecode.gwtquery</groupId>
             <artifactId>gwtquery</artifactId>
             <version>1.4.1</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.bonitasoft.console</groupId>
             <!--  <classifier>test</classifier> -->
@@ -81,28 +81,28 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
-  </dependencies>
-    
-    
-	<build>
-		<plugins>
+    </dependencies>
 
-			<!-- War configuration -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<packagingExcludes>
-						.gwt-tmp/**,
-						WEB-INF/deploy/**
-					</packagingExcludes>
+
+    <build>
+        <plugins>
+
+            <!-- War configuration -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <packagingExcludes>
+                        .gwt-tmp/**,
+                        WEB-INF/deploy/**
+                    </packagingExcludes>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
                     <archiveClasses>true</archiveClasses>
                     <attachClasses>true</attachClasses>
-				</configuration>
-			</plugin>
+                </configuration>
+            </plugin>
 
             <!-- Export jar & test-jar -->
             <plugin>
@@ -116,30 +116,30 @@
                     </execution>
                 </executions>
             </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
 
             <!-- Configure GWT-Maven plugin -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<configuration>
-					<localWorkers>2</localWorkers>
-					<disableCastChecking>true</disableCastChecking>
-					<disableClassMetadata>true</disableClassMetadata>
-					<module>org.bonitasoft.console.${permutations}BonitaConsole</module>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <configuration>
+                    <localWorkers>2</localWorkers>
+                    <disableCastChecking>true</disableCastChecking>
+                    <disableClassMetadata>true</disableClassMetadata>
+                    <module>org.bonitasoft.console.${permutations}BonitaConsole</module>
                     <!--Configure gwt:run-->
                     <noServer>true</noServer>
                     <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
                     <port>8080</port>
                     <runTarget>bonita/login.jsp</runTarget>
-				</configuration>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>prepare-package</phase>
@@ -149,18 +149,18 @@
                     </execution>
                 </executions>
             </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>integration-test</phase>
-						<configuration>
-							<skipITs>true</skipITs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <configuration>
+                            <skipITs>true</skipITs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>com.github.searls</groupId>
                 <artifactId>jasmine-maven-plugin</artifactId>
@@ -248,8 +248,8 @@
                     </execution>
                 </executions>
             </plugin>
-		</plugins>
-	</build>
+        </plugins>
+    </build>
     <profiles>
         <profile>
             <id>dev</id>

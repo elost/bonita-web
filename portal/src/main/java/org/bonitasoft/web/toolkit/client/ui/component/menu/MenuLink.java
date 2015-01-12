@@ -24,9 +24,7 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  */
 public class MenuLink extends Component implements MenuItem {
 

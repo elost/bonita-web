@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -19,7 +17,6 @@ package org.bonitasoft.web.rest.server.api.organization;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,12 +46,10 @@ import org.bonitasoft.web.toolkit.client.data.item.attribute.validator.AbstractS
 
 /**
  * @author Séverin Moussel
- * 
  */
 // TODO : implements APIhasFile
 public class APIUser extends ConsoleAPI<UserItem> implements APIHasAdd<UserItem>, APIHasDelete, APIHasUpdate<UserItem>,
-    APIHasGet<UserItem>, APIHasSearch<UserItem> {
-
+        APIHasGet<UserItem>, APIHasSearch<UserItem> {
 
     /**
      * Logger
@@ -73,7 +68,7 @@ public class APIUser extends ConsoleAPI<UserItem> implements APIHasAdd<UserItem>
 
     @Override
     public UserItem add(final UserItem item) {
-        
+
         // Finish the upload of the icon
         if (item.getIcon() != null && !item.getIcon().isEmpty()) {
             item.setIcon(uploadIcon(item.getIcon()));
@@ -82,12 +77,12 @@ public class APIUser extends ConsoleAPI<UserItem> implements APIHasAdd<UserItem>
             throw new ValidationException(Arrays.asList(new ValidationError("Password", "%attribute% is mandatory")));
         }
         checkPasswordRobustness(item.getPassword());
-        
+
         // Add
         return new UserDatastore(getEngineSession()).add(item);
 
     }
-    
+
     private void checkPasswordRobustness(String password) {
         try {
             Class<?> validatorClass = Class.forName(PropertiesFactory.getSecurityProperties(getEngineSession().getTenantId()).getPasswordValidator());
@@ -95,11 +90,11 @@ public class APIUser extends ConsoleAPI<UserItem> implements APIHasAdd<UserItem>
             try {
                 instanceClass = validatorClass.newInstance();
                 AbstractStringValidator validator = (AbstractStringValidator) instanceClass;
-                validator.setLocale(getLocale());                
+                validator.setLocale(getLocale());
                 validator.check(password);
                 if (!validator.getErrors().isEmpty()) {
                     throw new ValidationException(validator.getErrors());
-                }    
+                }
             } catch (InstantiationException e) {
                 if (LOGGER.isLoggable(Level.SEVERE)) {
                     LOGGER.log(Level.SEVERE, "Error while instanciating the class", e);
@@ -116,7 +111,7 @@ public class APIUser extends ConsoleAPI<UserItem> implements APIHasAdd<UserItem>
                 LOGGER.log(Level.SEVERE, "Class not found", e);
             }
             e.printStackTrace();
-        }        
+        }
     }
 
     @Override
@@ -134,7 +129,7 @@ public class APIUser extends ConsoleAPI<UserItem> implements APIHasAdd<UserItem>
             // Do not update password if not set
             MapUtil.removeIfBlank(item, UserItem.ATTRIBUTE_PASSWORD);
             if (item.get(UserItem.ATTRIBUTE_PASSWORD) != null) {
-                checkPasswordRobustness(item.get(UserItem.ATTRIBUTE_PASSWORD));                
+                checkPasswordRobustness(item.get(UserItem.ATTRIBUTE_PASSWORD));
             }
         }
         // Update

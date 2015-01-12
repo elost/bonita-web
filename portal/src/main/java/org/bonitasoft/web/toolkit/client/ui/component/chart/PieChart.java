@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -21,7 +19,6 @@ import org.bonitasoft.web.toolkit.client.ui.utils.Color;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public final class PieChart extends Chart {
 
@@ -118,9 +115,9 @@ public final class PieChart extends Chart {
     /**
      * @param itemDefinition
      * @param labelAttributeName
-     *            The name of the attribute in the item to use as the label of a slice.
+     *        The name of the attribute in the item to use as the label of a slice.
      * @param valueAttributeName
-     *            The name of the attribute in the item to use as the value of a slice.
+     *        The name of the attribute in the item to use as the value of a slice.
      * @return This method returns thePieChart itself to allow cascading calls.
      */
     public PieChart setFiller(final ItemDefinition itemDefinition, final String labelAttributeName, final String valueAttributeName) {
@@ -131,11 +128,11 @@ public final class PieChart extends Chart {
     /**
      * @param itemDefinition
      * @param labelAttributeName
-     *            The name of the attribute in the item to use as the label of a slice.
+     *        The name of the attribute in the item to use as the label of a slice.
      * @param valueAttributeName
-     *            The name of the attribute in the item to use as the value of a slice.
+     *        The name of the attribute in the item to use as the value of a slice.
      * @param updateFrequency
-     *            in milliseconds
+     *        in milliseconds
      * @return This method returns thePieChart itself to allow cascading calls.
      */
     public PieChart setFiller(final ItemDefinition itemDefinition, final String labelAttributeName, final String valueAttributeName, final int updateFrequency) {

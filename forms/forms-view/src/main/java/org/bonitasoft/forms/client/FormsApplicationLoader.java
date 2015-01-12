@@ -1,12 +1,10 @@
 package org.bonitasoft.forms.client;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.RunAsyncCallback;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.RootPanel;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.bonitasoft.forms.client.i18n.FormsResourceBundle;
 import org.bonitasoft.forms.client.view.FormsAsyncCallback;
 import org.bonitasoft.forms.client.view.common.BonitaUrlContext;
@@ -18,18 +16,19 @@ import org.bonitasoft.forms.client.view.controller.FormApplicationViewController
 import org.bonitasoft.forms.client.view.controller.FormViewControllerFactory;
 import org.bonitasoft.web.rest.model.user.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.RunAsyncCallback;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class FormsApplicationLoader {
 
     protected static final String CONSOLE_STATIC_CONTENT_ELEMENT_ID = "static_console";
     private final String CONSOLE_HEADER = "console_header";
     public static final String FORM_URL_PARAMETER_IS_MANDATORY = FormsResourceBundle.getErrors().formUrlParameterIsMandatoryError();
-
-
 
     private URLUtils urlUtils;
     private BonitaUrlContext bonitaUrlContext;
@@ -111,11 +110,10 @@ public class FormsApplicationLoader {
     }
 
     private void showFormIdMandatoryErrorPage() {
-        getApplicationErrorTemplate(
-                new ErrorPageHandler(null,
-                        null,
-                        FORM_URL_PARAMETER_IS_MANDATORY,
-                        getFormElementId()));
+        getApplicationErrorTemplate(new ErrorPageHandler(null,
+                null,
+                FORM_URL_PARAMETER_IS_MANDATORY,
+                getFormElementId()));
     }
 
     private void getApplicationErrorTemplate(ErrorPageHandler callback) {
@@ -172,6 +170,7 @@ public class FormsApplicationLoader {
             urlString = urlString + hash;
             urlUtils.windowRedirect(urlString);
         }
+
         @Override
         public void onUnhandledFailure(final Throwable caught) {
             GWT.log("Unable to get any todolist form URL", caught);
@@ -185,5 +184,3 @@ public class FormsApplicationLoader {
 
     }
 }
-
-

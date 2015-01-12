@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -44,6 +42,7 @@ public class APIArchivedCase extends ConsoleAPI<ArchivedCaseItem> implements API
     public ItemDefinition defineItemDefinition() {
         return Definitions.get(ArchivedCaseDefinition.TOKEN);
     }
+
     @Override
     protected Datastore defineDefaultDatastore() {
         return new ArchivedCaseDatastore(getEngineSession());
@@ -61,7 +60,7 @@ public class APIArchivedCase extends ConsoleAPI<ArchivedCaseItem> implements API
 
     @Override
     public ItemSearchResult<ArchivedCaseItem> search(final int page, final int resultsByPage, final String search, final String orders,
-                                                     final Map<String, String> filters) {
+            final Map<String, String> filters) {
 
         // Check that team manager and supervisor filters are not used together
         if (filters.containsKey(ArchivedCaseItem.FILTER_TEAM_MANAGER_ID) && filters.containsKey(ArchivedCaseItem.FILTER_SUPERVISOR_ID)) {

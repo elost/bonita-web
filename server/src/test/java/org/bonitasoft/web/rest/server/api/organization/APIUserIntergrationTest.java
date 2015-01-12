@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -35,9 +33,9 @@ public class APIUserIntergrationTest extends AbstractConsoleTest {
 
     private static final String ASCENDING = " asc";
     private static final String DESCENDING = " desc";
-    
+
     private APIUser apiUser;
-    
+
     @Override
     public void consoleTestSetUp() throws Exception {
         apiUser = new APIUser();
@@ -61,75 +59,75 @@ public class APIUserIntergrationTest extends AbstractConsoleTest {
     public void searchCanBeOrderdByFirstNameAscending() throws Exception {
         TestUserFactory.getRidleyScott();
         TestUserFactory.getJohnCarpenter();
-        
-        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_FIRSTNAME + ASCENDING, 
+
+        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_FIRSTNAME + ASCENDING,
                 EMPTY_MAP, EMPTY_LIST, EMPTY_LIST);
-        
+
         String firstUserFirstName = searchResult.getResults().get(0).getFirstName();
         String secondUserFirstName = searchResult.getResults().get(1).getFirstName();
         assertTrue(lowerThan(firstUserFirstName, secondUserFirstName));
     }
-    
+
     @Test
     public void searchCanBeOrderdByFirstNameDescending() throws Exception {
         TestUserFactory.getRidleyScott();
         TestUserFactory.getJohnCarpenter();
-        
-        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_FIRSTNAME + DESCENDING, 
+
+        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_FIRSTNAME + DESCENDING,
                 EMPTY_MAP, EMPTY_LIST, EMPTY_LIST);
-        
+
         String firstUserFirstName = searchResult.getResults().get(0).getFirstName();
         String secondUserFirstName = searchResult.getResults().get(1).getFirstName();
         assertTrue(upperThan(firstUserFirstName, secondUserFirstName));
     }
-    
+
     @Test
     public void searchCanBeOrderdByLastNameAscending() throws Exception {
         TestUserFactory.getRidleyScott();
         TestUserFactory.getJohnCarpenter();
-        
-        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_LASTNAME + ASCENDING, 
+
+        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_LASTNAME + ASCENDING,
                 EMPTY_MAP, EMPTY_LIST, EMPTY_LIST);
-        
+
         String firstUserLastName = searchResult.getResults().get(0).getLastName();
         String secondUserLastName = searchResult.getResults().get(1).getLastName();
         assertTrue(lowerThan(firstUserLastName, secondUserLastName));
     }
-    
+
     @Test
     public void searchCanBeOrderdByLastNameDescending() throws Exception {
         TestUserFactory.getRidleyScott();
         TestUserFactory.getJohnCarpenter();
-        
-        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_LASTNAME + DESCENDING, 
+
+        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_LASTNAME + DESCENDING,
                 EMPTY_MAP, EMPTY_LIST, EMPTY_LIST);
-        
+
         String firstUserLastName = searchResult.getResults().get(0).getLastName();
         String secondUserLastName = searchResult.getResults().get(1).getLastName();
         assertTrue(upperThan(firstUserLastName, secondUserLastName));
     }
-    
+
     @Test
     public void searchCanBeOrderdByUserNameAscending() throws Exception {
         TestUserFactory.getRidleyScott();
         TestUserFactory.getJohnCarpenter();
-        
-        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_USERNAME + ASCENDING, 
+
+        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_USERNAME + ASCENDING,
                 EMPTY_MAP, EMPTY_LIST, EMPTY_LIST);
-        
+
         String firstUserUserName = searchResult.getResults().get(0).getUserName();
         String secondUserUserName = searchResult.getResults().get(1).getUserName();
         assertTrue(lowerThan(firstUserUserName, secondUserUserName));
     }
-    
+
     @Test
     public void searchCanBeOrderdByUserNameDescending() throws Exception {
         TestUserFactory.getRidleyScott();
         TestUserFactory.getJohnCarpenter();
-        
-        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_USERNAME + DESCENDING, 
+
+        ItemSearchResult<UserItem> searchResult = apiUser.runSearch(0, 10, null, UserItem.ATTRIBUTE_USERNAME + DESCENDING,
                 EMPTY_MAP, EMPTY_LIST, EMPTY_LIST);
-        
+
         String firstUserUserName = searchResult.getResults().get(0).getUserName();
         String secondUserUserName = searchResult.getResults().get(1).getUserName();
         assertTrue(upperThan(firstUserUserName, secondUserUserName));

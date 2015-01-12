@@ -423,7 +423,8 @@ public class RestAPIAuthorizationFilterTest {
 
     }
 
-    private void returnPermissionFor(final String method, final String apiName, final String resourceName, final String resourceId, final List<String> toBeReturned) {
+    private void returnPermissionFor(final String method, final String apiName, final String resourceName, final String resourceId,
+            final List<String> toBeReturned) {
         if (resourceId != null) {
             doReturn(new HashSet<String>(toBeReturned)).when(resourcesPermissionsMapping).getResourcePermissions(method, apiName, resourceName, resourceId);
         } else {
@@ -463,7 +464,6 @@ public class RestAPIAuthorizationFilterTest {
         verify(response).setStatus(HttpServletResponse.SC_UNAUTHORIZED);
     }
 
-
     @Test
     public void should_checkValidCondition_check_permission_if_is_tenant_is_forbidden() throws ServletException {
         final RestAPIAuthorizationFilter restAPIAuthorizationFilterSpy = spy(restAPIAuthorizationFilter);
@@ -476,7 +476,6 @@ public class RestAPIAuthorizationFilterTest {
         assertThat(isValid).isFalse();
         verify(response).setStatus(HttpServletResponse.SC_FORBIDDEN);
     }
-
 
     @Test
     public void should_checkValidCondition_check_permission_if_is_tenant_is_ok() throws ServletException {

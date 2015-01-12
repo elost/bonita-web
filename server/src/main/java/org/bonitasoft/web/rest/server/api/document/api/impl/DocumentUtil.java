@@ -14,7 +14,6 @@ import java.net.URLConnection;
 
 /**
  * @author Yongtao Guo
- * 
  */
 public class DocumentUtil {
 

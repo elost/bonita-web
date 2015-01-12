@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -53,7 +51,6 @@ import org.bonitasoft.forms.server.provider.impl.util.FormServiceProviderUtil;
 
 /**
  * @author Anthony Birembaut, Haojie Yuan
- *
  */
 public class FormFieldValuesUtil {
 
@@ -109,9 +106,9 @@ public class FormFieldValuesUtil {
      * Build a field value object from the process definition
      *
      * @param value
-     *            the value retrieved from the engine
+     *        the value retrieved from the engine
      * @param formWidget
-     *            the {@link FormWidget} associated with this field value
+     *        the {@link FormWidget} associated with this field value
      * @return a {@link FormFieldValue} object
      */
     public FormFieldValue getFieldValue(final Object value, final FormWidget formWidget, final Locale locale) {
@@ -253,9 +250,9 @@ public class FormFieldValuesUtil {
      * Build a FormFieldAvailableValue List from a {@link Map} or a {@link List} and set it in the widget
      *
      * @param availableValuesObject
-     *            the {@link Map} or {@link List} of values
+     *        the {@link Map} or {@link List} of values
      * @param widgetId
-     *            the widget Id
+     *        the widget Id
      * @return a List of {@link FormFieldAvailableValue}
      */
     public List<ReducedFormFieldAvailableValue> getAvailableValues(final Object availableValuesObject, final String widgetId) {
@@ -275,9 +272,9 @@ public class FormFieldValuesUtil {
      * Build a FormFieldAvailableValue List from a {@link Map} or a {@link List} and set it in the widget
      *
      * @param availableValuesObject
-     *            the {@link Map} or {@link List} of values
+     *        the {@link Map} or {@link List} of values
      * @param widget
-     *            the widget to set
+     *        the widget to set
      * @return a List of {@link FormFieldAvailableValue}
      * @throws IllegalArgumentException
      */
@@ -300,9 +297,9 @@ public class FormFieldValuesUtil {
      * Build a FormFieldAvailableValue List of List from a {@link List} of {@link Map} or a {@link List} of {@link List} and set it in the widget
      *
      * @param availableValuesObject
-     *            the {@link List} of {@link Map} or {@link List} of {@link List} of values
+     *        the {@link List} of {@link Map} or {@link List} of {@link List} of values
      * @param widget
-     *            the widget to set
+     *        the widget to set
      * @return a List of List of {@link FormFieldAvailableValue}
      */
     public List<List<ReducedFormFieldAvailableValue>> getTableAvailableValues(final Object tableAvailableValuesObject, final String widgetId) {
@@ -325,7 +322,7 @@ public class FormFieldValuesUtil {
      * Retrieve the String value of an object
      *
      * @param object
-     *            the object
+     *        the object
      * @return the String representation of this Object
      */
     protected String getStringValue(final Object object) {
@@ -386,11 +383,11 @@ public class FormFieldValuesUtil {
      * Add the widget value to evaluate to the Map of expression to evaluated
      *
      * @param formWidget
-     *            the widget
+     *        the widget
      * @param expressionsToEvaluate
-     *            the list of expressions to evaluate
+     *        the list of expressions to evaluate
      * @param context
-     *            the context including the URL parameters
+     *        the context including the URL parameters
      */
     protected void addFormWidgetValueExpressionToEvaluate(final FormWidget formWidget, final List<Expression> expressionsToEvaluate,
             final Map<String, Object> context) {
@@ -420,9 +417,9 @@ public class FormFieldValuesUtil {
      * Generate the Map of groovy expressions to evaluate for a widget
      *
      * @param formWidget
-     *            the widget
+     *        the widget
      * @param context
-     *            the context including the URL parameters
+     *        the context including the URL parameters
      * @return the Map of expressions to evaluate
      */
     protected List<Expression> getWidgetExpressions(final FormWidget formWidget, final Map<String, Object> context) {
@@ -565,14 +562,14 @@ public class FormFieldValuesUtil {
      * Set the values of the form widget
      *
      * @param tenantID
-     *            the tenantID
+     *        the tenantID
      * @param formWidget
-     *            the widget
+     *        the widget
      * @param previousPagesFields
      * @param locale
      * @param isCurrentValue
      * @param context
-     *            the context including the URL parameters
+     *        the context including the URL parameters
      * @throws FormNotFoundException
      * @throws FormServiceProviderNotFoundException
      * @throws SessionTimeoutException
@@ -713,11 +710,11 @@ public class FormFieldValuesUtil {
      * Set the tables parameters
      *
      * @param formWidget
-     *            the widget
+     *        the widget
      * @param evaluatedExpressions
-     *            the map of evaluated expressions
+     *        the map of evaluated expressions
      * @param context
-     *            the context including the URL parameters
+     *        the context including the URL parameters
      * @throws FormNotFoundException
      * @throws FormServiceProviderNotFoundException
      */
@@ -850,11 +847,11 @@ public class FormFieldValuesUtil {
      * set the widget values of a form page
      *
      * @param tenantID
-     *            the tenant ID
+     *        the tenant ID
      * @param widgets
-     *            the widgets of the page
+     *        the widgets of the page
      * @param context
-     *            the context including the URL parameters
+     *        the context including the URL parameters
      * @throws FormServiceProviderNotFoundException
      * @throws FormNotFoundException
      * @throws SessionTimeoutException

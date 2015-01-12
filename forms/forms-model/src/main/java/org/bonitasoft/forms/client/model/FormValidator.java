@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model;
 
@@ -26,22 +24,22 @@ import org.bonitasoft.forms.client.model.ReducedFormValidator.ValidatorPosition;
  * @author Anthony Birembaut
  */
 public class FormValidator implements Serializable {
-    
+
     /**
      * UID
      */
     private static final long serialVersionUID = -7688147637501777696L;
-    
+
     /**
      * validator label expression
      */
     private Expression labelExpression;
-    
+
     /**
      * The validator's parameter
      */
     private Expression parameterExpression;
-    
+
     /**
      * The reduced version of the form validator
      */
@@ -49,6 +47,7 @@ public class FormValidator implements Serializable {
 
     /**
      * Constructor
+     * 
      * @param id validator id
      * @param validatorClass validator className
      * @param style validator label CSS classNames
@@ -65,7 +64,7 @@ public class FormValidator implements Serializable {
         super();
         reducedFormValidator = new ReducedFormValidator();
     }
-    
+
     public String getId() {
         return reducedFormValidator.getId();
     }
@@ -89,7 +88,7 @@ public class FormValidator implements Serializable {
     public void setLabel(final String label) {
         reducedFormValidator.setLabel(label);
     }
-    
+
     public Expression getLabelExpression() {
         return labelExpression;
     }
@@ -114,13 +113,13 @@ public class FormValidator implements Serializable {
         reducedFormValidator.setPosition(position);
     }
 
-	public Expression getParameterExpression() {
-		return parameterExpression;
-	}
+    public Expression getParameterExpression() {
+        return parameterExpression;
+    }
 
-	public void setParameterExpression(final Expression parameterExpression) {
-		this.parameterExpression = parameterExpression;
-	}
+    public void setParameterExpression(final Expression parameterExpression) {
+        this.parameterExpression = parameterExpression;
+    }
 
     public ReducedFormValidator getReducedFormValidator() {
         return reducedFormValidator;

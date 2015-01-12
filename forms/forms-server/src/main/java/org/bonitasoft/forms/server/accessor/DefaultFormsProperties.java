@@ -91,7 +91,7 @@ public class DefaultFormsProperties {
      * Private contructor to prevent instantiation
      *
      * @param tenantId
-     *            the tenant Id
+     *        the tenant Id
      */
     protected DefaultFormsProperties(final long tenantId) {
         defaultProperties = new Properties();

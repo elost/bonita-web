@@ -22,7 +22,6 @@ import org.bonitasoft.web.toolkit.client.ui.action.Action;
 
 /**
  * @author Julien Mege
- * 
  * @deprecated
  *             use ActionShowPopup instead and add parameter in constructor of the page via addParameter method
  */

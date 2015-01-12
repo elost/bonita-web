@@ -10,7 +10,6 @@ import org.bonitasoft.engine.api.TenantAPIAccessor;
 import org.bonitasoft.engine.exception.BonitaException;
 import org.bonitasoft.engine.session.APISession;
 
-
 public class PermissionsBuilderAccessor {
 
     public static PermissionsBuilder createPermissionBuilder(final APISession session) throws LoginFailedException {

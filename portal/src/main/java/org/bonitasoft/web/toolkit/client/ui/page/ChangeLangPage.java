@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -61,16 +59,17 @@ public class ChangeLangPage extends Page {
         form.setFiller(new ChangeLangSelectFiller());
         addBody(form);
     }
-   
+
     @Override
     public String defineToken() {
         return TOKEN;
     }
 
     /**
-     * Action called to change portal language 
+     * Action called to change portal language
      */
     private final class ChangeLangFormAction extends FormAction {
+
         @Override
         public void execute() {
             final String choosenLang = this.getParameter("lang");
@@ -92,12 +91,12 @@ public class ChangeLangPage extends Page {
      * Fill select box with available languages
      */
     private final class ChangeLangSelectFiller extends FormFiller {
-        
+
         @Override
         protected void getData(final APICallback callback) {
             new APICaller(new I18nLocaleDefinition()).search(0, 0, callback);
         }
-    
+
         @Override
         protected void setData(final String json, final Map<String, String> headers) {
             List<I18nLocaleItem> items = new JSonItemReader().getItems(json, new I18nLocaleDefinition());

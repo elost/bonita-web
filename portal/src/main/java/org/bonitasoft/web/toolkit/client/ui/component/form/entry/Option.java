@@ -40,11 +40,11 @@ public class Option extends Component implements HTMLComponent {
      * Option Constructor.
      * 
      * @param label
-     *            the value displayed in the Select
+     *        the value displayed in the Select
      * @param value
-     *            the value to post
+     *        the value to post
      * @param selected
-     *            true, if the option is selected
+     *        true, if the option is selected
      */
     public Option(final String label, final String value, final boolean selected) {
         this.label = label;
@@ -56,9 +56,9 @@ public class Option extends Component implements HTMLComponent {
      * Option Constructor. Default selected value is false.
      * 
      * @param label
-     *            the value displayed in the Select
+     *        the value displayed in the Select
      * @param value
-     *            the value to post
+     *        the value to post
      */
     public Option(final String label, final String value) {
         this(label, value, false);

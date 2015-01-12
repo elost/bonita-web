@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -20,7 +18,6 @@ import java.util.Iterator;
 
 /**
  * @author Julien Mege
- *
  */
 public abstract class StringUtil {
 
@@ -34,10 +31,8 @@ public abstract class StringUtil {
      * <li>all other cases will throw an IllegalArgumentException</li>
      *
      * @param value
-     *            The value to convert
-     *
+     *        The value to convert
      * @return This method will return the Boolean value of the value passed.
-     *
      * @throw IllegalArgumentException
      */
     public static Boolean toBoolean(final String value) throws IllegalArgumentException {
@@ -120,7 +115,7 @@ public abstract class StringUtil {
      * Check if a value is blank (NULL or empty String).
      *
      * @param value
-     *            The value to check
+     *        The value to check
      * @return This method returns TRUE if the value is null OR an empty String, otherwise FALSE.
      */
     public static boolean isBlank(final String value) {
@@ -142,18 +137,15 @@ public abstract class StringUtil {
     }
 
     /**
-     * FROM COMMONS-LANG3 3.1 
-     *
+     * FROM COMMONS-LANG3 3.1
      * <p>Joins the elements of the provided {@code Iterable} into
      * a single String containing the provided elements.</p>
-     *
      * <p>No delimiter is added before or after the list.
      * A {@code null} separator is the same as an empty String ("").</p>
-     *
      * <p>See the examples here: {@link #join(Object[],String)}. </p>
      *
-     * @param iterable  the {@code Iterable} providing the values to join together, may be null
-     * @param separator  the separator character to use, null treated as ""
+     * @param iterable the {@code Iterable} providing the values to join together, may be null
+     * @param separator the separator character to use, null treated as ""
      * @return the joined String, {@code null} if null iterator input
      * @since 2.3
      */
@@ -166,17 +158,14 @@ public abstract class StringUtil {
 
     /**
      * FROM COMMONS-LANG3 3.1
-     *
      * <p>Joins the elements of the provided {@code Iterator} into
      * a single String containing the provided elements.</p>
-     *
      * <p>No delimiter is added before or after the list.
      * A {@code null} separator is the same as an empty String ("").</p>
-     *
      * <p>See the examples here: {@link #join(Object[],String)}. </p>
      *
-     * @param iterator  the {@code Iterator} of values to join together, may be null
-     * @param separator  the separator character to use, null treated as ""
+     * @param iterator the {@code Iterator} of values to join together, may be null
+     * @param separator the separator character to use, null treated as ""
      * @return the joined String, {@code null} if null iterator input
      */
     public static String join(Iterator<?> iterator, String separator) {

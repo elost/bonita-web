@@ -39,9 +39,9 @@ import org.bonitasoft.web.toolkit.client.ui.component.table.Table;
 public class ListProcessActorMembershipPage extends ListProcessActorMemberPage {
 
     public static final String TOKEN = "listprocessactormembership";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(ProcessListingAdminPage.TOKEN);
         PRIVILEGES.add("reportlistingadminext");

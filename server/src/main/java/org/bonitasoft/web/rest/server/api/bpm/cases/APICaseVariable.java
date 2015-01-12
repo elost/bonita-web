@@ -25,7 +25,6 @@ import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 
 /**
  * @author Colin PUY
- * 
  */
 public class APICaseVariable extends ConsoleAPI<CaseVariableItem> implements APIHasSearch<CaseVariableItem>,
         APIHasUpdate<CaseVariableItem>, APIHasGet<CaseVariableItem> {

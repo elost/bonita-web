@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model;
 
@@ -29,39 +27,40 @@ public class ReducedApplicationConfig implements Serializable {
      * UID
      */
     private static final long serialVersionUID = -7591064386168731706L;
-    
+
     /**
      * application label
      */
     private String applicationLabel;
-    
+
     /**
      * application template
      */
     private ReducedHtmlTemplate applicationLayout;
-    
+
     /**
      * mandatory field symbol
      */
     private String mandatorySymbol;
-    
+
     /**
      * mandatory field label
      */
     private String mandatoryLabel;
-    
+
     /**
      * mandatory field symbol CSS classes
      */
     private String mandatoryStyle;
-    
+
     /**
      * The userXP URL
      */
     private String userXPURL;
-    
+
     /**
      * Constructor
+     * 
      * @param mandatoryStyle
      * @param userXPURL
      */
@@ -69,11 +68,11 @@ public class ReducedApplicationConfig implements Serializable {
         this.mandatoryStyle = mandatoryStyle;
         this.userXPURL = userXPURL;
     }
-    
+
     /**
      * Default Constructor
      */
-    public ReducedApplicationConfig(){
+    public ReducedApplicationConfig() {
         super();
         // Mandatory for serialization
     }
@@ -125,5 +124,5 @@ public class ReducedApplicationConfig implements Serializable {
     public void setUserXPURL(final String userXPURL) {
         this.userXPURL = userXPURL;
     }
-    
+
 }

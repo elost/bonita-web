@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -25,7 +23,6 @@ import org.bonitasoft.web.toolkit.client.ui.component.core.Node;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class ItemDetailsMetadata {
 
@@ -55,9 +52,9 @@ public class ItemDetailsMetadata {
     }
 
     public ItemDetailsMetadata(final String attributeName, Html html) {
-        this(new AttributeReader(attributeName) ,html);
+        this(new AttributeReader(attributeName), html);
     }
-    
+
     public ItemDetailsMetadata(AbstractAttributeReader attributeReader, Html html) {
         this.attributeReader = attributeReader;
         representation = html;
@@ -92,7 +89,7 @@ public class ItemDetailsMetadata {
     }
 
     public Node createDefinition(final String cssClass, final String value) {
-        if(representation != null) {
+        if (representation != null) {
             return representation;
         }
         final Definition definition = new Definition(getLabel() + ": ", getTooltip(), value);

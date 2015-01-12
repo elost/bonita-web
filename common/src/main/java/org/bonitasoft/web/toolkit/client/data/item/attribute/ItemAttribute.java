@@ -56,7 +56,6 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
 
     /**
      * The maximum length of a long in UI (arbitrary value)
-     * 
      */
     public static final int MAX_LENGTH_LONG = 2000;
 
@@ -131,15 +130,15 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
          * </ul>
          */
         EMAIL,
-        
+
         /**
          * A URL
          * <ul>
          * <li>Validate max length of {@value #MAX_LENGTH_URL}</li>
          * </ul>
          */
-        URL, 
-        
+        URL,
+
         ITEM_ID
     };
 
@@ -157,9 +156,9 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
      * Default constructor
      * 
      * @param name
-     *            The name of the DataSource variable
+     *        The name of the DataSource variable
      * @param type
-     *            The type of the attribute datas choosen in ItemAttribute.TYPE_XXX
+     *        The type of the attribute datas choosen in ItemAttribute.TYPE_XXX
      */
     public ItemAttribute(final String name, final TYPE type) {
         this.name = name;
@@ -448,7 +447,6 @@ public final class ItemAttribute implements Validable, ModifiableInput, Modifiab
     /**
      * Define if this attribute is mandatory (mustn't be empty)<br />
      * This method add a DefaultValueModifier to the attribute
-     * 
      */
     public ItemAttribute isMandatory() {
         return isMandatory(true);

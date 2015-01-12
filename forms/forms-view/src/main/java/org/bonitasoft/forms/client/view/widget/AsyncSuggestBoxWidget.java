@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -94,13 +92,13 @@ public class AsyncSuggestBoxWidget extends Composite {
      * Default constructor.
      * 
      * @param formAsyncSuggestBoxData
-     *            the Suggestbox data
+     *        the Suggestbox data
      * @param formID
      * @param contextMap
      * @param pageId
      * @param isCurrentValue
      * @param fieldValue
-     *            the field's available value
+     *        the field's available value
      */
     public AsyncSuggestBoxWidget(final ReducedFormWidget formAsyncSuggestBoxData, final String formID, final Map<String, Object> contextMap,
             final FormFieldValue fieldValue) {
@@ -172,7 +170,7 @@ public class AsyncSuggestBoxWidget extends Composite {
      * Get the string value of a {@link FormFieldValue}
      * 
      * @param fieldValue
-     *            the {@link FormFieldValue}
+     *        the {@link FormFieldValue}
      * @return a String
      */
     protected String getStringValue(final FormFieldValue fieldValue) {
@@ -213,7 +211,6 @@ public class AsyncSuggestBoxWidget extends Composite {
 
     /**
      * AsyncSuggestBox KeyPressHandler
-     * 
      */
     protected class AsyncSuggestBoxKeyPressHandler implements KeyPressHandler {
 
@@ -229,7 +226,6 @@ public class AsyncSuggestBoxWidget extends Composite {
 
     /**
      * AsyncSuggestBox KeyUpHandler
-     * 
      */
     protected class AsyncSuggestBoxKeyUpHandler implements KeyUpHandler {
 
@@ -286,7 +282,6 @@ public class AsyncSuggestBoxWidget extends Composite {
 
     /**
      * Handler for available values update
-     * 
      */
     protected class GetAsyncAvailableValuesHandler extends FormsAsyncCallback<List<ReducedFormFieldAvailableValue>> {
 

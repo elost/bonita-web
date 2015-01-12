@@ -13,7 +13,7 @@
  ******************************************************************************/
 package org.bonitasoft.console.client.angular;
 
-import static org.bonitasoft.web.toolkit.client.common.util.StringUtil.*;
+import static org.bonitasoft.web.toolkit.client.common.util.StringUtil.isBlank;
 
 import java.util.Arrays;
 import java.util.List;
@@ -66,12 +66,12 @@ public class AngularIFrameView extends RawView {
     }
 
     public native String getHash() /*-{
-        return $wnd.location.hash;
-    }-*/;
+                                   return $wnd.location.hash;
+                                   }-*/;
 
     public native void updateHash(String hash) /*-{
-        $wnd.location.hash = hash;
-    }-*/;
+                                               $wnd.location.hash = hash;
+                                               }-*/;
 
     @Override
     public String defineToken() {
@@ -114,9 +114,9 @@ public class AngularIFrameView extends RawView {
      */
     protected String buildAngularUrl(final String url, final String token, final String queryString) {
         return new AngularUrlBuilder(url)
-        .appendQueryStringParameter(token + "_id", queryString + "&" + getHash())
-        .appendQueryStringParameter(token + "_tab", queryString + "&" + getHash())
-        .build() + (isBlank(queryString) ? "" : "?" + queryString.replaceAll(token + '_', ""));
+                .appendQueryStringParameter(token + "_id", queryString + "&" + getHash())
+                .appendQueryStringParameter(token + "_tab", queryString + "&" + getHash())
+                .build() + (isBlank(queryString) ? "" : "?" + queryString.replaceAll(token + '_', ""));
     }
 
     /**

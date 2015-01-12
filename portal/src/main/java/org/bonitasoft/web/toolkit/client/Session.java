@@ -5,12 +5,10 @@
  * it under the terms of the GNU General public static License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General public static License for more details.
- * 
  * You should have received a copy of the GNU General public static License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -20,7 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gwt.user.client.Window;
 import org.bonitasoft.web.toolkit.client.common.TreeIndexed;
 import org.bonitasoft.web.toolkit.client.common.session.SessionItem;
 import org.bonitasoft.web.toolkit.client.common.url.UrlOption;
@@ -28,7 +25,6 @@ import org.bonitasoft.web.toolkit.client.data.APIID;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class Session extends ParametersStorage {
 
@@ -81,7 +77,7 @@ public class Session extends ParametersStorage {
      * Replace all parameters by the passed ones. Using this method also remove the parameters that are not redefined.
      * 
      * @param params
-     *            The new parameters to set.
+     *        The new parameters to set.
      */
     public static void setParameters(final HashMap<String, String> params) {
         SINGLETON._setParameters(params);
@@ -91,7 +87,7 @@ public class Session extends ParametersStorage {
      * Replace all parameters by the passed ones. Using this method also remove the parameters that are not redefined.
      * 
      * @param params
-     *            The new parameters to set.
+     *        The new parameters to set.
      */
     public static void setParameters(final TreeIndexed<String> params) {
         SINGLETON._setParameters(params);

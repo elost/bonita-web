@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -41,20 +39,20 @@ public class HumanTaskDatastoreIntegrationTest extends AbstractConsoleTest {
     }
 
     private HumanTaskItem fetchHumanTask(long taskId) throws Exception {
-		HumanTaskInstance humanTaskInstance = 
-				(HumanTaskInstance) TenantAPIAccessor.getProcessAPI(getInitiator().getSession()).getActivityInstance(taskId);
-		return HumanTaskDatastore.fillConsoleItem(new HumanTaskItem(), humanTaskInstance);
-	}
+        HumanTaskInstance humanTaskInstance =
+                (HumanTaskInstance) TenantAPIAccessor.getProcessAPI(getInitiator().getSession()).getActivityInstance(taskId);
+        return HumanTaskDatastore.fillConsoleItem(new HumanTaskItem(), humanTaskInstance);
+    }
 
-	@Test
+    @Test
     public void task_priority_can_be_changed() throws Exception {
-    	TestHumanTask humanTask = TestProcessFactory.getDefaultHumanTaskProcess().addActor(getInitiator())
+        TestHumanTask humanTask = TestProcessFactory.getDefaultHumanTaskProcess().addActor(getInitiator())
                 .startCase().getNextHumanTask();
         Map<String, String> attributes = new HashMap<String, String>();
         attributes.put(HumanTaskItem.ATTRIBUTE_PRIORITY, TaskPriority.HIGHEST.name());
 
         this.humanTaskDatastore.update(makeAPIID(humanTask.getId()), attributes);
-        
+
         HumanTaskItem fetchedTask = fetchHumanTask(humanTask.getId());
         assertEquals(HumanTaskItem.VALUE_PRIORITY_HIGHEST, fetchedTask.getPriority());
     }

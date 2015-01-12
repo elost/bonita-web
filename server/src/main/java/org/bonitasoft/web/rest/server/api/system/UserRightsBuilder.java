@@ -29,6 +29,7 @@ public class UserRightsBuilder {
     private SHA1Generator generator = new SHA1Generator();
 
     interface TokenProvider {
+
         List<String> getTokens();
     }
 

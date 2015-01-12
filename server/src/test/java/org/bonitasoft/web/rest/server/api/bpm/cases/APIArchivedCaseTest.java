@@ -25,7 +25,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 /**
  * @author Nicolas TITH
- *
  */
 @RunWith(MockitoJUnitRunner.class)
 public class APIArchivedCaseTest extends APITestWithMock {
@@ -54,7 +53,6 @@ public class APIArchivedCaseTest extends APITestWithMock {
         doReturn(archivedProcessInstance).when(processAPI).getArchivedProcessInstance(anyLong());
     }
 
-
     @Test
     public void deleteShouldDeleteSeveralItem() throws Exception {
         //given
@@ -65,6 +63,5 @@ public class APIArchivedCaseTest extends APITestWithMock {
         //then
         verify(archivedCaseDatastore).delete(idList);
     }
-
 
 }

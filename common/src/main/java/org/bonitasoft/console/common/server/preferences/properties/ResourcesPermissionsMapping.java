@@ -60,8 +60,8 @@ public class ResourcesPermissionsMapping extends SimpleProperties {
 
     protected String buildResourceKey(final String method, final String apiName, final String resourceName, final String resourceId) {
         String key = method + "|" + apiName + "/" + resourceName;
-        if(resourceId != null){
-            key +=  "/" + resourceId;
+        if (resourceId != null) {
+            key += "/" + resourceId;
         }
         return key;
     }

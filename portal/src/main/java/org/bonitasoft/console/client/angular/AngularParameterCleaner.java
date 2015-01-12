@@ -1,6 +1,5 @@
 package org.bonitasoft.console.client.angular;
 
-
 public class AngularParameterCleaner {
 
     private final String hash;

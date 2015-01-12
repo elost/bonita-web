@@ -8,14 +8,14 @@ import org.bonitasoft.web.toolkit.server.ServiceNotFoundException;
 
 public class ConsoleServiceFactory implements ServiceFactory {
 
-	@Override
-	public Service getService(String calledToolToken) {
-		if (OrganizationImportService.TOKEN.equals(calledToolToken)) {
+    @Override
+    public Service getService(String calledToolToken) {
+        if (OrganizationImportService.TOKEN.equals(calledToolToken)) {
             return new OrganizationImportService();
         } else if (ProcessActorImportService.TOKEN.equals(calledToolToken)) {
             return new ProcessActorImportService();
         }
-		throw new ServiceNotFoundException(calledToolToken);
-	}
+        throw new ServiceNotFoundException(calledToolToken);
+    }
 
 }

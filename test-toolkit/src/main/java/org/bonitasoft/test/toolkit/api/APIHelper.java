@@ -389,9 +389,9 @@ public class APIHelper {
      * Find processes and return all matching ids.
      * 
      * @param pProcessName
-     *            null to get all processes
+     *        null to get all processes
      * @param pVersion
-     *            null to get all versions of pProcessName
+     *        null to get all versions of pProcessName
      * @return
      */
     public final List<String> getProcessIds(final String pProcessName, final String pVersion) {
@@ -924,7 +924,7 @@ public class APIHelper {
      * Get i18n translation.
      * 
      * @param pLanguageCode
-     *            in [de, en, es, fr, it, pt_BR]
+     *        in [de, en, es, fr, it, pt_BR]
      * @return Map<String, String> (key, value) pairs map
      */
     public final Map<String, String> getI18nTranslation(final String pLanguageCode) {
@@ -1040,7 +1040,7 @@ public class APIHelper {
      * Can be used for generice search for example.
      * 
      * @param pResourcePathWithQueryParams
-     *            eg. "API/system/i18ntranslation?p=0&c=0&f=locale%3den"
+     *        eg. "API/system/i18ntranslation?p=0&c=0&f=locale%3den"
      * @return {@link APIResponse}
      * @throws Exception
      */

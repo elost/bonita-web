@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,12 +27,14 @@ import org.bonitasoft.web.toolkit.client.ui.action.Action;
 
 /**
  * Change users state to ENABLE or DISABLE
- *  
+ * 
  * @author Colin PUY
  */
 public class ChangeUsersStateAction extends Action {
 
-    public enum STATE { ENABLED, DISABLED }
+    public enum STATE {
+        ENABLED, DISABLED
+    }
 
     private STATE newState;
     private String userId;
@@ -42,18 +42,18 @@ public class ChangeUsersStateAction extends Action {
     public ChangeUsersStateAction(APIID userId, STATE newState) {
         this(userId.toString(), newState);
     }
-    
+
     public ChangeUsersStateAction(String userId, STATE newState) {
         this.userId = userId;
         this.newState = newState;
     }
-    
+
     @Override
     public void execute() {
         HashMap<String, String> updateAttributes = buildAttributesMap();
         new APICaller(UserDefinition.get()).update(userId, updateAttributes, new ChangeUserStateCallback());
     }
-    
+
     private HashMap<String, String> buildAttributesMap() {
         HashMap<String, String> map = new HashMap<String, String>();
         if (STATE.ENABLED.equals(newState)) {
@@ -65,12 +65,13 @@ public class ChangeUsersStateAction extends Action {
     }
 
     private final class ChangeUserStateCallback extends APICallback {
+
         @Override
         public void onSuccess(final int httpStatusCode, final String response, final Map<String, String> headers) {
             ViewController.closePopup();
             ViewController.refreshCurrentPage();
         }
-    
+
         @Override
         public void onError(final String message, final Integer errorCode) {
             // Do nothing

@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
  * JSON objects wrapper.
  * 
  * @author truc
- * 
  */
 public class BonitaJSON {
 

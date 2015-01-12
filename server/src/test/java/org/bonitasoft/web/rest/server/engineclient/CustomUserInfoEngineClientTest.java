@@ -1,5 +1,11 @@
 package org.bonitasoft.web.rest.server.engineclient;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willThrow;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,12 +25,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.willThrow;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.verify;
 
 /**
  * @author Vincent Elcrin
@@ -74,7 +74,7 @@ public class CustomUserInfoEngineClientTest {
 
     @Test
     public void should_list_definitions_for_a_given_range() throws Exception {
-        given(engine.getCustomUserInfoDefinitions(0, 2)).willReturn(Arrays.<CustomUserInfoDefinition>asList(
+        given(engine.getCustomUserInfoDefinitions(0, 2)).willReturn(Arrays.<CustomUserInfoDefinition> asList(
                 new EngineCustomUserInfoDefinition(1L),
                 new EngineCustomUserInfoDefinition(2L)));
 

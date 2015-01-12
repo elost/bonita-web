@@ -31,7 +31,7 @@ public class JsId {
      * Function to test the equality between two JsId.
      * 
      * @param obj
-     *            the object to compare with the current JsId
+     *        the object to compare with the current JsId
      */
     @Override
     public final boolean equals(final Object obj) {

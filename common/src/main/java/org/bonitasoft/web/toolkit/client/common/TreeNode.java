@@ -15,9 +15,7 @@
 package org.bonitasoft.web.toolkit.client.common;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  * @param <VALUE_CLASS>
  */
 public class TreeNode<VALUE_CLASS> extends Tree<VALUE_CLASS> {

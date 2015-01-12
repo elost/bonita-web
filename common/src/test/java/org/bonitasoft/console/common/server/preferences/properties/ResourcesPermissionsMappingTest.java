@@ -1,5 +1,4 @@
 /*
- *
  * Copyright (C) 2014 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
@@ -12,7 +11,6 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
 package org.bonitasoft.console.common.server.preferences.properties;
@@ -31,7 +29,8 @@ public class ResourcesPermissionsMappingTest {
     @Test
     public void testGetResourcePermission() throws Exception {
         //given
-        final String fileContent =  "GET|bpm/process [Process visualization, Process categories, Process actor mapping visualization, Connector visualization]\n" +
+        final String fileContent = "GET|bpm/process [Process visualization, Process categories, Process actor mapping visualization, Connector visualization]\n"
+                +
                 "POST|bpm/process [Process Deploy]\n" +
                 "POST|bpm/process/6 [Custom permission]\n" +
                 "PUT|bpm/process []";
@@ -51,7 +50,6 @@ public class ResourcesPermissionsMappingTest {
         Assertions.assertThat(postOnSinglePermission).containsOnly("Custom permission");
         Assertions.assertThat(putPermissions).isEmpty();
         Assertions.assertThat(unknown).isEmpty();
-
 
     }
 

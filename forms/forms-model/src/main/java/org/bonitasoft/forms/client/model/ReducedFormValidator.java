@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model;
 
@@ -28,8 +26,10 @@ public class ReducedFormValidator implements Serializable {
     /**
      * Possible validation message positions
      */
-    public static enum ValidatorPosition {TOP, BOTTOM};
-    
+    public static enum ValidatorPosition {
+        TOP, BOTTOM
+    };
+
     /**
      * UID
      */
@@ -39,29 +39,30 @@ public class ReducedFormValidator implements Serializable {
      * validator ID
      */
     private String id;
-    
+
     /**
      * validator className
      */
     private String validatorClass;
-    
+
     /**
      * validator label
      */
     private String label;
-    
+
     /**
      * validator CSS classNames
      */
     private String style;
-    
+
     /**
      * label Position
      */
     private ValidatorPosition position;
-    
+
     /**
      * Constructor
+     * 
      * @param id validator id
      * @param validatorClass validator className
      * @param style validator label CSS classNames
@@ -77,9 +78,9 @@ public class ReducedFormValidator implements Serializable {
      */
     public ReducedFormValidator() {
         super();
-       // Mandatory for serialization.
+        // Mandatory for serialization.
     }
-    
+
     public String getId() {
         return id;
     }
@@ -119,5 +120,5 @@ public class ReducedFormValidator implements Serializable {
     public void setPosition(final ValidatorPosition position) {
         this.position = position;
     }
-	
+
 }

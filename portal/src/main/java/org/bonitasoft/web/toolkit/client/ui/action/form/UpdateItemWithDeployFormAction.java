@@ -24,15 +24,13 @@ import org.bonitasoft.web.toolkit.client.data.api.callback.APICallback;
 import org.bonitasoft.web.toolkit.client.data.item.IItem;
 import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 import org.bonitasoft.web.toolkit.client.data.item.attribute.ValidatorEngine;
-import org.bonitasoft.web.toolkit.client.ui.JsId;
 import org.bonitasoft.web.toolkit.client.ui.component.form.AbstractForm;
 
 /**
  * Execute an update for an ItemForm.
  *
  * @param <ITEM_TYPE>
- *            The type of the item that will be updated
- *
+ *        The type of the item that will be updated
  * @author Vincent Elcrin
  */
 public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends ItemFormAction<ITEM_TYPE> {
@@ -42,6 +40,7 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
     private Promise errorPromise;
 
     public interface Promise {
+
         public void apply(String message, Integer errorCode);
     }
 
@@ -53,9 +52,9 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
      * Default constructor.
      *
      * @param itemDefinition
-     *            The definition of the item to update.
+     *        The definition of the item to update.
      * @param form
-     *            The form that contains the attribute to updates
+     *        The form that contains the attribute to updates
      */
     public UpdateItemWithDeployFormAction(final ItemDefinition itemDefinition, final AbstractForm form, final String... deploysToUpdate) {
         super(itemDefinition, form);
@@ -66,7 +65,7 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
      * Default constructor.
      *
      * @param itemDefinition
-     *            The definition of the item to update.
+     *        The definition of the item to update.
      */
     public UpdateItemWithDeployFormAction(final ItemDefinition itemDefinition, final String... deploys) {
         super(itemDefinition);
@@ -126,7 +125,7 @@ public class UpdateItemWithDeployFormAction<ITEM_TYPE extends IItem> extends Ite
         }
 
         private HashMap<String, String> popValues(LinkedHashMap<ItemDefinition<?>, HashMap<String, String>> queue,
-                                                  final ItemDefinition<?> itemDefinition) {
+                final ItemDefinition<?> itemDefinition) {
             return queue.remove(itemDefinition);
         }
 

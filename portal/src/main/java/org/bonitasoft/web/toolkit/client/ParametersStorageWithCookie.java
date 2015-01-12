@@ -5,12 +5,10 @@
  * it under the terms of the GNU General public static License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General public static License for more details.
- * 
  * You should have received a copy of the GNU General public static License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -51,7 +49,7 @@ public class ParametersStorageWithCookie extends ParametersStorage {
     @Override
     protected final void resetParameters() {
         Cookies.removeCookie(LOGIN_COOKIE_NAME);
-        
+
         UserSessionVariables.removeUserVariable(COOKIE_NAME);
         UserSessionVariables.removeUserVariable(LOGIN_COOKIE_NAME);
     }
@@ -108,7 +106,7 @@ public class ParametersStorageWithCookie extends ParametersStorage {
      * Replace all parameters by the passed ones. Using this method also remove the parameters that are not redefined.
      * 
      * @param params
-     *            The new parameters to set.
+     *        The new parameters to set.
      */
     public static void setParameters(final HashMap<String, String> params) {
         SINGLETON._setParameters(params);
@@ -118,7 +116,7 @@ public class ParametersStorageWithCookie extends ParametersStorage {
      * Replace all parameters by the passed ones. Using this method also remove the parameters that are not redefined.
      * 
      * @param params
-     *            The new parameters to set.
+     *        The new parameters to set.
      */
     public static void setParameters(final TreeIndexed<String> params) {
         SINGLETON._setParameters(params);

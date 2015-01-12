@@ -56,7 +56,7 @@ public class Tab extends Fieldset {
 
     public void setTabVisibility(boolean visibility) {
         this.tabVisibility = visibility;
-        if(header != null) {
+        if (header != null) {
             UIObject.setVisible(header, tabVisibility);
         }
     }
@@ -67,7 +67,7 @@ public class Tab extends Fieldset {
                 HTML.div(new HTMLClass("header"))
                         + HTML.h1() + this.label + HTML._h1()
                         + HTML._div()
-        );
+                );
         UIObject.setVisible(header, tabVisibility);
         return header;
     }

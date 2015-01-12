@@ -42,9 +42,9 @@ public class AddProcessCategoryPage extends Page {
     private static final String PARAMETER_PROCESS_NAME = "processName";
 
     public static final String TOKEN = "addProcessCategoryPage";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(ProcessListingAdminPage.TOKEN);
         PRIVILEGES.add("reportlistingadminext");
@@ -70,7 +70,6 @@ public class AddProcessCategoryPage extends Page {
 
     /**
      * build the subtask form
-     * 
      */
     @Override
     public void buildView() {

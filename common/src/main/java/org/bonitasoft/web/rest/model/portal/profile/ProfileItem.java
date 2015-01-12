@@ -37,15 +37,15 @@ public class ProfileItem extends Item implements ItemHasUniqueId, ItemHasIcon {
     public static final String ATTRIBUTE_DESCRIPTION = "description";
 
     public static final String FILTER_USER_ID = "user_id";
-    
+
     public static final String ATTRIBUTE_IS_DEFAULT = "is_default";
-    
+
     public static final String ATTRIBUTE_LAST_UPDATE_DATE = "lastUpdateDate";
 
     public static final String ATTRIBUTE_CREATION_DATE = "creationDate";
 
     public static final String ATTRIBUTE_CREATED_BY_USER_ID = "createdBy";
-    
+
     public static final String ATTRIBUTE_UPDATED_BY_USER_ID = "updatedBy";
 
     public ProfileItem() {
@@ -78,13 +78,13 @@ public class ProfileItem extends Item implements ItemHasUniqueId, ItemHasIcon {
     public void setDescription(final String description) {
         setAttribute(ATTRIBUTE_DESCRIPTION, description);
     }
-    
+
     public void setCreationDate(String date) {
         setAttribute(ATTRIBUTE_CREATION_DATE, date);
     }
 
     public void setCreationDate(Date date) {
-        setAttribute(ATTRIBUTE_CREATION_DATE, date); 
+        setAttribute(ATTRIBUTE_CREATION_DATE, date);
     }
 
     public void setCreatedByUserId(String id) {
@@ -98,7 +98,7 @@ public class ProfileItem extends Item implements ItemHasUniqueId, ItemHasIcon {
     public void setCreatedByUserId(APIID id) {
         setAttribute(ATTRIBUTE_CREATED_BY_USER_ID, id);
     }
-    
+
     public UserItem getCreatedByUser() {
         return (UserItem) getDeploy(ATTRIBUTE_CREATED_BY_USER_ID);
     }
@@ -122,7 +122,7 @@ public class ProfileItem extends Item implements ItemHasUniqueId, ItemHasIcon {
     public void setLastUpdateDate(final Date date) {
         setAttribute(ATTRIBUTE_LAST_UPDATE_DATE, date);
     }
-    
+
     public UserItem getUpdatedByUser() {
         return (UserItem) getDeploy(ATTRIBUTE_UPDATED_BY_USER_ID);
     }
@@ -143,7 +143,7 @@ public class ProfileItem extends Item implements ItemHasUniqueId, ItemHasIcon {
     public String getDescription() {
         return getAttributeValue(ATTRIBUTE_DESCRIPTION);
     }
-    
+
     public String isDefault() {
         return getAttributeValue(ATTRIBUTE_IS_DEFAULT);
     }

@@ -22,13 +22,12 @@ import org.bonitasoft.console.common.server.login.LoginManagerPropertiesFactory;
 
 /**
  * @author Chong Zhao
- * 
  */
 public class OAuthConsumerFactory {
 
     static Map<Long, OAuthConsumer> map = new HashMap<Long, OAuthConsumer>();
     private static LoginManagerPropertiesFactory loginManagerPropertiesFactory = new LoginManagerPropertiesFactory();
-    
+
     private enum OAUTH_CLASS_TYPE {
         LinkedIn
     }

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -56,7 +54,6 @@ import org.bonitasoft.web.rest.model.document.DocumentItem;
  * Document data store
  * 
  * @author Yongtao Guo
- * 
  */
 public class DocumentDatastore {
 
@@ -101,8 +98,9 @@ public class DocumentDatastore {
         throw new ServletException("Invalid view type.");
     }
 
-    public DocumentItem createDocument(final long processInstanceId, final String documentName, final String documentCreationType, final String path) 
-                throws BonitaHomeNotSetException, ServerAPIException, UnknownAPITypeException, DocumentException, IOException, ProcessInstanceNotFoundException, DocumentAttachmentException, InvalidSessionException, ProcessDefinitionNotFoundException, RetrieveException {
+    public DocumentItem createDocument(final long processInstanceId, final String documentName, final String documentCreationType, final String path)
+            throws BonitaHomeNotSetException, ServerAPIException, UnknownAPITypeException, DocumentException, IOException, ProcessInstanceNotFoundException,
+            DocumentAttachmentException, InvalidSessionException, ProcessDefinitionNotFoundException, RetrieveException {
 
         DocumentItem item = new DocumentItem();
         final ProcessAPI processAPI = TenantAPIAccessor.getProcessAPI(this.apiSession);
@@ -252,7 +250,7 @@ public class DocumentDatastore {
         item.setArchivedDate(parseDate(document.getArchiveDate()));
         return item;
     }
-    
+
     private String parseDate(final Date date) {
         String dateStr = null;
         if (date != null) {

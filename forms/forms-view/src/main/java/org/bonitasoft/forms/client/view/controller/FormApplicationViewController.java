@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -186,8 +184,8 @@ public class FormApplicationViewController {
      * create the view for the process template and the form page template
      *
      * @param formContainerId
-     *            id of the element in which the form has to be placed (if null the form will be insterted at the
-     *            end of the body)
+     *        id of the element in which the form has to be placed (if null the form will be insterted at the
+     *        end of the body)
      */
     public void createInitialView(final String formContainerId) {
 
@@ -206,8 +204,8 @@ public class FormApplicationViewController {
      * create the view for the form page in the specified node
      *
      * @param formContainerId
-     *            id of the element in which the form has to be placed (if null the form will be insterted at the
-     *            end of the body)
+     *        id of the element in which the form has to be placed (if null the form will be insterted at the
+     *        end of the body)
      */
     public void createFormInitialView(final String formContainerId) {
 
@@ -218,10 +216,10 @@ public class FormApplicationViewController {
      * create the view for the form page in the specified node
      *
      * @param formContainerId
-     *            id of the element in which the form has to be placed (if null the form will be insterted at the
-     *            end of the body)
+     *        id of the element in which the form has to be placed (if null the form will be insterted at the
+     *        end of the body)
      * @param includeApplicationTemplate
-     *            if true, include the process template otherwise just display the form
+     *        if true, include the process template otherwise just display the form
      */
     protected void createView(final String formContainerId, final boolean includeApplicationTemplate) {
         elementId = formContainerId;
@@ -378,7 +376,6 @@ public class FormApplicationViewController {
                 Window.alert("Error while trying to query the form layout :" + e.getMessage());
             }
         }
-
 
         @Override
         public void onUnhandledFailure(final Throwable caught) {

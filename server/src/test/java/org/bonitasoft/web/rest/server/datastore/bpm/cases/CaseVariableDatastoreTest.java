@@ -22,7 +22,6 @@ import org.mockito.Mock;
 
 /**
  * @author Colin PUY
- * 
  */
 public class CaseVariableDatastoreTest extends APITestWithMock {
 
@@ -44,16 +43,16 @@ public class CaseVariableDatastoreTest extends APITestWithMock {
         long caseId = 1L;
         String name = "aName";
         String newValue = "newValue";
-        
+
         datastore.updateVariableValue(caseId, name, String.class.getName(), newValue);
 
         verify(processAPI).updateProcessDataInstance(name, caseId, newValue);
     }
-    
+
     @Test
     @Ignore("can't instanciate DataInstance - see engine to see how")
     public void findByCaseIdReturnCaseVariablesforASpecifiedCaseId() throws Exception {
-        
-//        datastore.findByCaseId(1L, page, resultsByPage)
+
+        //        datastore.findByCaseId(1L, page, resultsByPage)
     }
 }

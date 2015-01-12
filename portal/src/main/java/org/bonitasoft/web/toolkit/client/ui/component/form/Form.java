@@ -122,11 +122,11 @@ public class Form extends AbstractForm {
      * Add a single line text input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addTextEntry(final JsId jsid, final String label, final String tooltip) {
@@ -137,11 +137,11 @@ public class Form extends AbstractForm {
      * Add a single line text input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addTextEntry(final JsId jsid, final String label, final String tooltip, final String defaultValue) {
@@ -152,11 +152,11 @@ public class Form extends AbstractForm {
      * Add a single line text input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addTextEntryWithPlaceholder(final JsId jsid, final String label, final String tooltip, final String placeholder) {
@@ -170,13 +170,13 @@ public class Form extends AbstractForm {
      * Add a single line text input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @param description
-     *            (Optional) A more complete description on how to fill the input and what it is for.
+     *        (Optional) A more complete description on how to fill the input and what it is for.
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addTextEntry(final JsId jsid, final String label, final String tooltip, final String defaultValue, final String description) {
@@ -187,15 +187,15 @@ public class Form extends AbstractForm {
      * Add a single line text input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @param description
-     *            (Optional) A more complete description on how to fill the input and what it is for.
+     *        (Optional) A more complete description on how to fill the input and what it is for.
      * @param example
-     *            (Optional) An example of valid input.
+     *        (Optional) An example of valid input.
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addTextEntry(final JsId jsid, final String label, final String tooltip, final String defaultValue, final String description,
@@ -222,11 +222,11 @@ public class Form extends AbstractForm {
      * Add a single line Static text
      *
      * @param jsid
-     *            The JsId of the Static text
+     *        The JsId of the Static text
      * @param label
-     *            The label to show beside the Static text
+     *        The label to show beside the Static text
      * @param tooltip
-     *            The tooltip that will quickly explain the Static text
+     *        The tooltip that will quickly explain the Static text
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addStaticTextEntry(final JsId jsid, final String label, final String tooltip, final String defaultValue) {
@@ -237,13 +237,13 @@ public class Form extends AbstractForm {
      * Add a single line static text
      *
      * @param jsid
-     *            The JsId of the Static text
+     *        The JsId of the Static text
      * @param label
-     *            The label to show beside the Static text
+     *        The label to show beside the Static text
      * @param tooltip
-     *            The tooltip that will quickly explain the Static text
+     *        The tooltip that will quickly explain the Static text
      * @param description
-     *            (Optional) A more complete description on how to fill the Static text and what it is for.
+     *        (Optional) A more complete description on how to fill the Static text and what it is for.
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addStaticTextEntry(final JsId jsid, final String label, final String tooltip, final String defaultValue, final String description) {
@@ -254,15 +254,15 @@ public class Form extends AbstractForm {
      * Add a single line static text
      *
      * @param jsid
-     *            The JsId of the Static text
+     *        The JsId of the Static text
      * @param label
-     *            The label to show beside the Static text
+     *        The label to show beside the Static text
      * @param tooltip
-     *            The tooltip that will quickly explain the Static text
+     *        The tooltip that will quickly explain the Static text
      * @param description
-     *            (Optional) A more complete description on how to fill the Static text and what it is for.
+     *        (Optional) A more complete description on how to fill the Static text and what it is for.
      * @param example
-     *            (Optional) An example of valid Static text.
+     *        (Optional) An example of valid Static text.
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addStaticTextEntry(final JsId jsid, final String label, final String tooltip, final String defaultValue, final String description,
@@ -279,11 +279,11 @@ public class Form extends AbstractForm {
      * Add a simple obfuscated password input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addPasswordEntry(final JsId jsid, final String label, final String tooltip) {
@@ -294,13 +294,13 @@ public class Form extends AbstractForm {
      * Add a simple obfuscated password input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @param description
-     *            (Optional) A more complete description on how to fill the input and what it is for.
+     *        (Optional) A more complete description on how to fill the input and what it is for.
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addPasswordEntry(final JsId jsid, final String label, final String tooltip, final String description) {
@@ -311,15 +311,15 @@ public class Form extends AbstractForm {
      * Add a simple obfuscated password input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @param description
-     *            (Optional) A more complete description on how to fill the input and what it is for.
+     *        (Optional) A more complete description on how to fill the input and what it is for.
      * @param example
-     *            (Optional) An example of valid input.
+     *        (Optional) An example of valid input.
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addPasswordEntry(final JsId jsid, final String label, final String tooltip, final String description, final String example) {
@@ -335,11 +335,11 @@ public class Form extends AbstractForm {
      * Add a plain text textarea
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addTextareaEntry(final JsId jsid, final String label, final String tooltip) {
@@ -350,13 +350,13 @@ public class Form extends AbstractForm {
      * Add a plain text textarea
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @param defaultValue
-     *            (Optional) A more complete description on how to fill the input and what it is for.
+     *        (Optional) A more complete description on how to fill the input and what it is for.
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addTextareaEntry(final JsId jsid, final String label, final String tooltip, final String defaultValue) {
@@ -367,13 +367,13 @@ public class Form extends AbstractForm {
      * Add a plain text textarea
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @param description
-     *            (Optional) A more complete description on how to fill the input and what it is for.
+     *        (Optional) A more complete description on how to fill the input and what it is for.
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addTextareaEntry(final JsId jsid, final String label, final String tooltip, final String defaultValue, final String description) {
@@ -384,15 +384,15 @@ public class Form extends AbstractForm {
      * Add a plain text textarea
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @param description
-     *            (Optional) A more complete description on how to fill the input and what it is for.
+     *        (Optional) A more complete description on how to fill the input and what it is for.
      * @param example
-     *            (Optional) An example of valid input.
+     *        (Optional) An example of valid input.
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addTextareaEntry(final JsId jsid, final String label, final String tooltip, final String defaultValue, final String description,
@@ -412,7 +412,7 @@ public class Form extends AbstractForm {
      * @param label
      * @param tooltip
      * @param value
-     *            The value returned if the radio is checked
+     *        The value returned if the radio is checked
      * @return This method return the form itself to allow cascading calls
      */
     public Form addRadioEntry(final JsId jsid, final String label, final String tooltip, final String value) {
@@ -426,7 +426,7 @@ public class Form extends AbstractForm {
      * @param label
      * @param tooltip
      * @param value
-     *            The value returned if the radio is checked
+     *        The value returned if the radio is checked
      * @param description
      * @return This method return the form itself to allow cascading calls
      */
@@ -441,7 +441,7 @@ public class Form extends AbstractForm {
      * @param label
      * @param tooltip
      * @param value
-     *            The value returned if the radio is checked
+     *        The value returned if the radio is checked
      * @param checked
      * @return This method return the form itself to allow cascading calls
      */
@@ -456,7 +456,7 @@ public class Form extends AbstractForm {
      * @param label
      * @param tooltip
      * @param value
-     *            The value returned if the radio is checked
+     *        The value returned if the radio is checked
      * @param description
      * @param checked
      * @return This method return the form itself to allow cascading calls
@@ -477,7 +477,7 @@ public class Form extends AbstractForm {
      * @param label
      * @param tooltip
      * @param value
-     *            The value returned if the checkbox is checked
+     *        The value returned if the checkbox is checked
      * @return This method return the form itself to allow cascading calls
      */
     public Form addCheckboxEntry(final JsId jsid, final String label, final String tooltip, final String value) {
@@ -491,7 +491,7 @@ public class Form extends AbstractForm {
      * @param label
      * @param tooltip
      * @param value
-     *            The value returned if the checkbox is checked
+     *        The value returned if the checkbox is checked
      * @param description
      * @return This method return the form itself to allow cascading calls
      */
@@ -506,7 +506,7 @@ public class Form extends AbstractForm {
      * @param label
      * @param tooltip
      * @param value
-     *            The value returned if the checkbox is checked
+     *        The value returned if the checkbox is checked
      * @param checked
      * @return This method return the form itself to allow cascading calls
      */
@@ -521,7 +521,7 @@ public class Form extends AbstractForm {
      * @param label
      * @param tooltip
      * @param value
-     *            The value returned if the checkbox is checked
+     *        The value returned if the checkbox is checked
      * @param description
      * @param checked
      * @return This method return the form itself to allow cascading calls
@@ -537,7 +537,6 @@ public class Form extends AbstractForm {
 
     /**
      * @author Séverin Moussel
-     *
      */
     public final class FormSubmitAction extends Action {
 
@@ -574,9 +573,9 @@ public class Form extends AbstractForm {
      *
      * @param jsid
      * @param label
-     *            The label to show in the button
+     *        The label to show in the button
      * @param tooltip
-     *            The tooltip that will quickly explain the action
+     *        The tooltip that will quickly explain the action
      * @param actionHandler
      * @return This function returns the form itself in order to allow cascading calls
      */
@@ -594,9 +593,9 @@ public class Form extends AbstractForm {
      *
      * @param jsid
      * @param label
-     *            The label to show in the button
+     *        The label to show in the button
      * @param tooltip
-     *            The tooltip that will quickly explain the action
+     *        The tooltip that will quickly explain the action
      * @param actionHandler
      * @return This function returns the form itself in order to allow cascading calls
      */
@@ -614,9 +613,9 @@ public class Form extends AbstractForm {
      *
      * @param jsid
      * @param label
-     *            The label to show in the button
+     *        The label to show in the button
      * @param tooltip
-     *            The tooltip that will quickly explain the action
+     *        The tooltip that will quickly explain the action
      * @param actionHandler
      * @return This function returns the form itself in order to allow cascading calls
      */
@@ -644,9 +643,9 @@ public class Form extends AbstractForm {
      * Add an action to the form
      *
      * @param label
-     *            The label to show in the button
+     *        The label to show in the button
      * @param tooltip
-     *            The tooltip that will quickly explain the action
+     *        The tooltip that will quickly explain the action
      * @param actionHandler
      * @return This function returns the form itself in order to allow cascading calls
      */
@@ -780,11 +779,11 @@ public class Form extends AbstractForm {
      * Add a simple obfuscated File input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @return This function returns the form itself in order to allow cascading calls
      */
     public Form addFileEntry(final JsId jsid, final String label, final String tooltip, final String submissionUrl) {
@@ -795,15 +794,14 @@ public class Form extends AbstractForm {
      * Add a simple obfuscated File input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @param description
-     *            (Optional) A more complete description on how to fill the input and what it is for.
+     *        (Optional) A more complete description on how to fill the input and what it is for.
      * @return This function returns the form itself in order to allow cascading calls
-     *
      * @deprecated Use {@link #addEntry(new FileUpload())}
      */
     @Deprecated
@@ -815,17 +813,16 @@ public class Form extends AbstractForm {
      * Add a simple obfuscated File input
      *
      * @param jsid
-     *            The JsId of the input
+     *        The JsId of the input
      * @param label
-     *            The label to show beside the input
+     *        The label to show beside the input
      * @param tooltip
-     *            The tooltip that will quickly explain the entry
+     *        The tooltip that will quickly explain the entry
      * @param description
-     *            (Optional) A more complete description on how to fill the input and what it is for.
+     *        (Optional) A more complete description on how to fill the input and what it is for.
      * @param example
-     *            (Optional) An example of valid input.
+     *        (Optional) An example of valid input.
      * @return This function returns the form itself in order to allow cascading calls
-     *
      * @deprecated Use {@link #addEntry(new FileUpload())}
      */
     @Deprecated

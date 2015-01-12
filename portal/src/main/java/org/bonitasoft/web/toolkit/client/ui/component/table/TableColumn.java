@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -31,7 +29,6 @@ import com.google.gwt.user.client.Event;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class TableColumn extends TableComponent implements ModifiableOutput {
 
@@ -59,17 +56,17 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
      * Constructor
      * 
      * @param table
-     *            The table containing this column
+     *        The table containing this column
      * @param jsid
-     *            The jsid of the column
+     *        The jsid of the column
      * @param label
-     *            The label displayed for this column
+     *        The label displayed for this column
      * @param sortName
-     *            The name of the attribute to sort on
+     *        The name of the attribute to sort on
      * @param sorted
-     *            Indicate whether or not the column is currently sorted
+     *        Indicate whether or not the column is currently sorted
      * @param sortAscending
-     *            Indicate if the sort is ascending or descending
+     *        Indicate if the sort is ascending or descending
      */
     public TableColumn(final Table table, final JsId jsid, final String label, final String sortName, final boolean sorted, final boolean sortAscending) {
         super(table, jsid);
@@ -115,7 +112,7 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
      * Define if the element is currently sorted
      * 
      * @param sorted
-     *            TRUE if sorted, otherwise FALSE
+     *        TRUE if sorted, otherwise FALSE
      */
     public final void setSorted(final boolean sorted) {
         this.sorted = sorted;
@@ -229,7 +226,7 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
 
     /**
      * @param label
-     *            the label to set
+     *        the label to set
      */
     public void setLabel(final String label) {
         this.label = label;

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -20,7 +18,6 @@ import java.io.Serializable;
 
 /**
  * @author Yongtao Guo
- * 
  */
 public class ClientContactData implements Serializable {
 
@@ -63,7 +60,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param email
-     *            the email to set
+     *        the email to set
      */
     public void setEmail(final String email) {
         this.email = email;
@@ -78,7 +75,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param phoneNumber
-     *            the phoneNumber to set
+     *        the phoneNumber to set
      */
     public void setPhoneNumber(final String phoneNumber) {
         this.phoneNumber = phoneNumber;
@@ -93,7 +90,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param mobileNumber
-     *            the mobileNumber to set
+     *        the mobileNumber to set
      */
     public void setMobileNumber(final String mobileNumber) {
         this.mobileNumber = mobileNumber;
@@ -108,7 +105,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param faxNumber
-     *            the faxNumber to set
+     *        the faxNumber to set
      */
     public void setFaxNumber(final String faxNumber) {
         this.faxNumber = faxNumber;
@@ -123,7 +120,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param building
-     *            the building to set
+     *        the building to set
      */
     public void setBuilding(final String building) {
         this.building = building;
@@ -138,7 +135,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param room
-     *            the room to set
+     *        the room to set
      */
     public void setRoom(final String room) {
         this.room = room;
@@ -153,7 +150,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param address
-     *            the address to set
+     *        the address to set
      */
     public void setAddress(final String address) {
         this.address = address;
@@ -168,7 +165,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param zipCode
-     *            the zipCode to set
+     *        the zipCode to set
      */
     public void setZipCode(final String zipCode) {
         this.zipCode = zipCode;
@@ -183,7 +180,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param city
-     *            the city to set
+     *        the city to set
      */
     public void setCity(final String city) {
         this.city = city;
@@ -198,7 +195,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param state
-     *            the state to set
+     *        the state to set
      */
     public void setState(final String state) {
         this.state = state;
@@ -213,7 +210,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param country
-     *            the country to set
+     *        the country to set
      */
     public void setCountry(final String country) {
         this.country = country;
@@ -228,7 +225,7 @@ public class ClientContactData implements Serializable {
 
     /**
      * @param website
-     *            the website to set
+     *        the website to set
      */
     public void setWebsite(final String website) {
         this.website = website;

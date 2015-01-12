@@ -61,7 +61,7 @@ public class BonitaVersion {
 
     @Override
     public String toString() {
-        if(version == null) {
+        if (version == null) {
             version = read(file.getStream());
         }
         return version.trim();

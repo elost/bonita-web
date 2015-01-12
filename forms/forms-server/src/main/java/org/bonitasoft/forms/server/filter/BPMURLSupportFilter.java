@@ -5,15 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  */
 package org.bonitasoft.forms.server.filter;
 
@@ -267,9 +264,9 @@ public class BPMURLSupportFilter implements Filter {
      * Get the form id for any form.
      *
      * @param parameters
-     *            The regular parameters of current URL.
+     *        The regular parameters of current URL.
      * @param request
-     *            The current http servlet request.
+     *        The current http servlet request.
      * @return formID
      */
     protected String[] getFormIDFromRegularURLParameters(final Map<String, String[]> parameters, final HttpServletRequest request) {
@@ -336,9 +333,9 @@ public class BPMURLSupportFilter implements Filter {
      * Get the latest version of a given process name.
      *
      * @param processName
-     *            A regular URL parameter
+     *        A regular URL parameter
      * @param request
-     *            The current http servlet request.
+     *        The current http servlet request.
      * @return the ID of the latest version of the process
      * @throws ServletException
      */
@@ -385,7 +382,7 @@ public class BPMURLSupportFilter implements Filter {
      * Retrieve the API session from the HTTP session
      *
      * @param request
-     *            the HTTP request
+     *        the HTTP request
      * @return the tenantID
      * @throws NoCredentialsInSessionException
      */

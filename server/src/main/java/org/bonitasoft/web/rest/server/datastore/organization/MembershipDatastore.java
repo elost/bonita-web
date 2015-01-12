@@ -14,6 +14,11 @@
  */
 package org.bonitasoft.web.rest.server.datastore.organization;
 
+import static org.bonitasoft.web.rest.server.framework.utils.SearchOptionsBuilderUtil.computeIndex;
+
+import java.util.List;
+import java.util.Map;
+
 import org.bonitasoft.engine.api.IdentityAPI;
 import org.bonitasoft.engine.api.TenantAPIAccessor;
 import org.bonitasoft.engine.exception.AlreadyExistsException;
@@ -35,11 +40,6 @@ import org.bonitasoft.web.toolkit.client.common.exception.api.APIForbiddenExcept
 import org.bonitasoft.web.toolkit.client.common.i18n._;
 import org.bonitasoft.web.toolkit.client.common.util.MapUtil;
 import org.bonitasoft.web.toolkit.client.data.APIID;
-
-import java.util.List;
-import java.util.Map;
-
-import static org.bonitasoft.web.rest.server.framework.utils.SearchOptionsBuilderUtil.computeIndex;
 
 /**
  * @author Séverin Moussel

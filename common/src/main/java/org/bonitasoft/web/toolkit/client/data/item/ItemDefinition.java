@@ -62,7 +62,7 @@ public abstract class ItemDefinition<E extends IItem> {
 
     /**
      * @param token
-     *            the token to set
+     *        the token to set
      */
     public final void setToken(final String token) {
         this.token = token;
@@ -114,9 +114,9 @@ public abstract class ItemDefinition<E extends IItem> {
      * <code>final ItemAttribute firstName = this.createAttribute(this.FIRSTNAME, ItemAttribute.TYPE.STRING);</code>
      * 
      * @param name
-     *            The name of the attribute
+     *        The name of the attribute
      * @param type
-     *            The type of the attribute. Must be one of ItemAttribute.TYPE.xxx
+     *        The type of the attribute. Must be one of ItemAttribute.TYPE.xxx
      * @return This function returns the Attribute created to allow to add other details on it.
      */
     public ItemAttribute createAttribute(final String name, final ItemAttribute.TYPE type) {
@@ -174,7 +174,7 @@ public abstract class ItemDefinition<E extends IItem> {
      * Retrieve an attribute by its name.
      * 
      * @param name
-     *            The name of the attribute
+     *        The name of the attribute
      * @return This function returns the attribute or null if there is no attribute with the defined name.
      */
     public final ItemAttribute getAttribute(final String name) {
@@ -199,9 +199,9 @@ public abstract class ItemDefinition<E extends IItem> {
      * Declare an attribute as deployable.
      * 
      * @param attributeName
-     *            The name of the deployable attribute.
+     *        The name of the deployable attribute.
      * @param definition
-     *            The ItemDefinition of the item contained in the deployed attribute.
+     *        The ItemDefinition of the item contained in the deployed attribute.
      */
     protected final void declareDeployable(final String attributeName, final ItemDefinition<?> definition) {
         this.deploys.put(attributeName, definition);
@@ -279,7 +279,7 @@ public abstract class ItemDefinition<E extends IItem> {
 
         return item;
     }
-    
+
     public final E createItem(IItem sourceItem) {
         return sourceItem == null ? null : createItem(sourceItem.getAttributes());
     }

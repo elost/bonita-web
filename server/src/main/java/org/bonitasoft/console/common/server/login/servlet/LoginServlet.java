@@ -37,7 +37,6 @@ import org.bonitasoft.engine.session.APISession;
 
 /**
  * @author Anthony Birembaut, Ruiheng Fan, Chong Zhao, Haojie Yuan
- *
  */
 public class LoginServlet extends HttpServlet {
 
@@ -74,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException {
-        
+
         // force post request body to UTF-8
         try {
             request.setCharacterEncoding(CharEncoding.UTF_8);
@@ -82,7 +81,7 @@ public class LoginServlet extends HttpServlet {
             // should never appear
             throw new ServletException(e);
         }
-        
+
         boolean redirectAfterLogin = hasRedirection(request);
         String redirectURL = getRedirectUrl(request, redirectAfterLogin);
         try {
@@ -162,7 +161,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     /*
-     * Overriden in SP 
+     * Overriden in SP
      */
     protected void doLogin(final HttpServletRequest request) throws LoginManagerNotFoundException, LoginFailedException, ServletException {
         final long tenantId = getTenantId();

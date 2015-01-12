@@ -14,13 +14,13 @@ public class JacksonSerializerTest {
         ProfileImportStatusMessageFake message = new ProfileImportStatusMessageFake("profile1", "repalce");
         message.addError("Organization: skks");
         message.addError("Page: page1");
-       
+
         // When
         String serialize = serializer.serialize(message);
-        
+
         // Then
         assertThat(serialize).isEqualTo("{\"errors\":[\"Organization: skks\",\"Page: page1\"],\"profielName\":\"profile1\"}");
-        
+
     }
 
 }

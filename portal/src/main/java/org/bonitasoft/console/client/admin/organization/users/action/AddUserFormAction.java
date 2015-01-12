@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -31,11 +29,8 @@ import org.bonitasoft.web.toolkit.client.ui.JsId;
 import org.bonitasoft.web.toolkit.client.ui.action.RedirectionAction;
 import org.bonitasoft.web.toolkit.client.ui.action.form.AddItemFormAction;
 
-import com.google.gwt.user.client.Window;
-
 /**
  * @author Yongtao Guo
- * 
  */
 public class AddUserFormAction extends AddItemFormAction<UserItem> {
 
@@ -80,7 +75,7 @@ public class AddUserFormAction extends AddItemFormAction<UserItem> {
             message = message.substring(indexStartMessage);
             int endOfMessage = message.indexOf("\"");
             if (endOfMessage >= 0) {
-                message =  message.substring(0, endOfMessage);
+                message = message.substring(0, endOfMessage);
                 message = message.replace("\\r\\n", ", ");
                 message = message.substring(0, message.length() - 2);
                 return message;

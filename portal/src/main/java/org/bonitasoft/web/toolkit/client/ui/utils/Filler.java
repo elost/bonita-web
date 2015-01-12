@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -39,7 +37,6 @@ public abstract class Filler<TARGET_CLASS extends Object> {
 
     /**
      * @author Séverin Moussel
-     * 
      */
 
     private Action onFinishCallback = null;
@@ -171,7 +168,7 @@ public abstract class Filler<TARGET_CLASS extends Object> {
      * Set a repeatDelay. if the value is > -1, the filler will repeat itself
      * 
      * @param milliseconds
-     *            Time in milliseconds to wait before repeating the filler. If this value is < 0, the filler won't repeat
+     *        Time in milliseconds to wait before repeating the filler. If this value is < 0, the filler won't repeat
      * @return This methid returns the filler itself to allow cascading calls.
      */
     public final Filler<TARGET_CLASS> setRepeatEvery(final int milliseconds) {
@@ -190,7 +187,7 @@ public abstract class Filler<TARGET_CLASS extends Object> {
      * The loader will appear from before the getData method to after the setData method.<br />
      * 
      * @param showLoader
-     *            True to show a loader
+     *        True to show a loader
      */
     public final void setShowLoader(final boolean showLoader) {
         this.showLoader = showLoader;
@@ -201,22 +198,19 @@ public abstract class Filler<TARGET_CLASS extends Object> {
      * Changing this value will set showLoader to true;
      * 
      * @param loaderPosition
-     *            Where to display the loader.<br />
-     *            Can be one of Loader.POSITION:
-     *            <dl>
-     *            <dd>MAIN_LOADER</dd>
-     *            <dt>Display a loader in the #loader element of the UI</dt>
-     *            <dd>FULL_OVERLAY</dd>
-     *            <dt>Display a loader with an overlay over the whole UI. This way, the UI is disabled during loading</dt>
-     *            <dd>null</dd>
-     *            <dt>Display a loader with an overlay over the target of this filler if the target is a component otherwise, MAIN_LOADER will be used.</dt>
-     *            </dl>
+     *        Where to display the loader.<br />
+     *        Can be one of Loader.POSITION:
+     *        <dl>
+     *        <dd>MAIN_LOADER</dd>
+     *        <dt>Display a loader in the #loader element of the UI</dt>
+     *        <dd>FULL_OVERLAY</dd>
+     *        <dt>Display a loader with an overlay over the whole UI. This way, the UI is disabled during loading</dt>
+     *        <dd>null</dd>
+     *        <dt>Display a loader with an overlay over the target of this filler if the target is a component otherwise, MAIN_LOADER will be used.</dt>
+     *        </dl>
      */
     public final void setLoaderPosition() {
         this.setShowLoader(true);
     }
-
-
-
 
 }

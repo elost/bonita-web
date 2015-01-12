@@ -23,9 +23,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import com.google.gwt.user.client.Element;
 import org.bonitasoft.web.toolkit.client.common.json.JSonSerializer;
 import org.bonitasoft.web.toolkit.client.ui.JsId;
+
+import com.google.gwt.user.client.Element;
 
 /**
  * Define the default structure of all VisualElements of USerXP toolkit
@@ -63,8 +64,8 @@ public abstract class Component extends AbstractComponent {
      * Default constructor
      * 
      * @param jsid
-     *            The JsiD to set. It will be use to help JS and CSS to locate the element.<br>
-     *            This ID will be used as class and/or class suffix.
+     *        The JsiD to set. It will be use to help JS and CSS to locate the element.<br>
+     *        This ID will be used as class and/or class suffix.
      */
     public Component(final JsId jsid) {
         this.jsId = jsid;
@@ -86,7 +87,7 @@ public abstract class Component extends AbstractComponent {
      * Get the value of a currently set JsOption
      * 
      * @param name
-     *            The name of the option to get
+     *        The name of the option to get
      * @return This method returns the value of the option.
      */
     public String getJsOption(final String name) {
@@ -97,9 +98,9 @@ public abstract class Component extends AbstractComponent {
      * Add a new jsOption : {@link Component#jsOptions}
      * 
      * @param name
-     *            The name of the option to add.
+     *        The name of the option to add.
      * @param value
-     *            The value of the option to add.
+     *        The value of the option to add.
      * @return This method returns "this" to allow cascading calls.
      */
     @SuppressWarnings("javadoc")
@@ -112,9 +113,9 @@ public abstract class Component extends AbstractComponent {
      * Add a new boolean jsOption : {@link Component#jsOptions}
      * 
      * @param name
-     *            The name of the option to add.
+     *        The name of the option to add.
      * @param value
-     *            The value of the option to add.
+     *        The value of the option to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public Component addJsOption(final String name, final boolean value) {
@@ -126,9 +127,9 @@ public abstract class Component extends AbstractComponent {
      * Add a new int jsOption : {@link Component#jsOptions}
      * 
      * @param name
-     *            The name of the option to add.
+     *        The name of the option to add.
      * @param value
-     *            The value of the option to add.
+     *        The value of the option to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public Component addJsOption(final String name, final int value) {
@@ -140,9 +141,9 @@ public abstract class Component extends AbstractComponent {
      * Add a new long jsOption : {@link Component#jsOptions}
      * 
      * @param name
-     *            The name of the option to add.
+     *        The name of the option to add.
      * @param value
-     *            The value of the option to add.
+     *        The value of the option to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public Component addJsOption(final String name, final long value) {
@@ -172,7 +173,7 @@ public abstract class Component extends AbstractComponent {
      * Set the the id to set on the root DOM element.
      * 
      * @param id
-     *            the id to set
+     *        the id to set
      */
     public void setId(final String id) {
         this.id = id;
@@ -244,8 +245,6 @@ public abstract class Component extends AbstractComponent {
         }
         return this.element;
     }
-
-
 
     @Override
     public void resetGeneration() {

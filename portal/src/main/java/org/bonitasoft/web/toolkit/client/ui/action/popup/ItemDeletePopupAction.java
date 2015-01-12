@@ -68,11 +68,11 @@ public class ItemDeletePopupAction extends ItemAction {
     public void setMessage(String message) {
         addParameter(DeleteItemPage.PARAM_MESSAGE, message);
     }
-    
+
     public void setTitle(String title) {
         addParameter(DeleteItemPage.PARAM_TITLE, title);
     }
-    
+
     public void setConfirmButtonLabel(String label) {
         addParameter(DeleteItemPage.PARAM_CONFIRMBUTTON_LABEL, label);
     }

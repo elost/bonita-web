@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -34,14 +32,13 @@ import org.bonitasoft.web.toolkit.client.ui.component.form.entry.Text;
 
 /**
  * @author Paul Amar
- * 
  */
 public class PopupAddUserPage extends Page {
 
     public static final String TOKEN = "popupadduserpage";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(UserListingAdminPage.TOKEN);
     }
@@ -58,12 +55,15 @@ public class PopupAddUserPage extends Page {
 
         final Form form = new Form()
                 .addHiddenEntry(UserItem.ATTRIBUTE_ENABLED, "true")
-                .addItemAttributeEntryWithMaxLength( new JsId(UserItem.ATTRIBUTE_USERNAME), definition.getAttribute(UserItem.ATTRIBUTE_USERNAME), _("Username"), _("Enter the username for this user"), Text.INCREASED_MAX_LENGTH)
+                .addItemAttributeEntryWithMaxLength(new JsId(UserItem.ATTRIBUTE_USERNAME), definition.getAttribute(UserItem.ATTRIBUTE_USERNAME), _("Username"),
+                        _("Enter the username for this user"), Text.INCREASED_MAX_LENGTH)
                 .addItemAttributeEntry(definition.getAttribute(UserItem.ATTRIBUTE_PASSWORD), _("Password"), _("Enter the password for this user"))
                 .addPasswordEntry(new JsId(UserItem.ATTRIBUTE_PASSWORD + "_confirm"), _("Confirm password"), _("Confirm the password for this user"))
 
-                .addItemAttributeEntryWithMaxLength( new JsId(UserItem.ATTRIBUTE_FIRSTNAME), definition.getAttribute(UserItem.ATTRIBUTE_FIRSTNAME), _("First name"), _("Enter the first name of this user"), Text.INCREASED_MAX_LENGTH)
-                .addItemAttributeEntryWithMaxLength( new JsId(UserItem.ATTRIBUTE_LASTNAME), definition.getAttribute(UserItem.ATTRIBUTE_LASTNAME), _("Last name"), _("Enter the last name of this user"), Text.INCREASED_MAX_LENGTH)
+                .addItemAttributeEntryWithMaxLength(new JsId(UserItem.ATTRIBUTE_FIRSTNAME), definition.getAttribute(UserItem.ATTRIBUTE_FIRSTNAME),
+                        _("First name"), _("Enter the first name of this user"), Text.INCREASED_MAX_LENGTH)
+                .addItemAttributeEntryWithMaxLength(new JsId(UserItem.ATTRIBUTE_LASTNAME), definition.getAttribute(UserItem.ATTRIBUTE_LASTNAME),
+                        _("Last name"), _("Enter the last name of this user"), Text.INCREASED_MAX_LENGTH)
 
                 .addValidator(new JsId(UserItem.ATTRIBUTE_USERNAME), new StringNoSpaceValidator())
                 .addValidator(new JsId(UserItem.ATTRIBUTE_PASSWORD), new MandatoryValidator())

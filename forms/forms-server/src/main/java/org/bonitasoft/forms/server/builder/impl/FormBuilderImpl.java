@@ -177,7 +177,7 @@ public class FormBuilderImpl implements IFormBuilder {
      *
      * @return a {@link File}
      * @throws InvalidFormDefinitionException
-     *             if the generated document is not valid
+     *         if the generated document is not valid
      * @throws IOException
      */
     @Override
@@ -200,7 +200,7 @@ public class FormBuilderImpl implements IFormBuilder {
             final byte[] xmlContent = outputStream.toByteArray();
 
             //commented because studio might generate forms that are not complient with xsd but still working
-//            validateAgainstFormsXSD(xmlContent);
+            //            validateAgainstFormsXSD(xmlContent);
 
             outputStream.close();
 
@@ -286,15 +286,15 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add an action on an application and create the list of actions if it doesn't exist yet
      *
      * @param actionType
-     *            the action type
+     *        the action type
      * @param variableName
-     *            the name of the variable (if it's a set variable action)
+     *        the name of the variable (if it's a set variable action)
      * @param operator
-     *            the operator for the action
+     *        the operator for the action
      * @param operatorInputType
-     *            the operator in put type (for java methods operations)
+     *        the operator in put type (for java methods operations)
      * @param submitButtonId
-     *            the submit button associated with the action
+     *        the submit button associated with the action
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1073,9 +1073,9 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add an application
      *
      * @param applicationName
-     *            the name of the application
+     *        the name of the application
      * @param applicationVersion
-     *            the version of the application
+     *        the version of the application
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1193,13 +1193,13 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add a validator on a page or a widget and create the list of validators if it doesn't exist yet
      *
      * @param validatorId
-     *            the validator Id
+     *        the validator Id
      * @param className
-     *            the classname of the validator
+     *        the classname of the validator
      * @param cssClasses
-     *            the css classes for the error label
+     *        the css classes for the error label
      * @param position
-     *            the position of the error label
+     *        the position of the error label
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1393,9 +1393,9 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add a Html attribute to a widget
      *
      * @param name
-     *            the name of the attribute
+     *        the name of the attribute
      * @param value
-     *            the valueof the attribute
+     *        the valueof the attribute
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1429,7 +1429,7 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add table style for table widgets
      *
      * @param cssClasses
-     *            the CSS classes for the table
+     *        the CSS classes for the table
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1456,7 +1456,7 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add image style for image widgets
      *
      * @param cssClasses
-     *            the CSS classes for the image
+     *        the CSS classes for the image
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1483,7 +1483,7 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add cells style for table widgets
      *
      * @param cssClasses
-     *            the CSS classes for the cells
+     *        the CSS classes for the cells
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1510,15 +1510,15 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add headings style for table widgets
      *
      * @param cssClasses
-     *            the CSS classes for the headings
+     *        the CSS classes for the headings
      * @param leftHeadings
-     *            if true, indicates that the left column of the grid should be considered as a header
+     *        if true, indicates that the left column of the grid should be considered as a header
      * @param topHeadings
-     *            if true, indicates that the top row of the grid should be considered as a header
+     *        if true, indicates that the top row of the grid should be considered as a header
      * @param rightHeadings
-     *            if true, indicates that the right column of the grid should be considered as a header
+     *        if true, indicates that the right column of the grid should be considered as a header
      * @param bottomHeadings
-     *            if true, indicates that the bottom row of the grid should be considered as a header
+     *        if true, indicates that the bottom row of the grid should be considered as a header
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1553,7 +1553,7 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add a readonly property to a widget
      *
      * @param isReadOnly
-     *            the readonly behavior
+     *        the readonly behavior
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1705,7 +1705,7 @@ public class FormBuilderImpl implements IFormBuilder {
      * add a variable columns number behavior (for editable tables)
      *
      * @param variableColumnsNumber
-     *            the variable columns number
+     *        the variable columns number
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1733,7 +1733,7 @@ public class FormBuilderImpl implements IFormBuilder {
      * add a variable rows number behavior (for editable tables)
      *
      * @param variableRowsNumber
-     *            the variable rows number
+     *        the variable rows number
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -1858,11 +1858,11 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add a transient data on a page flow
      *
      * @param name
-     *            name of the transient data
+     *        name of the transient data
      * @param className
-     *            classnameof the transient data
+     *        classnameof the transient data
      * @param value
-     *            value of the transient data
+     *        value of the transient data
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -2014,7 +2014,7 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add a sub title property to a widget to accept an "example" parameter
      *
      * @param position
-     *            sub title position
+     *        sub title position
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -2098,9 +2098,9 @@ public class FormBuilderImpl implements IFormBuilder {
      * add next form id
      *
      * @param name
-     *            the name of the expression
+     *        the name of the expression
      * @param content
-     *            the real script code of the expression
+     *        the real script code of the expression
      * @param expressionType
      * @param returnType
      * @param interpreter
@@ -2129,9 +2129,9 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add an expression to the current element, as its the dependent expressions
      *
      * @param name
-     *            the name of the expression
+     *        the name of the expression
      * @param content
-     *            the real script code of the expression
+     *        the real script code of the expression
      * @param expressionType
      * @param returnType
      * @param interpreter
@@ -2147,9 +2147,9 @@ public class FormBuilderImpl implements IFormBuilder {
      * Add an expression to the current element, as its the dependent expressions
      *
      * @param name
-     *            the name of the expression
+     *        the name of the expression
      * @param content
-     *            the real script code of the expression
+     *        the real script code of the expression
      * @param expressionType
      * @param returnType
      * @param interpreter
@@ -2580,9 +2580,9 @@ public class FormBuilderImpl implements IFormBuilder {
      * Find the first element with the given tag name among an element children
      *
      * @param parent
-     *            the parent element
+     *        the parent element
      * @param childName
-     *            the tag name
+     *        the tag name
      * @return an {@link Element} or null if there are no elements with thegiven tag name among the element's children
      */
     protected Element findChildElement(final Element parent, final String childName) {
@@ -2612,10 +2612,10 @@ public class FormBuilderImpl implements IFormBuilder {
      * Retrieve the first element in the DOM whose type is among the element types provided
      *
      * @param elementTypes
-     *            array of required element types
+     *        array of required element types
      * @return the first {@link Element} in the stack whose type is among the element types provided
      * @throws InvalidFormDefinitionException
-     *             if no element among the current element's parents has one of the required type
+     *         if no element among the current element's parents has one of the required type
      */
     protected Element peek(final String[] elementTypes) throws InvalidFormDefinitionException {
 
@@ -2640,10 +2640,10 @@ public class FormBuilderImpl implements IFormBuilder {
      * Retrieve the first element in the DOM whose type is among the element types provided
      *
      * @param elementTypes
-     *            array of required element types
+     *        array of required element types
      * @return the first {@link Element} in the stack whose type is among the element types provided
      * @throws InvalidFormDefinitionException
-     *             if no element among the current element's parents has one of the required type
+     *         if no element among the current element's parents has one of the required type
      */
     protected Element peekParentFirst(final String[] elementTypes) throws InvalidFormDefinitionException {
 

@@ -5,16 +5,18 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.view.widget;
+
+import org.bonitasoft.forms.client.i18n.FormsResourceBundle;
+import org.bonitasoft.forms.client.model.ReducedFormWidget;
+import org.bonitasoft.forms.client.model.WidgetType;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
@@ -23,9 +25,6 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.InlineLabel;
-import org.bonitasoft.forms.client.i18n.FormsResourceBundle;
-import org.bonitasoft.forms.client.model.ReducedFormWidget;
-import org.bonitasoft.forms.client.model.WidgetType;
 
 /**
  * @author Vincent Elcrin
@@ -44,7 +43,7 @@ public class LabelWidget extends HTML {
 
     public LabelWidget(ReducedFormWidget widgetData, String mandatoryFieldSymbol, String mandatoryFieldClasses) {
         if (widgetData.getLabel() != null && widgetData.getLabel().length() > 0) {
-            if(WidgetType.RICH_TEXTAREA.equals(widgetData.getType())) {
+            if (WidgetType.RICH_TEXTAREA.equals(widgetData.getType())) {
                 setHTML(TEMPLATES.richTextAreaLabel(getSafeHtml(widgetData)));
             } else {
                 setHTML(getSafeHtml(widgetData));

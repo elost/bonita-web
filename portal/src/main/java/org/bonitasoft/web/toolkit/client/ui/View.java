@@ -113,7 +113,7 @@ public abstract class View extends RawView {
      * Add a list of Components in the Header of the current view.
      * 
      * @param components
-     *            The list of Components to add to the Header of the current view.
+     *        The list of Components to add to the Header of the current view.
      */
     protected final void addHeader(final AbstractComponent... components) {
         this.header.append(components);
@@ -124,7 +124,7 @@ public abstract class View extends RawView {
      * Add a list of Components in the current view.
      * 
      * @param components
-     *            The list of Components to add in the current view.
+     *        The list of Components to add in the current view.
      */
     protected void setHeader(final AbstractComponent... components) {
         this.header.empty().append(components);
@@ -145,7 +145,7 @@ public abstract class View extends RawView {
      * Add a list of Components in the Header of the current view.
      * 
      * @param components
-     *            The list of Components to add to the Header of the current view.
+     *        The list of Components to add to the Header of the current view.
      */
     protected final void addFoot(final AbstractComponent... components) {
         this.footer.append(components);
@@ -159,7 +159,7 @@ public abstract class View extends RawView {
      * Add a list of Components in the current view.
      * 
      * @param components
-     *            The list of Components to add in the current view.
+     *        The list of Components to add in the current view.
      */
     protected void setFooter(final AbstractComponent... components) {
         this.footer.empty().append(components);

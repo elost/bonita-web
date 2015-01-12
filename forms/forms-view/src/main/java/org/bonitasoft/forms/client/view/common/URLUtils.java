@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -269,9 +267,9 @@ public class URLUtils {
      * to be removed first
      *
      * @param paramsToRemove
-     *            list of the params to remove
+     *        list of the params to remove
      * @param paramsToAdd
-     *            list of the params to add
+     *        list of the params to add
      * @param hashParamsToRemove
      * @param hashParamsToAdd
      * @return the new url to set
@@ -292,11 +290,11 @@ public class URLUtils {
      * first
      *
      * @param href
-     *            the full URL with parameters an hash
+     *        the full URL with parameters an hash
      * @param paramsToRemove
-     *            list of the params to remove
+     *        list of the params to remove
      * @param paramsToAdd
-     *            list of the params to add
+     *        list of the params to add
      * @param hashParamsToRemove
      * @param hashParamsToAdd
      * @return the new url to set
@@ -359,15 +357,15 @@ public class URLUtils {
      * first
      *
      * @param url
-     *            the URL
+     *        the URL
      * @param parametersMap
-     *            the parameters in the URL
+     *        the parameters in the URL
      * @param hash
-     *            the hash in the URL
+     *        the hash in the URL
      * @param paramsToRemove
-     *            list of the params to remove
+     *        list of the params to remove
      * @param paramsToAdd
-     *            map of the params to add
+     *        map of the params to add
      * @param hashParamsToRemove
      * @param hashParamsToAdd
      * @return the new url to set
@@ -487,7 +485,7 @@ public class URLUtils {
 
     /**
      * @param String
-     *            hash
+     *        hash
      * @return Parameters Map of given hash String
      */
     private Map<String, String> getHashParameters(final String hash) {
@@ -580,9 +578,9 @@ public class URLUtils {
      * TODO do not call this method in case there is no app redirection (all in the bar)
      *
      * @param url
-     *            the url to redirect to
+     *        the url to redirect to
      * @param frameId
-     *            the ID of the frame to refresh
+     *        the ID of the frame to refresh
      */
     native public void frameRedirect(String frameId, String url)
     /*-{
@@ -604,9 +602,9 @@ public class URLUtils {
      * TODO do not call this method in case there is no app redirection (all in the bar)
      *
      * @param url
-     *            the url to redirect to
+     *        the url to redirect to
      * @param frameId
-     *            the ID of the frame to refresh
+     *        the ID of the frame to refresh
      */
     native public void changeFrameHashString(String frameId, String newHashString)
     /*-{

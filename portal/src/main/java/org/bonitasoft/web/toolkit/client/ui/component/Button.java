@@ -32,6 +32,7 @@ public class Button extends Link {
     public Button(String label) {
         super(label, null, (Action) null);
     }
+
     /**
      * This constructor must be prefered to other
      */
@@ -39,7 +40,7 @@ public class Button extends Link {
         super(label, tooltip, action);
         setId(id);
     }
-    
+
     public Button(String id, String label, String tooltip, TypedString link) {
         super(label, tooltip, link);
         setId(id);

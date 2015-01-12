@@ -101,7 +101,7 @@ public class APISession extends ConsoleAPI<SessionItem> {
      * enable to know if the logout button is visible or not
      *
      * @param tenantId
-     *            the current user tenant id
+     *        the current user tenant id
      */
     protected boolean isLogoutDisabled(long tenantId) {
         return loginManagerPropertiesFactory.getProperties(tenantId).isLogoutDisabled();

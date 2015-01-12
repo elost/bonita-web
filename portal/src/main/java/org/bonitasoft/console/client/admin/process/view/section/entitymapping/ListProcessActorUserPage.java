@@ -36,9 +36,7 @@ import org.bonitasoft.web.toolkit.client.ui.component.table.ItemTable;
 import org.bonitasoft.web.toolkit.client.ui.component.table.Table;
 
 /**
- *
  * popup
- *
  * User List page
  * 
  * @author Julien Mege
@@ -46,9 +44,9 @@ import org.bonitasoft.web.toolkit.client.ui.component.table.Table;
 public class ListProcessActorUserPage extends ListProcessActorMemberPage {
 
     public static final String TOKEN = "ListProcessActorUser";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(ProcessListingAdminPage.TOKEN);
         PRIVILEGES.add("reportlistingadminext");
@@ -80,7 +78,7 @@ public class ListProcessActorUserPage extends ListProcessActorMemberPage {
     }
 
     private ItemTable userItemTable(final ActorItem actor, final String actorId, final Map<String, String> params) {
-        ItemTable table =  buildItemTable(actor.getId(), MemberType.USER, params)
+        ItemTable table = buildItemTable(actor.getId(), MemberType.USER, params)
                 .addAction(new ButtonAction("btn-add-user", _("Add a user"), "", new ShowAddUserToActorPageAction(actorId)))
                 .addAction(new ButtonAction("btn-close", _("Close"), "", new HistoryBackAction()))
                 .setView(Table.VIEW_TYPE.FORM);

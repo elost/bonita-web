@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -38,7 +36,6 @@ import org.bonitasoft.web.toolkit.client.common.util.MapUtil;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class ProcessConnectorDependencyDatastore extends CommonDatastore<ProcessConnectorDependencyItem, ConnectorImplementationDescriptor> implements
         DatastoreHasSearch<ProcessConnectorDependencyItem>
@@ -58,7 +55,7 @@ public class ProcessConnectorDependencyDatastore extends CommonDatastore<Process
 
     @Override
     @SuppressWarnings("unchecked")
-    public ItemSearchResult<ProcessConnectorDependencyItem> search(final int page, final int resultsByPage, 
+    public ItemSearchResult<ProcessConnectorDependencyItem> search(final int page, final int resultsByPage,
             final String search, final String orders, final Map<String, String> filters) {
 
         try {
@@ -67,7 +64,7 @@ public class ProcessConnectorDependencyDatastore extends CommonDatastore<Process
             final String connectorVersion = filters.get(ATTRIBUTE_CONNECTOR_VERSION);
 
             // Get connector definition
-            final ConnectorImplementationDescriptor connectorImplementation = 
+            final ConnectorImplementationDescriptor connectorImplementation =
                     getProcessAPI().getConnectorImplementation(processId, connectorName, connectorVersion);
 
             // If connector definition doesn't exists returns an empty resultset
@@ -80,7 +77,7 @@ public class ProcessConnectorDependencyDatastore extends CommonDatastore<Process
             final List<String> dependencies = (List<String>) ListUtil.paginate(jarDependencies, page, resultsByPage);
 
             // Convert to consoleItem
-            final List<ProcessConnectorDependencyItem> results = 
+            final List<ProcessConnectorDependencyItem> results =
                     convertEngineToConsoleItems(processId, connectorName, connectorVersion, dependencies);
 
             return new ItemSearchResult<ProcessConnectorDependencyItem>(page, results.size(), jarDependencies.size(), results);
@@ -91,19 +88,19 @@ public class ProcessConnectorDependencyDatastore extends CommonDatastore<Process
 
     }
 
-    private List<ProcessConnectorDependencyItem> convertEngineToConsoleItems(final Long processId, 
+    private List<ProcessConnectorDependencyItem> convertEngineToConsoleItems(final Long processId,
             final String connectorName, final String connectorVersion, final List<String> dependencies) {
         final List<ProcessConnectorDependencyItem> results = new ArrayList<ProcessConnectorDependencyItem>();
-        
+
         for (final String filename : dependencies) {
-            final ProcessConnectorDependencyItem dependencyItem = 
+            final ProcessConnectorDependencyItem dependencyItem =
                     convertEngineToConsoleItem(processId, connectorName, connectorVersion, filename);
             results.add(dependencyItem);
         }
         return results;
     }
 
-    private ProcessConnectorDependencyItem convertEngineToConsoleItem(final Long processId, final String connectorName, 
+    private ProcessConnectorDependencyItem convertEngineToConsoleItem(final Long processId, final String connectorName,
             final String connectorVersion, final String filename) {
         final ProcessConnectorDependencyItem dependencyItem = new ProcessConnectorDependencyItem();
         dependencyItem.setProcessId(processId);

@@ -147,6 +147,7 @@ public abstract class Clickable extends Component {
     protected void postProcessHtml() {
         if (isEnabled()) {
             $(this.element).click(new Function() {
+
                 @Override
                 public boolean f(final Event e) {
                     if (!Clickable.this.action.isStarted) {

@@ -45,7 +45,7 @@ public class JSonItemReader {
 
     /**
      * @param unserializer
-     *            the unserializer to set
+     *        the unserializer to set
      */
     public static void setUnserializer(final JSonUnserializer unserializer) {
         UNSERIALIZER = unserializer;
@@ -59,9 +59,9 @@ public class JSonItemReader {
      * Parse the JSon of a single Item.
      * 
      * @param json
-     *            The json as a string
+     *        The json as a string
      * @param itemDefinition
-     *            The definition of the IItem to retrieve.
+     *        The definition of the IItem to retrieve.
      * @return This function returns an IItem corresponding to the definition.
      */
     public <E extends IItem> E getItem(final String json, final ItemDefinition<E> itemDefinition) {
@@ -72,9 +72,9 @@ public class JSonItemReader {
      * Parse the JSon of a list of Items.
      * 
      * @param json
-     *            The json as a string
+     *        The json as a string
      * @param itemDefinition
-     *            The definition of the Items to retrieve.
+     *        The definition of the Items to retrieve.
      * @return This function returns a list of Items corresponding to the definition.
      */
     public <E extends IItem> List<E> getItems(final String json, final ItemDefinition<E> itemDefinition) {
@@ -85,9 +85,9 @@ public class JSonItemReader {
      * Parse the JSon of a list of Items.
      * 
      * @param json
-     *            The json as a string
+     *        The json as a string
      * @param itemDefinition
-     *            The definition of the Items to retrieve.
+     *        The definition of the Items to retrieve.
      * @return This function returns a list of Items corresponding to the definition.
      */
     public static <E extends IItem> List<E> parseItems(final String json, final ItemDefinition<E> itemDefinition) {
@@ -98,9 +98,9 @@ public class JSonItemReader {
      * Parse the JSon of a list of Items.
      * 
      * @param json
-     *            The json as a string
+     *        The json as a string
      * @param itemDefinition
-     *            The definition of the Items to retrieve.
+     *        The definition of the Items to retrieve.
      * @return This function returns a list of Items corresponding to the definition.
      */
     public static <E extends IItem> List<E> parseItems(final String json, final ItemDefinition<E> itemDefinition, final boolean applyValidators) {
@@ -213,7 +213,7 @@ public class JSonItemReader {
             // primitive type
             if (entry.getValue() instanceof TreeLeaf<?>) {
                 item.setAttribute(entry.getKey(), ((TreeLeaf<String>) entry.getValue()).getValue());
-            // json object
+                // json object
             } else if (entry.getValue() instanceof TreeIndexed<?>) {
                 item.setDeploy(
                         entry.getKey(),
@@ -221,9 +221,9 @@ public class JSonItemReader {
                                 (TreeIndexed<String>) entry.getValue(),
                                 itemDefinition.getDeployDefinition(entry.getKey())
                         )
-                
-                      );
-            // json list - set directly json in attribute value
+
+                        );
+                // json list - set directly json in attribute value
             } else if (entry.getValue() instanceof Tree<?>) {
                 item.setAttribute(entry.getKey(), entry.getValue().toJson());
             }

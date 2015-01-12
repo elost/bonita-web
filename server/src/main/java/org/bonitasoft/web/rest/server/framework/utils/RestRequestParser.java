@@ -24,7 +24,6 @@ import org.bonitasoft.web.toolkit.client.common.exception.api.APIMalformedUrlExc
 import org.bonitasoft.web.toolkit.client.data.APIID;
 
 /**
- *
  * Simple parser that extract parameters from a call to the REST api
  *
  * @author Baptiste Mesta

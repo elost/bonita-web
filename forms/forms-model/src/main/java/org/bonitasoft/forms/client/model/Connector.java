@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model;
 
@@ -22,12 +20,11 @@ import java.util.Map;
 
 /**
  * @author Anthony Birembaut
- *
  */
 public class Connector implements Serializable {
 
-    /** 
-     * UID 
+    /**
+     * UID
      */
     private static final long serialVersionUID = -4190294573271008139L;
 
@@ -35,7 +32,7 @@ public class Connector implements Serializable {
      * The connector's input parameters
      */
     private Map<String, Expression> inputParameters;
-    
+
     /**
      * The connector's output operations
      */
@@ -47,13 +44,14 @@ public class Connector implements Serializable {
     private boolean throwingException = true;
 
     private String connectorId;
-    
+
     private String connectorName;
-    
+
     private String connectorVersion;
-    
+
     /**
      * Connector
+     * 
      * @param connectorId
      * @param connectorName
      * @param connectorVersion
@@ -67,7 +65,7 @@ public class Connector implements Serializable {
         this.connectorVersion = connectorVersion;
         this.throwingException = throwingException;
     }
-    
+
     /**
      * Default Constructor
      */
@@ -75,7 +73,7 @@ public class Connector implements Serializable {
         super();
         // Mandatory for serialization
     }
-    
+
     public boolean isThrowingException() {
         return throwingException;
     }
@@ -106,14 +104,14 @@ public class Connector implements Serializable {
     public String getConnectorId() {
         return connectorId;
     }
-    
+
     /**
      * @return the connectorVersion
      */
     public String getConnectorVersion() {
         return connectorVersion;
     }
-    
+
     /**
      * @return the connectorName
      */

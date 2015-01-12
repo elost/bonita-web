@@ -14,6 +14,9 @@
  */
 package org.bonitasoft.web.rest.server.api.system;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+
 import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
@@ -21,9 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
 
 /**
  * @author Vincent Elcrin

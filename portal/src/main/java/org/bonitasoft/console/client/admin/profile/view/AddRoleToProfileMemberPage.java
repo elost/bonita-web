@@ -50,9 +50,9 @@ import org.bonitasoft.web.toolkit.client.ui.component.table.Table;
 public class AddRoleToProfileMemberPage extends Page {
 
     private static final String PARAMETER_PROFILE_ID = "profileId";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(ProfileListingPage.TOKEN);
     }

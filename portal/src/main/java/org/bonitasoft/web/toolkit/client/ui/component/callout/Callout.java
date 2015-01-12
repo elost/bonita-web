@@ -31,6 +31,6 @@ public class Callout extends ContainerStyled<Component> {
         append(new H4(title));
         if (body != null && body.length > 0) {
             append(new Paragraph(body));
-        }   
+        }
     }
 }

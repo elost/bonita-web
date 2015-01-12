@@ -23,7 +23,6 @@ public class FormEntries extends Section {
 
     /**
      * Default Constructor.
-     * 
      */
     public FormEntries() {
         super(new JsId("formentries"));

@@ -14,10 +14,9 @@ import org.bonitasoft.web.toolkit.client.ui.page.ItemQuickDetailsPage.ItemQuickD
 
 /**
  * @author Bastien ROHART
- * 
  */
 public abstract class AbstractProfileDetailsPage extends ItemQuickDetailsPage<ProfileItem> {
-    
+
     public AbstractProfileDetailsPage() {
         super(ProfileDefinition.get());
     }

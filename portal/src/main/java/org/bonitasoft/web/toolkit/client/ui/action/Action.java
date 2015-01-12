@@ -182,7 +182,7 @@ public abstract class Action extends Callable implements EventListener, Cloneabl
 
     /**
      * @param onStart
-     *            the onStart to set
+     *        the onStart to set
      */
     public void setOnStart(final Action onStart) {
         this.onStart = onStart;
@@ -190,7 +190,7 @@ public abstract class Action extends Callable implements EventListener, Cloneabl
 
     /**
      * @param onFinish
-     *            the onFinish to set
+     *        the onFinish to set
      */
     public void setOnFinish(final Action onFinish) {
         this.onFinish = onFinish;
@@ -198,7 +198,7 @@ public abstract class Action extends Callable implements EventListener, Cloneabl
 
     /**
      * @param onSuccess
-     *            the onSuccess to set
+     *        the onSuccess to set
      */
     public void setOnSuccess(final Action onSuccess) {
         this.onSuccess = onSuccess;
@@ -206,7 +206,7 @@ public abstract class Action extends Callable implements EventListener, Cloneabl
 
     /**
      * @param onError
-     *            the onError to set
+     *        the onError to set
      */
     public void setOnError(final Action onError) {
         this.onError = onError;

@@ -202,7 +202,7 @@ public class ApplicationResourceServlet extends HttpServlet {
      * Retrieve the tenantID from the session
      *
      * @param request
-     *            the HTTP request
+     *        the HTTP request
      * @return the tenantID
      * @throws NoCredentialsInSessionException
      */

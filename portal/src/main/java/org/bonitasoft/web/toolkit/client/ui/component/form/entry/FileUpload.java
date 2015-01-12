@@ -63,7 +63,7 @@ public class FileUpload extends Input {
     }
 
     /**
-     * WARNING: can only be called in {@link org.bonitasoft.web.toolkit.client.ui.RawView#onLoad()} method 
+     * WARNING: can only be called in {@link org.bonitasoft.web.toolkit.client.ui.RawView#onLoad()} method
      */
     public FileUpload disable() {
         Scheduler.get().scheduleDeferred(new DisableCommand(this.getElement()));
@@ -71,7 +71,7 @@ public class FileUpload extends Input {
     }
 
     /**
-     * WARNING: can only be called in {@link org.bonitasoft.web.toolkit.client.ui.RawView#onLoad()} method 
+     * WARNING: can only be called in {@link org.bonitasoft.web.toolkit.client.ui.RawView#onLoad()} method
      */
     public FileUpload enable() {
         Scheduler.get().scheduleDeferred(new EnableCommand(this.getElement()));
@@ -109,9 +109,9 @@ public class FileUpload extends Input {
     }
 
     private native void _disable(Element e)
-        /*-{
-            $wnd.$(e, '.uploader').disable();
-        }-*/;
+    /*-{
+        $wnd.$(e, '.uploader').disable();
+    }-*/;
 
     private void _enable(Element e) {
         /*-{

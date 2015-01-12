@@ -1,12 +1,9 @@
 /**
  * Copyright 2008 Google Inc.
- * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -181,7 +178,8 @@ public class RichTextToolbar extends Composite {
         }
     }
 
-    private static final RichTextArea.FontSize[] fontSizesConstants = new RichTextArea.FontSize[] { RichTextArea.FontSize.XX_SMALL, RichTextArea.FontSize.X_SMALL, RichTextArea.FontSize.SMALL,
+    private static final RichTextArea.FontSize[] fontSizesConstants = new RichTextArea.FontSize[] { RichTextArea.FontSize.XX_SMALL,
+            RichTextArea.FontSize.X_SMALL, RichTextArea.FontSize.SMALL,
             RichTextArea.FontSize.MEDIUM, RichTextArea.FontSize.LARGE, RichTextArea.FontSize.X_LARGE, RichTextArea.FontSize.XX_LARGE };
 
     private final Images images = (Images) GWT.create(Images.class);
@@ -220,7 +218,7 @@ public class RichTextToolbar extends Composite {
      * Creates a new toolbar that drives the given rich text area.
      * 
      * @param richText
-     *            the rich text area to be controlled
+     *        the rich text area to be controlled
      */
     public RichTextToolbar(final RichTextArea richText) {
         this.richText = richText;
@@ -257,7 +255,7 @@ public class RichTextToolbar extends Composite {
             final FlowPanel toolbarBottom = new FlowPanel();
             toolbarBottom.setStyleName("bonita_clear_float");
             flowPanel.add(toolbarBottom);
-            
+
             // We only use these handlers for updating status, so don't hook
             // them up unless at least basic editing is supported.
             richText.addKeyUpHandler(handler);

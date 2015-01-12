@@ -50,9 +50,9 @@ import org.bonitasoft.web.toolkit.client.ui.component.table.Table;
 public class AddGroupToProfileMemberPage extends Page {
 
     public static final String PARAMETER_PROFILE_ID = "profileId";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(ProfileListingPage.TOKEN);
     }

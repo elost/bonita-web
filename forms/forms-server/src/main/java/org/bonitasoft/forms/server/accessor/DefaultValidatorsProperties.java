@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.server.accessor;
 
@@ -23,21 +21,21 @@ import java.util.logging.Logger;
 
 /**
  * Utility class for default validators access (read in a properties file)
+ * 
  * @author Anthony Birembaut
- *
  */
 public class DefaultValidatorsProperties {
-    
+
     /**
      * Default name of the form definition file
      */
     private static final String FORM_VALIDATORS_CONFIG_FILE_NAME = "forms-validators.properties";
-    
+
     /**
      * Logger
      */
     private static Logger LOGGER = Logger.getLogger(DefaultValidatorsProperties.class.getName());
-    
+
     /**
      * Instance attribute
      */
@@ -47,7 +45,7 @@ public class DefaultValidatorsProperties {
      * properties
      */
     private Properties defaultProperties;
-    
+
     /**
      * @return the {@link DefaultValidatorsProperties} instance
      */
@@ -61,10 +59,10 @@ public class DefaultValidatorsProperties {
     /**
      * Private contructor to prevent instantiation
      */
-    private DefaultValidatorsProperties(){
+    private DefaultValidatorsProperties() {
         loadProperties();
     }
-    
+
     /**
      * Load the properties
      */
@@ -86,5 +84,3 @@ public class DefaultValidatorsProperties {
         return defaultProperties.getProperty(className);
     }
 }
-
-

@@ -16,7 +16,6 @@ import org.bonitasoft.engine.session.APISession;
  * This class provide access to the data relative to the context in which the custom page is displayed
  * 
  * @author Anthony Birembaut
- * 
  */
 public class PageContext {
 

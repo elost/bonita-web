@@ -37,9 +37,9 @@ public class DeleteMembershipPage extends Page {
     private static final String PARAMETER_MEMBERSHIP_ID = "id";
 
     public final static String TOKEN = "deletemembership";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(UserListingAdminPage.TOKEN);
         PRIVILEGES.add(GroupListingAdminPage.TOKEN);

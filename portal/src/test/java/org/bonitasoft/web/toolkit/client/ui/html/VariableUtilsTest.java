@@ -1,13 +1,14 @@
 package org.bonitasoft.web.toolkit.client.ui.html;
 
-import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.verify;
+import static org.mockito.MockitoAnnotations.initMocks;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.verify;
-import static org.mockito.MockitoAnnotations.initMocks;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 /**
  * Created by Vincent Elcrin

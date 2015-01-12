@@ -76,7 +76,7 @@ public class FormLayoutDownloadServlet extends HttpServlet {
 
         final APISession apiSession = (APISession) request.getSession().getAttribute(LoginManager.API_SESSION_PARAM_KEY);
         final String bodyContentId = request.getParameter(BODY_CONTENT_ID);
-        
+
         final Map<String, Object> urlContext = buildUrlContext(request);
         final Map<String, Object> context = new HashMap<String, Object>();
         context.put(LoginManager.API_SESSION_PARAM_KEY, apiSession);
@@ -123,7 +123,7 @@ public class FormLayoutDownloadServlet extends HttpServlet {
     }
 
     private String getBodyContent(final HttpServletRequest request, final APISession apiSession, final String bodyContentId,
-            final Map<String, Object> context) throws ServletException  {
+            final Map<String, Object> context) throws ServletException {
         String bodyContent = null;
         if (bodyContentId != null) {
             try {
@@ -196,7 +196,7 @@ public class FormLayoutDownloadServlet extends HttpServlet {
 
     /**
      * @param localeStr
-     *            the user's locale as a string
+     *        the user's locale as a string
      * @return the user's {@link Locale}
      */
     protected Locale resolveLocale(final String localeStr) {

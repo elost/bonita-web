@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -24,7 +22,6 @@ import org.bonitasoft.web.toolkit.client.ui.component.table.TableLine;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public abstract class ItemTableCellFormatter extends ItemTableFormatter {
 
@@ -45,7 +42,7 @@ public abstract class ItemTableCellFormatter extends ItemTableFormatter {
 
     /**
      * @param item
-     *            the item to set
+     *        the item to set
      */
     public void setItem(final IItem item) {
         this.item = item;
@@ -53,7 +50,7 @@ public abstract class ItemTableCellFormatter extends ItemTableFormatter {
 
     /**
      * @param attribute
-     *            the attribute to set
+     *        the attribute to set
      */
     public void setAttribute(final AbstractAttributeReader attribute) {
         this.attributeReader = attribute;
@@ -78,7 +75,7 @@ public abstract class ItemTableCellFormatter extends ItemTableFormatter {
 
     /**
      * @param tableColumn
-     *            the column to set
+     *        the column to set
      */
     public void setColumn(final TableColumn tableColumn) {
         this.column = tableColumn;
@@ -93,7 +90,7 @@ public abstract class ItemTableCellFormatter extends ItemTableFormatter {
 
     /**
      * @param line
-     *            the line to set
+     *        the line to set
      */
     public void setLine(final TableLine line) {
         this.line = line;

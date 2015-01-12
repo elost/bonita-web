@@ -70,7 +70,7 @@ public class ProfileEntryDefinition extends ItemDefinition<ProfileEntryItem> {
                 .addValidator(new EnumValidator(
                         ProfileEntryItem.VALUE_TYPE.folder.name(),
                         ProfileEntryItem.VALUE_TYPE.link.name()
-                ));
+                        ));
         createAttribute(ProfileEntryItem.ATTRIBUTE_PAGE, ItemAttribute.TYPE.STRING);
         createAttribute(ProfileEntryItem.ATTRIBUTE_IS_CUSTOM_ICON, ItemAttribute.TYPE.IMAGE);
     }

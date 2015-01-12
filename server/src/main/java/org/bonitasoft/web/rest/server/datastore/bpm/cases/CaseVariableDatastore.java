@@ -30,7 +30,6 @@ import org.bonitasoft.web.toolkit.client.data.APIID;
 
 /**
  * @author Colin PUY
- * 
  */
 public class CaseVariableDatastore extends CommonDatastore<CaseVariableItem, DataInstance>
         implements DatastoreHasSearch<CaseVariableItem>, DatastoreHasUpdate<CaseVariableItem> {

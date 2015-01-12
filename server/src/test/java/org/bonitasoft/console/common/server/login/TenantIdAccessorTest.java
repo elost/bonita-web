@@ -1,15 +1,15 @@
 package org.bonitasoft.console.common.server.login;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
-
-import javax.servlet.ServletException;
-
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.MockitoAnnotations.initMocks;
+
+import javax.servlet.ServletException;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
 
 /**
  * Created by Vincent Elcrin

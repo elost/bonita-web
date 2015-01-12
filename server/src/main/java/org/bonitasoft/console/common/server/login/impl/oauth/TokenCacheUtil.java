@@ -20,7 +20,6 @@ import org.scribe.model.Token;
 
 /**
  * @author Ruiheng.Fan
- * 
  */
 
 public class TokenCacheUtil {

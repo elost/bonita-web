@@ -14,10 +14,10 @@
  */
 package org.bonitasoft.web.rest.model.portal.profile;
 
+import static org.bonitasoft.web.rest.model.portal.profile.ProfileMemberItem.ATTRIBUTE_PROFILE_ID;
+
 import org.bonitasoft.web.toolkit.client.data.item.Definitions;
 import org.bonitasoft.web.toolkit.client.data.item.attribute.ItemAttribute;
-
-import static org.bonitasoft.web.rest.model.portal.profile.ProfileMemberItem.ATTRIBUTE_PROFILE_ID;
 
 /**
  * @author Julien Mege

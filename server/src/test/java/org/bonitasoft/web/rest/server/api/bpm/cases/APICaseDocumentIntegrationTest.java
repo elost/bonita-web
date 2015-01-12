@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -35,7 +33,6 @@ import org.junit.Test;
 
 /**
  * @author Vincent Elcrin
- *
  */
 public class APICaseDocumentIntegrationTest extends AbstractConsoleTest {
 
@@ -67,7 +64,7 @@ public class APICaseDocumentIntegrationTest extends AbstractConsoleTest {
         Assert.assertEquals("Author is different", document.getAuthor(), (long) caseDocumentItem.getSubmittedBy().toLong());
         Assert.assertEquals("Mime type is different", document.getContentMimeType(), caseDocumentItem.getMIMEType());
         Assert.assertEquals("Content storage id is different", document.getContentStorageId(), caseDocumentItem.getStorageId());
-        Assert.assertEquals("Creation date is different", document.getCreationDate(),  caseDocumentItem.getCreationDate());
+        Assert.assertEquals("Creation date is different", document.getCreationDate(), caseDocumentItem.getCreationDate());
         Assert.assertEquals("Id is different", document.getId(), (long) caseDocumentItem.getId().toLong());
         Assert.assertEquals("Process instance id is different", document.getProcessInstanceId(), (long) caseDocumentItem.getCaseId().toLong());
         Assert.assertEquals("Url is different", document.getUrl(), caseDocumentItem.getURL());
@@ -106,7 +103,7 @@ public class APICaseDocumentIntegrationTest extends AbstractConsoleTest {
     public void testAPISearchSupervised() throws Exception {
         // set initiator as process supervisor
         TestProcessFactory.getProcessWithDocumentAttached()
-        .addSupervisor(getInitiator());
+                .addSupervisor(getInitiator());
 
         final HashMap<String, String> filters = new HashMap<String, String>();
         filters.put(CaseDocumentItem.FILTER_SUPERVISOR_ID, String.valueOf(getInitiator().getId()));

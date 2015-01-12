@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -42,7 +40,6 @@ import org.mockito.Mock;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class SearchProfileMembersHelperTest extends APITestWithMock {
 
@@ -63,7 +60,7 @@ public class SearchProfileMembersHelperTest extends APITestWithMock {
         List<ProfileMemberItem> expectedProfileMemberItems = new ProfileMemberItemConverter().convert(aKnownSearchResult().getResult());
         when(engineClient.searchProfileMembers(eq(MemberType.ROLE.getType()), any(SearchOptions.class))).thenReturn(aKnownSearchResult);
         HashMap<String, String> filters = filterOnProfileIdAndMemberType(5L, MemberType.ROLE);
-        
+
         ItemSearchResult<ProfileMemberItem> searchResult = searchProfilesHelper.search(0, 10, null, null, filters);
 
         assertTrue(SearchUtils.areEquals(expectedProfileMemberItems, searchResult.getResults()));
@@ -71,7 +68,7 @@ public class SearchProfileMembersHelperTest extends APITestWithMock {
 
     @Test(expected = APIFilterMandatoryException.class)
     public void testSearchWithoutMandatoryFiltersThrowError() {
-        
+
         searchProfilesHelper.search(0, 10, null, null, Collections.<String, String> emptyMap());
     }
 
@@ -79,6 +76,7 @@ public class SearchProfileMembersHelperTest extends APITestWithMock {
         return SearchUtils.createEngineSearchResult(aKnownProfile(), anotherKnownProfile());
 
     }
+
     private HashMap<String, String> filterOnProfileIdAndMemberType(long id, MemberType type) {
         HashMap<String, String> filters = new HashMap<String, String>();
         filters.put(ProfileMemberItem.ATTRIBUTE_PROFILE_ID, String.valueOf(id));
@@ -87,7 +85,7 @@ public class SearchProfileMembersHelperTest extends APITestWithMock {
     }
 
     private ProfileMember aKnownProfile() {
-        return anEngineProfileMember() .build();
+        return anEngineProfileMember().build();
     }
 
     private ProfileMember anotherKnownProfile() {

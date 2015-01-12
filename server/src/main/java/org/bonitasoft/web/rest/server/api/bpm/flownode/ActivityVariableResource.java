@@ -22,8 +22,7 @@ public class ActivityVariableResource extends CommonResource {
         }
     }
 
-
     private DataInstance getTaskVariableInstance(final String dataName, final Long activityInstanceId) throws DataNotFoundException {
-            return getEngineProcessAPI().getActivityDataInstance(dataName, activityInstanceId);
+        return getEngineProcessAPI().getActivityDataInstance(dataName, activityInstanceId);
     }
 }

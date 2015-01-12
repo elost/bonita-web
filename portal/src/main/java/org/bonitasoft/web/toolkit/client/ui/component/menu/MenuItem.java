@@ -17,9 +17,7 @@ package org.bonitasoft.web.toolkit.client.ui.component.menu;
 import org.bonitasoft.web.toolkit.client.ui.component.core.Node;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  */
 public interface MenuItem extends Node {
 }

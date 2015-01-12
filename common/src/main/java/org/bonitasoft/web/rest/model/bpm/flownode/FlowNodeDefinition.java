@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -28,7 +26,6 @@ import org.bonitasoft.web.toolkit.client.data.item.attribute.validator.StringReg
 
 /**
  * @author Séverin Moussel
- *
  */
 public class FlowNodeDefinition extends ItemDefinition {
 
@@ -71,7 +68,7 @@ public class FlowNodeDefinition extends ItemDefinition {
                         FlowNodeItem.VALUE_STATE_FAILED,
                         FlowNodeItem.VALUE_STATE_REPLAY,
                         FlowNodeItem.VALUE_STATE_SKIPPED
-                ));
+                        ));
 
         createAttribute(FlowNodeItem.ATTRIBUTE_CASE_ID, ItemAttribute.TYPE.ITEM_ID)
                 .isMandatory();
@@ -94,7 +91,7 @@ public class FlowNodeDefinition extends ItemDefinition {
                         FlowNodeItem.VALUE_TYPE_INTERMEDIATE_THROW_EVENT,
                         FlowNodeItem.VALUE_TYPE_LOOP_ACTIVITY,
                         FlowNodeItem.VALUE_TYPE_START_EVENT
-                ));
+                        ));
 
         createAttribute(FlowNodeItem.ATTRIBUTE_EXECUTED_BY_USER_ID, ItemAttribute.TYPE.ITEM_ID);
         createAttribute(FlowNodeItem.ATTRIBUTE_EXECUTED_BY_SUBSTITUTE_USER_ID, ItemAttribute.TYPE.ITEM_ID);

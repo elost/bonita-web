@@ -1,5 +1,8 @@
 package org.bonitasoft.web.rest.server.datastore.bpm.flownode;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
 import org.bonitasoft.console.common.server.i18n.I18n;
 import org.bonitasoft.web.rest.model.bpm.flownode.ArchivedTaskItem;
 import org.bonitasoft.web.rest.model.bpm.flownode.TaskItem;
@@ -14,9 +17,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TaskFinderTest {
@@ -35,6 +35,7 @@ public class TaskFinderTest {
     public void setUp() throws Exception {
         I18n.getInstance();
         ItemDefinitionFactory.setDefaultFactory(new ItemDefinitionFactory() {
+
             @Override
             public ItemDefinition<?> defineItemDefinitions(String token) {
                 return null;
@@ -74,5 +75,3 @@ public class TaskFinderTest {
         taskFinder.find(id);
     }
 }
-
-

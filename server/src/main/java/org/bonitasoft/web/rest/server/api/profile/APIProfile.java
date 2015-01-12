@@ -41,14 +41,14 @@ public class APIProfile extends ConsoleAPI<ProfileItem> implements APIHasGet<Pro
     protected void fillDeploys(ProfileItem item, List<String> deploys) {
         addDeployer(getDeployerFactory().createUserDeployer(PageItem.ATTRIBUTE_CREATED_BY_USER_ID));
         addDeployer(getDeployerFactory().createUserDeployer(PageItem.ATTRIBUTE_UPDATED_BY_USER_ID));
-        
+
         super.fillDeploys(item, deploys);
     }
 
     protected DeployerFactory getDeployerFactory() {
         return new DeployerFactory(getEngineSession());
     }
-    
+
     @Override
     protected ComposedDatastore<ProfileItem> defineDefaultDatastore() {
 

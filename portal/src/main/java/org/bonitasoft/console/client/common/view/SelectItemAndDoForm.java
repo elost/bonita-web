@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -36,7 +34,6 @@ import com.google.gwt.user.client.Element;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class SelectItemAndDoForm extends Component {
 
@@ -49,7 +46,7 @@ public class SelectItemAndDoForm extends Component {
     private final Action callback;
 
     private TreeIndexed<String> hiddenEntries = new TreeIndexed<String>();
-    
+
     public SelectItemAndDoForm(final List<SelectItemAndDoEntry> entries, final String submitLabel, final String submitTooltip, final Action callback) {
         super();
         this.entries = entries;
@@ -101,7 +98,6 @@ public class SelectItemAndDoForm extends Component {
              */
         }
     }
-    
 
     @Override
     protected Element makeElement() {
@@ -110,8 +106,8 @@ public class SelectItemAndDoForm extends Component {
         addHiddenEntriesToForm(form, this.hiddenEntries);
 
         for (final SelectItemAndDoEntry entry : this.entries) {
-            AutoCompleteEntry autoCompleteEntry = new AutoCompleteEntry(new JsId(entry.getName()), entry.getLabel(), 
-                    entry.getTooltip(), entry.getItemDefinition(), entry.getSuggestionLabel(), 
+            AutoCompleteEntry autoCompleteEntry = new AutoCompleteEntry(new JsId(entry.getName()), entry.getLabel(),
+                    entry.getTooltip(), entry.getItemDefinition(), entry.getSuggestionLabel(),
                     entry.getSuggestionValueAttributeName(), null);
             for (Entry<String, String> filter : entry.getFilters().entrySet()) {
                 autoCompleteEntry.addFilter(filter.getKey(), filter.getValue());

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -46,9 +44,9 @@ import com.google.gwt.core.client.GWT;
 public class UploadProcessPage extends Page {
 
     public static final String TOKEN = "processupload";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(ProcessListingAdminPage.TOKEN);
         PRIVILEGES.add("reportlistingadminext");
@@ -104,7 +102,6 @@ public class UploadProcessPage extends Page {
 
     /**
      * APICallback for process installation.
-     * 
      * Redirect to process more view on installation succ
      * Show an error pop-up on installation failure
      */

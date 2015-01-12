@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model;
 
@@ -25,7 +23,7 @@ import java.util.Map;
  * @author Anthony Birembaut
  */
 public class HeadNode implements Serializable {
-    
+
     /**
      * UUID
      */
@@ -35,12 +33,12 @@ public class HeadNode implements Serializable {
      * tagName of a head node
      */
     private String tagName;
-    
+
     /**
      * attributes of a head node
      */
     private Map<String, String> attributes;
-    
+
     /**
      * content of a head node
      */
@@ -48,6 +46,7 @@ public class HeadNode implements Serializable {
 
     /**
      * Constructor
+     * 
      * @param tagName
      * @param attributes
      * @param innerHtml
@@ -58,7 +57,7 @@ public class HeadNode implements Serializable {
         this.attributes = attributes;
         this.innerHtml = innerHtml;
     }
-    
+
     /**
      * Default Constructor
      */
@@ -90,5 +89,5 @@ public class HeadNode implements Serializable {
     public void setInnerHtml(final String innerHtml) {
         this.innerHtml = innerHtml;
     }
-    
+
 }

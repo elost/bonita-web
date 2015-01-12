@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -237,7 +235,7 @@ public class FormPagesViewController {
      * Display the page at the given index
      *
      * @param newIndex
-     *            index of the page in the page list
+     *        index of the page in the page list
      */
     public void displayPage(final int newIndex) throws IndexOutOfBoundsException {
 
@@ -349,11 +347,11 @@ public class FormPagesViewController {
      * Build the page (template + form fields)
      *
      * @param formPage
-     *            the page definition
+     *        the page definition
      * @param hasAlreadyBeenDisplayed
-     *            indicates whether the page has already been displayed or not
+     *        indicates whether the page has already been displayed or not
      * @param isNextPage
-     *            indicate if the page to display is the next page
+     *        indicate if the page to display is the next page
      */
     protected void buildPage(final ReducedFormPage formPage, final boolean hasAlreadyBeenDisplayed, final boolean isNextPage) {
 
@@ -399,15 +397,15 @@ public class FormPagesViewController {
      * Insert the widgets in the page for the view mode
      *
      * @param pageHTMLPanel
-     *            the HTMLPanel
+     *        the HTMLPanel
      * @param formPage
-     *            the page definition
+     *        the page definition
      * @param hasAlreadyBeenDisplayed
-     *            indicates whether the page has already been displayed or not
+     *        indicates whether the page has already been displayed or not
      * @param isNextPage
-     *            indicate if the page to display is the next page
+     *        indicate if the page to display is the next page
      * @param onloadAttributeValue
-     *            the onload attribute value if it exists
+     *        the onload attribute value if it exists
      */
     protected void buildViewMode(final HTMLPanel pageHTMLPanel, final ReducedFormPage formPage, final boolean hasAlreadyBeenDisplayed,
             final boolean isNextPage, final String onloadAttributeValue) {
@@ -486,15 +484,15 @@ public class FormPagesViewController {
      * Insert the widgets in the page for the edit mode
      *
      * @param pageHTMLPanel
-     *            the HTMLPanel
+     *        the HTMLPanel
      * @param formPage
-     *            the page definition
+     *        the page definition
      * @param hasAlreadyBeenDisplayed
-     *            indicates whether the page has already been displayed or not
+     *        indicates whether the page has already been displayed or not
      * @param isNextPage
-     *            indicate if the page to display is the next page
+     *        indicate if the page to display is the next page
      * @param onloadAttributeValue
-     *            the onload attribute value if it exists
+     *        the onload attribute value if it exists
      */
     protected void buildEditMode(final HTMLPanel pageHTMLPanel, final ReducedFormPage formPage, final boolean hasAlreadyBeenDisplayed,
             final boolean isNextPage, final String onloadAttributeValue) {
@@ -575,11 +573,11 @@ public class FormPagesViewController {
      * Check if the value of the field should be retrieved from the history or recalculated
      *
      * @param hasAlreadyBeenDisplayed
-     *            indicates whether the page has already been displayed or not
+     *        indicates whether the page has already been displayed or not
      * @param isNextPage
-     *            indicate if the page to display is the next page
+     *        indicate if the page to display is the next page
      * @param formWidgetData
-     *            the widget definition
+     *        the widget definition
      * @return true if the value of the field should be retrieved from the history, false otherwise
      */
     protected boolean getValueFromHistory(final boolean hasAlreadyBeenDisplayed, final boolean isNextPage, final ReducedFormWidget formWidgetData) {
@@ -594,13 +592,13 @@ public class FormPagesViewController {
      * Insert the widget in the page
      *
      * @param pageHTMLPanel
-     *            the HTMLPanel
+     *        the HTMLPanel
      * @param formWidgetData
-     *            the widget definition
+     *        the widget definition
      * @param widget
-     *            the widget to insert
+     *        the widget to insert
      * @param containerStyle
-     *            the style to apply to the container
+     *        the style to apply to the container
      */
     protected void insertWidget(final HTMLPanel pageHTMLPanel, final ReducedFormWidget formWidgetData, final Widget widget, final String containerStyle) {
         if (formWidgetData.isDisplayCondition()) {
@@ -624,9 +622,9 @@ public class FormPagesViewController {
      * Check in the URL if the initial value of the field is specified and override it
      *
      * @param formWidgetData
-     *            the widget data
+     *        the widget data
      * @param widgetId
-     *            the id of the widget
+     *        the id of the widget
      */
     protected void setFieldValueFromURL(final ReducedFormWidget formWidgetData, final String widgetId) {
         final Object widgetValueObjectInURL = urlContext.get(widgetId);
@@ -830,7 +828,7 @@ public class FormPagesViewController {
      * Disable a button
      *
      * @param button
-     *            the button to disable
+     *        the button to disable
      */
     protected void disableButton(final Widget button) {
         if (button instanceof Button) {
@@ -844,7 +842,7 @@ public class FormPagesViewController {
      * disable the buttons
      *
      * @param pressedButton
-     *            the button that was pressed
+     *        the button that was pressed
      */
     protected void disableButtons(final Widget pressedButton) {
         this.pressedButton = pressedButton;
@@ -864,7 +862,7 @@ public class FormPagesViewController {
      * Enable a button
      *
      * @param button
-     *            to enable
+     *        to enable
      */
     protected void enableButton(final Widget button) {
         if (button != null) {
@@ -880,7 +878,7 @@ public class FormPagesViewController {
      * Enable the buttons
      *
      * @param hideLoader
-     *            boolean to specify if we had need to hide the loader
+     *        boolean to specify if we had need to hide the loader
      */
     protected void enableButtons(final boolean hideLoader) {
         pressedButton = null;
@@ -898,7 +896,7 @@ public class FormPagesViewController {
      * Records a page's fields
      *
      * @param formWidgets
-     *            the list of form widgets
+     *        the list of form widgets
      */
     protected void recordValues(final List<ReducedFormWidget> formWidgets) {
 
@@ -915,7 +913,7 @@ public class FormPagesViewController {
      * Records a page's fields and validate it
      *
      * @param actionAfterValidation
-     *            type of action to execute after the validation step
+     *        type of action to execute after the validation step
      */
     protected void validatePage(final ACTION_TYPE actionAfterValidation) {
 
@@ -1277,7 +1275,7 @@ public class FormPagesViewController {
                 }
                 if (!"false".equals(urlUtils.getHashParameter(URLUtils.DISPLAY_CONFIRMATION))) {
                     formsServiceAsync.getApplicationErrorTemplate(formID, urlContext, new ErrorPageHandler(applicationHTMLPanel, formID, pageHTMLPanel,
-                        errorMessage, elementId));
+                            errorMessage, elementId));
                 }
             } catch (final FileTooBigException e) {
                 final String fileName = e.getFileName();
@@ -1301,7 +1299,7 @@ public class FormPagesViewController {
                 }
                 if (!"false".equals(urlUtils.getHashParameter(URLUtils.DISPLAY_CONFIRMATION))) {
                     formsServiceAsync.getApplicationErrorTemplate(formID, urlContext, new ErrorPageHandler(applicationHTMLPanel, formID, pageHTMLPanel,
-                        errorMessage, elementId));
+                            errorMessage, elementId));
                 }
             }
 
@@ -1326,8 +1324,9 @@ public class FormPagesViewController {
 
     private void redirectToConfirmationPage() {
         String defaultConfirmationMessage = null;
-        if(urlContext.containsKey(URLUtils.INSTANCE_ID_PARAM)) {
-            defaultConfirmationMessage = FormsResourceBundle.getMessages().instanceSubmissionConfirmationMessage((String)urlContext.get(URLUtils.INSTANCE_ID_PARAM));
+        if (urlContext.containsKey(URLUtils.INSTANCE_ID_PARAM)) {
+            defaultConfirmationMessage = FormsResourceBundle.getMessages().instanceSubmissionConfirmationMessage(
+                    (String) urlContext.get(URLUtils.INSTANCE_ID_PARAM));
         } else {
             defaultConfirmationMessage = FormsResourceBundle.getMessages().submissionConfirmationMessage();
         }

@@ -15,7 +15,6 @@
 package org.bonitasoft.web.toolkit.client.data.api.request;
 
 import org.bonitasoft.web.toolkit.client.UserSessionVariables;
-import org.bonitasoft.web.toolkit.client.ViewController;
 import org.bonitasoft.web.toolkit.client.data.api.callback.HttpCallback;
 
 import com.google.gwt.http.client.Request;

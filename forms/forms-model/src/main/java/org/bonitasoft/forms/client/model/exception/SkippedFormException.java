@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model.exception;
 
@@ -23,16 +21,16 @@ package org.bonitasoft.forms.client.model.exception;
  */
 public class SkippedFormException extends Exception {
 
-	/**
-	 * UID
-	 */
-	private static final long serialVersionUID = -5032383358326989273L;
+    /**
+     * UID
+     */
+    private static final long serialVersionUID = -5032383358326989273L;
 
-	/**
+    /**
      * contructor
      */
     public SkippedFormException() {
-       super();
+        super();
     }
 
     /**
@@ -40,21 +38,21 @@ public class SkippedFormException extends Exception {
      * @param cause cause of the exception
      */
     public SkippedFormException(final String message, final Throwable cause) {
-       super(message, cause);
+        super(message, cause);
     }
 
     /**
      * @param message message associated with the exception
      */
     public SkippedFormException(final String message) {
-       super(message);
+        super(message);
     }
 
     /**
      * @param cause cause of the exception
      */
     public SkippedFormException(final Throwable cause) {
-       super(cause);
+        super(cause);
     }
 
 }

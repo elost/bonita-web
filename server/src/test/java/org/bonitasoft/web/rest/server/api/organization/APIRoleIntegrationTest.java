@@ -180,12 +180,12 @@ public class APIRoleIntegrationTest extends AbstractConsoleTest {
     public void weCanCountAllUsersInAGroup() throws Exception {
         Role roleWith2Users = createRoleWithAssignedUsers(getJohnCarpenter(), getMrSpechar());
         List<String> counters = asList(RoleItem.COUNTER_NUMBER_OF_USERS);
-        
+
         RoleItem roleItem = getAPIRole().runGet(APIID.makeAPIID(roleWith2Users.getId()), null, counters);
-        
+
         assertEquals(2L, (long) roleItem.getNumberOfUsers());
     }
-    
+
     private Role createRoleWithAssignedUsers(TestUser... users) {
         TestGroup aGroup = TestGroupFactory.getRAndD();
         TestRole aRole = TestRoleFactory.getDeveloper();

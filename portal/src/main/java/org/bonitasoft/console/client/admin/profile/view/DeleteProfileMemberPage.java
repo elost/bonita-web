@@ -31,10 +31,10 @@ import org.bonitasoft.web.toolkit.client.ui.component.form.Form;
  */
 public class DeleteProfileMemberPage extends Page {
 
-    public final static String TOKEN = "deleteProfileMemberpage";    
-    
+    public final static String TOKEN = "deleteProfileMemberpage";
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(ProfileListingPage.TOKEN);
     }

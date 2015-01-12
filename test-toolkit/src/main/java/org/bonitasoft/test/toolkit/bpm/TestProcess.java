@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -50,7 +48,6 @@ import org.bonitasoft.test.toolkit.organization.TestUser;
 
 /**
  * @author Vincent Elcrin
- * 
  */
 public class TestProcess {
 
@@ -156,7 +153,7 @@ public class TestProcess {
     public long getId() {
         return this.processDefinition.getId();
     }
-    
+
     public ProcessDeploymentInfo getProcessDeploymentInfo() {
         try {
             return getProcessAPI(getSession()).getProcessDeploymentInfo(getId());
@@ -181,7 +178,7 @@ public class TestProcess {
         this.enabled = enabled;
         return this;
     }
-    
+
     private void enableProcess(APISession apiSession) {
         try {
             getProcessAPI(apiSession).enableProcess(this.processDefinition.getId());
@@ -189,7 +186,7 @@ public class TestProcess {
             throw new TestToolkitException("Can't enable process <" + this.processDefinition.getId() + ">", e);
         }
     }
-    
+
     private void disableProcess(APISession apiSession) {
         try {
             getProcessAPI(apiSession).disableProcess(this.processDefinition.getId());
@@ -209,18 +206,17 @@ public class TestProcess {
     public TestProcess setEnable(final boolean enabled) {
         return setEnable(TestToolkitCtx.getInstance().getInitiator(), enabled);
     }
-    
+
     public TestProcess enable() {
         return setEnable(TestToolkitCtx.getInstance().getInitiator(), true);
     }
-    
+
     public TestProcess disable() {
         return setEnable(TestToolkitCtx.getInstance().getInitiator(), false);
     }
 
     /**
      * Add actors to enable process
-     * 
      * TODO: Need to evolve to choose on which Actors category the actor will be added
      * 
      * @param apiSession
@@ -301,7 +297,7 @@ public class TestProcess {
         testCase.waitProcessState(apiSession, TestCase.READY_STATE);
         return testCase;
     }
-    
+
     protected ProcessInstance createProcesInstance(final APISession apiSession) {
         try {
             return getProcessAPI(apiSession).startProcess(apiSession.getUserId(), processDefinition.getId());
@@ -472,7 +468,7 @@ public class TestProcess {
         return this.actors;
     }
 
-    public List<TestCase> listOpenCases() throws SearchException  {
+    public List<TestCase> listOpenCases() throws SearchException {
         List<ProcessInstance> processInstances = searchOpenedProcessInstances();
         return convertToCasesList(processInstances);
     }

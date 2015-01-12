@@ -19,7 +19,6 @@ import org.w3c.dom.NodeList;
  * Parse an XML node to return one/several expressions
  * 
  * @author Anthony Birembaut
- * 
  */
 public class XMLExpressionsUtil extends XPathUtil {
 
@@ -27,9 +26,9 @@ public class XMLExpressionsUtil extends XPathUtil {
      * Instance attribute
      */
     protected static XMLExpressionsUtil INSTANCE = null;
-   
+
     public static String NON_APPLICABLE_PREFIX = "n/a";
-    
+
     /**
      * @return the XMLExpressionsUtil instance
      */
@@ -46,28 +45,25 @@ public class XMLExpressionsUtil extends XPathUtil {
     protected XMLExpressionsUtil() {
     }
 
-    
     /**
      * Parse an expression Array node, put expressionParentName as "n/a" as default value.
      * 
      * @param expressionsNode
-     *            the expression node
-     *            
+     *        the expression node
      * @return a list of list of expressions
      * @throws InvalidFormDefinitionException
      */
     public List<List<Expression>> parseExpressionsArray(final Node expressionsNode) throws InvalidFormDefinitionException {
-    	return parseExpressionsArray(NON_APPLICABLE_PREFIX, expressionsNode);
+        return parseExpressionsArray(NON_APPLICABLE_PREFIX, expressionsNode);
     }
-    
+
     /**
      * Parse an expression Array node
      * 
      * @param expressionParentName
-     *            name of the parent widget
-     * 
+     *        name of the parent widget
      * @param expressionsNode
-     *            the expression node
+     *        the expression node
      * @return a list of list of expressions
      * @throws InvalidFormDefinitionException
      */
@@ -82,27 +78,26 @@ public class XMLExpressionsUtil extends XPathUtil {
         }
         return expressions;
     }
-    
+
     /**
      * Parse a expression list node, put expressionParentName as "n/a" as default value.
      * 
      * @param expressionsNode
-     *            the expression node
+     *        the expression node
      * @return a list of expressions
      * @throws InvalidFormDefinitionException
      */
     public List<Expression> parseExpressionsList(final Node expressionsNode) throws InvalidFormDefinitionException {
-    	return  parseExpressionsList(NON_APPLICABLE_PREFIX, expressionsNode);
+        return parseExpressionsList(NON_APPLICABLE_PREFIX, expressionsNode);
     }
-    
+
     /**
      * Parse a expression list node
      * 
      * @param expressionParentName
-     *            name of the parent widget
-     *            
+     *        name of the parent widget
      * @param expressionsNode
-     *            the expression node
+     *        the expression node
      * @return a list of expressions
      * @throws InvalidFormDefinitionException
      */
@@ -117,15 +112,14 @@ public class XMLExpressionsUtil extends XPathUtil {
         }
         return expressions;
     }
-    
+
     /**
      * Parse a expression list node
      * 
      * @param expressionParentName
-     *            name of the parent widget
-     *            
+     *        name of the parent widget
      * @param dependenciesNode
-     *            the dependencies node
+     *        the dependencies node
      * @return a list of expressions
      * @throws InvalidFormDefinitionException
      */
@@ -135,8 +129,8 @@ public class XMLExpressionsUtil extends XPathUtil {
         for (int i = 0; i < expressionNodes.getLength(); i++) {
             final Node expressionNode = expressionNodes.item(i);
             if (expressionNode != null) {
-            	final String name = getStringByXpath(expressionNode, XMLForms.NAME);
-                expressions.add(buildExpression(expressionNode, name) );
+                final String name = getStringByXpath(expressionNode, XMLForms.NAME);
+                expressions.add(buildExpression(expressionNode, name));
             }
         }
         return expressions;
@@ -144,24 +138,23 @@ public class XMLExpressionsUtil extends XPathUtil {
 
     /**
      * Parse an expression parent node, put expressionParentName as "n/a" as default value.
-     *            
+     * 
      * @param expressionParentNode
-     *            the expression parent node
+     *        the expression parent node
      * @return an Expression
      * @throws InvalidFormDefinitionException
      */
     public Expression parseExpression(final Node expressionParentNode) throws InvalidFormDefinitionException {
-    	return parseExpression(NON_APPLICABLE_PREFIX, expressionParentNode);
+        return parseExpression(NON_APPLICABLE_PREFIX, expressionParentNode);
     }
-    
+
     /**
      * Parse an expression parent node
-     *      
+     * 
      * @param expressionParentName
-     *            name of the parent widget
-     *            
+     *        name of the parent widget
      * @param expressionParentNode
-     *            the expression parent node
+     *        the expression parent node
      * @return an Expression
      * @throws InvalidFormDefinitionException
      */
@@ -176,36 +169,35 @@ public class XMLExpressionsUtil extends XPathUtil {
 
     /**
      * Parse an expression node, put expressionParentName as "n/a" as default value.
-     *         
+     * 
      * @param expressionNode
-     *            the expression node
+     *        the expression node
      * @return an Expression
      * @throws InvalidFormDefinitionException
      */
     protected Expression parseExpressionContent(final Node expressionNode) throws InvalidFormDefinitionException {
-    	return  parseExpressionContent(NON_APPLICABLE_PREFIX, expressionNode);
+        return parseExpressionContent(NON_APPLICABLE_PREFIX, expressionNode);
     }
-    
+
     /**
      * Parse an expression node
      *
      * @param expressionParentName
-     *            name of the parent widget
-     *         
+     *        name of the parent widget
      * @param expressionNode
-     *            the expression node
+     *        the expression node
      * @return an Expression
      * @throws InvalidFormDefinitionException
      */
     protected Expression parseExpressionContent(final String expressionParentName, final Node expressionNode) throws InvalidFormDefinitionException {
         final String name = expressionParentName + FormFieldValuesUtil.EXPRESSION_KEY_SEPARATOR + getStringByXpath(expressionNode, XMLForms.NAME);
-        
+
         return buildExpression(expressionNode, name);
     }
 
-	private Expression buildExpression(final Node expressionNode, final String name)
-			throws InvalidFormDefinitionException {
-		final String returnType = getStringByXpath(expressionNode, XMLForms.EXPRESSION_RETURN_TYPE);
+    private Expression buildExpression(final Node expressionNode, final String name)
+            throws InvalidFormDefinitionException {
+        final String returnType = getStringByXpath(expressionNode, XMLForms.EXPRESSION_RETURN_TYPE);
         final String expressionType = getStringByXpath(expressionNode, XMLForms.EXPRESSION_TYPE);
         final String interpreter = getStringByXpath(expressionNode, XMLForms.EXPRESSION_INTERPRETER);
         final String content = getStringByXpath(expressionNode, XMLForms.EXPRESSION_CONTENT);
@@ -213,10 +205,10 @@ public class XMLExpressionsUtil extends XPathUtil {
         final List<Expression> dependencies;
         if (expressionDependenciesNode != null) {
             dependencies = parseExpressionsDependenciesList(expressionDependenciesNode);
-            
+
         } else {
             dependencies = new ArrayList<Expression>();
         }
         return new Expression(name, content, expressionType, returnType, interpreter, dependencies);
-	}
+    }
 }

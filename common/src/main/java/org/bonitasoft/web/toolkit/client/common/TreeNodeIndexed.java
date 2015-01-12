@@ -17,9 +17,7 @@ package org.bonitasoft.web.toolkit.client.common;
 import java.util.Map;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  * @param <VALUE_CLASS>
  */
 public class TreeNodeIndexed<VALUE_CLASS> extends TreeIndexed<VALUE_CLASS> {

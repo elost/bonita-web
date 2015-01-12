@@ -37,12 +37,11 @@ import org.junit.Test;
 
 /**
  * @author Colin PUY
- * 
  */
 public class APICaseVariableIntegrationTest extends AbstractConsoleTest {
 
     private APICaseVariable apiCaseVariable;
-    
+
     @Override
     public void consoleTestSetUp() throws Exception {
         apiCaseVariable = new APICaseVariable();
@@ -84,80 +83,81 @@ public class APICaseVariableIntegrationTest extends AbstractConsoleTest {
         TestCase aCase = createCaseWithVariable(expectedVariable);
         String newLongValue = "2";
         Map<String, String> attributes = buildUpdateAttributes(newLongValue, Long.class.getName());
-        
+
         CaseVariableItem variable = apiCaseVariable.runUpdate(buildAPIID(aCase, expectedVariable), attributes);
-        
+
         assertEquals(newLongValue, variable.getValue());
     }
-    
+
     @Test
     public void weCanUpdateAnIntegerValue() throws Exception {
         ProcessVariable expectedVariable = createIntVariable(1);
         TestCase aCase = createCaseWithVariable(expectedVariable);
         String newIntValue = "2";
         Map<String, String> attributes = buildUpdateAttributes(newIntValue, Integer.class.getName());
-        
+
         CaseVariableItem variable = apiCaseVariable.runUpdate(buildAPIID(aCase, expectedVariable), attributes);
-        
+
         assertEquals(newIntValue, variable.getValue());
     }
-    
+
     @Test
     public void weCanUpdateABooleanValue() throws Exception {
         ProcessVariable expectedVariable = createBooleanVariable(true);
         TestCase aCase = createCaseWithVariable(expectedVariable);
         String newBooleanValue = "false";
         Map<String, String> attributes = buildUpdateAttributes(newBooleanValue, Boolean.class.getName());
-        
+
         CaseVariableItem variable = apiCaseVariable.runUpdate(buildAPIID(aCase, expectedVariable), attributes);
-        
+
         assertEquals(newBooleanValue, variable.getValue());
     }
-    
+
     @Test
     public void weCanUpdateAStringValue() throws Exception {
         ProcessVariable expectedVariable = createStringVariable("aString");
         TestCase aCase = createCaseWithVariable(expectedVariable);
         String newStringValue = "aNewString";
         Map<String, String> attributes = buildUpdateAttributes(newStringValue, String.class.getName());
-        
+
         CaseVariableItem variable = apiCaseVariable.runUpdate(buildAPIID(aCase, expectedVariable), attributes);
-        
+
         assertEquals(newStringValue, variable.getValue());
     }
-    
+
     @Test
     public void weCanUpdateADoubleValue() throws Exception {
         ProcessVariable expectedVariable = createDoubleVariable(12.3d);
         TestCase aCase = createCaseWithVariable(expectedVariable);
         String newDoubleValue = "46.35";
         Map<String, String> attributes = buildUpdateAttributes(newDoubleValue, Double.class.getName());
-        
+
         CaseVariableItem variable = apiCaseVariable.runUpdate(buildAPIID(aCase, expectedVariable), attributes);
-        
+
         assertEquals(newDoubleValue, variable.getValue());
     }
-    
+
     @Test
-    @Ignore("until ENGINE-1099 is resolved") // also need to implement ProcessVariable.createDateVariable and DateConverter / add converter to converterFactory
+    @Ignore("until ENGINE-1099 is resolved")
+    // also need to implement ProcessVariable.createDateVariable and DateConverter / add converter to converterFactory
     public void weCanUpdateADateValue() throws Exception {
         ProcessVariable expectedVariable = createDateVariable(new Date());
         TestCase aCase = createCaseWithVariable(expectedVariable);
         String newDateValue = "2012/01/01";
         Map<String, String> attributes = buildUpdateAttributes(newDateValue, Date.class.getName());
-        
+
         CaseVariableItem variable = apiCaseVariable.runUpdate(buildAPIID(aCase, expectedVariable), attributes);
-        
+
         assertEquals(newDateValue, variable.getValue());
     }
 
     @Test
     public void search() throws Exception {
-        TestCase aCase = createCaseWithVariable(createLongVariable(1L), createIntVariable(1), createStringVariable("hello")); 
+        TestCase aCase = createCaseWithVariable(createLongVariable(1L), createIntVariable(1), createStringVariable("hello"));
         Map<String, String> filters = buildCaseIdFilter(aCase);
-        
+
         ItemSearchResult<CaseVariableItem> searchResults = apiCaseVariable.runSearch(0, 2, null, null, filters, null, null);
-        
+
         assertEquals(3L, searchResults.getTotal());
         assertEquals(2, searchResults.getLength());
         assertEquals(2, searchResults.getResults().size());
@@ -168,9 +168,9 @@ public class APICaseVariableIntegrationTest extends AbstractConsoleTest {
         ProcessVariable expectedVariable = createLongVariable(1L);
         TestCase aCase = createCaseWithVariable(expectedVariable);
         APIID apiid = buildAPIID(aCase, expectedVariable);
-        
+
         CaseVariableItem variable = apiCaseVariable.runGet(apiid, null, null);
-        
+
         assertEquals(expectedVariable.getName(), variable.getName());
         assertEquals(expectedVariable.getClassName(), variable.getType());
         assertEquals(expectedVariable.getDefaultValue().getContent(), variable.getValue());

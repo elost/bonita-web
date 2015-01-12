@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model;
 
@@ -29,52 +27,54 @@ public class ApplicationConfig implements Serializable {
      * UID
      */
     private static final long serialVersionUID = -7591064386168731706L;
-    
+
     /**
      * application label expression
      */
     private Expression applicationLabelExpression;
-    
+
     /**
      * application template
      */
     private HtmlTemplate applicationLayout;
-    
+
     /**
      * mandatory field symbol expression
      */
     private Expression mandatorySymbolExpression;
-    
+
     /**
      * mandatory field label expression
      */
     private Expression mandatoryLabelExpression;
-    
+
     /**
      * The reduced version of the application config
      */
     private ReducedApplicationConfig reducedApplicationConfig;
-    
+
     /**
      * Constructor
+     * 
      * @param applicationLabelExpression
      * @param mandatorySymbolExpression
      * @param mandatoryLabelExpression
      * @param mandatoryStyle
      * @param userXPURL
      */
-    public ApplicationConfig(final Expression applicationLabelExpression, final Expression mandatorySymbolExpression, final Expression mandatoryLabelExpression, final String mandatoryStyle, final String userXPURL) {
+    public ApplicationConfig(final Expression applicationLabelExpression, final Expression mandatorySymbolExpression,
+            final Expression mandatoryLabelExpression, final String mandatoryStyle, final String userXPURL) {
         this.reducedApplicationConfig = new ReducedApplicationConfig(mandatoryStyle, userXPURL);
         this.mandatorySymbolExpression = mandatorySymbolExpression;
         this.mandatoryLabelExpression = mandatoryLabelExpression;
         this.applicationLabelExpression = applicationLabelExpression;
     }
-    
+
     /**
      * Default Constructor
      * Mandatory for serialization
      */
-    public ApplicationConfig(){
+    public ApplicationConfig() {
         super();
         reducedApplicationConfig = new ReducedApplicationConfig();
     }
@@ -131,37 +131,37 @@ public class ApplicationConfig implements Serializable {
     public void setUserXPURL(final String userXPURL) {
         reducedApplicationConfig.setUserXPURL(userXPURL);
     }
-    
+
     public Expression getApplicationLabelExpression() {
         return applicationLabelExpression;
     }
-    
+
     public void setApplicationLabelExpression(Expression applicationLabelExpression) {
         this.applicationLabelExpression = applicationLabelExpression;
     }
-    
+
     public Expression getMandatorySymbolExpression() {
         return mandatorySymbolExpression;
     }
-    
+
     public void setMandatorySymbolExpression(Expression mandatorySymbolExpression) {
         this.mandatorySymbolExpression = mandatorySymbolExpression;
     }
-    
+
     public Expression getMandatoryLabelExpression() {
         return mandatoryLabelExpression;
     }
-    
+
     public void setMandatoryLabelExpression(Expression mandatoryLabelExpression) {
         this.mandatoryLabelExpression = mandatoryLabelExpression;
     }
-    
+
     public ReducedApplicationConfig getReducedApplicationConfig() {
         return reducedApplicationConfig;
     }
-    
+
     public void setReducedApplicationConfig(ReducedApplicationConfig reducedApplicationConfig) {
         this.reducedApplicationConfig = reducedApplicationConfig;
     }
-    
+
 }

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -23,7 +21,6 @@ import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class ProcessResolutionProblemItem extends Item {
 
@@ -42,7 +39,7 @@ public class ProcessResolutionProblemItem extends Item {
     public static final String ATTRIBUTE_MESSAGE = "message";
 
     public static final String ATTRIBUTE_TARGET_TYPE = "target_type";
-    
+
     public static final String ATTRIBUTE_RESSOURCE_ID = "ressource_id";
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,7 +62,6 @@ public class ProcessResolutionProblemItem extends Item {
         return getAttributeValue(ATTRIBUTE_MESSAGE);
     }
 
-
     public void setMessage(final String text) {
         setAttribute(ATTRIBUTE_MESSAGE, text);
     }
@@ -73,19 +69,18 @@ public class ProcessResolutionProblemItem extends Item {
     public String getTargetType() {
         return getAttributeValue(ATTRIBUTE_TARGET_TYPE);
     }
-    
+
     public void setTargetType(final String type) {
         setAttribute(ATTRIBUTE_TARGET_TYPE, type);
     }
-    
+
     public String getRessourceId() {
         return getAttributeValue(ATTRIBUTE_RESSOURCE_ID);
     }
-    
+
     public void setRessourceId(final String ressourceId) {
         setAttribute(ATTRIBUTE_RESSOURCE_ID, ressourceId);
     }
-
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // UTILS

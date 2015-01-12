@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -39,14 +37,13 @@ import org.bonitasoft.web.toolkit.client.ui.page.itemListingPage.ItemListingTabl
 
 /**
  * @author Julien Mege
- * 
  */
 public class GroupListingAdminPage extends ItemListingPage<GroupItem> {
 
     public static final String TOKEN = "grouplistingadmin";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(GroupListingAdminPage.TOKEN);
     }
@@ -106,7 +103,7 @@ public class GroupListingAdminPage extends ItemListingPage<GroupItem> {
     }
 
     private Clickable addGroupLink() {
-        Link createButton = new Link(_("Create a group"), _("Opens a popup to create a group"), 
+        Link createButton = new Link(_("Create a group"), _("Opens a popup to create a group"),
                 new CheckValidSessionBeforeAction(new ActionShowPopup(new AddGroupPage())));
         //workaround for BS-448
         createButton.addClass("bigAddButton");

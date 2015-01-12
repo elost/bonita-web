@@ -18,9 +18,7 @@ import org.bonitasoft.web.toolkit.client.common.json.JsonSerializable;
 import org.bonitasoft.web.toolkit.client.common.url.UrlSerializable;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  * @param <VALUE_CLASS>
  */
 public abstract class AbstractTreeNode<VALUE_CLASS> implements JsonSerializable, UrlSerializable {

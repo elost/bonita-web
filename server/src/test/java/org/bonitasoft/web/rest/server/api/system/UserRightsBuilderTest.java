@@ -14,6 +14,9 @@
  */
 package org.bonitasoft.web.rest.server.api.system;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.BDDMockito.given;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,9 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.BDDMockito.given;
 
 /**
  * @author Vincent Elcrin

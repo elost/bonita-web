@@ -53,8 +53,8 @@ public class APICaller<T extends IItem> extends HttpRequest {
 
     /**
      * @param url
-     *            The URL of the API<br>
-     *            <b>Example :</b>/API/organization/user
+     *        The URL of the API<br>
+     *        <b>Example :</b>/API/organization/user
      */
 
     public APICaller(final String url) {
@@ -75,10 +75,9 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * To launch the request, you will have to call APISearchRequest.run(ApiCallback)
      * 
      * @param page
-     *            The page number to display. The first page is page 0.
+     *        The page number to display. The first page is page 0.
      * @param resultsPerPage
-     *            Number of results to retrieve.
-     * 
+     *        Number of results to retrieve.
      * @return This method returns
      */
     public APISearchRequest getSearchRequest(final int page, final int resultsPerPage) {
@@ -91,7 +90,7 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * Transform an array of orders into a single string with orders separated by commas.
      * 
      * @param orders
-     *            The orders to transform
+     *        The orders to transform
      * @return This method returns the orders as an SQL compatible order string
      */
     public static final String orderArrayToString(final List<String> orders) {
@@ -108,9 +107,9 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * Search for a list of items
      * 
      * @param page
-     *            The page number to display. The first page is page 0.
+     *        The page number to display. The first page is page 0.
      * @param resultsPerPage
-     *            Number of results to retrieve.
+     *        Number of results to retrieve.
      */
     public void search(final int page, final int resultsPerPage, final APICallback callback) {
         search(page, resultsPerPage, null, null, null, null, null, callback);
@@ -120,11 +119,11 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * Search for a list of items
      * 
      * @param page
-     *            The page number to display. The first page is page 0.
+     *        The page number to display. The first page is page 0.
      * @param resultsPerPage
-     *            Number of results to retrieve.
+     *        Number of results to retrieve.
      * @param order
-     *            The sorting order as an SQL compatible String
+     *        The sorting order as an SQL compatible String
      */
     public void search(final int page, final int resultsPerPage, final String order, final APICallback callback) {
         search(page, resultsPerPage, order, "", null, null, null, callback);
@@ -134,13 +133,13 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * Search for a list of items
      * 
      * @param page
-     *            The page number to display. The first page is page 0.
+     *        The page number to display. The first page is page 0.
      * @param resultsPerPage
-     *            Number of results to retrieve.
+     *        Number of results to retrieve.
      * @param order
-     *            The sorting order as an SQL compatible String
+     *        The sorting order as an SQL compatible String
      * @param search
-     *            The search query
+     *        The search query
      */
     public void search(final int page, final int resultsPerPage, final String order, final String search, final APICallback callback) {
         search(page, resultsPerPage, order, search, null, null, null, callback);
@@ -150,16 +149,16 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * Search for a list of items
      * 
      * @param page
-     *            The page number to display. The first page is page 0.
+     *        The page number to display. The first page is page 0.
      * @param resultsPerPage
-     *            Number of results to retrieve.
+     *        Number of results to retrieve.
      * @param order
-     *            The sorting order as an SQL compatible String
+     *        The sorting order as an SQL compatible String
      * @param search
-     *            The search query
+     *        The search query
      * @param filters
-     *            A set of filters formated as a HashMap<attributeName, value).<br>
-     *            The value can be a string or an array of Strings for multiple values filters.
+     *        A set of filters formated as a HashMap<attributeName, value).<br>
+     *        The value can be a string or an array of Strings for multiple values filters.
      */
     public void search(final int page, final int resultsPerPage, final String order, final String search, final Map<String, String> filters,
             final APICallback callback)
@@ -171,20 +170,20 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * Search for a list of items
      * 
      * @param page
-     *            The page number to display. The first page is page 0.
+     *        The page number to display. The first page is page 0.
      * @param resultsPerPage
-     *            Number of results to retrieve.
+     *        Number of results to retrieve.
      * @param order
-     *            The sorting order as an SQL compatible String
+     *        The sorting order as an SQL compatible String
      * @param search
-     *            The search query
+     *        The search query
      * @param filters
-     *            A set of filters formated as a HashMap<attributeName, value).<br>
-     *            The value can be a string or an array of Strings for multiple values filters.
+     *        A set of filters formated as a HashMap<attributeName, value).<br>
+     *        The value can be a string or an array of Strings for multiple values filters.
      * @param deploys
-     *            A set of deploys.<br>
-     *            A deploys is an attribute name. The attribute must be the id of another resource.<br>
-     *            Deploying it will return the full object of the resource instead of the id.
+     *        A set of deploys.<br>
+     *        A deploys is an attribute name. The attribute must be the id of another resource.<br>
+     *        Deploying it will return the full object of the resource instead of the id.
      */
     public void search(final int page, final int resultsPerPage, final String order, final String search, final Map<String, String> filters,
             final List<String> deploys, final APICallback callback)
@@ -197,24 +196,24 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * Search for a list of items
      * 
      * @param page
-     *            The page number to display. The first page is page 0.
+     *        The page number to display. The first page is page 0.
      * @param resultsPerPage
-     *            Number of results to retrieve.
+     *        Number of results to retrieve.
      * @param order
-     *            The sorting order as an SQL compatible String
+     *        The sorting order as an SQL compatible String
      * @param search
-     *            The search query
+     *        The search query
      * @param filters
-     *            A set of filters formated as a HashMap<attributeName, value).<br>
-     *            The value can be a string or an array of Strings for multiple values filters.
+     *        A set of filters formated as a HashMap<attributeName, value).<br>
+     *        The value can be a string or an array of Strings for multiple values filters.
      * @param deploys
-     *            A set of deploys.<br>
-     *            A deploys is an attribute name. The attribute must be the id of another resource.<br>
-     *            Deploying it will return the full object of the resource instead of the id.
+     *        A set of deploys.<br>
+     *        A deploys is an attribute name. The attribute must be the id of another resource.<br>
+     *        Deploying it will return the full object of the resource instead of the id.
      * @param counters
-     *            A set of counters.<br>
-     *            A counter is a static from the resource Item (FILTER_xxx), it allows to add fake attributes with the result of a particular count on linked
-     *            resources.
+     *        A set of counters.<br>
+     *        A counter is a static from the resource Item (FILTER_xxx), it allows to add fake attributes with the result of a particular count on linked
+     *        resources.
      */
     public void search(final int page, final int resultsPerPage, final String order, final String search, final Map<String, String> filters,
             final List<String> deploys, final List<String> counters, final APICallback callback)
@@ -337,7 +336,7 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * Add a new item by submitting a form
      * 
      * @param form
-     *            The form to submit
+     *        The form to submit
      */
     public void add(final AbstractForm form, final APICallback callback) {
         final Map<String, String> values = form.getValues().getValues();
@@ -354,7 +353,7 @@ public class APICaller<T extends IItem> extends HttpRequest {
      * Add a new item by submitting a form
      * 
      * @param item
-     *            The item to submit
+     *        The item to submit
      */
     public void add(final IItem item, final APICallback callback) {
         ValidatorEngine.validate(item, true);

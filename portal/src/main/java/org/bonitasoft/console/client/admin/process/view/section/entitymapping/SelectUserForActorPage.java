@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -43,15 +41,14 @@ import org.bonitasoft.web.toolkit.client.ui.component.form.entry.AutoCompleteEnt
 import org.bonitasoft.web.toolkit.client.ui.page.PageOnItem;
 
 /**
- * 
  * @author Colin PUY
  */
 public class SelectUserForActorPage extends PageOnItem<ActorItem> {
 
     public static final String TOKEN = "selectUserforactor";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(ProcessListingAdminPage.TOKEN);
         PRIVILEGES.add("reportlistingadminext");
@@ -80,16 +77,16 @@ public class SelectUserForActorPage extends PageOnItem<ActorItem> {
         Form form = new Form();
         form.addEntry(selectUserAutoComplete());
         form.addHiddenEntry(ActorMemberItem.ATTRIBUTE_ACTOR_ID, actor.getId().toString());
-        form.addButton(_("Add"), _("Add this user to %actor_name%", 
-                new Arg("actor_name", actor.getAttributeValue(ActorItem.ATTRIBUTE_DISPLAY_NAME))), 
+        form.addButton(_("Add"), _("Add this user to %actor_name%",
+                new Arg("actor_name", actor.getAttributeValue(ActorItem.ATTRIBUTE_DISPLAY_NAME))),
                 new AddUserToActorFormAction());
         form.addCancelButton();
         return form;
     }
 
     private AutoCompleteEntry selectUserAutoComplete() {
-        AutoCompleteEntry autoComplete = new AutoCompleteEntry(new JsId(ActorMemberItem.ATTRIBUTE_USER_ID), 
-                _("Select a user"), _("Select a user to be added to actor"), 
+        AutoCompleteEntry autoComplete = new AutoCompleteEntry(new JsId(ActorMemberItem.ATTRIBUTE_USER_ID),
+                _("Select a user"), _("Select a user to be added to actor"),
                 UserDefinition.get(), new UserAttributeReader(), UserItem.ATTRIBUTE_ID, null);
         autoComplete.addFilter(UserItem.ATTRIBUTE_ENABLED, "true");
         autoComplete.addValidator(new MandatoryValidator());
@@ -100,7 +97,7 @@ public class SelectUserForActorPage extends PageOnItem<ActorItem> {
     public String defineToken() {
         return TOKEN;
     }
-    
+
     /** */
     private class AddUserToActorFormAction extends FormAction {
 
@@ -112,11 +109,12 @@ public class SelectUserForActorPage extends PageOnItem<ActorItem> {
 
             new APICaller(ActorMemberDefinition.get()).add(item, new AddUserToActorAPICallback());
         }
-        
+
     }
-    
+
     /** */
     private final class AddUserToActorAPICallback extends APICallback {
+
         @Override
         public void onSuccess(final int httpStatusCode, final String response, final Map<String, String> headers) {
             ViewController.showPopup(ListProcessActorUserPage.TOKEN, MapUtil.asMap(new Arg("id", getItemId().toString())));

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -45,7 +43,6 @@ import org.w3c.dom.NodeList;
  * config
  *
  * @author Anthony Birembaut, Haojie Yuan
- *
  */
 public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApplicationFormDefAccessor {
 
@@ -100,7 +97,6 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
     protected XMLExpressionsUtil xmlExpressionsUtil;
 
     /**
-     *
      * Default constructor.
      *
      * @param tenantID
@@ -276,7 +272,7 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
      * Retrieve the page node for a given page id
      *
      * @param formId
-     *            the formId
+     *        the formId
      * @return the {@link Node} for the page
      */
     protected Node getFormNode(final String formId) {
@@ -288,7 +284,7 @@ public class XMLApplicationFormDefAccessorImpl extends XPathUtil implements IApp
      * Build the xpath query to get a application page
      *
      * @param formId
-     *            the formId
+     *        the formId
      * @return an xpath query under the form of a String
      */
     protected String getFormPageXpath(final String formId) {

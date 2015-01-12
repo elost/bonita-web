@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -23,7 +21,6 @@ import org.bonitasoft.engine.bpm.connector.ConnectorEvent;
 
 /**
  * @author Colin PUY
- * 
  */
 public class TestProcessConnector {
 
@@ -36,10 +33,10 @@ public class TestProcessConnector {
 
     private String resourceFileName;
     private String resourceFilePath;
-    
+
     private List<String> dependencies = new ArrayList<String>();
 
-    public TestProcessConnector(String name, String id, String version, String implementationClassname, String implementationId, 
+    public TestProcessConnector(String name, String id, String version, String implementationClassname, String implementationId,
             ConnectorEvent connectorEvent, String resourceFileName, String resourceFilePath) {
         super();
         this.name = name;
@@ -75,7 +72,7 @@ public class TestProcessConnector {
     public String getResourceFilePath() {
         return resourceFilePath;
     }
-    
+
     public String getImplementationClassname() {
         return implementationClassname;
     }
@@ -83,12 +80,12 @@ public class TestProcessConnector {
     public String getImplementationId() {
         return implementationId;
     }
-    
+
     public TestProcessConnector addDependency(String dependency) {
         dependencies.add(dependency);
         return this;
     }
-    
+
     public List<String> getDependencies() {
         return dependencies;
     }

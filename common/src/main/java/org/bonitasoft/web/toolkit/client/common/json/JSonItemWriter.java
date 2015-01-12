@@ -25,7 +25,7 @@ import org.bonitasoft.web.toolkit.client.data.item.IItem;
  * 
  * @author Séverin Moussel
  * @param <T>
- *            The class of the Items to write
+ *        The class of the Items to write
  */
 public class JSonItemWriter<T extends IItem> {
 
@@ -74,7 +74,7 @@ public class JSonItemWriter<T extends IItem> {
      * Generate the json corresponding to the list passed
      * 
      * @param items
-     *            The items to serialize
+     *        The items to serialize
      * @return Returns a valid json code
      */
     public static String itemsListToJSON(final List<? extends IItem> items) {
@@ -85,7 +85,7 @@ public class JSonItemWriter<T extends IItem> {
      * Generate the json corresponding to the map passed
      * 
      * @param map
-     *            The map to serialize
+     *        The map to serialize
      * @return Returns a valid json code
      */
 

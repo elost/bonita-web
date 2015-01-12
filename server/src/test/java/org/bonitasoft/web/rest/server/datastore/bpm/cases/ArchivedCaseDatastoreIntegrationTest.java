@@ -17,7 +17,6 @@ import org.junit.Test;
 
 /**
  * @author ROHART Bastien
- * 
  */
 public class ArchivedCaseDatastoreIntegrationTest extends AbstractConsoleTest {
 
@@ -45,12 +44,12 @@ public class ArchivedCaseDatastoreIntegrationTest extends AbstractConsoleTest {
     @Ignore("fail but i don't know what's the cause. Anyway functionnality is ok. Test is wrong")
     public void twoPoolsWithOneWithACallActivityArchivedCaseTest() throws Exception {
         TestProcess process1 = TestProcessFactory.getDefaultHumanTaskProcess();
-        
+
         // start process1 case via call activity
-        TestProcess process2 = TestProcessFactory.getCallActivityProcess(process1.getProcessDefinition()); 
+        TestProcess process2 = TestProcessFactory.getCallActivityProcess(process1.getProcessDefinition());
         process2.addActor(getInitiator()).startCase();
         Thread.sleep(1000); // asynchronous, wait process1 to start
-        
+
         // archive process 1 case
         TestCase testCaseProcess1 = process1.listOpenCases().get(0);
         testCaseProcess1.getNextHumanTask().assignTo(getInitiator()).archive();

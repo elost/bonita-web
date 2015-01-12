@@ -159,7 +159,7 @@ public class ItemForm<T extends IItem> extends AbstractForm {
             final String labelAttributeName, final String valueAttributeName, final String description) {
         final JsId jsid = new JsId(attributeName);
 
-        AutoCompleteEntry autoComplete = 
+        AutoCompleteEntry autoComplete =
                 new AutoCompleteEntry(jsid, label, tooltip, itemDefinition, labelAttributeName, valueAttributeName, description);
         this.form.addEntry(autoComplete);
 
@@ -178,7 +178,7 @@ public class ItemForm<T extends IItem> extends AbstractForm {
             final AbstractAttributeReader labelTemplate, final String valueAttributeName, final String description) {
 
         final JsId jsid = new JsId(attributeName);
-        AutoCompleteEntry autoComplete = 
+        AutoCompleteEntry autoComplete =
                 new AutoCompleteEntry(jsid, label, tooltip, itemDefinition, labelTemplate, valueAttributeName, description);
         this.form.addEntry(autoComplete);
 
@@ -190,6 +190,7 @@ public class ItemForm<T extends IItem> extends AbstractForm {
     public void addEntry(final FormNode entry) {
         form.addEntry(entry);
     }
+
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // STATIC ENTRIES
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

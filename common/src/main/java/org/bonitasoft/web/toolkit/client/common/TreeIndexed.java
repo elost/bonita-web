@@ -24,9 +24,7 @@ import org.bonitasoft.web.toolkit.client.common.json.JSonSerializer;
 import org.bonitasoft.web.toolkit.client.common.url.UrlSerializer;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  * @param <VALUE_CLASS>
  */
 public class TreeIndexed<VALUE_CLASS> extends AbstractTreeNode<VALUE_CLASS> {
@@ -198,7 +196,7 @@ public class TreeIndexed<VALUE_CLASS> extends AbstractTreeNode<VALUE_CLASS> {
      * Remove a node by its key
      * 
      * @param key
-     *            The key of the node to remove
+     *        The key of the node to remove
      */
     public void removeNode(final String key) {
         this.children.remove(key);

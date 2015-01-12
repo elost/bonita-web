@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -33,7 +31,6 @@ import org.bonitasoft.web.toolkit.client.ui.utils.Url;
 
 /**
  * @author Firstname Lastname
- * 
  */
 public abstract class ItemTableActionSet<T extends IItem> implements HasCounters, HasDeploys {
 
@@ -55,13 +52,13 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Add an action
      * 
      * @param label
-     *            The text to display on the component
+     *        The text to display on the component
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      * @param action
-     *            The action to run.
-     * @deprecated preferable to pass an object to a method instead of a lot of parameters.<br/> 
-     *  use {@link #addAction(ItemTableAction)}
+     *        The action to run.
+     * @deprecated preferable to pass an object to a method instead of a lot of parameters.<br/>
+     *             use {@link #addAction(ItemTableAction)}
      */
     @Deprecated
     public ItemTableActionSet<T> addAction(final String label, final String tooltip, final Action action) {
@@ -72,15 +69,15 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Add an action
      * 
      * @param jsid
-     *            The jsid to set on the component displaying the action
+     *        The jsid to set on the component displaying the action
      * @param label
-     *            The text to display on the component
+     *        The text to display on the component
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      * @param action
-     *            The action to run.
-     * @deprecated preferable to pass an object to a method instead of a lot of parameters. Furthermore param jsid is not used<br/> 
-     *  use {@link #addAction(ItemTableAction)}
+     *        The action to run.
+     * @deprecated preferable to pass an object to a method instead of a lot of parameters. Furthermore param jsid is not used<br/>
+     *             use {@link #addAction(ItemTableAction)}
      */
     @Deprecated
     public ItemTableActionSet<T> addAction(final JsId jsid, final String label, final String tooltip, final Action action) {
@@ -91,15 +88,15 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Add an action
      * 
      * @param label
-     *            The text to display on the component
+     *        The text to display on the component
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      * @param action
-     *            The action to run.
+     *        The action to run.
      * @param setAsDefault
-     *            Define this action as the action to call while clicking on the line itself
-     * @deprecated preferable to pass an object to a method instead of a lot of parameters.<br/> 
-     *  use {@link #addAction(ItemTableAction, boolean)}
+     *        Define this action as the action to call while clicking on the line itself
+     * @deprecated preferable to pass an object to a method instead of a lot of parameters.<br/>
+     *             use {@link #addAction(ItemTableAction, boolean)}
      */
     @Deprecated
     public ItemTableActionSet<T> addAction(final String label, final String tooltip, final Action action, final boolean setAsDefault) {
@@ -110,18 +107,17 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Add an action
      * 
      * @param jsid
-     *            The jsid to set on the component displaying the action
+     *        The jsid to set on the component displaying the action
      * @param label
-     *            The text to display on the component
+     *        The text to display on the component
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      * @param action
-     *            The action to run.
+     *        The action to run.
      * @param setAsDefault
-     *            Define this action as the action to call while clicking on the line itself
-     *            
-     * @deprecated preferable to pass an object to a method instead of a lot of parameters. Furthermore param jsid is not used<br/> 
-     *  use {@link #addAction(ItemTableAction, boolean)}
+     *        Define this action as the action to call while clicking on the line itself
+     * @deprecated preferable to pass an object to a method instead of a lot of parameters. Furthermore param jsid is not used<br/>
+     *             use {@link #addAction(ItemTableAction, boolean)}
      */
     @Deprecated
     public ItemTableActionSet<T> addAction(final JsId jsid, final String label, final String tooltip, final Action action, final boolean setAsDefault) {
@@ -137,17 +133,17 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
     /**
      * Add an {@link ItemTableAction} to the {@link ItemTableActionSet}
      * 
-     * @param itemTableAction   the {@link ItemTableAction} to be added
+     * @param itemTableAction the {@link ItemTableAction} to be added
      */
     public ItemTableActionSet<T> addAction(final ItemTableAction itemTableAction) {
         return addAction(itemTableAction, false);
     }
-    
+
     /**
      * Add an {@link ItemTableAction} to the {@link ItemTableActionSet}
      * 
-     * @param itemTableAction   the {@link ItemTableAction} to be added
-     * @param setAsDefault  Define this action as the action to call while clicking on the line itself
+     * @param itemTableAction the {@link ItemTableAction} to be added
+     * @param setAsDefault Define this action as the action to call while clicking on the line itself
      */
     public ItemTableActionSet<T> addAction(final ItemTableAction itemTableAction, final boolean setAsDefault) {
         this.actions.add(itemTableAction);
@@ -157,7 +153,7 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
         }
         return this;
     }
-    
+
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // ADD AN ACTION WITH AN IMAGE
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -166,13 +162,13 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Add an action
      * 
      * @param image
-     *            The image to display on the component
+     *        The image to display on the component
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      * @param action
-     *            The action to run.
-     * @deprecated preferable to pass an object to a method instead of a lot of parameters<br/> 
-     *  use {@link #addAction(ItemTableAction)}
+     *        The action to run.
+     * @deprecated preferable to pass an object to a method instead of a lot of parameters<br/>
+     *             use {@link #addAction(ItemTableAction)}
      */
     @Deprecated
     public ItemTableActionSet<T> addAction(final Url image, final String tooltip, final Action action) {
@@ -183,15 +179,15 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Add an action
      * 
      * @param jsid
-     *            The jsid to set on the component displaying the action
+     *        The jsid to set on the component displaying the action
      * @param image
-     *            The image to display on the component
+     *        The image to display on the component
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      * @param action
-     *            The action to run.
-     * @deprecated preferable to pass an object to a method instead of a lot of parameters. Furthermore param jsid is not used<br/> 
-     *  use {@link #addAction(ItemTableAction)}
+     *        The action to run.
+     * @deprecated preferable to pass an object to a method instead of a lot of parameters. Furthermore param jsid is not used<br/>
+     *             use {@link #addAction(ItemTableAction)}
      */
     @Deprecated
     public ItemTableActionSet<T> addAction(final JsId jsid, final Url image, final String tooltip, final Action action) {
@@ -202,15 +198,15 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Add an action
      * 
      * @param image
-     *            The image to display on the component
+     *        The image to display on the component
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      * @param action
-     *            The action to run.
+     *        The action to run.
      * @param setAsDefault
-     *            Define this action as the action to call while clicking on the line itself
-     * @deprecated preferable to pass an object to a method instead of a lot of parameters.<br/> 
-     *  use {@link #addAction(ItemTableAction, boolean)}
+     *        Define this action as the action to call while clicking on the line itself
+     * @deprecated preferable to pass an object to a method instead of a lot of parameters.<br/>
+     *             use {@link #addAction(ItemTableAction, boolean)}
      */
     @Deprecated
     public ItemTableActionSet<T> addAction(final Url image, final String tooltip, final Action action, final boolean setAsDefault) {
@@ -221,17 +217,17 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Add an action
      * 
      * @param jsid
-     *            The jsid to set on the component displaying the action
+     *        The jsid to set on the component displaying the action
      * @param image
-     *            The image to display on the component
+     *        The image to display on the component
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      * @param action
-     *            The action to run.
+     *        The action to run.
      * @param setAsDefault
-     *            Define this action as the action to call while clicking on the line itself
-     * @deprecated preferable to pass an object to a method instead of a lot of parameters. Furthermore param jsid is not used<br/> 
-     *  use {@link #addAction(ItemTableAction, boolean)}
+     *        Define this action as the action to call while clicking on the line itself
+     * @deprecated preferable to pass an object to a method instead of a lot of parameters. Furthermore param jsid is not used<br/>
+     *             use {@link #addAction(ItemTableAction, boolean)}
      */
     @Deprecated
     public ItemTableActionSet<T> addAction(final JsId jsid, final Url image, final String tooltip, final Action action, final boolean setAsDefault) {
@@ -254,7 +250,7 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Shortcut to add a delete action
      * 
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      */
     public ItemTableActionSet<T> addActionDelete(final String tooltip) {
         return this.addActionDelete(tooltip, this.itemTable.getItemDefinition());
@@ -264,7 +260,7 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Shortcut to add a delete action
      * 
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      */
     public ItemTableActionSet<T> addActionDelete(final String tooltip, final ItemDefinition itemDefinition) {
         return this.addActionDelete(tooltip, new ItemDeletePopupAction(itemDefinition));
@@ -274,7 +270,7 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Shortcut to add a delete action
      * 
      * @param tooltip
-     *            The tooltip that will help to describe the action
+     *        The tooltip that will help to describe the action
      */
     public ItemTableActionSet<T> addActionDelete(final String tooltip, final ItemDeletePopupAction deleteAction) {
         ItemTableAction deleteItemTableAction = new ItemTableAction(_("Delete"), tooltip, deleteAction);
@@ -287,7 +283,7 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
 
     /**
      * @param itemTable
-     *            the itemTable to set
+     *        the itemTable to set
      */
     public void setItemTable(final ItemTable itemTable) {
         this.itemTable = itemTable;
@@ -333,7 +329,7 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Has to be called out side of defineAction method if the item passed to it need to benefits of it
      * 
      * @param attributeName
-     *            of the counter
+     *        of the counter
      * @return
      */
     public ItemTableActionSet<T> addCounter(final String attributeName) {
@@ -354,7 +350,7 @@ public abstract class ItemTableActionSet<T extends IItem> implements HasCounters
      * Has to be called out side of defineAction method if the item passed to it need to benefits of it
      * 
      * @param attributeName
-     *            of the deploy
+     *        of the deploy
      * @return
      */
     public ItemTableActionSet<T> addDeploy(final String attributeName) {

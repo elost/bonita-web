@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -35,7 +33,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  * Async version of the FormFlow service
  * 
  * @author Anthony Birembaut
- * 
  */
 public interface FormsServiceAsync {
 
@@ -63,7 +60,7 @@ public interface FormsServiceAsync {
      * Retrieve the next page in the page flow associated with the form
      * 
      * @param formID
-     *            form id
+     *        form id
      * @param urlContext
      * @param nextPageExpressionId
      * @param fieldValues
@@ -76,16 +73,16 @@ public interface FormsServiceAsync {
      * Validate some form field values using the validators provided
      * 
      * @param formID
-     *            a form page id
+     *        a form page id
      * @param urlContext
-     *            url parameters map
+     *        url parameters map
      * @param validatorsMap
-     *            Map of validators to use. Each entry of the map contains the ID of the field to validate and an id allowing to retrieve the field validators
-     *            in the cache
+     *        Map of validators to use. Each entry of the map contains the ID of the field to validate and an id allowing to retrieve the field validators
+     *        in the cache
      * @param widgetValues
-     *            a map of the fields ids and values
+     *        a map of the fields ids and values
      * @param submitButtonId
-     *            the submit button ID
+     *        the submit button ID
      * @param aCallBackHandler
      */
     void validateFormFields(String formID, Map<String, Object> urlContext, Map<String, String> validatorsMap, Map<String, FormFieldValue> widgetValues,
@@ -95,13 +92,13 @@ public interface FormsServiceAsync {
      * Validate a form page using the validators provided
      * 
      * @param formID
-     *            a form page id
+     *        a form page id
      * @param urlContext
-     *            combin url param to context
+     *        combin url param to context
      * @param pageValidatorsId
-     *            id allowing to retrieve the page validators in the cache
+     *        id allowing to retrieve the page validators in the cache
      * @param fields
-     *            a map of the fields ids and values
+     *        a map of the fields ids and values
      * @param submitButtonId
      * @param aCallBackHandler
      */
@@ -112,9 +109,9 @@ public interface FormsServiceAsync {
      * Retrieve the confirmation page for a form
      * 
      * @param formID
-     *            the form id
+     *        the form id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param aCallBackHandler
      */
     void getFormConfirmationTemplate(String formID, Map<String, Object> urlContext, AsyncCallback<ReducedHtmlTemplate> aCallBackHandler);
@@ -123,9 +120,9 @@ public interface FormsServiceAsync {
      * Retrieve the error page for a application
      * 
      * @param formID
-     *            form id
+     *        form id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param callback
      */
     void getApplicationErrorTemplate(String formID, Map<String, Object> urlContext, AsyncCallback<ReducedHtmlTemplate> callback);
@@ -135,15 +132,15 @@ public interface FormsServiceAsync {
      * (this way, only actions related to this button will be performed)
      * 
      * @param formID
-     *            current id of form
+     *        current id of form
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param fieldValues
-     *            variables a Map of the fields ids and values
+     *        variables a Map of the fields ids and values
      * @param pageIds
-     *            the page flow followed by the user
+     *        the page flow followed by the user
      * @param submitButtonId
-     *            the pressed submit button id
+     *        the pressed submit button id
      * @param aCallBackHandler
      */
     void executeActions(String formID, Map<String, Object> urlContext, Map<String, FormFieldValue> fieldValues, List<String> pageIds, String submitButtonId,
@@ -153,9 +150,9 @@ public interface FormsServiceAsync {
      * Skip a form
      * 
      * @param formID
-     *            current form ID
+     *        current form ID
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param aCallBackHandler
      */
     void skipForm(String formID, Map<String, Object> urlContext, AsyncCallback<Map<String, Object>> aCallBackHandler);
@@ -164,9 +161,9 @@ public interface FormsServiceAsync {
      * Retrieve the next task uuid if it is in the user task list and form id
      * 
      * @param formID
-     *            form id
+     *        form id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param aCallBackHandler
      */
     void getNextFormURL(String formID, Map<String, Object> urlContext, AsyncCallback<FormURLComponents> aCallBackHandler);
@@ -175,13 +172,13 @@ public interface FormsServiceAsync {
      * Get async available values
      * 
      * @param formID
-     *            form id
+     *        form id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param formWidget
-     *            the widget definition
+     *        the widget definition
      * @param currentFieldValue
-     *            the current value of the widget
+     *        the current value of the widget
      * @param asyncCallback
      */
     void getFormAsyncAvailableValues(String formID, Map<String, Object> urlContext, ReducedFormWidget formWidget, FormFieldValue currentFieldValue,
@@ -191,7 +188,7 @@ public interface FormsServiceAsync {
      * Get any todolist form URL
      * 
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param asyncCallback
      */
     void getAnyTodoListForm(Map<String, Object> urlContext, AsyncCallback<Map<String, Object>> asyncCallback);
@@ -215,4 +212,5 @@ public interface FormsServiceAsync {
      * 
      * @param asyncCallback
      */
-    void logout(AsyncCallback<Void> asyncCallback);}
+    void logout(AsyncCallback<Void> asyncCallback);
+}

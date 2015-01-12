@@ -182,7 +182,6 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
 
     /**
      * {@inheritDoc}
-     *
      */
     @Override
     public ReducedFormPage getFormFirstPage(final String formID, final Map<String, Object> urlContext) throws SessionTimeoutException, RPCException,
@@ -278,9 +277,9 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      * Set the classloader matching the given context
      *
      * @param formServiceProvider
-     *            the form service provider
+     *        the form service provider
      * @param context
-     *            the context (including URL parameters)
+     *        the context (including URL parameters)
      * @throws SessionTimeoutException
      * @throws FormNotFoundException
      */
@@ -296,9 +295,9 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      * Initialize the context map
      *
      * @param urlContext
-     *            the map of URL parameters
+     *        the map of URL parameters
      * @param locale
-     *            the user locale
+     *        the user locale
      * @return the context map
      */
     protected Map<String, Object> initContext(final Map<String, Object> urlContext, final Locale locale) {
@@ -314,7 +313,6 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
 
     /**
      * {@inheritDoc}
-     *
      */
     @Override
     public ReducedFormPage getFormNextPage(final String formID, final Map<String, Object> urlContext, final String nextPageExpressionId,
@@ -514,7 +512,7 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      * Retrieve the true ID of the field with the given client ID
      *
      * @param key
-     *            the ID returned by the client part
+     *        the ID returned by the client part
      * @return the true ID
      */
     protected String getFieldId(final String key) {
@@ -525,9 +523,9 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      * Retrieve the value of the field with the given ID
      *
      * @param fieldId
-     *            the field ID
+     *        the field ID
      * @param widgetValues
-     *            the values of the fields
+     *        the values of the fields
      * @return a {@link FormFieldValue}
      */
     protected FormFieldValue getFieldValue(final String fieldId, final Map<String, FormFieldValue> widgetValues) {
@@ -658,9 +656,9 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      *
      * @param formServiceProvider
      * @param formID
-     *            the form ID
+     *        the form ID
      * @param transientDataContext
-     *            the transient data context
+     *        the transient data context
      * @param context
      */
     protected void setFormTransientDataContext(final FormServiceProvider formServiceProvider, final String formID,
@@ -681,7 +679,7 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      *
      * @param formServiceProvider
      * @param formID
-     *            the form ID
+     *        the form ID
      * @param context
      * @return a Map<String, Object> containing the context of transient data
      */
@@ -698,7 +696,7 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      *
      * @param formServiceProvider
      * @param formID
-     *            the form ID
+     *        the form ID
      * @param context
      * @return a Map<String, Object> containing the context of transient data
      */
@@ -924,7 +922,7 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      * Retrieve the API session from the HTTP session and return it
      *
      * @param request
-     *            the HTTP request
+     *        the HTTP request
      * @return the API session
      * @throws NoCredentialsInSessionException
      */
@@ -945,9 +943,9 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      * Retrieve the API session and the user from the HTTP session and add them in the context
      *
      * @param request
-     *            the HTTP request
+     *        the HTTP request
      * @param context
-     *            the context
+     *        the context
      * @return the tenant ID
      * @throws NoCredentialsInSessionException
      */
@@ -974,11 +972,11 @@ public class FormsServlet extends RemoteServiceServlet implements FormsService {
      * Resolve expression from ApplicationConfig and set result into the reduced application config.
      *
      * @param formServiceProvider
-     *            is used to resolve the expressions
+     *        is used to resolve the expressions
      * @param context
-     *            needed by applicationConfig
+     *        needed by applicationConfig
      * @param applicationConfig
-     *            contains expressions to resolve as well as the application config reduced
+     *        contains expressions to resolve as well as the application config reduced
      * @return applicationConfig
      * @throws FormNotFoundException
      * @throws SessionTimeoutException

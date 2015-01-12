@@ -1,8 +1,14 @@
 package org.bonitasoft.web.rest.server.api.organization;
 
-import javax.servlet.http.HttpSession;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
+
 import java.util.Arrays;
 import java.util.Collections;
+
+import javax.servlet.http.HttpSession;
 
 import org.bonitasoft.engine.api.IdentityAPI;
 import org.bonitasoft.engine.identity.CustomUserInfoValue;
@@ -27,11 +33,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.verify;
 
 /**
  * @author Vincent Elcrin
@@ -79,7 +80,7 @@ public class APICustomUserInfoValueTest {
                         createValue("foo"),
                         createValue("bar"))));
 
-        ItemSearchResult<CustomUserInfoItem> result = api.search(0, 2, null, null, Collections.<String, String>emptyMap());
+        ItemSearchResult<CustomUserInfoItem> result = api.search(0, 2, null, null, Collections.<String, String> emptyMap());
 
         assertThat(result.getPage()).isEqualTo(0);
         assertThat(result.getTotal()).isEqualTo(3);
@@ -126,7 +127,7 @@ public class APICustomUserInfoValueTest {
                 new SearchResultImpl<CustomUserInfoValue>(0, Collections.<CustomUserInfoValue> emptyList()));
         ArgumentCaptor<SearchOptions> argument = ArgumentCaptor.forClass(SearchOptions.class);
 
-        api.search(0, 2, "foo", null, Collections.<String, String>emptyMap());
+        api.search(0, 2, "foo", null, Collections.<String, String> emptyMap());
 
         verify(engine).searchCustomUserInfoValues(argument.capture());
         assertThat(argument.getValue().getSearchTerm()).isEqualTo("foo");

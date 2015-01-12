@@ -39,7 +39,7 @@ public interface IFormBuilder {
      *
      * @return a {@link File}
      * @throws InvalidFormDefinitionException
-     *             if the generated document is not valid
+     *         if the generated document is not valid
      * @throws IOException
      */
     File done() throws IOException, InvalidFormDefinitionException;
@@ -55,9 +55,9 @@ public interface IFormBuilder {
      * Add an application
      *
      * @param applicationName
-     *            the name of the application
+     *        the name of the application
      * @param applicationVersion
-     *            the version of the application
+     *        the version of the application
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -345,13 +345,13 @@ public interface IFormBuilder {
      * Add a validator on a page or a widget and create the list of validators if it doesn't exist yet
      *
      * @param validatorId
-     *            the validator Id
+     *        the validator Id
      * @param className
-     *            the classname of the validator
+     *        the classname of the validator
      * @param cssClasses
-     *            the css classes for the error label
+     *        the css classes for the error label
      * @param position
-     *            the position of the error label
+     *        the position of the error label
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -361,17 +361,17 @@ public interface IFormBuilder {
      * Add an action on an application and create the list of actions if it doesn't exist yet
      *
      * @param actionType
-     *            the action type
+     *        the action type
      * @param variableName
-     *            the name of the variable (if it's a set variable action)
+     *        the name of the variable (if it's a set variable action)
      * @param variableName
-     *            the type of the variable, it can be document, data, and other types handled by the engine
+     *        the type of the variable, it can be document, data, and other types handled by the engine
      * @param operator
-     *            the operator for the action
+     *        the operator for the action
      * @param operatorInputType
-     *            the operator in put type (for java methods operations)
+     *        the operator in put type (for java methods operations)
      * @param submitButtonId
-     *            the submit button associated with the action
+     *        the submit button associated with the action
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -419,9 +419,9 @@ public interface IFormBuilder {
      * Add a Html attribute to a widget
      *
      * @param name
-     *            the name of the attribute
+     *        the name of the attribute
      * @param value
-     *            the valueof the attribute
+     *        the valueof the attribute
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -431,7 +431,7 @@ public interface IFormBuilder {
      * Add table style for table widgets
      *
      * @param cssClasses
-     *            the CSS classes for the table
+     *        the CSS classes for the table
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -441,7 +441,7 @@ public interface IFormBuilder {
      * Add image style for image widgets
      *
      * @param cssClasses
-     *            the CSS classes for the image
+     *        the CSS classes for the image
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -451,7 +451,7 @@ public interface IFormBuilder {
      * Add cells style for table widgets
      *
      * @param cssClasses
-     *            the CSS classes for the cells
+     *        the CSS classes for the cells
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -461,15 +461,15 @@ public interface IFormBuilder {
      * Add headings style for table widgets
      *
      * @param cssClasses
-     *            the CSS classes for the headings
+     *        the CSS classes for the headings
      * @param leftHeadings
-     *            if true, indicates that the left column of the grid should be considered as a header
+     *        if true, indicates that the left column of the grid should be considered as a header
      * @param topHeadings
-     *            if true, indicates that the top row of the grid should be considered as a header
+     *        if true, indicates that the top row of the grid should be considered as a header
      * @param rightHeadings
-     *            if true, indicates that the right column of the grid should be considered as a header
+     *        if true, indicates that the right column of the grid should be considered as a header
      * @param bottomHeadings
-     *            if true, indicates that the bottom row of the grid should be considered as a header
+     *        if true, indicates that the bottom row of the grid should be considered as a header
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -524,7 +524,7 @@ public interface IFormBuilder {
      * Add a selection mode to a widget (for table widgets for example)
      *
      * @param selectMode
-     *            the selection mode. {@link SelectMode#NONE} if the selection should be disabled
+     *        the selection mode. {@link SelectMode#NONE} if the selection should be disabled
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -534,7 +534,7 @@ public interface IFormBuilder {
      * Add a selected items style to a widget (for table widgets for example)
      *
      * @param selectedItemsStyle
-     *            the selection mode. {@link SelectMode#NONE} if the selection should be disabled
+     *        the selection mode. {@link SelectMode#NONE} if the selection should be disabled
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -572,7 +572,7 @@ public interface IFormBuilder {
      * add a variable rows number behavior (for editable tables)
      *
      * @param variableRowsNumber
-     *            the variable rows number
+     *        the variable rows number
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -610,7 +610,7 @@ public interface IFormBuilder {
      * add a variable columns number behavior (for editable tables)
      *
      * @param variableColumnsNumber
-     *            the variable columns number
+     *        the variable columns number
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -634,7 +634,7 @@ public interface IFormBuilder {
      * Add a readonly property to a widget
      *
      * @param isReadOnly
-     *            the readonly behavior
+     *        the readonly behavior
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -653,9 +653,9 @@ public interface IFormBuilder {
      * Add a transient data on a page flow
      *
      * @param name
-     *            name of the transient data
+     *        name of the transient data
      * @param className
-     *            classnameof the transient data
+     *        classnameof the transient data
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -712,7 +712,7 @@ public interface IFormBuilder {
      * Add a sub title property to a widget to accept an "example" parameter
      *
      * @param position
-     *            sub title position
+     *        sub title position
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -737,7 +737,7 @@ public interface IFormBuilder {
      * Add permissions, that will be decide whether a user has right to view/submit the form.
      *
      * @param example
-     *            The permissions
+     *        The permissions
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */
@@ -747,7 +747,7 @@ public interface IFormBuilder {
      * Add migration product version, that will be generated with the current version of the product used.
      *
      * @param example
-     *            The migrationProductVersion
+     *        The migrationProductVersion
      * @return an implementation of {@link IFormBuilder}
      * @throws InvalidFormDefinitionException
      */

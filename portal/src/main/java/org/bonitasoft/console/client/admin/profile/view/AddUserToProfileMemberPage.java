@@ -42,9 +42,7 @@ import org.bonitasoft.web.toolkit.client.ui.component.table.Table;
 
 /**
  * User List page
- *
  * Used as popup
- *
  *
  * @author Yongtao Guo
  */
@@ -52,13 +50,12 @@ public class AddUserToProfileMemberPage extends Page {
 
     public static final String TOKEN = "AddUserToProfileMember";
     public static final String PARAMETER_PROFILE_ID = "profileId";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(ProfileListingPage.TOKEN);
     }
-
 
     public AddUserToProfileMemberPage() {
     }

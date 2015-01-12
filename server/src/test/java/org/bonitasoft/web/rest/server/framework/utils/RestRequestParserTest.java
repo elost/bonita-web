@@ -17,10 +17,8 @@ package org.bonitasoft.web.rest.server.framework.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.bonitasoft.web.toolkit.client.common.exception.api.APIMalformedUrlException;
 import org.junit.Test;

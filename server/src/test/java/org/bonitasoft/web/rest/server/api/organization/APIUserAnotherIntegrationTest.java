@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -47,8 +45,6 @@ import org.junit.Test;
 
 /**
  * @author Vincent Elcrin
- * 
- * 
  *         FIXME to be refactored using test-toolkit
  */
 public class APIUserAnotherIntegrationTest extends AbstractConsoleTest {
@@ -182,11 +178,11 @@ public class APIUserAnotherIntegrationTest extends AbstractConsoleTest {
      * Assert that listed attributes of expected user are equals to the actual ones.
      * 
      * @param userAttributesList
-     *            : list of attribute to test
+     *        : list of attribute to test
      * @param expected
-     *            : Expected user
+     *        : Expected user
      * @param actual
-     *            : User tested against
+     *        : User tested against
      */
     private void assertUserEquals(final List<String> userAttributesList, final UserItem expected, final UserItem actual) {
         final ArrayList<String> localAttributeList = new ArrayList<String>();
@@ -311,7 +307,8 @@ public class APIUserAnotherIntegrationTest extends AbstractConsoleTest {
             throw new IllegalArgumentException("The user must be not null!");
         }
 
-        final UserCreator userCreator = new UserCreator(user.getAttributeValue(UserItem.ATTRIBUTE_USERNAME), user.getAttributeValue(UserItem.ATTRIBUTE_PASSWORD))
+        final UserCreator userCreator = new UserCreator(user.getAttributeValue(UserItem.ATTRIBUTE_USERNAME),
+                user.getAttributeValue(UserItem.ATTRIBUTE_PASSWORD))
                 .setFirstName(user.getAttributeValue(UserItem.ATTRIBUTE_FIRSTNAME))
                 .setLastName(user.getAttributeValue(UserItem.ATTRIBUTE_LASTNAME))
                 .setTitle(user.getAttributeValue(UserItem.ATTRIBUTE_TITLE))

@@ -25,7 +25,6 @@ public class CaseInfoResource extends CommonResource {
         }
     }
 
-
     protected Map<String, Map<String, Long>> getFlownodeCounters(final Long caseId) throws DataNotFoundException {
         return getEngineProcessAPI().getFlownodeStateCounters(caseId);
     }

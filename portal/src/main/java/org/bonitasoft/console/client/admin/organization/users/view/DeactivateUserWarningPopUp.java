@@ -1,17 +1,14 @@
 /**
  * Copyright (C) 2012 BonitaSoft S.A.
- * 
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -32,19 +29,19 @@ import org.bonitasoft.web.toolkit.client.ui.component.containers.Container;
 public class DeactivateUserWarningPopUp extends Page {
 
     public static final String TOKEN = "deactivateuserwarningpopup";
-    
+
     public DeactivateUserWarningPopUp() {
         // used by page factory - to be deleted when we will be able to not do a Page for a Popup
     }
-    
+
     public DeactivateUserWarningPopUp(APIID userId) {
         addParameter("id", userId.toString());
     }
-    
+
     @Override
     public void defineTitle() {
         setTitle(_("Warning"));
-        
+
     }
 
     @Override
@@ -61,7 +58,7 @@ public class DeactivateUserWarningPopUp extends Page {
                 "Are you sure you want to deactivate this user now ?")));
         return container;
     }
-    
+
     private Container<Button> buttons() {
         Container<Button> formactions = new Container<Button>();
         formactions.addClass("formactions");

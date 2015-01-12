@@ -5,19 +5,18 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.console.client.user.task.view.more;
 
-import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n.*;
-import static org.bonitasoft.web.toolkit.client.ui.utils.DateFormat.FORMAT.*;
+import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n._;
+import static org.bonitasoft.web.toolkit.client.ui.utils.DateFormat.FORMAT.DISPLAY;
+import static org.bonitasoft.web.toolkit.client.ui.utils.DateFormat.FORMAT.DISPLAY_RELATIVE;
 
 import org.bonitasoft.console.client.common.metadata.MetadataTaskBuilder;
 import org.bonitasoft.console.client.uib.formatter.Formatter;
@@ -57,7 +56,7 @@ public class HumanTaskMetadataView extends Composite {
 
     @UiField
     DivElement doneByContainer;
-    
+
     @UiField
     SpanElement doneBy;
 
@@ -89,13 +88,13 @@ public class HumanTaskMetadataView extends Composite {
         assignedTo.setInnerText(Formatter.formatUser(task.getAssignedUser()));
         dueDate.setInnerText(Formatter.formatDate(task.getDueDate(), DISPLAY_RELATIVE));
         if (!IFlowNodeItem.VALUE_STATE_READY.equals(task.getState())) {
-        	if (task.getExecutedByUserId().toLong().equals(task.getExecutedBySubstituteUserId().toLong())) {
-        		doneBy.setInnerText(Formatter.formatUser(task.getExecutedByUser()));
-        	} else {
-        		doneBy.setInnerText(Formatter.formatUser(task.getExecutedBySubstituteUser()) + _(" for ") + Formatter.formatUser(task.getExecutedByUser())); 
-        	}
+            if (task.getExecutedByUserId().toLong().equals(task.getExecutedBySubstituteUserId().toLong())) {
+                doneBy.setInnerText(Formatter.formatUser(task.getExecutedByUser()));
+            } else {
+                doneBy.setInnerText(Formatter.formatUser(task.getExecutedBySubstituteUser()) + _(" for ") + Formatter.formatUser(task.getExecutedByUser()));
+            }
         } else {
-        	doneByContainer.removeFromParent();
+            doneByContainer.removeFromParent();
         }
 
         lastUpdateDate.setInnerText(Formatter.formatDate(task.getLastUpdateDate(), DISPLAY));
@@ -107,10 +106,10 @@ public class HumanTaskMetadataView extends Composite {
         }
         assignedDate.setInnerText(Formatter.formatDate(task.getAssignedDate(), DISPLAY));
 
-        if(!StringUtil.isBlank(task.ensureDescription())) {
+        if (!StringUtil.isBlank(task.ensureDescription())) {
             description.setInnerText(task.ensureDescription());
         }
-        
+
         MetadataTaskBuilder.setCaseHref(caseId, task, CaseMoreDetailsPage.TOKEN, ArchivedCaseMoreDetailsPage.TOKEN);
     }
 }

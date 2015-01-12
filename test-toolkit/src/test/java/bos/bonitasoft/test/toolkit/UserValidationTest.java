@@ -11,11 +11,9 @@ import org.junit.Test;
 
 /**
  * @author Vincent Elcrin
- * 
  *         Test user creation (as well as platform and default tenant)
  */
 public class UserValidationTest extends EngineSetup {
-
 
     @After
     public void tearDown() throws Exception {

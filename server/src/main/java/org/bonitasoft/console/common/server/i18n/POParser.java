@@ -28,9 +28,7 @@ import org.fedorahosted.tennera.jgettext.PoParser;
 import org.fedorahosted.tennera.jgettext.catalog.parse.ParseException;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  */
 public class POParser {
 

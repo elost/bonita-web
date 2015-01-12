@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model;
 
@@ -25,45 +23,46 @@ import java.util.List;
  * 
  * @author Anthony Birembaut
  */
-public class FormPage implements Serializable{
+public class FormPage implements Serializable {
 
     /**
      * UID
      */
     private static final long serialVersionUID = -3003458547469536846L;
-    
+
     /**
      * the page label
      */
     private Expression pageLabelExpression;
-    
+
     /**
      * The expression to evaluate for the next page of the page flow
      */
     private Expression nextPageExpression;
-    
+
     /**
      * the page template
      */
     private HtmlTemplate pageLayout;
-    
+
     /**
      * the page widgets
      */
     private List<FormWidget> formWidgets;
-    
+
     /**
      * the page validators
      */
     private List<FormValidator> pageValidators;
-    
+
     /**
      * The reduced form page
      */
     private ReducedFormPage reducedFormPage;
-    
+
     /**
      * Constructor
+     * 
      * @param pageId
      * @param pageLabelExpression
      * @param pageLayout
@@ -72,7 +71,8 @@ public class FormPage implements Serializable{
      * @param formType
      * @param allowHTMLInLabel
      */
-    public FormPage(final String pageId, final Expression pageLabelExpression, final HtmlTemplate pageLayout, final List<FormWidget> formWidgets, final List<FormValidator> pageValidators, final FormType formType, final boolean allowHTMLInLabel) {
+    public FormPage(final String pageId, final Expression pageLabelExpression, final HtmlTemplate pageLayout, final List<FormWidget> formWidgets,
+            final List<FormValidator> pageValidators, final FormType formType, final boolean allowHTMLInLabel) {
         this.pageLayout = pageLayout;
         ReducedHtmlTemplate reducedPageTemplate = null;
         if (pageLayout != null) {
@@ -97,7 +97,7 @@ public class FormPage implements Serializable{
         reducedFormPage.setPageValidators(reducedValidators);
         this.pageLabelExpression = pageLabelExpression;
     }
-    
+
     /**
      * Default Constructor
      * Mandatory for serialization
@@ -106,7 +106,7 @@ public class FormPage implements Serializable{
         super();
         reducedFormPage = new ReducedFormPage();
     }
-    
+
     public String getPageId() {
         return reducedFormPage.getPageId();
     }
@@ -114,7 +114,7 @@ public class FormPage implements Serializable{
     public void setPageId(final String pageId) {
         reducedFormPage.setPageId(pageId);
     }
-    
+
     public HtmlTemplate getPageLayout() {
         return pageLayout;
     }
@@ -158,7 +158,7 @@ public class FormPage implements Serializable{
         reducedFormPage.setPageValidators(reducedValidators);
     }
 
-	public String getPageLabel() {
+    public String getPageLabel() {
         return reducedFormPage.getPageLabel();
     }
 
@@ -209,7 +209,7 @@ public class FormPage implements Serializable{
     public String getNextPageExpressionId() {
         return reducedFormPage.getNextPageExpressionId();
     }
-    
+
     public void setNextPageExpressionId(final String nextPageExpressionId) {
         reducedFormPage.setNextPageExpressionId(nextPageExpressionId);
     }

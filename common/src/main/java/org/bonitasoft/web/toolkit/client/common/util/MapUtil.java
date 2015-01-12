@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,12 +27,11 @@ public class MapUtil {
      * Get a value in a Map<String, String>.
      * 
      * @param map
-     *            The map to search in
+     *        The map to search in
      * @param key
-     *            The key of the element to get.
+     *        The key of the element to get.
      * @param defaultValue
-     *            The value to return if the element at the defined key is not set.
-     * 
+     *        The value to return if the element at the defined key is not set.
      * @return This method returns the value corresponding or the defaultValue if the element doesn't exist.
      */
     public static String getValue(final Map<String, String> map, final String key, final String defaultValue) {
@@ -48,10 +45,9 @@ public class MapUtil {
      * Get a value in a Map<String, String> and convert it to a long.
      * 
      * @param map
-     *            The map to search in
+     *        The map to search in
      * @param key
-     *            The key of the element to get.
-     * 
+     *        The key of the element to get.
      * @return This method returns the Long value corresponding or NULL if the element doesn't exist or is empty.
      */
     public static Long getValueAsLong(final Map<String, String> map, final String key) throws NumberFormatException {
@@ -67,10 +63,9 @@ public class MapUtil {
      * Get a value in a Map<String, String> and convert it to an integer.
      * 
      * @param map
-     *            The map to search in
+     *        The map to search in
      * @param key
-     *            The key of the element to get.
-     * 
+     *        The key of the element to get.
      * @return This method returns the long value corresponding or NULL if the element doesn't exist or is empty.
      */
     public static Integer getValueAsInteger(final Map<String, String> map, final String key) throws NumberFormatException {
@@ -86,10 +81,9 @@ public class MapUtil {
      * Get a value in a Map<String, String> and convert it to an integer.
      * 
      * @param map
-     *            The map to search in
+     *        The map to search in
      * @param key
-     *            The key of the element to get.
-     * 
+     *        The key of the element to get.
      * @return This method returns the long value corresponding or NULL if the element doesn't exist or is empty.
      */
     public static Boolean getValueAsBoolean(final Map<String, String> map, final String key) throws IllegalArgumentException {
@@ -105,10 +99,9 @@ public class MapUtil {
      * Check if a map entry is blank (not set, NULL or empty String).
      * 
      * @param map
-     *            The map to check
+     *        The map to check
      * @param key
-     *            The key to check
-     * 
+     *        The key to check
      * @return This method returns TRUE if the key is not set OR null OR an empty String, otherwise FALSE.
      */
     public static boolean isBlank(final Map<String, String> map, final String key) {
@@ -119,10 +112,9 @@ public class MapUtil {
      * Remove a map entry if its value is blank (NULL or empty String)
      * 
      * @param map
-     *            The map to check
+     *        The map to check
      * @param key
-     *            The key to check
-     * 
+     *        The key to check
      * @return This method returns TRUE if the key is not set OR has been removed, otherwise FALSE.
      */
     public static boolean removeIfBlank(final Map<String, String> map, final String key) {

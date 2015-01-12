@@ -198,7 +198,7 @@ public class PermissionsBuilderTest {
 
         final Set<String> permissions = permissionsBuilder.getCustomPermissions("user", "myUser");
 
-        assertThat(permissions).containsOnly("Perm1","Perm2","Perm3","Perm4");
+        assertThat(permissions).containsOnly("Perm1", "Perm2", "Perm3", "Perm4");
     }
 
     protected List<Profile> fillInProfilesList(final int startIndex, final int nbOfItems) {

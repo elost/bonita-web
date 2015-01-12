@@ -30,27 +30,27 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Deprecated
 public class ParametersToHashFilter implements Filter {
-    
+
     /**
      * the URL param for the locale to use
      */
     protected static final String LOCALE_URL_PARAM = "locale";
-    
+
     /**
      * user's domain URL parameter
      */
     public static final String DOMAIN_PARAM = "domain";
-    
+
     /**
      * user XP's UI mode parameter
      */
     public static final String UI_MODE_PARAM = "ui";
-    
+
     /**
      * the GWT debug mode param
      */
     public static final String GWT_DEBUG_PARAM = "gwt.codesvr";
-	
+
     /**
      * Logger
      */
@@ -60,32 +60,32 @@ public class ParametersToHashFilter implements Filter {
     }
 
     @SuppressWarnings("unchecked")
-	public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain filterChain) throws ServletException, IOException {
+    public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain filterChain) throws ServletException, IOException {
         try {
-            final HttpServletRequest httpServletRequest = (HttpServletRequest)request;
+            final HttpServletRequest httpServletRequest = (HttpServletRequest) request;
             final HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        	final Map<String, String[]> parameters = httpServletRequest.getParameterMap();
-        	final List<String> supportedParameterKeysList = Arrays.asList(LOCALE_URL_PARAM, DOMAIN_PARAM, UI_MODE_PARAM, GWT_DEBUG_PARAM);
-        	final Set<String> parameterKeys = new HashSet<String>(parameters.keySet());
-        	parameterKeys.removeAll(supportedParameterKeysList);
-        	if (!parameterKeys.isEmpty()) {
-            	final StringBuilder hashString = new StringBuilder();
+            final Map<String, String[]> parameters = httpServletRequest.getParameterMap();
+            final List<String> supportedParameterKeysList = Arrays.asList(LOCALE_URL_PARAM, DOMAIN_PARAM, UI_MODE_PARAM, GWT_DEBUG_PARAM);
+            final Set<String> parameterKeys = new HashSet<String>(parameters.keySet());
+            parameterKeys.removeAll(supportedParameterKeysList);
+            if (!parameterKeys.isEmpty()) {
+                final StringBuilder hashString = new StringBuilder();
                 final StringBuffer requestURL = httpServletRequest.getRequestURL();
                 final int anchorIndex = requestURL.indexOf("#");
                 if (anchorIndex > 0) {
                     hashString.append(requestURL.substring(anchorIndex + 1));
                 }
-            	final StringBuilder queryString = new StringBuilder();
-            	for (final Entry<String, String[]> parameter : parameters.entrySet()) {
-            		final String key = parameter.getKey();
-            		final String[] values = parameter.getValue();
-            		if (supportedParameterKeysList.contains(key)) {
-            		    buildQueryString(queryString, key, values);
-            		} else {
-            		    buildQueryString(hashString, key, values);
-            		}
-            	}
-            	final StringBuilder redirectionURL = new StringBuilder();
+                final StringBuilder queryString = new StringBuilder();
+                for (final Entry<String, String[]> parameter : parameters.entrySet()) {
+                    final String key = parameter.getKey();
+                    final String[] values = parameter.getValue();
+                    if (supportedParameterKeysList.contains(key)) {
+                        buildQueryString(queryString, key, values);
+                    } else {
+                        buildQueryString(hashString, key, values);
+                    }
+                }
+                final StringBuilder redirectionURL = new StringBuilder();
                 redirectionURL.append(httpServletRequest.getRequestURI());
                 if (queryString.length() > 0) {
                     redirectionURL.append("?");
@@ -103,7 +103,7 @@ public class ParametersToHashFilter implements Filter {
         }
         filterChain.doFilter(request, response);
     }
-    
+
     protected void buildQueryString(final StringBuilder queryString, final String key, final String[] values) {
         if (queryString.length() > 0) {
             queryString.append("&");
@@ -123,7 +123,7 @@ public class ParametersToHashFilter implements Filter {
             queryString.append(valuesList);
         }
     }
-    
+
     public void destroy() {
     }
 }

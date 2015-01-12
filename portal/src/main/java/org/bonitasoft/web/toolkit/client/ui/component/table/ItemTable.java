@@ -35,7 +35,6 @@ import org.bonitasoft.web.toolkit.client.data.item.attribute.reader.HasReaders;
 import org.bonitasoft.web.toolkit.client.ui.JsId;
 import org.bonitasoft.web.toolkit.client.ui.action.Action;
 import org.bonitasoft.web.toolkit.client.ui.action.popup.DeleteMultipleItemsPopupAction;
-import org.bonitasoft.web.toolkit.client.ui.action.popup.ItemDeletePopupAction;
 import org.bonitasoft.web.toolkit.client.ui.component.Link;
 import org.bonitasoft.web.toolkit.client.ui.component.Refreshable;
 import org.bonitasoft.web.toolkit.client.ui.component.containers.ContainerDummy;
@@ -108,7 +107,7 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
      * Define the line to select by default.
      * 
      * @param line
-     *            the zero based index of the line
+     *        the zero based index of the line
      */
     public ItemTable setDefaultSelectedLine(final Integer line) {
         this.defaultSelectedLine = line;
@@ -447,7 +446,7 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
 
     /**
      * @param defaultAction
-     *            the defaultAction to set
+     *        the defaultAction to set
      */
     public final ItemTable setDefaultAction(final Action defaultAction) {
         this.defaultAction = defaultAction;
@@ -485,10 +484,9 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     }
 
     /**
-     * 
      * @param link
      * @param force
-     *            Force the visibility of the action (can't be disabled)
+     *        Force the visibility of the action (can't be disabled)
      * @return
      */
     public final ItemTable addGroupedAction(Link link, final boolean force) {
@@ -501,12 +499,11 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     }
 
     /**
-     * 
      * @param label
      * @param tooltip
      * @param action
      * @param force
-     *            Force the visibility of the action (can't be disabled)
+     *        Force the visibility of the action (can't be disabled)
      */
     public final ItemTable addGroupedAction(final JsId id, final String label, final String tooltip, final Action action, final boolean force) {
         this.table.addGroupedAction(id, label, tooltip, action, force);

@@ -26,7 +26,6 @@ import javax.servlet.http.HttpSession;
 import org.bonitasoft.console.common.server.login.LoginManager;
 import org.bonitasoft.console.common.server.preferences.properties.ResourcesPermissionsMapping;
 import org.bonitasoft.engine.session.APISession;
-import org.bonitasoft.web.toolkit.client.common.exception.api.APIMalformedUrlException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

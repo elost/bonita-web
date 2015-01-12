@@ -33,7 +33,6 @@ import org.scribe.model.Token;
 
 /**
  * @author Ruiheng Fan, Chong Zhao
- *
  */
 public class OAuthLoginManagerImpl implements LoginManager {
 

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -56,7 +54,6 @@ import org.junit.Test;
  * Unit test for the implementation of the form validation API
  * 
  * @author Anthony Birembaut
- * 
  */
 public class FormValidationAPIImplIT extends FormsTestCase {
 
@@ -119,8 +116,10 @@ public class FormValidationAPIImplIT extends FormsTestCase {
                 new ArrayList<Expression>()));
         validators.add(formValidator);
         FormFieldValue value = new FormFieldValue("a", String.class.getName());
-        Assert.assertEquals(0,
-                api.validateInstanceField(getSession(), processInstanceID, validators, "field", value, null, Locale.ENGLISH, new HashMap<String, Serializable>())
+        Assert.assertEquals(
+                0,
+                api.validateInstanceField(getSession(), processInstanceID, validators, "field", value, null, Locale.ENGLISH,
+                        new HashMap<String, Serializable>())
                         .size());
     }
 
@@ -133,8 +132,10 @@ public class FormValidationAPIImplIT extends FormsTestCase {
                 new ArrayList<Expression>()));
         validators.add(formValidator);
         FormFieldValue value = new FormFieldValue(processInstanceID, String.class.getName());
-        Assert.assertEquals(0,
-                api.validateInstanceField(getSession(), processInstanceID, validators, "field", value, null, Locale.ENGLISH, new HashMap<String, Serializable>())
+        Assert.assertEquals(
+                0,
+                api.validateInstanceField(getSession(), processInstanceID, validators, "field", value, null, Locale.ENGLISH,
+                        new HashMap<String, Serializable>())
                         .size());
     }
 
@@ -149,8 +150,10 @@ public class FormValidationAPIImplIT extends FormsTestCase {
                 new ArrayList<Expression>()));
         validators.add(formValidator);
         FormFieldValue value = new FormFieldValue("abc123_def", null);
-        Assert.assertEquals(0,
-                api.validateInstanceField(getSession(), processInstanceID, validators, "field", value, null, Locale.ENGLISH, new HashMap<String, Serializable>())
+        Assert.assertEquals(
+                0,
+                api.validateInstanceField(getSession(), processInstanceID, validators, "field", value, null, Locale.ENGLISH,
+                        new HashMap<String, Serializable>())
                         .size());
         validators = new ArrayList<FormValidator>();
         FormValidator formValidator2 = new FormValidator("validatorId", RegexFieldValidator.class.getName(), null);
@@ -159,8 +162,10 @@ public class FormValidationAPIImplIT extends FormsTestCase {
         formValidator2.setParameterExpression(new Expression(null, "[a-z_]*", ExpressionType.TYPE_CONSTANT.name(), String.class.getName(), null,
                 new ArrayList<Expression>()));
         validators.add(formValidator2);
-        Assert.assertEquals(1,
-                api.validateInstanceField(getSession(), processInstanceID, validators, "field", value, null, Locale.ENGLISH, new HashMap<String, Serializable>())
+        Assert.assertEquals(
+                1,
+                api.validateInstanceField(getSession(), processInstanceID, validators, "field", value, null, Locale.ENGLISH,
+                        new HashMap<String, Serializable>())
                         .size());
     }
 

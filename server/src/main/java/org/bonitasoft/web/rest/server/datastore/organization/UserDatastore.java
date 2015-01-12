@@ -81,19 +81,19 @@ public class UserDatastore extends CommonDatastore<UserItem, User>
      * Search for users
      *
      * @param page
-     *            The page to display
+     *        The page to display
      * @param resultsByPage
-     *            The number of results by page
+     *        The number of results by page
      * @param search
-     *            Search terms
+     *        Search terms
      * @param filters
-     *            The filters to doAuthorize. There will be an AND operand between filters.
+     *        The filters to doAuthorize. There will be an AND operand between filters.
      * @param orders
-     *            The order to doAuthorize to the search
+     *        The order to doAuthorize to the search
      * @return This method returns an ItemSearch result containing the returned data and information about the total possible results.
      */
     public ItemSearchResult<UserItem> search(final int page, final int resultsByPage, final String search,
-                                             final Map<String, String> filters, final String orders) {
+            final Map<String, String> filters, final String orders) {
 
         if (filters.containsKey(UserItem.FILTER_PROCESS_ID)) {
             String processId = filters.get(UserItem.FILTER_PROCESS_ID);
@@ -110,7 +110,7 @@ public class UserDatastore extends CommonDatastore<UserItem, User>
     }
 
     private ItemSearchResult<UserItem> searchUsers(final int page, final int resultsByPage, final String search,
-                                                   final Map<String, String> filters, final String orders) {
+            final Map<String, String> filters, final String orders) {
 
         SearchOptionsCreator searchOptionsCreator = buildSearchOptionCreator(page,
                 resultsByPage, search, filters, orders);
@@ -123,7 +123,7 @@ public class UserDatastore extends CommonDatastore<UserItem, User>
     }
 
     protected ItemSearchResult<UserItem> searchUsersWhoCanStartProcess(final String processId, final int page, final int resultsByPage, final String search,
-                                                                       final Map<String, String> filters, final String orders) {
+            final Map<String, String> filters, final String orders) {
 
         SearchOptionsCreator searchOptionsCreator = buildSearchOptionCreator(page,
                 resultsByPage, search, filters, orders);
@@ -144,7 +144,7 @@ public class UserDatastore extends CommonDatastore<UserItem, User>
     }
 
     protected ItemSearchResult<UserItem> searchUsersWhoCanPerformTask(final String taskId, final int page, final int resultsByPage, final String search,
-                                                                      final Map<String, String> filters, final String orders) {
+            final Map<String, String> filters, final String orders) {
 
         SearchResult<User> engineSearchResults;
         try {
@@ -163,8 +163,8 @@ public class UserDatastore extends CommonDatastore<UserItem, User>
     }
 
     private SearchOptionsCreator buildSearchOptionCreator(final int page,
-                                                          final int resultsByPage, final String search,
-                                                          final Map<String, String> filters, final String orders) {
+            final int resultsByPage, final String search,
+            final Map<String, String> filters, final String orders) {
         SearchOptionsCreator searchOptionsCreator = new SearchOptionsCreator(page, resultsByPage, search,
                 new Sorts(orders, new UserSearchAttributeConverter()),
                 new Filters(filters, new UserFilterCreator()));

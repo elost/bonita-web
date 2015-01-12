@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -51,9 +49,9 @@ public interface IFormDefinitionAPI {
      * Retrieve the application permission string
      *
      * @param formID
-     *            the formID of the application form
+     *        the formID of the application form
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return the application permission string
      * @throws InvalidFormDefinitionException
      * @throws FormServiceProviderNotFoundException
@@ -67,7 +65,7 @@ public interface IFormDefinitionAPI {
      * Retrieve the product version as a string
      *
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return product version
      * @throws FormServiceProviderNotFoundException
      * @throws SessionTimeoutException
@@ -80,9 +78,9 @@ public interface IFormDefinitionAPI {
      * Retrieve the migration product version string
      *
      * @param formID
-     *            the formID of the application form
+     *        the formID of the application form
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return the migration product version string
      * @throws InvalidFormDefinitionException
      * @throws FormServiceProviderNotFoundException
@@ -96,9 +94,9 @@ public interface IFormDefinitionAPI {
      * Retrieve the form permissions string
      *
      * @param formID
-     *            the formID of the specific form
+     *        the formID of the specific form
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return the form permission string
      * @throws ApplicationFormDefinitionNotFoundException
      * @throws InvalidFormDefinitionException
@@ -112,9 +110,9 @@ public interface IFormDefinitionAPI {
      * Retrieve the next form
      *
      * @param formID
-     *            the form ID
+     *        the form ID
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return the next form ID as a string
      * @throws ApplicationFormDefinitionNotFoundException
      * @throws InvalidFormDefinitionException
@@ -150,9 +148,9 @@ public interface IFormDefinitionAPI {
      * Retrieve the expression which can be evaluated to get the first page of the form
      *
      * @param formID
-     *            the form ID
+     *        the form ID
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return an expression
      * @throws FormNotFoundException
      * @throws InvalidFormDefinitionException
@@ -167,9 +165,9 @@ public interface IFormDefinitionAPI {
      * Retrieve the list of transient data for a form
      *
      * @param formID
-     *            the form ID
+     *        the form ID
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return a List of {@link TransientData}
      * @throws InvalidFormDefinitionException
      * @throws FormNotFoundException
@@ -184,11 +182,11 @@ public interface IFormDefinitionAPI {
      * Retrieve a page data containing a template and a list of the widgets to be displayed
      *
      * @param formID
-     *            the form ID
+     *        the form ID
      * @param pageId
-     *            the page ID
+     *        the page ID
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return a {@link FormPage} object containing the elements required to build the level2 (page form)
      * @throws InvalidFormDefinitionException
      * @throws IOException
@@ -204,9 +202,9 @@ public interface IFormDefinitionAPI {
      * Retrieve the confirmation template for a form
      *
      * @param formID
-     *            the form ID
+     *        the form ID
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return an {@link HtmlTemplate} object representing the page flow confirmation page
      * @throws FileNotFoundException
      * @throws FormNotFoundException
@@ -222,11 +220,11 @@ public interface IFormDefinitionAPI {
      * Retrieve a list of actions to be executed at form submission
      *
      * @param formID
-     *            the form ID
+     *        the form ID
      * @param pageIds
-     *            list of pages for which the actions are required
+     *        list of pages for which the actions are required
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return a list of {@link FormAction} to be executed at form submission
      * @throws InvalidFormDefinitionException
      * @throws FormNotFoundException
@@ -241,11 +239,11 @@ public interface IFormDefinitionAPI {
      * Parse a page layout and insert some step attributes in it
      *
      * @param bodyContent
-     *            the body content
+     *        the body content
      * @param stepAttributes
-     *            the map of step attributes
+     *        the map of step attributes
      * @param locale
-     *            the user's locale
+     *        the user's locale
      * @return bodyContent the body content
      */
     String applicationAttributes(String bodyContent, Map<String, String> stepAttributes, Locale locale);
@@ -254,11 +252,11 @@ public interface IFormDefinitionAPI {
      * Retrieve and initialize the transient data for a form
      *
      * @param transientData
-     *            the List of transient data
+     *        the List of transient data
      * @param locale
-     *            the user's locale
+     *        the user's locale
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return a Map<String, Object> containing the context of transient data
      * @throws FormNotFoundException
      * @throws FormServiceProviderNotFoundException
@@ -276,7 +274,7 @@ public interface IFormDefinitionAPI {
      * Set the application definition deploy date
      *
      * @param applicationDefinitionDate
-     *            the Date that the application was deployed
+     *        the Date that the application was deployed
      */
     void setApplicationDelpoymentDate(Date applicationDefinitionDate);
 
@@ -285,7 +283,7 @@ public interface IFormDefinitionAPI {
      *
      * @return the error page template
      * @param context
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @throws InvalidFormDefinitionException
      * @throws FileNotFoundException
      * @throws ApplicationFormDefinitionNotFoundException

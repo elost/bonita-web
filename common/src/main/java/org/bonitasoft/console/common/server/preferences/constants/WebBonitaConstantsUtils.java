@@ -109,7 +109,6 @@ public class WebBonitaConstantsUtils {
     }
 
     /**
-     *
      * Get the folder of the user Console user icons
      *
      * @throws ConsoleException
@@ -182,7 +181,6 @@ public class WebBonitaConstantsUtils {
     }
 
     /**
-     *
      * Get the folder of the Console group icons
      *
      * @throws ConsoleException
@@ -192,7 +190,6 @@ public class WebBonitaConstantsUtils {
     }
 
     /**
-     *
      * Get the folder of the Console profile icons
      *
      * @throws ConsoleException

@@ -656,9 +656,9 @@ public class Table extends AbstractTable implements Refreshable {
      * Add action to the table and enable checkboxes
      * 
      * @param link
-     *            link to add
+     *        link to add
      * @param force
-     *            force button visibility
+     *        force button visibility
      * @return
      *         current table instance
      */
@@ -696,14 +696,12 @@ public class Table extends AbstractTable implements Refreshable {
     }
 
     /**
-     * 
      * @param label
      * @param tooltip
      * @param action
-     *            The action to call on click
+     *        The action to call on click
      * @param force
-     *            Force the visibility of the button (can't be disabled)
-     * 
+     *        Force the visibility of the button (can't be disabled)
      * @deprecated
      *             Create your own link and use {@link #addGroupedAction(Link, boolean)} instead
      */

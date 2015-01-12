@@ -37,7 +37,7 @@ public class SendFormAction extends FormAction {
      * Constructor for the SendFormAction, using a standard callback that just call historyBack.
      * 
      * @param resourceUrl
-     *            URL to call for the POST request
+     *        URL to call for the POST request
      */
     public SendFormAction(final String resourceUrl) {
         this(resourceUrl, new HttpCallback() {
@@ -54,9 +54,9 @@ public class SendFormAction extends FormAction {
      * Constructor for the SendFormAction, using a specific callback.
      * 
      * @param resourceUrl
-     *            URL to call for the POST request
+     *        URL to call for the POST request
      * @param callBack
-     *            Callback to use on the request response.
+     *        Callback to use on the request response.
      */
     public SendFormAction(final String resourceUrl, final HttpCallback callBack) {
         this.resourceUrl = resourceUrl;

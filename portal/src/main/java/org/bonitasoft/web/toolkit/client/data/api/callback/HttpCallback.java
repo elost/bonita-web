@@ -5,18 +5,16 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.toolkit.client.data.api.callback;
 
-import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n.*;
+import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n._;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -40,20 +38,19 @@ import com.google.gwt.user.client.Window;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public abstract class HttpCallback implements RequestCallback {
 
     @Override
     public final void onResponseReceived(final Request request, final Response response) {
-        
+
         // Same origne policy violation
         // hack to avoid error on timeout exception generating same origne policy violation
         // Need to deal with specific exception in processes, not in toolkit
         if (response.getStatusCode() == 0) {
             return;
-        } 
-//        // Session expired
+        }
+        //        // Session expired
         else if (response.getStatusCode() == 401) {
             Window.Location.reload();
         }
@@ -88,11 +85,11 @@ public abstract class HttpCallback implements RequestCallback {
      * This function must be overridden to catch the success of an API call.
      * 
      * @param httpStatusCode
-     *            The HTTP status code returned
+     *        The HTTP status code returned
      * @param response
-     *            The body of the response as a String
+     *        The body of the response as a String
      * @param headers
-     *            The headers as a HashMap<name, value>
+     *        The headers as a HashMap<name, value>
      */
     public void onSuccess(final int httpStatusCode, final String response, final Map<String, String> headers) {
         // Do nothing by default
@@ -116,9 +113,9 @@ public abstract class HttpCallback implements RequestCallback {
      * This function must be overridden to catch errors on an API call.
      * 
      * @param message
-     *            The error message
+     *        The error message
      * @param errorCode
-     *            The HTTP status code received from the server
+     *        The HTTP status code received from the server
      */
     public void onError(final String message, final Integer errorCode) {
         throw parseException(message, errorCode);
@@ -127,13 +124,13 @@ public abstract class HttpCallback implements RequestCallback {
     protected ServerException parseException(final String message, final Integer errorCode) {
         try {
             final AbstractTreeNode<String> tree = JSonUnserializerClient.unserializeTree(message);
-    
+
             if (!(tree instanceof TreeIndexed<?>)) {
                 onError(message, errorCode);
             }
-    
+
             final TreeIndexed<String> tree2 = (TreeIndexed<String>) tree;
-    
+
             ServerException ex = null;
             if (tree2.containsKey("api") && tree2.containsKey("resource")) {
                 ex = new APIException(tree2.getValue("message"));
@@ -146,7 +143,7 @@ public abstract class HttpCallback implements RequestCallback {
             if (causeNode != null && causeNode instanceof TreeIndexed<?>) {
                 ex.setOriginalClassName(((TreeIndexed<String>) causeNode).getValue("exception"));
             }
-    
+
             final AbstractTreeNode<String> stacktrace = tree2.get("stacktrace");
             if (stacktrace != null) {
                 if (stacktrace instanceof Tree<?>) {
@@ -156,7 +153,7 @@ public abstract class HttpCallback implements RequestCallback {
                 }
             }
             ex.setStatusCode(errorCode);
-    
+
             return ex;
         } catch (final JSONException e) {
             throw new HttpException(message).setStatusCode(errorCode);

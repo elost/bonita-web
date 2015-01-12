@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -42,20 +40,19 @@ import org.bonitasoft.web.toolkit.client.ui.utils.DateFormat.FORMAT;
 
 /**
  * @author Paul AMAR
- * 
  */
 public class UserListingAdminPage extends ItemListingPage<UserItem> {
-    
+
     public static final String TOKEN = "userlistingadmin";
 
     private static final String TABLE_ENABLED_USERS = "enabledusers";
     private static final String TABLE_DISABLED_USERS = "disabledusers";
-    
+
     private static final String FILTER_PRIMARY_ENABLED_USERS = "enabledusers";
     private static final String FILTER_PRIMARY_DISABLED_USERS = "disabledusers";
 
-	public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+    public static final List<String> PRIVILEGES = new ArrayList<String>();
+
     static {
         PRIVILEGES.add(UserListingAdminPage.TOKEN);
     }
@@ -71,7 +68,7 @@ public class UserListingAdminPage extends ItemListingPage<UserItem> {
     }
 
     private Clickable addUserLink() {
-        return new Link(_("Create"), _("Opens a popup to create a user"), 
+        return new Link(_("Create"), _("Opens a popup to create a user"),
                 new CheckValidSessionBeforeAction(new ActionShowPopup(new PopupAddUserPage())));
     }
 
@@ -85,12 +82,12 @@ public class UserListingAdminPage extends ItemListingPage<UserItem> {
 
     private ItemListingFilter disabledUsersFilter() {
         return new ItemListingFilter(FILTER_PRIMARY_DISABLED_USERS, _("Inactive"), _("Inactive Users"), TABLE_DISABLED_USERS)
-            .addFilter(UserItem.ATTRIBUTE_ENABLED, "false");
+                .addFilter(UserItem.ATTRIBUTE_ENABLED, "false");
     }
 
     private ItemListingFilter enabledUsersFilter() {
         return new ItemListingFilter(FILTER_PRIMARY_ENABLED_USERS, _("Active"), _("Active Users"), TABLE_ENABLED_USERS)
-            .addFilter(UserItem.ATTRIBUTE_ENABLED, "true");
+                .addFilter(UserItem.ATTRIBUTE_ENABLED, "true");
     }
 
     @Override
@@ -110,7 +107,7 @@ public class UserListingAdminPage extends ItemListingPage<UserItem> {
         ItemTable itemTable = itemTable();
         return new ItemListingTable(new JsId(TABLE_ENABLED_USERS), _("Users"), itemTable, getItemQuickDetailPage());
     }
-    
+
     private ItemListingTable disabledUserTable() {
         ItemTable itemTable = itemTable();
         return new ItemListingTable(new JsId(TABLE_DISABLED_USERS), _("Users"), itemTable, getItemQuickDetailPage());

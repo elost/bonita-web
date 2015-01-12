@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -65,7 +63,6 @@ public class ConsoleIdentityLoginModule implements LoginModule {
 
     /**
      * Property key for the debug flag. Defined to be "debug".
-     * 
      * Property Value. If set, should be either "true" or "false". Default is
      * "false".
      */
@@ -105,15 +102,15 @@ public class ConsoleIdentityLoginModule implements LoginModule {
      * options parameters, they can be ignored.
      * 
      * @param subject
-     *            the Subject to be authenticated.
+     *        the Subject to be authenticated.
      * @param callbackHandler
-     *            a CallbackHandler for communicating with the end user (prompting
-     *            for usernames and passwords, for example).
+     *        a CallbackHandler for communicating with the end user (prompting
+     *        for usernames and passwords, for example).
      * @param sharedState
-     *            state shared with other configured LoginModules.
+     *        state shared with other configured LoginModules.
      * @param options
-     *            options specified in the login Configuration for this particular
-     *            LoginModule.
+     *        options specified in the login Configuration for this particular
+     *        LoginModule.
      */
     @Override
     @SuppressWarnings("unchecked")
@@ -138,7 +135,7 @@ public class ConsoleIdentityLoginModule implements LoginModule {
      * @return true if the authentication succeeded, or false if this LoginModule
      *         should be ignored.
      * @throws LoginException
-     *             if the authentication fails
+     *         if the authentication fails
      */
     @Override
     public boolean login() throws LoginException {
@@ -261,7 +258,7 @@ public class ConsoleIdentityLoginModule implements LoginModule {
      * @return true if this method succeeded, or false if this LoginModule should
      *         be ignored.
      * @throws LoginException
-     *             if the commit fails
+     *         if the commit fails
      */
     @Override
     public boolean commit() throws LoginException {
@@ -284,7 +281,7 @@ public class ConsoleIdentityLoginModule implements LoginModule {
      * @return true if this method succeeded, or false if this LoginModule should
      *         be ignored.
      * @throws LoginException
-     *             if the abort fails
+     *         if the abort fails
      */
     @Override
     public boolean abort() throws LoginException {
@@ -306,7 +303,7 @@ public class ConsoleIdentityLoginModule implements LoginModule {
      * @return true if this method succeeded, or false if this LoginModule should
      *         be ignored.
      * @throws LoginException
-     *             if the logout fails
+     *         if the logout fails
      */
     @Override
     public boolean logout() throws LoginException {

@@ -5,14 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.forms.client.model;
 
@@ -36,12 +34,12 @@ public class HtmlTemplate implements Serializable {
      * Some templates have a dynamic message (confirmation template...)
      */
     private Expression dynamicMessageExpression;
-    
+
     /**
      * the reduced version of HTML template
      */
     private ReducedHtmlTemplate reducedHtmlTemplate;
-    
+
     /**
      * Default constructor
      * Mandatory for serialization
@@ -50,9 +48,10 @@ public class HtmlTemplate implements Serializable {
         super();
         reducedHtmlTemplate = new ReducedHtmlTemplate();
     }
-    
+
     /**
      * Constructor
+     * 
      * @param bodyContent
      * @param bodyClassNames
      * @param headContent
@@ -92,7 +91,7 @@ public class HtmlTemplate implements Serializable {
     public void setDynamicMessageExpression(final Expression dynamicMessageExpression) {
         this.dynamicMessageExpression = dynamicMessageExpression;
     }
-    
+
     public String getDynamicMessage() {
         return reducedHtmlTemplate.getDynamicMessage();
     }
@@ -100,7 +99,7 @@ public class HtmlTemplate implements Serializable {
     public void setDynamicMessage(String dynamicMessage) {
         reducedHtmlTemplate.setDynamicMessage(dynamicMessage);
     }
-    
+
     public ReducedHtmlTemplate getReducedHtmlTemplate() {
         return reducedHtmlTemplate;
     }
@@ -108,7 +107,7 @@ public class HtmlTemplate implements Serializable {
     public void setReducedHtmlTemplate(ReducedHtmlTemplate reducedHtmlTemplate) {
         this.reducedHtmlTemplate = reducedHtmlTemplate;
     }
-    
+
     public String getBodyContentId() {
         return this.reducedHtmlTemplate.getBodyContentId();
     }

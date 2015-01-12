@@ -28,7 +28,6 @@ import com.google.gwt.user.client.Window;
 
 /**
  * @author Julien Mege
- * 
  */
 public class RedirectionAction extends Action {
 
@@ -39,7 +38,7 @@ public class RedirectionAction extends Action {
     public RedirectionAction(Url relativeUrl) {
         token = relativeUrl;
     }
-    
+
     /**
      * @deprecated use ActionShowView or ActionShowPopup instead and add parameter in constructor of the page via addParameter method
      */

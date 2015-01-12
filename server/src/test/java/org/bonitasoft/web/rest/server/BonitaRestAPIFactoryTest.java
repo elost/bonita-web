@@ -1,12 +1,12 @@
 package org.bonitasoft.web.rest.server;
 
+import static org.junit.Assert.assertTrue;
+
 import org.bonitasoft.web.rest.server.api.organization.APICustomUserInfoDefinition;
 import org.bonitasoft.web.rest.server.api.organization.APICustomUserInfoUser;
 import org.bonitasoft.web.rest.server.api.organization.APICustomUserInfoValue;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
 
 /**
  * @author Vincent Elcrin

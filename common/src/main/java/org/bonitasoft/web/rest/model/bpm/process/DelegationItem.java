@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -24,7 +22,6 @@ import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
  * Delegation item
  * 
  * @author Qixiang Zhang
- * 
  */
 public class DelegationItem extends Item {
 
@@ -67,21 +64,20 @@ public class DelegationItem extends Item {
     public static final String ATTRIBUTE_DELEGATE_STATE = "delegateState";
 
     /**
-     * 
      * Default Constructor.
      * 
      * @param delegateId
-     *            delegate of id
+     *        delegate of id
      * @param iconPath
-     *            icon of path
+     *        icon of path
      * @param userName
-     *            user of name
+     *        user of name
      * @param startDate
-     *            start date
+     *        start date
      * @param endDate
-     *            end date
+     *        end date
      * @param delegateState
-     *            delegate state
+     *        delegate state
      */
     public DelegationItem(final long delegateId, final String iconPath, final String userName, final String startDate, final String endDate,
             final String delegateState) {

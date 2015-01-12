@@ -60,7 +60,7 @@ public abstract class ListProcessActorMemberPage extends PageOnItem<ActorItem> {
         action.setConfirmButtonLabel(_("Remove"));
         return action;
     }
-    
+
     protected String getDisplayName(ActorItem actor) {
         return new ItemHasDualNameAttributeReader().read(actor);
     }

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -25,7 +23,6 @@ import org.bonitasoft.web.toolkit.client.data.item.IItem;
 
 /**
  * @author Colin PUY
- * 
  */
 public class ProcessConfigurationStateResolver {
 
@@ -36,15 +33,14 @@ public class ProcessConfigurationStateResolver {
         this.processResolutionErrors = processResolutionErrors;
         problems = getProblemsType(processResolutionErrors);
     }
-    
+
     public List<ProcessResolutionProblemItem> getProcessResolutionErrors() {
         return processResolutionErrors;
     }
-    
+
     public void setProcessResolutionErrors(List<ProcessResolutionProblemItem> processResolutionErrors) {
         this.processResolutionErrors = processResolutionErrors;
     }
-
 
     private Set<String> getProblemsType(List<ProcessResolutionProblemItem> processResolutionErrors) {
         HashSet<String> errors = new HashSet<String>();
@@ -53,7 +49,7 @@ public class ProcessConfigurationStateResolver {
         }
         return errors;
     }
-    
+
     public boolean hasProblems() {
         return !problems.isEmpty();
     }

@@ -1,6 +1,5 @@
 package org.bonitasoft.web.rest.server.datastore.bpm.cases;
 
-
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.spy;

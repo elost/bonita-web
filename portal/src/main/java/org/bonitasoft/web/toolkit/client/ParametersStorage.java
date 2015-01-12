@@ -5,12 +5,10 @@
  * it under the terms of the GNU General protected License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General protected License for more details.
- * 
  * You should have received a copy of the GNU General protected License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -53,7 +51,7 @@ abstract class ParametersStorage {
      * Read all stored parameters
      * 
      * @param rewrite
-     *            Define if the reading must be followed by a save
+     *        Define if the reading must be followed by a save
      * @return This method returns the currently stored parameters;
      */
     abstract protected TreeIndexed<String> readParameters(final boolean rewrite);
@@ -73,7 +71,7 @@ abstract class ParametersStorage {
      * Replace all parameters by the passed ones. Using this method also remove the parameters that are not redefined.
      * 
      * @param params
-     *            The new parameters to set.
+     *        The new parameters to set.
      */
     protected void _setParameters(final HashMap<String, String> params) {
         this._setParameters(params == null ? null : new TreeIndexed<String>(params));
@@ -83,7 +81,7 @@ abstract class ParametersStorage {
      * Replace all parameters by the passed ones. Using this method also remove the parameters that are not redefined.
      * 
      * @param params
-     *            The new parameters to set.
+     *        The new parameters to set.
      */
     protected void _setParameters(final TreeIndexed<String> params) {
         if (params == null) {

@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,7 +28,6 @@ import com.google.gwt.user.client.Element;
 
 /**
  * @author Paul AMAR
- * 
  */
 public class DatePicker extends Component {
 
@@ -66,12 +63,12 @@ public class DatePicker extends Component {
         this.addJsOption("format", _("mm/dd/yyyy"));
         this.addJsOption("months", getMonths());
         this.addJsOption("daysMin", getDaysMin());
-        
+
         this.element = DOM.createInputText();
         this.element.addClassName("inputDate");
         this.element.setAttribute("name", getJsId().toString());
         this.element.setAttribute("maxlength", "10"); // yyyy-mm-dd
-        
+
         if (this.defaultValue != null) {
             this.element.setAttribute("value", this.defaultValue);
         }
@@ -133,7 +130,7 @@ public class DatePicker extends Component {
 
     /**
      * @param startDate
-     *            the startDate to set
+     *        the startDate to set
      */
     public void setStartDate(final Date startDate) {
         this.startDate = startDate;
@@ -141,7 +138,7 @@ public class DatePicker extends Component {
 
     /**
      * @param endDate
-     *            the endDate to set
+     *        the endDate to set
      */
     public void setEndDate(final Date endDate) {
         this.endDate = endDate;

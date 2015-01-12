@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -47,7 +45,7 @@ class ItemListingTableSort {
 
     /**
      * @param label
-     *            the label to set
+     *        the label to set
      */
     public ItemListingTableSort setLabel(final String label) {
         this.label = label;
@@ -63,7 +61,7 @@ class ItemListingTableSort {
 
     /**
      * @param tooltip
-     *            the tooltip to set
+     *        the tooltip to set
      */
     public ItemListingTableSort setTooltip(final String tooltip) {
         this.tooltip = tooltip;
@@ -79,7 +77,7 @@ class ItemListingTableSort {
 
     /**
      * @param attributeName
-     *            the attributeName to set
+     *        the attributeName to set
      */
     public ItemListingTableSort setAttributeName(final String attributeName) {
         this.attributeName = attributeName;
@@ -95,7 +93,7 @@ class ItemListingTableSort {
 
     /**
      * @param ascendant
-     *            the ascendent to set
+     *        the ascendent to set
      */
     public ItemListingTableSort setAscendant(final boolean ascendant) {
         this.ascendant = ascendant;

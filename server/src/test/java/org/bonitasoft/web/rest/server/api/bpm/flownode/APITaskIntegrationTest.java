@@ -48,15 +48,15 @@ public class APITaskIntegrationTest extends AbstractConsoleTest {
     private TestHumanTask createActivityWithVariables() throws InvalidExpressionException {
         final ProcessDefinitionBuilder processDefinitionBuidler = new ProcessDefinitionBuilder().createNewInstance("processName", "1.0");
         processDefinitionBuidler.addActor("Employees", true)
-        .addDescription("This a default process")
-        .addStartEvent("Start")
-        .addUserTask("Activity 1", "Employees")
+                .addDescription("This a default process")
+                .addStartEvent("Start")
+                .addUserTask("Activity 1", "Employees")
 
-        .addData("variable1", String.class.getName(), new ExpressionBuilder().createConstantStringExpression("defaultValue"))
-        .addData("variable2", Long.class.getName(), new ExpressionBuilder().createConstantLongExpression(1))
-        .addData("variable3", Date.class.getName(), new ExpressionBuilder().createConstantDateExpression("428558400000"))
+                .addData("variable1", String.class.getName(), new ExpressionBuilder().createConstantStringExpression("defaultValue"))
+                .addData("variable2", Long.class.getName(), new ExpressionBuilder().createConstantLongExpression(1))
+                .addData("variable3", Date.class.getName(), new ExpressionBuilder().createConstantDateExpression("428558400000"))
 
-        .addEndEvent("Finish");
+                .addEndEvent("Finish");
         return new TestProcess(processDefinitionBuidler).addActor(getInitiator()).setEnable(getInitiator(), true).startCase().getNextHumanTask()
                 .assignTo(getInitiator());
     }

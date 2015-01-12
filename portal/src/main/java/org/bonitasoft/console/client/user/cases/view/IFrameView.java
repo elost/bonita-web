@@ -58,12 +58,12 @@ public class IFrameView extends Composite {
     }
 
     private native void setLocation(IFrameElement iframe, String urlLocation) /*-{
-        if(iframe.contentWindow) {
-            iframe.contentWindow.location.replace(urlLocation);
-        } else {
-            iframe.src = urlLocation;
-        }
-    }-*/;
+                                                                              if(iframe.contentWindow) {
+                                                                              iframe.contentWindow.location.replace(urlLocation);
+                                                                              } else {
+                                                                              iframe.src = urlLocation;
+                                                                              }
+                                                                              }-*/;
 
     public void addTool(final Widget widget) {
         toolbar.removeStyleName("empty");

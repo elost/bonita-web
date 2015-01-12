@@ -119,7 +119,8 @@ public class ProcessMoreDetailsAdminPage extends ItemQuickDetailsPage<ProcessIte
     }
 
     private Clickable newDeleteProcessButton(final ProcessItem process) {
-        return new ButtonAction("btn-delete", _("Delete"), _("Delete this process"), new DeleteProcessAction(process.getId().toString(), process.getDisplayName()));
+        return new ButtonAction("btn-delete", _("Delete"), _("Delete this process"), new DeleteProcessAction(process.getId().toString(),
+                process.getDisplayName()));
     }
 
     protected Clickable newChangeProcessActivationStateButton(final ProcessItem process) {

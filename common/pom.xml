@@ -70,7 +70,7 @@
             <groupId>org.lesscss</groupId>
             <artifactId>lesscss</artifactId>
         </dependency>
-	</dependencies>
+    </dependencies>
 
     <build>
         <plugins>

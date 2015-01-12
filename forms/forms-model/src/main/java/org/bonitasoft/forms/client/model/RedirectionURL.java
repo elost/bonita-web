@@ -71,7 +71,5 @@ public class RedirectionURL implements Serializable {
     public void setUrlExpression(Expression urlExpression) {
         this.urlExpression = urlExpression;
     }
-    
-    
 
 }

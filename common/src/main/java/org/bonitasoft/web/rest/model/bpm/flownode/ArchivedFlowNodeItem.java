@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -24,7 +22,6 @@ import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public class ArchivedFlowNodeItem extends FlowNodeItem implements ArchivedFlowNode {
 
@@ -69,7 +66,8 @@ public class ArchivedFlowNodeItem extends FlowNodeItem implements ArchivedFlowNo
         return true;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.bonitasoft.console.client.model.bpm.flownode.ArchivedFlowNode#setSourceObjectId(org.bonitasoft.web.toolkit.client.data.APIID)
      */
     @Override
@@ -77,7 +75,8 @@ public class ArchivedFlowNodeItem extends FlowNodeItem implements ArchivedFlowNo
         this.setAttribute(ATTRIBUTE_SOURCE_OBJECT_ID, id);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.bonitasoft.console.client.model.bpm.flownode.ArchivedFlowNode#setSourceObjectId(java.lang.String)
      */
     @Override
@@ -85,7 +84,8 @@ public class ArchivedFlowNodeItem extends FlowNodeItem implements ArchivedFlowNo
         this.setAttribute(ATTRIBUTE_SOURCE_OBJECT_ID, id);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.bonitasoft.console.client.model.bpm.flownode.ArchivedFlowNode#setSourceObjectId(java.lang.Long)
      */
     @Override
@@ -93,7 +93,8 @@ public class ArchivedFlowNodeItem extends FlowNodeItem implements ArchivedFlowNo
         this.setAttribute(ATTRIBUTE_SOURCE_OBJECT_ID, id);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.bonitasoft.console.client.model.bpm.flownode.ArchivedFlowNode#getSourceObjectId()
      */
     @Override

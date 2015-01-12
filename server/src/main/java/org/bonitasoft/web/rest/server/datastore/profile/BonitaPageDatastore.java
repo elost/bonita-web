@@ -19,7 +19,6 @@ import org.bonitasoft.web.toolkit.client.data.item.IItem;
 
 /**
  * @author Fabio Lombardi
- * 
  */
 public class BonitaPageDatastore {
 

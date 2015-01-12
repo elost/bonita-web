@@ -5,18 +5,16 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.console.client.admin.bpm.cases.view;
 
-import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n.*;
+import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n._;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -49,7 +47,6 @@ import org.bonitasoft.web.toolkit.client.ui.page.ItemQuickDetailsPage.ItemDetail
 
 /**
  * @author Nicolas Tith
- *
  */
 public class CaseMoreDetailsAdminPage extends CaseQuickDetailsAdminPage {
 
@@ -126,33 +123,33 @@ public class CaseMoreDetailsAdminPage extends CaseQuickDetailsAdminPage {
 
     protected ItemTable getTaskTable(final CaseItem item) {
         return new ItemTable(new JsId("tasks"), getHumanTasksDefinition())
-        .addHiddenFilter(HumanTaskItem.ATTRIBUTE_CASE_ID, item.getId())
-        .addColumn(HumanTaskItem.ATTRIBUTE_DISPLAY_NAME, _("Name"))
-        .addColumn(new DateAttributeReader(HumanTaskItem.ATTRIBUTE_DUE_DATE), _("Due date"))
-        .addColumn(new DescriptionAttributeReader(HumanTaskItem.ATTRIBUTE_DISPLAY_DESCRIPTION, HumanTaskItem.ATTRIBUTE_DESCRIPTION), _("Description"))
+                .addHiddenFilter(HumanTaskItem.ATTRIBUTE_CASE_ID, item.getId())
+                .addColumn(HumanTaskItem.ATTRIBUTE_DISPLAY_NAME, _("Name"))
+                .addColumn(new DateAttributeReader(HumanTaskItem.ATTRIBUTE_DUE_DATE), _("Due date"))
+                .addColumn(new DescriptionAttributeReader(HumanTaskItem.ATTRIBUTE_DISPLAY_DESCRIPTION, HumanTaskItem.ATTRIBUTE_DESCRIPTION), _("Description"))
 
-        .addCellFormatter(HumanTaskItem.ATTRIBUTE_DISPLAY_NAME, new FlowNodeDisplayNameFormatter())
-        .addCellFormatter(HumanTaskItem.ATTRIBUTE_DUE_DATE, new SpanPrepender(_("Due in:")))
-        .addCellFormatter(HumanTaskItem.ATTRIBUTE_DISPLAY_DESCRIPTION, new SpanPrepender(_("Description:")));
+                .addCellFormatter(HumanTaskItem.ATTRIBUTE_DISPLAY_NAME, new FlowNodeDisplayNameFormatter())
+                .addCellFormatter(HumanTaskItem.ATTRIBUTE_DUE_DATE, new SpanPrepender(_("Due in:")))
+                .addCellFormatter(HumanTaskItem.ATTRIBUTE_DISPLAY_DESCRIPTION, new SpanPrepender(_("Description:")));
     }
 
     protected ItemTable getArchivedTaskTable(final CaseItem item) {
         return new ItemTable(new JsId("tasks"), ArchivedFlowNodeDefinition.get())
-        .addHiddenFilter(ArchivedTaskItem.ATTRIBUTE_CASE_ID, item.getId())
-        .addHiddenFilter(ArchivedTaskItem.FILTER_IS_TERMINAL, ArchivedTaskItem.VALUE_IS_TERMINAL_TRUE)
+                .addHiddenFilter(ArchivedTaskItem.ATTRIBUTE_CASE_ID, item.getId())
+                .addHiddenFilter(ArchivedTaskItem.FILTER_IS_TERMINAL, ArchivedTaskItem.VALUE_IS_TERMINAL_TRUE)
 
-        .addColumn(ArchivedTaskItem.ATTRIBUTE_DISPLAY_NAME, _("Name"))
-        .addColumn(new DateAttributeReader(ArchivedTaskItem.ATTRIBUTE_ARCHIVED_DATE), _("Performed date"))
-        .addColumn(new DeployedUserReader(ArchivedTaskItem.ATTRIBUTE_EXECUTED_BY_USER_ID), _("Perform by"))
-        .addColumn(new DeployedUserReader(ArchivedTaskItem.ATTRIBUTE_EXECUTED_BY_SUBSTITUTE_USER_ID), _("by"))
-        .addColumn(new DescriptionAttributeReader(ArchivedTaskItem.ATTRIBUTE_DISPLAY_DESCRIPTION, ArchivedTaskItem.ATTRIBUTE_DESCRIPTION),
-                _("Description"))
+                .addColumn(ArchivedTaskItem.ATTRIBUTE_DISPLAY_NAME, _("Name"))
+                .addColumn(new DateAttributeReader(ArchivedTaskItem.ATTRIBUTE_ARCHIVED_DATE), _("Performed date"))
+                .addColumn(new DeployedUserReader(ArchivedTaskItem.ATTRIBUTE_EXECUTED_BY_USER_ID), _("Perform by"))
+                .addColumn(new DeployedUserReader(ArchivedTaskItem.ATTRIBUTE_EXECUTED_BY_SUBSTITUTE_USER_ID), _("by"))
+                .addColumn(new DescriptionAttributeReader(ArchivedTaskItem.ATTRIBUTE_DISPLAY_DESCRIPTION, ArchivedTaskItem.ATTRIBUTE_DESCRIPTION),
+                        _("Description"))
                 .addCellFormatter(ArchivedTaskItem.ATTRIBUTE_DISPLAY_NAME, new FlowNodeDisplayNameFormatter())
                 .addCellFormatter(ArchivedTaskItem.ATTRIBUTE_ARCHIVED_DATE, new ArchivedFlowNodeDateFormatter())
                 .addCellFormatter(ArchivedTaskItem.ATTRIBUTE_DISPLAY_DESCRIPTION, new SpanPrepender(_("Description:")))
                 .addCellFormatter(ArchivedTaskItem.ATTRIBUTE_EXECUTED_BY_USER_ID + "_" + ArchivedTaskItem.ATTRIBUTE_EXECUTED_BY_USER_ID,
                         new ArchivedFlowNodeExecutedByFormatter())
-                        .setOrder(ArchivedTaskItem.ATTRIBUTE_ARCHIVED_DATE, false);
+                .setOrder(ArchivedTaskItem.ATTRIBUTE_ARCHIVED_DATE, false);
     }
 
     protected void prepareArchivedTasksTable(final ItemTable archivedTasksTable) {
@@ -181,7 +178,7 @@ public class CaseMoreDetailsAdminPage extends CaseQuickDetailsAdminPage {
 
     private void buildComments(final APIID caseId) {
         addBody(new CommentSectionSnippet(caseId)
-        .build());
+                .build());
     }
 
     private void buildCaseVariableSection(final CaseItem item) {

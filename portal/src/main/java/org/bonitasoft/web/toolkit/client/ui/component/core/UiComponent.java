@@ -14,13 +14,14 @@
  */
 package org.bonitasoft.web.toolkit.client.ui.component.core;
 
+import org.bonitasoft.web.toolkit.client.ui.component.form.FormNode;
+
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.UIObject;
 import com.google.gwt.user.client.ui.Widget;
-import org.bonitasoft.web.toolkit.client.ui.component.form.FormNode;
 
 /**
  * Created by Vincent Elcrin
@@ -52,7 +53,7 @@ public class UiComponent extends Component implements FormNode {
     @Override
     protected Element makeElement() {
 
-        if(uiObject instanceof Widget) {
+        if (uiObject instanceof Widget) {
             pound.add((Widget) uiObject);
         }
 

@@ -55,9 +55,9 @@ import org.bonitasoft.web.toolkit.client.data.item.IItem;
  * @author Séverin Moussel
  */
 public class AbstractAPIFlowNode<ITEM extends IFlowNodeItem> extends ConsoleAPI<ITEM> implements
-APIHasUpdate<ITEM>,
-APIHasGet<ITEM>,
-APIHasSearch<ITEM> {
+        APIHasUpdate<ITEM>,
+        APIHasGet<ITEM>,
+        APIHasSearch<ITEM> {
 
     @Override
     protected FlowNodeDefinition defineItemDefinition() {
@@ -178,10 +178,10 @@ APIHasSearch<ITEM> {
     private CaseItem getArchivedCase(final String id) {
         final List<ArchivedCaseItem> result = getArchivedCaseDatastore
                 ().search(
-                0, 1,
-                null,
-                null,
-                Collections.singletonMap(ArchivedHumanTaskItem.ATTRIBUTE_SOURCE_OBJECT_ID, id)).getResults();
+                        0, 1,
+                        null,
+                        null,
+                        Collections.singletonMap(ArchivedHumanTaskItem.ATTRIBUTE_SOURCE_OBJECT_ID, id)).getResults();
         if (result.size() > 0) {
             return result.get(0);
         }

@@ -17,13 +17,13 @@ public interface PageController {
      * Let the custom page parse request for specific attribute handling.
      * 
      * @param request
-     *            the HTTP servlet request intended to be used as in a servlet
+     *        the HTTP servlet request intended to be used as in a servlet
      * @param response
-     *            the HTTP servlet response intended to be used as in a servlet
+     *        the HTTP servlet response intended to be used as in a servlet
      * @param pageResourceProvider
-     *            provide access to the resources contained in the custom page zip
+     *        provide access to the resources contained in the custom page zip
      * @param pageContext
-     *            provide access to the data relative to the context in which the custom page is displayed
+     *        provide access to the data relative to the context in which the custom page is displayed
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response, PageResourceProvider pageResourceProvider, PageContext pageContext);
 }

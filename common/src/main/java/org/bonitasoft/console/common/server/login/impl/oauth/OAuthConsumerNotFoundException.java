@@ -15,7 +15,6 @@ package org.bonitasoft.console.common.server.login.impl.oauth;
 
 /**
  * @author Chong Zhao
- * 
  */
 public class OAuthConsumerNotFoundException extends Exception {
 

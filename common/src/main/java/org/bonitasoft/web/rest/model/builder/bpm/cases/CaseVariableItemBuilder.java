@@ -3,8 +3,8 @@
  * BonitaSoft is a trademark of BonitaSoft SA.
  * This software file is BONITASOFT CONFIDENTIAL. Not For Distribution.
  * For commercial licensing information, contact:
- *      BonitaSoft, 32 rue Gustave Eiffel – 38000 Grenoble
- *      or BonitaSoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
+ * BonitaSoft, 32 rue Gustave Eiffel – 38000 Grenoble
+ * or BonitaSoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  *******************************************************************************/
 package org.bonitasoft.web.rest.model.builder.bpm.cases;
 
@@ -12,10 +12,8 @@ import java.io.Serializable;
 
 import org.bonitasoft.web.rest.model.bpm.cases.CaseVariableItem;
 
-
 /**
  * @author Colin PUY
- *
  */
 public class CaseVariableItemBuilder {
 
@@ -24,7 +22,7 @@ public class CaseVariableItemBuilder {
     private Serializable value = "aValue";
     private String type = "aType";
     private String description = "aDescription";
-    
+
     public static CaseVariableItemBuilder aCaseVariableItem() {
         return new CaseVariableItemBuilder();
     }
@@ -32,7 +30,7 @@ public class CaseVariableItemBuilder {
     public CaseVariableItem build() {
         return new CaseVariableItem(caseId, name, value, type, description);
     }
-    
+
     public CaseVariableItemBuilder withCaseId(long caseId) {
         this.caseId = caseId;
         return this;

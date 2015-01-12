@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -48,7 +46,6 @@ import com.google.gwt.user.client.rpc.RemoteService;
  * Form flow service Helps building the forms application
  * 
  * @author Anthony Birembaut
- * 
  */
 public interface FormsService extends RemoteService {
 
@@ -91,14 +88,13 @@ public interface FormsService extends RemoteService {
      * Retrieve the next page in the page flow associated with the form
      * 
      * @param nextPageExpressionId
-     *            next form id expression Id
+     *        next form id expression Id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param pageId
-     *            the current page Id
+     *        the current page Id
      * @param fieldValues
-     *            the current page's fields values
-     * 
+     *        the current page's fields values
      * @throws SessionTimeoutException
      * @throws RPCException
      * @throws SuspendedFormException
@@ -118,16 +114,16 @@ public interface FormsService extends RemoteService {
      * Validate a form field value using the validators provided
      * 
      * @param formID
-     *            a form page id
+     *        a form page id
      * @param urlContext
-     *            url parameters map
+     *        url parameters map
      * @param validatorsMap
-     *            Map of validators to use. Each entry of the map contains the ID of the field to validate and an id allowing to retrieve the field validators
-     *            in the cache
+     *        Map of validators to use. Each entry of the map contains the ID of the field to validate and an id allowing to retrieve the field validators
+     *        in the cache
      * @param widgetValues
-     *            a map of the fields ids and values
+     *        a map of the fields ids and values
      * @param submitButtonId
-     *            the submit button ID
+     *        the submit button ID
      * @return The list of validators whose validate method returned false
      * @throws RPCException
      * @throws SessionTimeoutException
@@ -139,15 +135,15 @@ public interface FormsService extends RemoteService {
      * Validate a form page using the validators provided
      * 
      * @param formID
-     *            a form page id
+     *        a form page id
      * @param urlContext
-     *            url parameters map
+     *        url parameters map
      * @param pageValidatorsId
-     *            id allowing to retrieve the page validators in the cache
+     *        id allowing to retrieve the page validators in the cache
      * @param fields
-     *            a map of the fields ids and values
+     *        a map of the fields ids and values
      * @param submitButtonId
-     *            the submit button ID
+     *        the submit button ID
      * @return a list of the validators for which the field value does not comply with the validation
      * @throws RPCException
      * @throws SessionTimeoutException
@@ -159,9 +155,9 @@ public interface FormsService extends RemoteService {
      * Retrieve the confirmation page for a form
      * 
      * @param formID
-     *            the form id
+     *        the form id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return an {@link ReducedHtmlTemplate} object representing the page flow confirmation page
      * @throws RPCException
      * @throws SessionTimeoutException
@@ -172,9 +168,9 @@ public interface FormsService extends RemoteService {
      * Retrieve the error page for a formID
      * 
      * @param formID
-     *            form id
+     *        form id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return an {@link ReducedHtmlTemplate} object representing the error page
      * @throws RPCException
      * @throws SessionTimeoutException
@@ -185,9 +181,9 @@ public interface FormsService extends RemoteService {
      * Skip a form
      * 
      * @param formID
-     *            current form ID
+     *        current form ID
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return a Map containing the new URL parameters
      * @throws RPCException
      * @throws SessionTimeoutException
@@ -202,13 +198,13 @@ public interface FormsService extends RemoteService {
      * related to this button will be performed)
      * 
      * @param formID
-     *            form id
+     *        form id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param fieldValues
-     *            a Map of the fields ids and values
+     *        a Map of the fields ids and values
      * @param submitButtonId
-     *            the pressed submit button id
+     *        the pressed submit button id
      * @throws RPCException
      * @throws FileTooBigException
      * @throws SessionTimeoutException
@@ -222,9 +218,9 @@ public interface FormsService extends RemoteService {
      * Retrieve the next task uuid if it is in the user task list and form id
      * 
      * @param formID
-     *            form id
+     *        form id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return the next Form URL components or null there is no next task or if the next task is not in the user todolist
      * @throws RPCException
      * @throws SessionTimeoutException
@@ -235,13 +231,13 @@ public interface FormsService extends RemoteService {
      * Get async available values
      * 
      * @param formID
-     *            form id
+     *        form id
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @param formWidget
-     *            the widget definition
+     *        the widget definition
      * @param currentFieldValue
-     *            the current value of the widget
+     *        the current value of the widget
      * @return the new list of available values
      * @throws RPCException
      * @throws SessionTimeoutException
@@ -253,7 +249,7 @@ public interface FormsService extends RemoteService {
      * Get any todolist form URL
      * 
      * @param urlContext
-     *            Map containing the URL parameters
+     *        Map containing the URL parameters
      * @return new urlContext Map containing the URL parameters
      * @throws RPCException
      * @throws SessionTimeoutException

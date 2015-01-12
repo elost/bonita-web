@@ -27,7 +27,6 @@ import org.scribe.oauth.OAuthService;
 
 /**
  * @author Ruiheng.Fan
- * 
  */
 public abstract class OAuthConsumer implements Serializable {
 
@@ -40,7 +39,7 @@ public abstract class OAuthConsumer implements Serializable {
     protected OAuthService service;
 
     private static final long serialVersionUID = 1L;
-    
+
     private static LoginManagerPropertiesFactory loginManagerPropertiesFactory = new LoginManagerPropertiesFactory();
 
     protected OAuthConsumer(final Class<? extends Api> viewType, final long tenantId, final String redirctURL) {

@@ -22,7 +22,6 @@ import org.restlet.engine.Engine;
 import org.restlet.resource.Get;
 import org.restlet.routing.Router;
 
-
 public class AttributeEncodingTest {
 
     private static Component component;

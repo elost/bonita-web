@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -32,7 +30,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * @author Séverin Moussel
- * 
  */
 public abstract class AbstractComponent extends Widget implements Node {
 
@@ -114,7 +111,7 @@ public abstract class AbstractComponent extends Widget implements Node {
      * Indicate if the component must run fillers on load.
      * 
      * @param fillOnLoad
-     *            TRUE to fill the component on load, otherwise FALSE.
+     *        TRUE to fill the component on load, otherwise FALSE.
      * @return This method returns the component itself to allow cascading calls.
      */
     public AbstractComponent setFillOnLoad(final boolean fillOnLoad) {
@@ -133,7 +130,7 @@ public abstract class AbstractComponent extends Widget implements Node {
      * Indicate if the component must run fillers on page refresh.
      * 
      * @param fillOnRefresh
-     *            TRUE to fill the component on page refresh, otherwise FALSE.
+     *        TRUE to fill the component on page refresh, otherwise FALSE.
      * @return This method returns the component itself to allow cascading calls.
      */
     public AbstractComponent setFillOnRefresh(final boolean fillOnRefresh) {
@@ -158,7 +155,7 @@ public abstract class AbstractComponent extends Widget implements Node {
      * The onLoad event is triggered while the component is inserted in the document.
      * 
      * @param action
-     *            The action to run on load
+     *        The action to run on load
      */
     public final void onLoad(final Action action) {
         onLoadAction = action;
@@ -212,7 +209,7 @@ public abstract class AbstractComponent extends Widget implements Node {
      * Fillers are definitions on how to read and write data.
      * 
      * @param filler
-     *            The filler to add
+     *        The filler to add
      * @return This method returns the component itself to allow cascading calls.
      */
     public final AbstractComponent addFiller(final Filler<?> filler) {
@@ -244,7 +241,7 @@ public abstract class AbstractComponent extends Widget implements Node {
      * Remove all fillers and add the defined ones.
      * 
      * @param fillers
-     *            The fillers to set.
+     *        The fillers to set.
      * @return This method returns "this" to allow cascading calls.
      */
     public final AbstractComponent setFillers(final List<Filler<? extends Object>> fillers) {
@@ -266,7 +263,7 @@ public abstract class AbstractComponent extends Widget implements Node {
      * Remove all fillers and add the defined one.
      * 
      * @param filler
-     *            The filler to set
+     *        The filler to set
      * @return This method returns "this" to allow cascading calls.
      */
     public final AbstractComponent setFiller(final Filler<?> filler) {
@@ -351,7 +348,7 @@ public abstract class AbstractComponent extends Widget implements Node {
      * Check if the passed element is already inserted in the main Document DOM tree.
      * 
      * @param e
-     *            The element to check
+     *        The element to check
      * @return This method return TRUE if the element is in the Document DOM, otherwise FALSE.
      */
     protected boolean isInDom(final Element e) {
@@ -370,9 +367,9 @@ public abstract class AbstractComponent extends Widget implements Node {
      * Append a component in a root element.
      * 
      * @param rootElement
-     *            The root element where to append the component.
+     *        The root element where to append the component.
      * @param component
-     *            The component to append.
+     *        The component to append.
      */
 
     protected static final void appendComponentToHtml(final Element rootElement, final AbstractComponent component) {
@@ -385,9 +382,9 @@ public abstract class AbstractComponent extends Widget implements Node {
      * Prepend a component in a root element.
      * 
      * @param rootElement
-     *            The root element where to prepend the component.
+     *        The root element where to prepend the component.
      * @param component
-     *            The component to prepend.
+     *        The component to prepend.
      */
     protected static final void prependComponentToHtml(final Element rootElement, final AbstractComponent component) {
         if (component != null) {
@@ -412,7 +409,7 @@ public abstract class AbstractComponent extends Widget implements Node {
      * Define the tooltip to display on mouse over this component.
      * 
      * @param tooltip
-     *            The tooltip to display.
+     *        The tooltip to display.
      * @return This method returns "this" to allow cascading calls.
      */
     public final AbstractComponent setTooltip(final String tooltip) {

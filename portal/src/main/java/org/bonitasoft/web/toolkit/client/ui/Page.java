@@ -100,7 +100,7 @@ public abstract class Page extends View {
      * Add a list of Components in the current view.
      * 
      * @param components
-     *            The list of Components to add in the current view.
+     *        The list of Components to add in the current view.
      */
     @Override
     protected void setHeader(final AbstractComponent... components) {
@@ -109,7 +109,7 @@ public abstract class Page extends View {
 
     /**
      * @param title
-     *            the title to set
+     *        the title to set
      */
     protected void setTitle(final String title) {
         this.setTitle(title, (Component[]) null);
@@ -163,11 +163,11 @@ public abstract class Page extends View {
      * add a toolbar Button with the following arguments :
      * 
      * @param label
-     *            label of the button
+     *        label of the button
      * @param tooltip
-     *            tooltip for the button
+     *        tooltip for the button
      * @param action
-     *            action for the button
+     *        action for the button
      * @deprecated Use {@code addToolbarLink(Clickable link)}
      */
     @Deprecated()
@@ -181,11 +181,11 @@ public abstract class Page extends View {
      * add a toolbar Link with the following arguments :
      * 
      * @param label
-     *            label for the link
+     *        label for the link
      * @param tooltip
-     *            tooltip for the link
+     *        tooltip for the link
      * @param action
-     *            action for the link
+     *        action for the link
      * @deprecated Use {@code addToolbarLink(Clickable link)}
      */
     @Deprecated()

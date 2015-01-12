@@ -14,17 +14,16 @@
  */
 package org.bonitasoft.web.toolkit.client.ui.component;
 
-import com.google.gwt.user.client.Element;
+import static com.google.gwt.query.client.GQuery.$;
+
 import org.bonitasoft.web.toolkit.client.ui.component.core.Component;
 import org.bonitasoft.web.toolkit.client.ui.html.HTML;
 import org.bonitasoft.web.toolkit.client.ui.html.XMLAttributes;
 
-import static com.google.gwt.query.client.GQuery.$;
+import com.google.gwt.user.client.Element;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  */
 public class IFrame extends Component {
 

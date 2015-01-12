@@ -19,14 +19,14 @@ public abstract class EngineSetup {
         setSystemPropertyIfNotSet(Context.INITIAL_CONTEXT_FACTORY, "org.bonitasoft.engine.local.SimpleMemoryContextFactory");
         setSystemPropertyIfNotSet(Context.URL_PKG_PREFIXES, "org.bonitasoft.engine.local");
     }
-    
+
     protected static void setSystemPropertyIfNotSet(String property, String value) {
         final String systemProperty = System.getProperty(property);
         if (systemProperty == null) {
             System.err.println(format("*** Forcing %s to : %s", property, value));
             System.setProperty(property, value);
         } else {
-            System.err.println(format("*** %s already set to : %s", property,  systemProperty));
+            System.err.println(format("*** %s already set to : %s", property, systemProperty));
         }
     }
 }

@@ -27,7 +27,7 @@ public class APIGroupIntegrationTest extends AbstractConsoleTest {
     @Test(expected = APIForbiddenException.class)
     public void addingTwiceSameGroupIsForbidden() {
         GroupItem groupItem = aGroup().build();
-        
+
         apiGroup.add(groupItem);
         apiGroup.add(groupItem);
     }

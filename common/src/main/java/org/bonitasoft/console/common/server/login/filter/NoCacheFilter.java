@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -27,19 +25,19 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  * @author Paul AMAR
- *
  */
 public class NoCacheFilter implements Filter {
-    
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {}
 
     @Override
-    public void destroy() {}
-    
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
+
+    @Override
+    public void destroy() {
+    }
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         // casting to HTTPServlet(Request/Response)
@@ -48,8 +46,8 @@ public class NoCacheFilter implements Filter {
 
         res.setHeader("Expires", "0");
         res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-        res.setHeader("Pragma", "no-cache"); 
-        
+        res.setHeader("Pragma", "no-cache");
+
         chain.doFilter(req, res);
     }
 }

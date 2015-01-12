@@ -5,16 +5,18 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.rest.server.api.profile;
+
+import static org.bonitasoft.web.rest.model.portal.profile.ProfileEntryItem.ATTRIBUTE_INDEX;
+
+import java.util.List;
 
 import org.bonitasoft.web.rest.model.portal.profile.ProfileEntryDefinition;
 import org.bonitasoft.web.rest.model.portal.profile.ProfileEntryItem;
@@ -29,10 +31,6 @@ import org.bonitasoft.web.rest.server.engineclient.ProfileEntryEngineClient;
 import org.bonitasoft.web.rest.server.framework.api.APIHasGet;
 import org.bonitasoft.web.rest.server.framework.api.APIHasSearch;
 import org.bonitasoft.web.rest.server.framework.api.Datastore;
-
-import java.util.List;
-
-import static org.bonitasoft.web.rest.model.portal.profile.ProfileEntryItem.ATTRIBUTE_INDEX;
 
 /**
  * @author Nicolas Tith
@@ -65,7 +63,7 @@ public class APIProfileEntry extends ConsoleAPI<ProfileEntryItem> implements
         factory = getDeployerFactory();
         addDeployer(factory.createProfileDeployer(ProfileEntryItem.ATTRIBUTE_PROFILE_ID));
         addDeployer(factory.createProfileEntryDeployer(ProfileEntryItem.ATTRIBUTE_PARENT_ID));
-        if(!item.isCustom()) {
+        if (!item.isCustom()) {
             addDeployer(factory.createBonitaPageDeployer(ProfileEntryItem.ATTRIBUTE_PAGE));
         }
         super.fillDeploys(item, deploys);

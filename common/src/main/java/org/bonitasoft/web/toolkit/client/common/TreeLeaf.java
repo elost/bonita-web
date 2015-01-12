@@ -18,9 +18,7 @@ import org.bonitasoft.web.toolkit.client.common.json.JSonSerializer;
 import org.bonitasoft.web.toolkit.client.common.url.UrlSerializer;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  * @param <VALUE_CLASS>
  */
 public class TreeLeaf<VALUE_CLASS> extends AbstractTreeNode<VALUE_CLASS> {

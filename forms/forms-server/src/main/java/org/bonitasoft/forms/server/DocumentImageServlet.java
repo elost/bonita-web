@@ -13,11 +13,6 @@
  **/
 package org.bonitasoft.forms.server;
 
-import javax.activation.FileTypeMap;
-import javax.activation.MimetypesFileTypeMap;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -25,6 +20,12 @@ import java.net.URLEncoder;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.activation.FileTypeMap;
+import javax.activation.MimetypesFileTypeMap;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConstants;
 import org.bonitasoft.console.common.server.preferences.constants.WebBonitaConstantsUtils;
@@ -39,7 +40,6 @@ import org.bonitasoft.forms.server.api.IFormWorkflowAPI;
 
 /**
  * Servlet allowing to view process instances attachments as images
- * 
  * TODO refactor to remove duplicate code with {@link DocumentDownloadServlet}
  * 
  * @author Anthony Birembaut

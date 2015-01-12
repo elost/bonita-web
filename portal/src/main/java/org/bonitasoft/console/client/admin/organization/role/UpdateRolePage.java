@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -35,16 +33,15 @@ import org.bonitasoft.web.toolkit.client.ui.component.form.FormFiller;
  * popup
  *
  * @author Colin PUY
- * 
  */
 public class UpdateRolePage extends Page {
 
     private static final String PARAM_ROLE_ID = "roleId";
 
     public static final String TOKEN = "updaterole";
-    
+
     public static final List<String> PRIVILEGES = new ArrayList<String>();
-    
+
     static {
         PRIVILEGES.add(RoleListingPage.TOKEN);
     }
@@ -52,11 +49,11 @@ public class UpdateRolePage extends Page {
     public UpdateRolePage() {
         // needed by pageFactory
     }
-    
+
     public UpdateRolePage(RoleItem roleItem) {
         addParameter(PARAM_ROLE_ID, roleItem.getId().toString());
     }
-    
+
     @Override
     public void defineTitle() {
         setTitle(_("Update a role"));
@@ -82,16 +79,17 @@ public class UpdateRolePage extends Page {
         return TOKEN;
     }
 
-    /** 
-     * Role form filler 
+    /**
+     * Role form filler
      */
     private final class RoleFormFiller extends FormFiller {
+
         private String roleId;
 
         public RoleFormFiller(String roleId) {
             this.roleId = roleId;
         }
-        
+
         @Override
         protected void getData(final APICallback callback) {
             new APICaller(RoleDefinition.get()).get(roleId, callback);

@@ -1,5 +1,4 @@
 /*
- *
  * Copyright (C) 2014 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
@@ -12,12 +11,16 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  */
 package org.bonitasoft.forms.server.util;
 
-
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 
 import java.util.Collections;
 import java.util.logging.Level;
@@ -33,68 +36,68 @@ public class FormLoggerTest {
     FormLogger formLogger;
 
     @Before
-    public void before(){
+    public void before() {
         formLogger = spy(new FormLogger("theclass"));
 
     }
 
     @Test
-    public void log_with_message(){
+    public void log_with_message() {
         //given
         doReturn(true).when(formLogger).isLoggable(Level.INFO);
         doNothing().when(formLogger).internalLog(any(Level.class), anyString(), any(Exception.class));
         //when
-        formLogger.log(Level.INFO,"My message", Collections.<String, Object>emptyMap());
+        formLogger.log(Level.INFO, "My message", Collections.<String, Object> emptyMap());
         //then
-        verify(formLogger).internalLog(Level.INFO,"My message",null);
+        verify(formLogger).internalLog(Level.INFO, "My message", null);
     }
 
     @Test
-    public void log_with_INFO_when_not_loggable(){
+    public void log_with_INFO_when_not_loggable() {
         //given
         doReturn(false).when(formLogger).isLoggable(Level.INFO);
         doNothing().when(formLogger).internalLog(any(Level.class), anyString(), any(Exception.class));
         //when
-        formLogger.log(Level.INFO,"My message", Collections.<String, Object>emptyMap());
+        formLogger.log(Level.INFO, "My message", Collections.<String, Object> emptyMap());
         //then
-        verify(formLogger,never()).internalLog(Level.INFO, "My message", null);
+        verify(formLogger, never()).internalLog(Level.INFO, "My message", null);
     }
 
     @Test
-    public void log_with_exception(){
+    public void log_with_exception() {
         //given
         doReturn(true).when(formLogger).isLoggable(Level.INFO);
         doNothing().when(formLogger).internalLog(any(Level.class), anyString(), any(Exception.class));
         //when
         IllegalStateException exception = new IllegalStateException();
-        formLogger.log(Level.INFO,"My message", exception, Collections.<String, Object>emptyMap());
+        formLogger.log(Level.INFO, "My message", exception, Collections.<String, Object> emptyMap());
         //then
-        verify(formLogger).internalLog(Level.INFO,"My message",exception);
+        verify(formLogger).internalLog(Level.INFO, "My message", exception);
     }
 
     @Test
-    public void log_with_FINEST(){
+    public void log_with_FINEST() {
         //given
         doReturn(true).when(formLogger).isLoggable(Level.FINEST);
         doNothing().when(formLogger).internalLog(any(Level.class), anyString(), any(Exception.class));
         //when
         IllegalStateException exception = new IllegalStateException();
-        formLogger.log(Level.FINEST,"My message", exception, Collections.<String, Object>emptyMap());
+        formLogger.log(Level.FINEST, "My message", exception, Collections.<String, Object> emptyMap());
         //then
-        verify(formLogger).internalLog(Level.FINEST,"My message",exception);
+        verify(formLogger).internalLog(Level.FINEST, "My message", exception);
 
     }
 
     @Test
-    public void log_with_SEVERE(){
+    public void log_with_SEVERE() {
         //given
         doReturn(true).when(formLogger).isLoggable(Level.FINEST);
         doNothing().when(formLogger).internalLog(any(Level.class), anyString(), any(Exception.class));
         //when
         IllegalStateException exception = new IllegalStateException();
-        formLogger.log(Level.SEVERE,"My message", exception, Collections.<String, Object>emptyMap());
+        formLogger.log(Level.SEVERE, "My message", exception, Collections.<String, Object> emptyMap());
         //then
-        verify(formLogger).internalLog(Level.SEVERE,"My message",exception);
+        verify(formLogger).internalLog(Level.SEVERE, "My message", exception);
 
     }
 

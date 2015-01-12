@@ -8,17 +8,16 @@
  *******************************************************************************/
 package org.bonitasoft.web.rest.model.bpm.cases;
 
+import static org.bonitasoft.web.rest.model.bpm.cases.CaseVariableItem.ATTRIBUTE_CASE_ID;
+import static org.bonitasoft.web.rest.model.bpm.cases.CaseVariableItem.ATTRIBUTE_NAME;
+
 import org.bonitasoft.web.toolkit.client.data.item.Definitions;
 import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 import org.bonitasoft.web.toolkit.client.data.item.attribute.ItemAttribute;
 import org.bonitasoft.web.toolkit.client.data.item.attribute.validator.StringMaxLengthValidator;
 
-import static org.bonitasoft.web.rest.model.bpm.cases.CaseVariableItem.ATTRIBUTE_CASE_ID;
-import static org.bonitasoft.web.rest.model.bpm.cases.CaseVariableItem.ATTRIBUTE_NAME;
-
 /**
  * @author Colin PUY
- * 
  */
 public class CaseVariableDefinition extends ItemDefinition<CaseVariableItem> {
 

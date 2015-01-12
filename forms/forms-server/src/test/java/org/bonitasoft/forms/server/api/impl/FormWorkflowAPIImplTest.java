@@ -1,9 +1,9 @@
 package org.bonitasoft.forms.server.api.impl;
 
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
 import java.io.Serializable;
@@ -67,7 +67,7 @@ public class FormWorkflowAPIImplTest {
         final boolean expected = true;
         checkWhenApiReturn(expected);
     }
-    
+
     @Test
     public void it_should_call_evaluateActivityInitialExpressions() throws Exception {
         // Given
@@ -89,7 +89,7 @@ public class FormWorkflowAPIImplTest {
         final boolean expected = false;
         checkWhenApiReturn(expected);
     }
-    
+
     @Test
     public void it_should_call_evaluateProcessInitialExpressions() throws Exception {
         // Given
@@ -105,7 +105,7 @@ public class FormWorkflowAPIImplTest {
     }
 
     private void checkWhenApiReturn(final boolean expected) throws ProcessInstanceNotFoundException, UserNotFoundException, BPMEngineException,
-    ProcessDefinitionNotFoundException {
+            ProcessDefinitionNotFoundException {
         userId = 25L;
         processInstanceId = 1L;
         //given
@@ -118,7 +118,7 @@ public class FormWorkflowAPIImplTest {
         verify(processApi).isInvolvedInProcessInstance(userId, processInstanceId);
         assertThat(canUserSeeProcessInstance).as("should return " + expected).isEqualTo(expected);
     }
-        
+
     @Test
     public void it_should_not_call_evaluateProcessInitialExpressions_nor_evaluateActivityInitialExpressions() throws Exception {
         // Given
@@ -131,6 +131,5 @@ public class FormWorkflowAPIImplTest {
         verify(formExpressionsAPI, never()).evaluateProcessInitialExpressions(session, processDefinitionID, expressions, locale, context);
         verify(formExpressionsAPI, never()).evaluateActivityInitialExpressions(session, activityInstanceID, expressions, locale, true, context);
     }
-
 
 }

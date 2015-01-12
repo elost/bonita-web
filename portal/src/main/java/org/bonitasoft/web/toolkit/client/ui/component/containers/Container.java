@@ -318,7 +318,7 @@ public class Container<T extends Node> extends Component {
      * Add an item directly in the HTML after the last existing item
      * 
      * @param item
-     *            The item to append
+     *        The item to append
      */
     protected final void appendItemToHtml(final T item) {
         // this.element.removeClassName("empty");
@@ -329,7 +329,7 @@ public class Container<T extends Node> extends Component {
      * Add an item directly in the HTML after the last existing item
      * 
      * @param item
-     *            The item to append
+     *        The item to append
      */
     protected final void insertItemAfter(final T item, final Element e) {
         // TODO Insert element

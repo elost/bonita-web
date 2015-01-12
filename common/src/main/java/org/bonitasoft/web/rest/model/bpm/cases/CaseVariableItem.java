@@ -17,7 +17,6 @@ import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 
 /**
  * @author Colin PUY
- * 
  */
 public class CaseVariableItem extends Item {
 

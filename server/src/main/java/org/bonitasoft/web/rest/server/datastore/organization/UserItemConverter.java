@@ -47,7 +47,6 @@ public class UserItemConverter extends ItemConverter<UserItem, User> {
         result.setTitle(user.getTitle());
         result.setJobTitle(user.getJobTitle());
 
-
         return result;
     }
 

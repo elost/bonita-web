@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -19,10 +17,8 @@ package org.bonitasoft.web.rest.server;
 import static junit.framework.Assert.assertTrue;
 
 import org.bonitasoft.console.common.server.i18n.I18n;
-import org.bonitasoft.web.rest.server.BonitaRestAPIServlet;
 import org.bonitasoft.web.toolkit.client.data.item.Item;
 import org.junit.BeforeClass;
-
 
 /**
  * Base test class for API and Datastore tests classes using mocks
@@ -39,12 +35,12 @@ public class APITestWithMock {
         new BonitaRestAPIServlet();
         I18n.getInstance();
     }
-    
+
     protected boolean areEquals(Item item1, Item item2) {
         return item1.getAttributes().equals(item2.getAttributes());
     }
-    
+
     protected void assertItemEquals(Item expectedItem, Item actual) {
-        assertTrue("expected { " + expectedItem + "} \n actual {" + actual + "}" , areEquals(expectedItem, actual));
+        assertTrue("expected { " + expectedItem + "} \n actual {" + actual + "}", areEquals(expectedItem, actual));
     }
 }

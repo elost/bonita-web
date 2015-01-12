@@ -5,12 +5,10 @@ import static org.junit.Assert.assertTrue;
 import org.bonitasoft.console.common.server.i18n.I18n;
 import org.junit.Test;
 
-
-
 public class DefaultPasswordValidatorTest {
-    
+
     DefaultPasswordValidator defaultPasswordValidator = new DefaultPasswordValidator();
-    
+
     @Test
     public void testWithPassword() {
         I18n.getInstance();

@@ -14,8 +14,8 @@
  */
 package org.bonitasoft.web.toolkit.client.ui.page.itemListingPage;
 
-import static com.google.gwt.query.client.GQuery.*;
-import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n.*;
+import static com.google.gwt.query.client.GQuery.$;
+import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n._;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -400,9 +400,9 @@ public abstract class ItemListingPage<T extends IItem> extends Page {
     }
 
     void selectFilter(final String filterId) {
-        if(filtersLinks.containsKey(filterId)) {
+        if (filtersLinks.containsKey(filterId)) {
             final Action action = filtersLinks.get(filterId).getAction();
-            if(action instanceof ItemListingPage<?>.ChangeFilterAction) {
+            if (action instanceof ItemListingPage<?>.ChangeFilterAction) {
                 ((ChangeFilterAction) action).execute(true);
             }
         }
@@ -572,11 +572,11 @@ public abstract class ItemListingPage<T extends IItem> extends Page {
 
                 // Reset
                 itemTable
-                .resetLines()
-                .resetHiddenFilters()
-                .addHiddenFilters(ItemListingPage.this.tables.get(tableName).getDefaultHiddenFilters())
-                .addHiddenFilters(this.filter.getAdditionalFilters())
-                .setPage(0);
+                        .resetLines()
+                        .resetHiddenFilters()
+                        .addHiddenFilters(ItemListingPage.this.tables.get(tableName).getDefaultHiddenFilters())
+                        .addHiddenFilters(this.filter.getAdditionalFilters())
+                        .setPage(0);
 
                 // Default selected line
                 itemTable.setDefaultSelectedLine(0);
@@ -651,19 +651,19 @@ public abstract class ItemListingPage<T extends IItem> extends Page {
         if (this.showSearchBar) {
 
             this.tablesSearch
-            .addTextEntryWithPlaceholder(new JsId("query"), "", _("Enter the text to search for"), _("Search..."))
-            .addButton(new JsId("search"), _("Search"), _("Update this page using the defined search query"), new FormAction() {
+                    .addTextEntryWithPlaceholder(new JsId("query"), "", _("Enter the text to search for"), _("Search..."))
+                    .addButton(new JsId("search"), _("Search"), _("Update this page using the defined search query"), new FormAction() {
 
-                @Override
-                public void execute() {
-                    for (final String tableName : ItemListingPage.this.currentFilter.getTablesToDisplay()) {
-                        final ItemTable table = ItemListingPage.this.tables.get(tableName).getItemTable();
-                        table.setSearch(this.getParameter("query"));
-                        table.setPage(0);
-                        table.refresh();
-                    }
-                }
-            });
+                        @Override
+                        public void execute() {
+                            for (final String tableName : ItemListingPage.this.currentFilter.getTablesToDisplay()) {
+                                final ItemTable table = ItemListingPage.this.tables.get(tableName).getItemTable();
+                                table.setSearch(this.getParameter("query"));
+                                table.setPage(0);
+                                table.refresh();
+                            }
+                        }
+                    });
         }
 
     }
@@ -703,7 +703,7 @@ public abstract class ItemListingPage<T extends IItem> extends Page {
                     if (items.size() > 0) {
                         int itemRowIndex = 0;
                         final ItemTable table = itemListingTable.getItemTable();
-                        if(table.getDefaultSelectedId() != null) {
+                        if (table.getDefaultSelectedId() != null) {
                             for (; itemRowIndex < items.size(); itemRowIndex++) {
                                 if (table.getDefaultSelectedId().equals(items.get(itemRowIndex).getId())) {
                                     break;

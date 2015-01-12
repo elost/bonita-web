@@ -30,7 +30,6 @@ import org.mockito.Mock;
 
 /**
  * @author Colin PUY
- * 
  */
 public class APICaseVariableTest extends APITestWithMock {
 

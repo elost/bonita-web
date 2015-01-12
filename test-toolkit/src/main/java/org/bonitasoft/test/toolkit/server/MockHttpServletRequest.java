@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -33,18 +31,17 @@ import javax.servlet.http.HttpSession;
 
 /**
  * @author Nicolas Chabanoles
- * 
  */
 public class MockHttpServletRequest implements HttpServletRequest {
 
     HttpSession session = null;
 
     Map<String, Object> parametersMap = null;
-    
+
     Map<String, Object> attributesMap = null;
 
     HttpServletRequest req = null;
-    
+
     String pathInfo = null;
 
     public MockHttpServletRequest(final HttpServletRequest req) {
@@ -173,9 +170,9 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     @Override
     public String getPathInfo() {
-        if(pathInfo != null){
+        if (pathInfo != null) {
             return this.pathInfo;
-        }else if (this.req != null) {
+        } else if (this.req != null) {
             return this.req.getPathInfo();
         }
         return null;
@@ -525,7 +522,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
     @Override
     @SuppressWarnings("unchecked")
     public Map<String, Object> getParameterMap() {
-        if (req == null){
+        if (req == null) {
             return this.parametersMap;
         } else {
             return this.req.getParameterMap();
@@ -724,13 +721,13 @@ public class MockHttpServletRequest implements HttpServletRequest {
             this.req.setCharacterEncoding(anEnv);
         }
     }
-    
+
     /*
      * (non-Javadoc)
      * @see javax.servlet.ServletRequest#setCharacterEncoding(java.lang.String)
      */
     public void setPathInfo(final String pathInfo) {
-            this.pathInfo = pathInfo;
+        this.pathInfo = pathInfo;
     }
 
 }

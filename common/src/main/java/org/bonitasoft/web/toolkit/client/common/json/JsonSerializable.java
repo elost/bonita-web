@@ -15,9 +15,7 @@
 package org.bonitasoft.web.toolkit.client.common.json;
 
 /**
- * 
  * @author Séverin Moussel
- * 
  */
 public interface JsonSerializable {
 

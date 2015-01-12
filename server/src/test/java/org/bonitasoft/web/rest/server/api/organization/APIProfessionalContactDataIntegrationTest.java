@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -54,13 +52,14 @@ public class APIProfessionalContactDataIntegrationTest extends AbstractConsoleTe
         return getInitiator().createUser(userCreator);
     }
 
-    @Test public void 
-    getProfessionalContactData_return_professional_contact_data_of_user_with_given_id() {
+    @Test
+    public void
+            getProfessionalContactData_return_professional_contact_data_of_user_with_given_id() {
         ContactDataBuilder aContactData = aContactData();
         TestUser user = createUserWithProfessionnalContactData(aContactData);
-        
+
         final ProfessionalContactDataItem result = this.apiProfessionalContactData.get(makeAPIID(user.getId()));
-        
+
         ProfessionalContactDataItem expectedItem = aContactData.toProfessionalContactDataItem();
         assertEquals(expectedItem.getEmail(), result.getEmail());
         assertEquals(expectedItem.getPhoneNumber(), result.getPhoneNumber());
@@ -76,25 +75,27 @@ public class APIProfessionalContactDataIntegrationTest extends AbstractConsoleTe
         assertEquals(expectedItem.getWebsite(), result.getWebsite());
     }
 
-    @Test public void 
-    updateProfessionalContactData_update_professional_contact_data_of_given_user() {
+    @Test
+    public void
+            updateProfessionalContactData_update_professional_contact_data_of_given_user() {
         TestUser user = createUserWithProfessionnalContactData(aContactData());
         ProfessionalContactDataItem contactDataItem = aContactData().withAddress("anOtherAddress").toProfessionalContactDataItem();
 
-        ProfessionalContactDataItem updatedItem = 
+        ProfessionalContactDataItem updatedItem =
                 this.apiProfessionalContactData.update(makeAPIID(user.getId()), contactDataItem.getAttributes());
 
         final ProfessionalContactDataItem expectedItem = this.apiProfessionalContactData.get(makeAPIID(user.getId()));
         assertItemEquals(expectedItem, updatedItem);
     }
 
-    @Test public void 
-    addProfessionalContactData_add_professional_contact_data_to_a_user() {
+    @Test
+    public void
+            addProfessionalContactData_add_professional_contact_data_to_a_user() {
         final TestUser user = getInitiator().createUser("user", "pwd");
         final ProfessionalContactDataItem res = new ProfessionalContactDataItem();
         res.setAddress("New address");
         res.setId(user.getId());
-        
+
         this.apiProfessionalContactData.add(res);
 
         final ProfessionalContactDataItem result = this.apiProfessionalContactData.get(APIID.makeAPIID(user.getId()));

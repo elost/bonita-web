@@ -8,7 +8,7 @@
  *******************************************************************************/
 package org.bonitasoft.console.client.user.cases.view;
 
-import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n.*;
+import static org.bonitasoft.web.toolkit.client.common.i18n.AbstractI18n._;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +36,6 @@ import com.google.gwt.user.client.Element;
 
 /**
  * @author Fabio Lombardi
- *
  */
 public class DisplayCaseFormPage extends Page {
 
@@ -94,8 +93,8 @@ public class DisplayCaseFormPage extends Page {
 
         final StringBuilder frameURL = new StringBuilder();
         frameURL.append(GWT.getModuleBaseURL())
-        .append("homepage?ui=form&locale=")
-        .append(locale);
+                .append("homepage?ui=form&locale=")
+                .append(locale);
 
         // if tenant is filled in portal url add tenant parameter to IFrame url
         final String tenantId = ClientApplicationURL.getTenantId();
@@ -104,11 +103,11 @@ public class DisplayCaseFormPage extends Page {
         }
 
         frameURL.append("#form=")
-        .append(processName)
-        .append(UUID_SEPERATOR)
-        .append(processVersion)
-        .append("$recap&mode=form&instance=")
-        .append(caseId).append("&recap=true");
+                .append(processName)
+                .append(UUID_SEPERATOR)
+                .append(processVersion)
+                .append("$recap&mode=form&instance=")
+                .append(caseId).append("&recap=true");
         return frameURL.toString();
     }
 

@@ -37,7 +37,7 @@ public class TokenProfileProvider implements UserRightsBuilder.TokenProvider {
     }
 
     private void add(String token) {
-        if(token != null) {
+        if (token != null) {
             tokens.add(token);
         }
     }

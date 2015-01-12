@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -23,7 +21,6 @@ import org.bonitasoft.console.common.server.login.impl.oauth.OAuthConsumerNotFou
 
 /**
  * @author Ruiheng Fan
- *
  */
 public interface LoginManager {
 
@@ -75,9 +72,9 @@ public interface LoginManager {
      * Get Login Page URL
      *
      * @param tenantId
-     *            user tenantId
+     *        user tenantId
      * @param redirectURL
-     *            redirect url
+     *        redirect url
      * @return new redirect url
      * @throws OAuthConsumerNotFoundException
      */
@@ -87,11 +84,11 @@ public interface LoginManager {
      * Login the engine
      *
      * @param request
-     *            HTTP request
+     *        HTTP request
      * @param redirectURL
-     *            redirect url
+     *        redirect url
      * @param tenantId
-     *            tenant id
+     *        tenant id
      * @throws LoginFailedException
      * @throws OAuthConsumerNotFoundException
      */

@@ -15,7 +15,6 @@ import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 
 /**
  * @author Fabio Lombardi
- *
  */
 public class BonitaPageItem extends Item {
 

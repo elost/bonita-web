@@ -5,12 +5,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2.0 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -24,7 +22,6 @@ import org.bonitasoft.web.toolkit.client.data.item.ItemDefinition;
 
 /**
  * @author Séverin Moussel
- * 
  */
 abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
 
@@ -61,7 +58,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Add a deploy.
      * 
      * @param deploy
-     *            The deploy to add.
+     *        The deploy to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest addDeploy(final String deploy) {
@@ -74,7 +71,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * This method will remove previously defined deploys.
      * 
      * @param deploys
-     *            The list of deploys to add.
+     *        The list of deploys to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest setDeploys(final String... deploys) {
@@ -85,9 +82,8 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Set multiple deploys.<br />
      * This method will remove previously defined deploys.
      * 
-     * 
      * @param deploys
-     *            The list of deploys to add.
+     *        The list of deploys to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest setDeploys(final List<String> deploys) {
@@ -99,7 +95,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Add multiple deploys.
      * 
      * @param deploys
-     *            The list of deploys to add.
+     *        The list of deploys to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest addDeploys(final String... deploys) {
@@ -110,7 +106,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Add multiple deploys.
      * 
      * @param deploys
-     *            The list of deploys to add.
+     *        The list of deploys to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest addDeploys(final List<String> deploys) {
@@ -124,7 +120,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Remove an already defined deploy
      * 
      * @param deploy
-     *            The deploy to remove.
+     *        The deploy to remove.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest removeDeploy(final String deploy) {
@@ -136,7 +132,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Remove multiple deploys.
      * 
      * @param deploys
-     *            The list of deploys to remove.
+     *        The list of deploys to remove.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest removeDeploys(final String... deploys) {
@@ -148,7 +144,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Remove multiple deploys.
      * 
      * @param deploys
-     *            The list of deploys to remove.
+     *        The list of deploys to remove.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest removeDeploys(final List<String> deploys) {
@@ -183,7 +179,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Add a counter.
      * 
      * @param counter
-     *            The counter to add.
+     *        The counter to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest addCounter(final String counter) {
@@ -196,7 +192,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * This method will remove previously defined counters.
      * 
      * @param counters
-     *            The list of counters to add.
+     *        The list of counters to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest setCounters(final String... counters) {
@@ -207,9 +203,8 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Set multiple counters.<br />
      * This method will remove previously defined counters.
      * 
-     * 
      * @param counters
-     *            The list of counters to add.
+     *        The list of counters to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest setCounters(final List<String> counters) {
@@ -221,7 +216,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Add multiple counters.
      * 
      * @param counters
-     *            The list of counters to add.
+     *        The list of counters to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest addCounters(final String... counters) {
@@ -232,7 +227,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Add multiple counters.
      * 
      * @param counters
-     *            The list of counters to add.
+     *        The list of counters to add.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest addCounters(final List<String> counters) {
@@ -246,7 +241,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Remove an already defined counter
      * 
      * @param counter
-     *            The counter to remove.
+     *        The counter to remove.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest removeCounter(final String counter) {
@@ -258,7 +253,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Remove multiple counters.
      * 
      * @param counters
-     *            The list of counters to remove.
+     *        The list of counters to remove.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest removeCounters(final String... counters) {
@@ -270,7 +265,7 @@ abstract class AbstractAPIReadRequest extends AbstractAPIRequest {
      * Remove multiple counters.
      * 
      * @param counters
-     *            The list of counters to remove.
+     *        The list of counters to remove.
      * @return This method returns "this" to allow cascading calls.
      */
     public AbstractAPIReadRequest removeCounters(final List<String> counters) {
