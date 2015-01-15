@@ -20,23 +20,23 @@ package org.bonitasoft.forms.server.api.impl.util;
 public class FormWorkflowUtil {
 
     public static final String OPERATIONS_LIST_KEY = "OPERATIONS_LIST_KEY";
-
+    
     public static final String OPERATIONS_INPUT_KEY = "OPERATIONS_INPUT_KEY";
-
+    
     public static final String OPERATIONS_KEY = "OPERATIONS_KEY";
-
+    
     public static final String ACTIVITY_INSTANCE_ID_KEY = "ACTIVITY_INSTANCE_ID_KEY";
-
+    
     public static final String PROCESS_DEFINITION_ID_KEY = "PROCESS_DEFINITION_ID_KEY";
-
+    
     public static final String PROCESS_INSTANCE_ID_KEY = "PROCESS_INSTANCE_ID_KEY";
-
+    
     public static final String USER_NAME_KEY = "USER_NAME_KEY";
-
+    
     public static final String USER_ID_KEY = "USER_ID_KEY";
-
+    
     public static final String ACTOR_IDS_KEY = "ACTOR_IDS_KEY";
-
+    
     public static final String OPERATIONS_WITH_CONTEXT_MAP_KEY = "OPERATIONS_WITH_CONTEXT_MAP_KEY";
 
     public static final String CURRENT_VARIABLE_VALUES_MAP_KEY = "CURRENT_VARIABLE_VALUES_MAP_KEY";
@@ -44,13 +44,7 @@ public class FormWorkflowUtil {
     public static final String EXECUTE_ACTION_AND_TERMINATE = "executeActionsAndTerminate";
 
     public static final String EXECUTE_ACTION_AND_START_INSTANCE = "executeActionsAndStartInstance";
-
-    public static final String GET_UPDATED_VARIABLE_VALUES_FOR_PROCESS_DEFINITION = "getUpdatedVariableValuesForProcessDefinition";
-
-    public static final String GET_UPDATED_VARIABLE_VALUES_FOR_PROCESS_INSTANCE = "getUpdatedVariableValuesForProcessInstance";
-
-    public static final String GET_UPDATED_VARIABLE_VALUES_FOR_ACTIVITY_INSTANCE = "getUpdatedVariableValuesForActivityInstance";
-
+    
     public static final String IS_ALLOWED_TO_SEE_OVERVIEW_FORM = "isAllowedToSeeOverviewForm";
 
 }
