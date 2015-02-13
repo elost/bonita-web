@@ -95,8 +95,8 @@ public class GroupListingAdminPage extends ItemListingPage<GroupItem> {
     protected ItemTable itemTable() {
         return new ItemTable(GroupDefinition.get())
                 .addColumn(GroupItem.ATTRIBUTE_ICON, _("Icon"))
-                .addColumn(GroupItem.ATTRIBUTE_DISPLAY_NAME, _("Name"), true)
-                .addColumn(GroupItem.ATTRIBUTE_CREATION_DATE, _("Creation date"), false)
+                .addColumn(GroupItem.ATTRIBUTE_DISPLAY_NAME, _("Name"), true, _("Sort by name"))
+                .addColumn(GroupItem.ATTRIBUTE_CREATION_DATE, _("Creation date"), false, _("This is a new tooltip"))
                 .addGroupedMultipleDeleteAction(_("Delete selected groups"), GroupDefinition.get(), _("group"), _("groups"));
     }
 

@@ -42,19 +42,25 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
     private String label = null;
 
     private boolean sorted = false;
+    
+    protected String tooltip;
+    
 
     public TableColumn(final Table table, final JsId jsid, final String label) {
         this(table, jsid, label, null, true);
     }
 
-    public TableColumn(final Table table, final JsId jsid, final String label, final String sortName) {
-        this(table, jsid, label, sortName, false, true);
+    public TableColumn(final Table table, final JsId jsid, final String label, final String tooltip) {
+        this(table, jsid, label, null, true, tooltip);
     }
 
     public TableColumn(final Table table, final JsId jsid, final String label, final String sortName, final boolean sorted) {
         this(table, jsid, label, sortName, sorted, true);
     }
 
+    public TableColumn(final Table table, final JsId jsid, final String label, final String sortName, final boolean sorted, final String tooltip) {
+    	this(table, jsid, label, sortName, sorted, true, tooltip);
+    }
     /**
      * Constructor
      * 
@@ -72,7 +78,12 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
      *            Indicate if the sort is ascending or descending
      */
     public TableColumn(final Table table, final JsId jsid, final String label, final String sortName, final boolean sorted, final boolean sortAscending) {
-        super(table, jsid);
+    	this(table, jsid, label, sortName, sorted, sortAscending, null);
+    }
+    
+    public TableColumn(final Table table, final JsId jsid, final String label, final String sortName, final boolean sorted, final boolean sortAscending, final String tooltip) {
+    	super(table, jsid);
+    	this.tooltip = tooltip;
         this.label = label;
         this.sortName = sortName;
         this.sorted = sorted;
@@ -199,6 +210,14 @@ public class TableColumn extends TableComponent implements ModifiableOutput {
         return this.outputModifiers.getModifier(modifierClassName);
     }
 
+    /**
+     * Due to implementation issue, tooltip is not displayed for Clickable elements.
+     * To force tooltip to be displayed, use this method
+     */
+    public void forceTooltip() {
+        super.tooltip = tooltip;
+    }
+    
     /**
      * check if the column is currently sorted
      */

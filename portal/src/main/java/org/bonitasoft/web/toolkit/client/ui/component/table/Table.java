@@ -170,14 +170,28 @@ public class Table extends AbstractTable implements Refreshable {
     public Table addColumn(final JsId jsid, final String label, final String sortName) {
         return this.addColumn(new TableColumn(this, jsid, label, sortName, true, true));
     }
+    
+    public Table addColumn(final JsId jsid, final String label, final String sortName, final String tooltip) {
+    	TableColumn column = new TableColumn(this, jsid, label, sortName, true, true, tooltip);
+    	column.forceTooltip();
+		return this.addColumn(column);
+    }
 
     public Table addColumn(final JsId jsid, final String label, final String sortName, final boolean sorted, final boolean sortAscending) {
-        return addColumn(new TableColumn(this, jsid, label, sortName, sorted, sortAscending));
+    	return addColumn(new TableColumn(this, jsid, label, sortName, sorted, sortAscending));
     }
+    
+    public Table addColumn(final JsId jsid, final String label, final String sortName, final boolean sorted, final boolean sortAscending, final String tooltip) {
+		TableColumn column = new TableColumn(this, jsid, label, sortName, sorted, sortAscending, tooltip);
+		column.forceTooltip();
+		return this.addColumn(column);
+    }
+    
 
     public Table addColumn(TableColumn column) {
         columns.append(column);
         String sortName = column.getSortName();
+        
         if (sortName != null) {
             order = sortName + (column.isSortAscending() ? " ASC" : " DESC");
         }

@@ -413,10 +413,16 @@ public class ItemTable extends AbstractTable implements Refreshable, FormNode {
     }
 
     public final ItemTable addColumn(final String attributeName, final String label, final boolean sortable) {
-        if (sortable) {
-            this.table.addColumn(new JsId(attributeName), label, attributeName);
+    	this.addColumn(attributeName, label, sortable, null);
+    	
+    	return this;
+    }
+    
+    public final ItemTable addColumn(final String attributeName, final String label, final boolean sortable, final String tooltip) {
+    	if (sortable) {
+            this.table.addColumn(new JsId(attributeName), label, attributeName, tooltip);
         } else {
-            this.table.addColumn(new JsId(attributeName), label);
+            this.table.addColumn(new JsId(attributeName), label, null, false, true, tooltip);
         }
         this.columns.add(new AttributeReader(attributeName));
 
