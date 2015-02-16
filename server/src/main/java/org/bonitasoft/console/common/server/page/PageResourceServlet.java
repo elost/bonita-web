@@ -52,7 +52,7 @@ public class PageResourceServlet extends ResourceServlet {
 
     @Override
     protected String getSubFolderName() {
-        return RESOURCES_SUBFOLDER_NAME;
+        return null;
     }
 
 }

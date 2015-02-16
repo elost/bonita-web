@@ -62,7 +62,8 @@ public class CustomPageWithFrame extends Page {
     }
 
     protected String buildCustomPageURL(final String pageName) {
-        final StringBuilder servletURL = new StringBuilder().append(GWT.getModuleBaseURL()).append("custompage?page=").append(pageName).append("&locale=")
+        final StringBuilder servletURL = new StringBuilder().append(GWT.getModuleBaseURL()).append("custom-page/").append(pageName)
+                .append("/index.html?locale=")
                 .append(AbstractI18n.getDefaultLocale().toString()).append("&profile=").append(ClientApplicationURL.getProfileId());
         return servletURL.toString();
     }
