@@ -16,12 +16,12 @@
  */
 package org.bonitasoft.web.rest.server.datastore.bpm.flownode;
 
-import static org.bonitasoft.web.toolkit.client.common.util.StringUtil.isBlank;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bonitasoft.engine.bpm.connector.ConnectorInstance;
+import org.bonitasoft.engine.bpm.connector.ConnectorInstancesSearchDescriptor;
 import org.bonitasoft.engine.bpm.data.DataInstance;
 import org.bonitasoft.engine.bpm.flownode.ActivityInstance;
 import org.bonitasoft.engine.bpm.flownode.ActivityInstanceNotFoundException;
@@ -29,10 +29,8 @@ import org.bonitasoft.engine.bpm.flownode.ActivityStates;
 import org.bonitasoft.engine.search.SearchOptionsBuilder;
 import org.bonitasoft.engine.search.SearchResult;
 import org.bonitasoft.engine.session.APISession;
-import org.bonitasoft.web.rest.model.bpm.flownode.ActivityDefinition;
-import org.bonitasoft.web.rest.model.bpm.flownode.ActivityItem;
-import org.bonitasoft.web.rest.model.bpm.flownode.FlowNodeItem;
-import org.bonitasoft.web.rest.model.bpm.flownode.HumanTaskItem;
+import org.bonitasoft.web.rest.model.bpm.connector.ConnectorInstanceItem;
+import org.bonitasoft.web.rest.model.bpm.flownode.*;
 import org.bonitasoft.web.rest.server.datastore.converter.ActivityAttributeConverter;
 import org.bonitasoft.web.rest.server.datastore.filter.ActivityFilterCreator;
 import org.bonitasoft.web.rest.server.datastore.filter.Filters;
@@ -49,6 +47,8 @@ import org.bonitasoft.web.toolkit.client.common.exception.api.APIException;
 import org.bonitasoft.web.toolkit.client.common.exception.api.APIItemNotFoundException;
 import org.bonitasoft.web.toolkit.client.common.util.MapUtil;
 import org.bonitasoft.web.toolkit.client.data.APIID;
+
+import static org.bonitasoft.web.toolkit.client.common.util.StringUtil.isBlank;
 
 /**
  * @author Séverin Moussel
@@ -172,6 +172,17 @@ public class AbstractActivityDatastore<CONSOLE_ITEM extends ActivityItem, ENGINE
                 } else {
                     getProcessAPI().executeFlowNode(item.getId().toLong());
                 }
+            } else if  (IFlowNodeItem.VALUE_STATE_REPLAY.equals(state) && item != null) {
+                SearchOptionsBuilder builder = new SearchOptionsBuilder(0, 200); //should be more than enough
+                builder.filter(ConnectorInstancesSearchDescriptor.CONTAINER_ID, item.getId().toLong());
+                builder.filter(ConnectorInstancesSearchDescriptor.STATE, ConnectorInstanceItem.VALUE_STATE_FAILED);
+
+                SearchResult<ConnectorInstance> searchResult = getProcessAPI().searchConnectorInstances(builder.done());
+                for (ConnectorInstance connector : searchResult.getResult()) {
+                    getProcessAPI().setConnectorState(connector.getId(), ConnectorInstanceItem.VALUE_STATE_TO_RE_EXECUTE);
+                }
+
+                getProcessAPI().retryTask(item.getId().toLong());
             } else {
                 throw new APIException("Can't update " + item.getClass().getName() + " state to \"" + item.getState() + "\"");
             }
