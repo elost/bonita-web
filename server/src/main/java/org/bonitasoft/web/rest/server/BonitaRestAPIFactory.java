@@ -18,6 +18,7 @@ package org.bonitasoft.web.rest.server;
 
 import java.util.logging.Logger;
 
+import org.bonitasoft.web.rest.model.tenant.BusinessDataModelDefinition;
 import org.bonitasoft.web.rest.server.api.application.APIApplication;
 import org.bonitasoft.web.rest.server.api.applicationmenu.APIApplicationMenu;
 import org.bonitasoft.web.rest.server.api.applicationpage.APIApplicationDataStoreFactory;
@@ -34,7 +35,6 @@ import org.bonitasoft.web.rest.server.api.bpm.connector.APIArchivedConnectorInst
 import org.bonitasoft.web.rest.server.api.bpm.connector.APIConnectorInstance;
 import org.bonitasoft.web.rest.server.api.bpm.flownode.APIActivity;
 import org.bonitasoft.web.rest.server.api.bpm.flownode.APIFlowNode;
-import org.bonitasoft.web.rest.server.api.bpm.flownode.APIHiddenUserTask;
 import org.bonitasoft.web.rest.server.api.bpm.flownode.APIHumanTask;
 import org.bonitasoft.web.rest.server.api.bpm.flownode.APITask;
 import org.bonitasoft.web.rest.server.api.bpm.flownode.APIUserTask;
@@ -71,6 +71,8 @@ import org.bonitasoft.web.rest.server.api.profile.APIProfileMember;
 import org.bonitasoft.web.rest.server.api.system.APII18nLocale;
 import org.bonitasoft.web.rest.server.api.system.APII18nTranslation;
 import org.bonitasoft.web.rest.server.api.system.APISession;
+import org.bonitasoft.web.rest.server.api.tenant.APIBusinessDataModel;
+import org.bonitasoft.web.rest.server.api.tenant.APITenantAdmin;
 import org.bonitasoft.web.rest.server.datastore.application.ApplicationDataStoreCreator;
 import org.bonitasoft.web.rest.server.datastore.applicationmenu.ApplicationMenuDataStoreCreator;
 import org.bonitasoft.web.rest.server.engineclient.CustomUserInfoEngineClientCreator;
@@ -118,6 +120,8 @@ public class BonitaRestAPIFactory extends RestAPIFactory {
                 return new APII18nTranslation();
             } else if ("session".equals(resourceToken)) {
                 return new APISession();
+            } else if ("tenant".equals(resourceToken)) {
+                return new APITenantAdmin();
             }
 
             // FIXME : userXP deprecated    (BS-500)
@@ -188,8 +192,6 @@ public class BonitaRestAPIFactory extends RestAPIFactory {
                 return new APIActorMember();
             } else if ("delegation".equals(resourceToken)) {
                 return new APIActorMember();
-            } else if ("hiddenUserTask".equals(resourceToken)) {
-                return new APIHiddenUserTask();
             } else if ("activity".equals(resourceToken)) {
                 return new APIActivity();
             } else if ("archivedActivity".equals(resourceToken)) {
@@ -226,6 +228,10 @@ public class BonitaRestAPIFactory extends RestAPIFactory {
                 return new APIApplicationPage(new APIApplicationDataStoreFactory());
             } else if ("application-menu".equals(resourceToken)) {
                 return new APIApplicationMenu(new ApplicationMenuDataStoreCreator());
+            }
+        } else if ("tenant".equals(apiToken)) {
+            if (BusinessDataModelDefinition.TOKEN.equals(resourceToken)) {
+                return new APIBusinessDataModel();
             }
 
         } else if ("platform".equals(apiToken)) {
