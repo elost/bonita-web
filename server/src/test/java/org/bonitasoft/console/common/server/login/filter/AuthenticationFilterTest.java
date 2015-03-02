@@ -25,6 +25,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 import javax.servlet.FilterChain;
@@ -40,6 +41,7 @@ import org.assertj.core.api.Condition;
 import org.bonitasoft.console.common.server.login.HttpServletRequestAccessor;
 import org.bonitasoft.console.common.server.login.HttpServletResponseAccessor;
 import org.bonitasoft.console.common.server.login.TenantIdAccessor;
+import org.bonitasoft.console.common.server.login.impl.jaas.cas.TenantIsPausedRedirectionToMaintenancePageException;
 import org.bonitasoft.console.common.server.login.impl.standard.StandardLoginManagerImpl;
 import org.bonitasoft.console.common.server.login.localization.Locator;
 import org.bonitasoft.console.common.server.login.localization.RedirectUrl;
@@ -64,16 +66,16 @@ public class AuthenticationFilterTest {
     private FilterChain chain;
 
     @Mock
-    private HttpServletRequestAccessor request;
+    private HttpServletRequestAccessor httpServletRequestAccessor;
 
     @Mock
-    private HttpServletRequest httpRequest;
+    private HttpServletRequest httpServletRequest;
 
     @Mock
-    private HttpServletResponse httpResponse;
+    private HttpServletResponse httpServletResponse;
 
     @Mock
-    private HttpServletResponseAccessor response;
+    private HttpServletResponseAccessor httpServletResponseAccessor;
 
     @Mock
     private TenantIdAccessor tenantIdAccessor;
@@ -87,10 +89,12 @@ public class AuthenticationFilterTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        doReturn(httpSession).when(request).getHttpSession();
-        when(request.asHttpServletRequest()).thenReturn(httpRequest);
+        doReturn(httpSession).when(httpServletRequestAccessor).getHttpSession();
+        when(httpServletRequestAccessor.asHttpServletRequest()).thenReturn(httpServletRequest);
         doReturn(new StandardLoginManagerImpl()).when(authenticationFilter).getLoginManager(any(TenantIdAccessor.class));
-        when(httpRequest.getRequestURL()).thenReturn(new StringBuffer());
+        when(httpServletRequest.getRequestURL()).thenReturn(new StringBuffer());
+
+        when(httpServletResponseAccessor.asServletResponse()).thenReturn(httpServletResponse);
     }
 
     @Test
@@ -98,7 +102,7 @@ public class AuthenticationFilterTest {
         authenticationFilter.addRule(createPassingRule());
         authenticationFilter.addRule(createFailingRule());
 
-        authenticationFilter.doAuthenticationFiltering(request, response, tenantIdAccessor, chain);
+        authenticationFilter.doAuthenticationFiltering(httpServletRequestAccessor, httpServletResponseAccessor, tenantIdAccessor, chain);
 
         verify(chain).doFilter(any(ServletRequest.class), any(ServletResponse.class));
     }
@@ -108,29 +112,29 @@ public class AuthenticationFilterTest {
         authenticationFilter.addRule(createFailingRule());
         authenticationFilter.addRule(createPassingRule());
 
-        authenticationFilter.doAuthenticationFiltering(request, response, tenantIdAccessor, chain);
+        authenticationFilter.doAuthenticationFiltering(httpServletRequestAccessor, httpServletResponseAccessor, tenantIdAccessor, chain);
 
-        verify(response, never()).redirect(any(Locator.class));
+        verify(httpServletResponseAccessor, never()).redirect(any(Locator.class));
     }
 
     @Test
     public void testIfWeAreRedirectedIfAllRulesFail() throws Exception {
         authenticationFilter.addRule(createFailingRule());
         authenticationFilter.addRule(createFailingRule());
-        when(httpRequest.getContextPath()).thenReturn("/bonita");
-        when(httpRequest.getPathInfo()).thenReturn("/portal");
-        authenticationFilter.doAuthenticationFiltering(request, response, tenantIdAccessor, chain);
+        when(httpServletRequest.getContextPath()).thenReturn("/bonita");
+        when(httpServletRequest.getPathInfo()).thenReturn("/portal");
+        authenticationFilter.doAuthenticationFiltering(httpServletRequestAccessor, httpServletResponseAccessor, tenantIdAccessor, chain);
 
-        verify(response).redirect(any(Locator.class));
+        verify(httpServletResponseAccessor).redirect(any(Locator.class));
     }
 
     @Test
     public void testIfWeDontGoThroughTheChainWhenRulesFails() throws Exception {
         authenticationFilter.addRule(createFailingRule());
         authenticationFilter.addRule(createFailingRule());
-        when(httpRequest.getContextPath()).thenReturn("/bonita");
-        when(httpRequest.getPathInfo()).thenReturn("/portal");
-        authenticationFilter.doAuthenticationFiltering(request, response, tenantIdAccessor, chain);
+        when(httpServletRequest.getContextPath()).thenReturn("/bonita");
+        when(httpServletRequest.getPathInfo()).thenReturn("/portal");
+        authenticationFilter.doAuthenticationFiltering(httpServletRequestAccessor, httpServletResponseAccessor, tenantIdAccessor, chain);
 
         verify(chain, never()).doFilter(any(ServletRequest.class), any(ServletResponse.class));
     }
@@ -140,11 +144,11 @@ public class AuthenticationFilterTest {
         authenticationFilter.addRule(createFailingRule());
         doReturn(-1L).when(tenantIdAccessor).getRequestedTenantId();
 
-        when(httpRequest.getContextPath()).thenReturn("/bonita");
-        when(httpRequest.getPathInfo()).thenReturn("/portal");
-        authenticationFilter.doAuthenticationFiltering(request, response, tenantIdAccessor, chain);
+        when(httpServletRequest.getContextPath()).thenReturn("/bonita");
+        when(httpServletRequest.getPathInfo()).thenReturn("/portal");
+        authenticationFilter.doAuthenticationFiltering(httpServletRequestAccessor, httpServletResponseAccessor, tenantIdAccessor, chain);
 
-        verify(response).redirect(argThat(new LocatorMatcher("/bonita/login.jsp?redirectUrl=")));
+        verify(httpServletResponseAccessor).redirect(argThat(new LocatorMatcher("/bonita/login.jsp?redirectUrl=")));
     }
 
     @Test
@@ -152,16 +156,16 @@ public class AuthenticationFilterTest {
         authenticationFilter.addRule(createFailingRule());
         doReturn(12L).when(tenantIdAccessor).getRequestedTenantId();
 
-        when(httpRequest.getContextPath()).thenReturn("/bonita");
-        when(httpRequest.getPathInfo()).thenReturn("/portal");
-        authenticationFilter.doAuthenticationFiltering(request, response, tenantIdAccessor, chain);
+        when(httpServletRequest.getContextPath()).thenReturn("/bonita");
+        when(httpServletRequest.getPathInfo()).thenReturn("/portal");
+        authenticationFilter.doAuthenticationFiltering(httpServletRequestAccessor, httpServletResponseAccessor, tenantIdAccessor, chain);
 
-        verify(response).redirect(argThat(new LocatorMatcher("/bonita/login.jsp?tenant=12&redirectUrl=")));
+        verify(httpServletResponseAccessor).redirect(argThat(new LocatorMatcher("/bonita/login.jsp?tenant=12&redirectUrl=")));
     }
 
     @Test
     public void testFilter() throws Exception {
-        when(httpRequest.getSession()).thenReturn(httpSession);
+        when(httpServletRequest.getSession()).thenReturn(httpSession);
         doAnswer(new Answer<Object>() {
 
             @Override
@@ -170,7 +174,7 @@ public class AuthenticationFilterTest {
             }
         }).when(authenticationFilter).doAuthenticationFiltering(any(HttpServletRequestAccessor.class), any(HttpServletResponseAccessor.class),
                 any(TenantIdAccessor.class), any(FilterChain.class));
-        authenticationFilter.doFilter(httpRequest, httpResponse, chain);
+        authenticationFilter.doFilter(httpServletRequest, httpServletResponse, chain);
         verify(authenticationFilter, times(1)).doAuthenticationFiltering(any(HttpServletRequestAccessor.class), any(HttpServletResponseAccessor.class),
                 any(TenantIdAccessor.class), any(FilterChain.class));
     }
@@ -178,11 +182,11 @@ public class AuthenticationFilterTest {
     @Test
     public void testFilterWithExcludedURL() throws Exception {
         final String url = "test";
-        when(httpRequest.getRequestURL()).thenReturn(new StringBuffer(url));
+        when(httpServletRequest.getRequestURL()).thenReturn(new StringBuffer(url));
         doReturn(true).when(authenticationFilter).matchExcludePatterns(url);
-        authenticationFilter.doFilter(httpRequest, httpResponse, chain);
-        verify(authenticationFilter, times(0)).doAuthenticationFiltering(request, response, tenantIdAccessor, chain);
-        verify(chain, times(1)).doFilter(httpRequest, httpResponse);
+        authenticationFilter.doFilter(httpServletRequest, httpServletResponse, chain);
+        verify(authenticationFilter, times(0)).doAuthenticationFiltering(httpServletRequestAccessor, httpServletResponseAccessor, tenantIdAccessor, chain);
+        verify(chain, times(1)).doFilter(httpServletRequest, httpServletResponse);
     }
 
     @Test
@@ -199,19 +203,19 @@ public class AuthenticationFilterTest {
 
     @Test
     public void testMakeRedirectUrl() throws Exception {
-        when(request.getRequestedUri()).thenReturn("/portal/homepage");
-        final RedirectUrl redirectUrl = authenticationFilter.makeRedirectUrl(request);
-        verify(request, times(1)).getRequestedUri();
+        when(httpServletRequestAccessor.getRequestedUri()).thenReturn("/portal/homepage");
+        final RedirectUrl redirectUrl = authenticationFilter.makeRedirectUrl(httpServletRequestAccessor);
+        verify(httpServletRequestAccessor, times(1)).getRequestedUri();
         assertThat(redirectUrl.getUrl()).isEqualToIgnoringCase("/portal/homepage");
     }
 
     @Test
     public void testMakeRedirectUrlFromRequestUrl() throws Exception {
-        when(request.getRequestedUri()).thenReturn("portal/homepage");
-        when(httpRequest.getRequestURL()).thenReturn(new StringBuffer("http://127.0.1.1:8888/portal/homepage"));
-        final RedirectUrl redirectUrl = authenticationFilter.makeRedirectUrl(request);
-        verify(request, times(1)).getRequestedUri();
-        verify(httpRequest, never()).getRequestURI();
+        when(httpServletRequestAccessor.getRequestedUri()).thenReturn("portal/homepage");
+        when(httpServletRequest.getRequestURL()).thenReturn(new StringBuffer("http://127.0.1.1:8888/portal/homepage"));
+        final RedirectUrl redirectUrl = authenticationFilter.makeRedirectUrl(httpServletRequestAccessor);
+        verify(httpServletRequestAccessor, times(1)).getRequestedUri();
+        verify(httpServletRequest, never()).getRequestURI();
         assertThat(redirectUrl.getUrl()).isEqualToIgnoringCase("portal/homepage");
     }
 
@@ -254,6 +258,55 @@ public class AuthenticationFilterTest {
         if (authenticationFilter.matchExcludePatterns(urlToMatch) != mustMatch) {
             Assertions.fail("Matching excludePattern and the Url " + urlToMatch + " must return " + mustMatch);
         }
+    }
+
+    @Test
+    public void testRedirectToMaintenance() throws Exception {
+        final String context = "/bonita";
+        when(httpServletRequest.getContextPath()).thenReturn(context);
+        final long tenantId = 0L;
+        authenticationFilter.redirectToMaintenance(httpServletRequestAccessor, httpServletResponseAccessor, tenantId);
+        verify(httpServletResponse, times(1)).sendRedirect(context + AuthenticationFilter.MAINTENANCE_JSP);
+        verify(httpServletRequest, times(1)).getContextPath();
+    }
+
+    @Test
+    public void isAutorized_should_redirect_to_maintenance() throws Exception {
+        //given
+        final TenantIsPausedRedirectionToMaintenancePageException tenantIsPausedRedirectionToMaintenancePageException = new TenantIsPausedRedirectionToMaintenancePageException(
+                "message", 1L);
+        verifyIsAutorized(tenantIsPausedRedirectionToMaintenancePageException);
+    }
+
+    @Test(expected =ServletException.class )
+    public void isAutorized_should_throw_exception() throws Exception {
+        //given
+        final Exception otherException = new Exception("other exception");
+
+        verifyIsAutorized(otherException);
+    }
+
+    private void verifyIsAutorized(Exception cause) throws Exception {
+       //given
+        final ServletException servletException = new ServletException("servlet exception", cause);
+        AuthenticationRule failingAuthenticationRule = getFailingAuthenticationRule(servletException);
+        authenticationFilter.getRules().add(failingAuthenticationRule);
+
+        //when
+        authenticationFilter.isAuthorized(httpServletRequestAccessor, httpServletResponseAccessor, tenantIdAccessor, chain);
+
+        //then
+        verify(authenticationFilter, times(1)).handleTenantPausedException(httpServletRequestAccessor, httpServletResponseAccessor, servletException);
+    }
+
+    private AuthenticationRule getFailingAuthenticationRule(final ServletException servletException) {
+        return new AuthenticationRule() {
+
+            @Override
+            public boolean doAuthorize(HttpServletRequestAccessor request, TenantIdAccessor tenantIdAccessor) throws ServletException {
+                throw servletException;
+            }
+        };
     }
 
     class LocatorMatcher extends ArgumentMatcher<Locator> {

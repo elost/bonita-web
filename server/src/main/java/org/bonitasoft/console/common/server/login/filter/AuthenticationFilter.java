@@ -38,17 +38,18 @@ import org.bonitasoft.console.common.server.login.LoginManager;
 import org.bonitasoft.console.common.server.login.LoginManagerFactory;
 import org.bonitasoft.console.common.server.login.LoginManagerNotFoundException;
 import org.bonitasoft.console.common.server.login.TenantIdAccessor;
+import org.bonitasoft.console.common.server.login.impl.jaas.cas.TenantIsPausedRedirectionToMaintenancePageException;
 import org.bonitasoft.console.common.server.login.localization.LoginUrl;
 import org.bonitasoft.console.common.server.login.localization.LoginUrlException;
 import org.bonitasoft.console.common.server.login.localization.RedirectUrl;
 import org.bonitasoft.console.common.server.login.localization.RedirectUrlBuilder;
 import org.bonitasoft.console.common.server.utils.SessionUtil;
-
 /**
  * @author Vincent Elcrin
  */
 public class AuthenticationFilter implements Filter {
 
+    protected static final String MAINTENANCE_JSP = "/maintenance.jsp";
     /**
      * Logger
      */
@@ -115,8 +116,8 @@ public class AuthenticationFilter implements Filter {
             chain.doFilter(request, response);
         } else {
             doAuthenticationFiltering(requestAccessor,
-                new HttpServletResponseAccessor((HttpServletResponse) response),
-                createTenantAccessor(requestAccessor), chain);
+                    new HttpServletResponseAccessor((HttpServletResponse) response),
+                    createTenantAccessor(requestAccessor), chain);
         }
     }
 
@@ -145,9 +146,17 @@ public class AuthenticationFilter implements Filter {
             final FilterChain chain) throws ServletException, IOException {
 
         for (final AuthenticationRule rule : getRules()) {
-            if (rule.doAuthorize(requestAccessor, tenantIdAccessor)) {
-                chain.doFilter(requestAccessor.asHttpServletRequest(), responseAccessor.asServletResponse());
-                return true;
+            try {
+                if (rule.doAuthorize(requestAccessor, tenantIdAccessor)) {
+                    chain.doFilter(requestAccessor.asHttpServletRequest(), responseAccessor.asServletResponse());
+                    return true;
+                }
+            } catch (final ServletException e) {
+                if (e.getCause() instanceof TenantIsPausedRedirectionToMaintenancePageException) {
+                    return handleTenantPausedException(requestAccessor, responseAccessor, e);
+                } else {
+                    throw e;
+                }
             }
         }
         return false;
@@ -215,5 +224,33 @@ public class AuthenticationFilter implements Filter {
 
     protected void cleanHttpSession(final HttpSession session) {
         SessionUtil.sessionLogout(session);
+    }
+
+    protected boolean handleTenantPausedException(final HttpServletRequestAccessor requestAccessor, final HttpServletResponseAccessor responseAccessor,
+            final ServletException e) throws ServletException {
+        final TenantIsPausedRedirectionToMaintenancePageException tenantIsPausedException = (TenantIsPausedRedirectionToMaintenancePageException) e.getCause();
+        if (AuthenticationFilter.LOGGER.isLoggable(Level.FINE)) {
+            AuthenticationFilter.LOGGER.log(Level.FINE, "redirection to maintenance page : " + e.getMessage(), e);
+        }
+        redirectToMaintenance(requestAccessor, responseAccessor, tenantIsPausedException.getTenantId());
+        return false;
+    }
+
+    /**
+     * manage redirection to maintenance page
+     *
+     * @param request
+     * @param response
+     */
+    protected void redirectToMaintenance(final HttpServletRequestAccessor request, final HttpServletResponseAccessor response, final long tenantId)
+            throws ServletException {
+        try {
+            ((HttpServletResponse) response.asServletResponse()).sendRedirect(request.asHttpServletRequest().getContextPath()
+                    + AuthenticationFilter.MAINTENANCE_JSP);
+        } catch (final IOException e) {
+            if (AuthenticationFilter.LOGGER.isLoggable(Level.INFO)) {
+                AuthenticationFilter.LOGGER.log(Level.INFO, e.getMessage());
+            }
+        }
     }
 }
